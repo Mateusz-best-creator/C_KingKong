@@ -141,6 +141,15 @@ void DrawPlatforms(SDL_Surface* screen, int platform_color)
 {
 	for (size_t i = 0; i < 5; i++)
 		DrawRectangle(screen, SCREEN_WIDTH, 400 - i * 60, SCREEN_WIDTH, 10, platform_color, platform_color);
+	/*for (size_t j = 0; j < 10; j++)
+	{
+		if (i % 2 == 1)
+			DrawRectangle(screen, j * (SCREEN_WIDTH / 10),
+				400 - i * 60 + j * 1, SCREEN_WIDTH / 10, 10, platform_color, platform_color);
+		else
+			DrawRectangle(screen, j * (SCREEN_WIDTH / 10),
+				400 - i * 60 - j * 1, SCREEN_WIDTH / 10, 10, platform_color, platform_color);
+	}*/
 }
 
 void DrawLadders(SDL_Surface* screen, int ladder_color)
@@ -225,16 +234,16 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 			}
 			else if (event.key.keysym.sym == SDLK_UP)
 			{
-				std::cout << "Mario row: " << mario_row << std::endl;
-				std::cout << "Mario x coordinate: " << mario_x_coordinate << std::endl;
-				std::cout << "Mario y coordinate: " << mario_y_coordinate << std::endl;
 				if (going_through_the_ladder)
 				{
 					mario_y_coordinate -= MARIO_SPEED;
 				}
-				else if (!jumping)
+			}
+			else if (event.key.keysym.sym == SDLK_SPACE)
+			{
+				if (!jumping)
 				{
-					// Jump implementation
+					// Jump important helper variables
 					jumping = true;
 					going_down = false;
 					jumping_pixels = 0;
@@ -242,9 +251,13 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 			}
 			else if (event.key.keysym.sym == SDLK_DOWN)
 			{
+				std::cout << "Mario row: " << mario_row << std::endl;
+				std::cout << "Mario x coordinate: " << mario_x_coordinate << std::endl;
+				std::cout << "Mario y coordinate: " << mario_y_coordinate << std::endl;
 				if (going_through_the_ladder)
 				{
-					if (mario_y_coordinate < 387)
+					if ((mario_y_coordinate < 387 && mario_row == 1) || // We can't go under the board
+						(mario_y_coordinate > 1239))
 						mario_y_coordinate += MARIO_SPEED;
 				}
 			}
