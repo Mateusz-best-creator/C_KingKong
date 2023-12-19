@@ -8,7 +8,7 @@
 void DrawPlatforms(SDL_Surface*, int);
 void DrawLadders(SDL_Surface*, int);
 void calculateTime(double&, int&, int&, double&);
-int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&);
+int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&, bool&);
 void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Window*);
 void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
 	SDL_Renderer*, char*, int, int, int, int);
@@ -83,6 +83,8 @@ int main(int argc, char** argv) {
 	int jumping_pixels = 0;
 	bool going_down = false;
 
+	bool going_through_the_ladder = false;
+
 	while (!quit) {
 
 		calculateTime(delta, tick1, tick2, worldTime);
@@ -123,7 +125,8 @@ int main(int argc, char** argv) {
 		SDL_RenderCopy(renderer, scrtex, NULL, NULL);
 		SDL_RenderPresent(renderer);
 
-		quit = handleEvents(event, mario_x_coordinate, mario_y_coordinate, jumping, going_down, jumping_pixels);
+		quit = handleEvents(event, mario_x_coordinate, mario_y_coordinate, 
+			jumping, going_down, jumping_pixels, going_through_the_ladder);
 		frames++;
 	};
 	// Clear all the settings
@@ -175,18 +178,58 @@ void calculateTime(double& delta, int& tick1, int& tick2, double& worldTime)
 	worldTime += delta;
 }
 
-int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordinate, bool& jumping, bool& going_down, int& jumping_pixels)
+const int MARIO_SPEED = 3;
+
+int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordinate, 
+	bool& jumping, bool& going_down, int& jumping_pixels, bool& going_through_the_ladder)
 {
-	// obs�uga zdarze� (o ile jakie� zasz�y) / handling of events (if there were any)
+	// Variable stores information in which row mario currently is
+	int mario_row = 0;
+	for (size_t i = 0; i < 5; i++)
+	{
+		if (mario_y_coordinate <= 387 - i * 60 + i * 3 && mario_y_coordinate >= 287 - i * 60 + i * 3)
+		{
+			mario_row = i + 1;
+			break;
+		}
+	}
+
+	// handling of events (if there were any)
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
-			else if (event.key.keysym.sym == SDLK_RIGHT) mario_x_coordinate += 2;
-			else if (event.key.keysym.sym == SDLK_LEFT) mario_x_coordinate -= 2;
+			else if (event.key.keysym.sym == SDLK_RIGHT)
+			{
+				if (mario_x_coordinate >= 629)
+					continue;
+				mario_x_coordinate += MARIO_SPEED;
+			}
+			else if (event.key.keysym.sym == SDLK_LEFT)
+			{
+				if (mario_x_coordinate <= 11)
+					continue;
+				mario_x_coordinate -= MARIO_SPEED;
+			}
 			else if (event.key.keysym.sym == SDLK_UP)
 			{
-				if (!jumping)
+				std::cout << "Mario row: " << mario_row << std::endl;
+				std::cout << "Mario y coordinate: " << mario_y_coordinate << std::endl;
+				if (mario_x_coordinate >= FIRST_THIRD_FIFTH_ROW_LADDER_X &&
+					mario_x_coordinate <= FIRST_THIRD_FIFTH_ROW_LADDER_X + 30 && // 30 -> ladder width
+					mario_row % 2 == 1)
+				{
+					std::cout << "Wspinam sie por drabince w kolumnie 1, 2 lub 3" << std::endl;
+					going_through_the_ladder = true;
+				}
+				else
+					going_through_the_ladder = false;
+
+				if (going_through_the_ladder)
+				{
+					mario_y_coordinate -= MARIO_SPEED;
+				}
+				else if (!jumping)
 				{
 					// Jump implementation
 					jumping = true;
@@ -194,8 +237,14 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 					jumping_pixels = 0;
 				}
 			}
-			else if (event.key.keysym.sym == SDLK_DOWN) mario_y_coordinate += 2;
-			break;
+			else if (event.key.keysym.sym == SDLK_DOWN)
+			{
+				if (going_through_the_ladder)
+				{
+					mario_y_coordinate += MARIO_SPEED;
+				}
+			}
+				break;
 		case SDL_QUIT:
 			return 1;
 		};
@@ -235,7 +284,7 @@ void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate,
 	int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down)
 {
 	// Print mario x, y coordinates to the console
-	std::cout << "(x, y) = (" << mario_x_coordinate << ", " << mario_y_coordinate << ")\n";
+	//std::cout << "(x, y) = (" << mario_x_coordinate << ", " << mario_y_coordinate << ")\n";
 	if (jumping)
 	{
 		if (jumping_pixels > 30 || going_down)
