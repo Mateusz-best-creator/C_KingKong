@@ -5,13 +5,14 @@
 #include "template.h"
 #include <iostream>
 
-void DrawPlatforms(SDL_Surface* screen, int platform_color);
-void DrawLadders(SDL_Surface* screen, int ladder_color);
+void DrawPlatforms(SDL_Surface*, int);
+void DrawLadders(SDL_Surface*, int);
 void calculateTime(double&, int& , int&, double&);
-int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordinate);
-void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SDL_Renderer* renderer, SDL_Window* window);
-void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
-	SDL_Renderer* renderer, char* text, int worldTime, int fps, int firstcolor, int secondcolor);
+int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&);
+void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Window*);
+void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
+	SDL_Renderer*, char*, int, int, int, int);
+void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down);
 
 // main
 #ifdef __cplusplus
@@ -126,15 +127,13 @@ int main(int argc, char **argv) {
 		const int MARIO_INITIAL_Y = 387;*/
 	int mario_x_coordinate = 50, mario_y_coordinate = 387;
 
-	while(!quit) {
-		tick2 = SDL_GetTicks();
+	// Boolean that indicates whether or not Mario is jumping
+	bool jumping = false;
+	int jumping_pixels = 0;
+	bool going_down = false;
 
-		// w tym momencie t2-t1 to czas w milisekundach,
-		// jaki uplyna� od ostatniego narysowania ekranu
-		// delta to ten sam czas w sekundach
-		// here t2-t1 is the time in milliseconds since
-		// the last screen was drawn
-		// delta is the same time in seconds
+	while(!quit) {
+
 		calculateTime(delta, tick1, tick2, worldTime);
 
 		// Fill the entire screen with given color
@@ -146,10 +145,8 @@ int main(int argc, char **argv) {
 		// Draw all platforms
 		DrawPlatforms(screen, brazowy);
 
-		// Draw all surfaces
-		DrawSurface(screen, mario, mario_x_coordinate, mario_y_coordinate);
-				 // screen  mario  x coor y coor
-		std::cout << "(x, y) = (" << mario_x_coordinate << ", " << mario_y_coordinate << ")\n";
+		jump(screen, mario, mario_x_coordinate, mario_y_coordinate, jumping, jumping_pixels, going_down);
+		// Draw king_kong surface
 		DrawSurface(screen, king_kong, SCREEN_WIDTH / 2, 80);
 
 		fpsTimer += delta;
@@ -160,9 +157,22 @@ int main(int argc, char **argv) {
 			};
 
 		char text[128];
-		drawInfoRectangle(charset, screen, scrtex, renderer, text, worldTime, fps, czerwony, niebieski);
+		//drawInfoRectangle(charset, screen, scrtex, renderer, text, worldTime, fps, czerwony, niebieski);
+		// tekst informacyjny / info text
+		DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, czerwony, niebieski);
+		//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
+		sprintf(text, "Szablon drugiego zadania, czas trwania = %.1lf s  %.0lf klatek / s", worldTime, fps);
+		DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
+		//	      "Esc - exit, \030 - faster, \031 - slower"
+		sprintf(text, "Esc - wyjscie, \030 - przyspieszenie, \031 - zwolnienie");
+		DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
 
-		quit = handleEvents(event, mario_x_coordinate, mario_y_coordinate);
+		SDL_UpdateTexture(scrtex, NULL, screen->pixels, screen->pitch);
+		//		SDL_RenderClear(renderer);
+		SDL_RenderCopy(renderer, scrtex, NULL, NULL);
+		SDL_RenderPresent(renderer);
+
+		quit = handleEvents(event, mario_x_coordinate, mario_y_coordinate, jumping, going_down, jumping_pixels);
 		frames++;
 	};
 	// Clear all the settings
@@ -202,12 +212,19 @@ void DrawLadders(SDL_Surface* screen, int ladder_color)
 
 void calculateTime(double& delta, int& tick1, int& tick2, double& worldTime)
 {
+	tick2 = SDL_GetTicks();
+	// w tym momencie t2-t1 to czas w milisekundach,
+	// jaki uplyna� od ostatniego narysowania ekranu
+	// delta to ten sam czas w sekundach
+	// here t2-t1 is the time in milliseconds since
+	// the last screen was drawn
+	// delta is the same time in seconds
 	delta = (tick2 - tick1) * 0.001;
 	tick1 = tick2;
 	worldTime += delta;
 }
 
-int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordinate)
+int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordinate, bool& jumping, bool& going_down, int& jumping_pixels)
 {
 	// obs�uga zdarze� (o ile jakie� zasz�y) / handling of events (if there were any)
 	while (SDL_PollEvent(&event)) {
@@ -216,7 +233,16 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
 			else if (event.key.keysym.sym == SDLK_RIGHT) mario_x_coordinate += 2;
 			else if (event.key.keysym.sym == SDLK_LEFT) mario_x_coordinate -= 2;
-			else if (event.key.keysym.sym == SDLK_UP) mario_y_coordinate -= 2;
+			else if (event.key.keysym.sym == SDLK_UP)
+			{
+				if (!jumping)
+				{
+					// Jump implementation
+					jumping = true;
+					going_down = false;
+					jumping_pixels = 0;
+				}
+			}
 			else if (event.key.keysym.sym == SDLK_DOWN) mario_y_coordinate += 2;
 			break;
 		case SDL_QUIT:
@@ -252,4 +278,31 @@ void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* s
 	//		SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, scrtex, NULL, NULL);
 	SDL_RenderPresent(renderer);
+}
+
+void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, 
+	int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down)
+{
+	// Print mario x, y coordinates to the console
+	std::cout << "(x, y) = (" << mario_x_coordinate << ", " << mario_y_coordinate << ")\n";
+	if (jumping)
+	{
+		if (jumping_pixels > 30 || going_down)
+		{
+			going_down = true;
+			jumping_pixels -= 1;
+		}
+		else
+		{
+			jumping_pixels += 1;
+		}
+		DrawSurface(screen, mario, mario_x_coordinate, mario_y_coordinate - jumping_pixels);
+		if (jumping_pixels == 0 && going_down)
+			jumping = false;
+	}
+	else
+	{
+		// Draw mario surface
+		DrawSurface(screen, mario, mario_x_coordinate, mario_y_coordinate);
+	}
 }
