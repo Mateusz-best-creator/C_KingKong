@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="window.cpp" />
+    <ClCompile Include="platforms.cpp">
+      <Filter>template</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="window.h" />
+    <ClInclude Include="template.h">
+      <Filter>template</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="cs8x8.bmp" />
+    <Image Include="eti.bmp" />
+    <Image Include="king_kong.bmp" />
+    <Image Include="mario.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="template">
+      <UniqueIdentifier>{9473e36c-597f-4057-b010-375a4c4b6c01}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
