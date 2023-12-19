@@ -61,5 +61,4 @@ void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, int m
 bool fullscreen(SDL_Window** window, SDL_Renderer** renderer);
 bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface** charset,
 	SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
-
-
+void initialize_colors(SDL_Surface*, int&, int&, int&, int&, int&);

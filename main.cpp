@@ -51,13 +51,9 @@ int main(int argc, char** argv) {
 	if (SDL_Error)
 		return 1;
 
+	int czarny, zielony, czerwony, niebieski, brazowy;
 	// Initialize all the colors
-	int czarny = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
-	int zielony = SDL_MapRGB(screen->format, 0x00, 0xFF, 0x00);
-	int czerwony = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
-	int niebieski = SDL_MapRGB(screen->format, 0x11, 0x11, 0xCC);
-	// Adding some colors
-	int brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
+	initialize_colors(screen, czarny, zielony, czerwony, niebieski, brazowy);
 
 	// Initialize all helper variables for measuring the time, frames, fps...
 	int tick1, tick2, quit = 0, frames = 0;

@@ -91,3 +91,14 @@ void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* s
 	SDL_RenderCopy(renderer, scrtex, NULL, NULL);
 	SDL_RenderPresent(renderer);
 }
+
+void initialize_colors(SDL_Surface* screen, int& czarny, int& zielony, int& czerwony, int& niebieski, int& brazowy)
+{
+	// Initialize all the colors
+	czarny = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
+	zielony = SDL_MapRGB(screen->format, 0x00, 0xFF, 0x00);
+	czerwony = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
+	niebieski = SDL_MapRGB(screen->format, 0x11, 0x11, 0xCC);
+	brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
+}
+
