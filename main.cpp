@@ -178,7 +178,7 @@ void calculateTime(double& delta, int& tick1, int& tick2, double& worldTime)
 	worldTime += delta;
 }
 
-const int MARIO_SPEED = 3;
+const int MARIO_SPEED = 6;
 
 int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordinate, 
 	bool& jumping, bool& going_down, int& jumping_pixels, bool& going_through_the_ladder)
@@ -187,12 +187,24 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 	int mario_row = 0;
 	for (size_t i = 0; i < 5; i++)
 	{
-		if (mario_y_coordinate <= 387 - i * 60 + i * 3 && mario_y_coordinate >= 287 - i * 60 + i * 3)
+		if (mario_y_coordinate <= 390 - i * 60 && mario_y_coordinate >= 330 - i * 60)
 		{
 			mario_row = i + 1;
 			break;
 		}
 	}
+	
+	if ((mario_x_coordinate >= FIRST_THIRD_FIFTH_ROW_LADDER_X &&
+		mario_x_coordinate <= FIRST_THIRD_FIFTH_ROW_LADDER_X + 30 && // 30 -> ladder width
+		mario_row % 2 == 1) || 
+		(mario_x_coordinate >= SECOND_FOURTH_ROW_LADDER_X &&
+		mario_x_coordinate <= SECOND_FOURTH_ROW_LADDER_X + 30 &&
+		mario_row % 2 == 0))
+	{
+		going_through_the_ladder = true;
+	}
+	else
+		going_through_the_ladder = false;
 
 	// handling of events (if there were any)
 	while (SDL_PollEvent(&event)) {
@@ -214,17 +226,8 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 			else if (event.key.keysym.sym == SDLK_UP)
 			{
 				std::cout << "Mario row: " << mario_row << std::endl;
+				std::cout << "Mario x coordinate: " << mario_x_coordinate << std::endl;
 				std::cout << "Mario y coordinate: " << mario_y_coordinate << std::endl;
-				if (mario_x_coordinate >= FIRST_THIRD_FIFTH_ROW_LADDER_X &&
-					mario_x_coordinate <= FIRST_THIRD_FIFTH_ROW_LADDER_X + 30 && // 30 -> ladder width
-					mario_row % 2 == 1)
-				{
-					std::cout << "Wspinam sie por drabince w kolumnie 1, 2 lub 3" << std::endl;
-					going_through_the_ladder = true;
-				}
-				else
-					going_through_the_ladder = false;
-
 				if (going_through_the_ladder)
 				{
 					mario_y_coordinate -= MARIO_SPEED;
@@ -241,7 +244,8 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 			{
 				if (going_through_the_ladder)
 				{
-					mario_y_coordinate += MARIO_SPEED;
+					if (mario_y_coordinate < 387)
+						mario_y_coordinate += MARIO_SPEED;
 				}
 			}
 				break;
