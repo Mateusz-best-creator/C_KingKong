@@ -1,0 +1,30 @@
+bool load_bmp_images(SDL_Surface* mario, SDL_Surface* king_kong, SDL_Surface* charset,
+	SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer)
+{
+	// Load mario image
+	mario = SDL_LoadBMP("./mario2.bmp");
+	if (mario == NULL) {
+		printf("SDL_LoadBMP(mario2.bmp) error: %s\n", SDL_GetError());
+		SDL_FreeSurface(charset);
+		SDL_FreeSurface(screen);
+		SDL_DestroyTexture(scrtex);
+		SDL_DestroyWindow(window);
+		SDL_DestroyRenderer(renderer);
+		SDL_Quit();
+		return false;
+	};
+
+	// Load KingKong image
+	king_kong = SDL_LoadBMP("./king_kong.bmp");
+	if (mario == NULL) {
+		printf("SDL_LoadBMP(mario2.bmp) error: %s\n", SDL_GetError());
+		SDL_FreeSurface(charset);
+		SDL_FreeSurface(screen);
+		SDL_DestroyTexture(scrtex);
+		SDL_DestroyWindow(window);
+		SDL_DestroyRenderer(renderer);
+		SDL_Quit();
+		return false;
+	};
+	return true;
+}

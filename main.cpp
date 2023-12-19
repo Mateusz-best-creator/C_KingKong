@@ -7,54 +7,36 @@
 
 void DrawPlatforms(SDL_Surface*, int);
 void DrawLadders(SDL_Surface*, int);
-void calculateTime(double&, int& , int&, double&);
+void calculateTime(double&, int&, int&, double&);
 int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&);
 void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Window*);
 void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
 	SDL_Renderer*, char*, int, int, int, int);
 void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down);
+bool fullscreen(SDL_Window** window, SDL_Renderer** renderer);
 
 // main
 #ifdef __cplusplus
 extern "C"
 #endif
-int main(int argc, char **argv) {
-	
+int main(int argc, char** argv) {
+
 	SDL_Event event;
-	SDL_Surface *screen, *charset;
-	SDL_Surface *mario, *king_kong;
-	SDL_Texture *scrtex;
-	SDL_Window *window;
-	SDL_Renderer *renderer;
+	SDL_Surface* screen = nullptr, *charset = nullptr, *mario = nullptr, *king_kong = nullptr;
+	SDL_Texture* scrtex = nullptr;
+	SDL_Window* window = nullptr;
+	SDL_Renderer* renderer = nullptr;
 
-	// okno konsoli nie jest widoczne, je�eli chcemy zobaczy�
-	// komunikaty wypisywane printf-em trzeba w opcjach:
-	// project -> szablon2 properties -> Linker -> System -> Subsystem
-	// zmieni� na "Console"
-	// console window is not visible, to see the printf output
-	// the option:
-	// project -> szablon2 properties -> Linker -> System -> Subsystem
-	// must be changed to "Console"
-	printf("wyjscie printfa trafia do tego okienka\n");
-	printf("printf output goes here\n");
-
-	if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		printf("SDL_Init error: %s\n", SDL_GetError());
 		return 1;
-		}
+	}
 
-	int rc;
-	// tryb pe�noekranowy / fullscreen mode
-	rc = SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP,
-	                                 &window, &renderer);
-	/*rc = SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0,
-	                                 &window, &renderer);*/
-	if(rc != 0) {
-		SDL_Quit();
-		printf("SDL_CreateWindowAndRenderer error: %s\n", SDL_GetError());
+	bool SDL_Error;
+	SDL_Error = fullscreen(&window, &renderer);
+	if (SDL_Error)
 		return 1;
-		};
-	
+
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -63,11 +45,11 @@ int main(int argc, char **argv) {
 
 
 	screen = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32,
-	                              0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
+		0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 
 	scrtex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888,
-	                           SDL_TEXTUREACCESS_STREAMING,
-	                           SCREEN_WIDTH, SCREEN_HEIGHT);
+		SDL_TEXTUREACCESS_STREAMING,
+		SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
 	// wy��czenie widoczno�ci kursora myszy
@@ -75,7 +57,7 @@ int main(int argc, char **argv) {
 
 	// wczytanie obrazka cs8x8.bmp
 	charset = SDL_LoadBMP("./cs8x8.bmp");
-	if(charset == NULL) {
+	if (charset == NULL) {
 		printf("SDL_LoadBMP(cs8x8.bmp) error: %s\n", SDL_GetError());
 		SDL_FreeSurface(screen);
 		SDL_DestroyTexture(scrtex);
@@ -83,12 +65,12 @@ int main(int argc, char **argv) {
 		SDL_DestroyRenderer(renderer);
 		SDL_Quit();
 		return 1;
-		};
+	};
 	SDL_SetColorKey(charset, true, 0x000000);
 
 	// Load mario image
 	mario = SDL_LoadBMP("./mario2.bmp");
-	if(mario == NULL) {
+	if (mario == NULL) {
 		printf("SDL_LoadBMP(mario2.bmp) error: %s\n", SDL_GetError());
 		SDL_FreeSurface(charset);
 		SDL_FreeSurface(screen);
@@ -97,7 +79,7 @@ int main(int argc, char **argv) {
 		SDL_DestroyRenderer(renderer);
 		SDL_Quit();
 		return 1;
-		};
+	};
 
 	// Load KingKong image
 	king_kong = SDL_LoadBMP("./king_kong.bmp");
@@ -132,7 +114,7 @@ int main(int argc, char **argv) {
 	int jumping_pixels = 0;
 	bool going_down = false;
 
-	while(!quit) {
+	while (!quit) {
 
 		calculateTime(delta, tick1, tick2, worldTime);
 
@@ -150,11 +132,11 @@ int main(int argc, char **argv) {
 		DrawSurface(screen, king_kong, SCREEN_WIDTH / 2, 80);
 
 		fpsTimer += delta;
-		if(fpsTimer > 0.5) {
+		if (fpsTimer > 0.5) {
 			fps = frames * 2;
 			frames = 0;
 			fpsTimer -= 0.5;
-			};
+		};
 
 		char text[128];
 		//drawInfoRectangle(charset, screen, scrtex, renderer, text, worldTime, fps, czerwony, niebieski);
@@ -198,7 +180,7 @@ void DrawLadders(SDL_Surface* screen, int ladder_color)
 		DrawRectangle(screen, FIRST_THIRD_FIFTH_ROW_LADDER_X + 20, FIRST_ROW_LADDER - row * 120, 5, 50, ladder_color, ladder_color);
 		for (size_t i = 1; i < 5; i++)
 			DrawRectangle(screen, FIRST_THIRD_FIFTH_ROW_LADDER_X, FIRST_ROW_LADDER - row * 120 + i * 10, 25, 5, ladder_color, ladder_color);
-									// x cor						y cor						    width height
+		// x cor						y cor						    width height
 	}
 	// Draw ladders for second and fourth rows
 	for (int row = 0; row < 2; row++)
@@ -262,7 +244,7 @@ void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SD
 	SDL_Quit();
 }
 
-void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, 
+void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
 	SDL_Renderer* renderer, char* text, int worldTime, int fps, int firstcolor, int secondcolor)
 {
 	// tekst informacyjny / info text
@@ -280,7 +262,7 @@ void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* s
 	SDL_RenderPresent(renderer);
 }
 
-void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, 
+void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate,
 	int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down)
 {
 	// Print mario x, y coordinates to the console
@@ -306,3 +288,19 @@ void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate,
 		DrawSurface(screen, mario, mario_x_coordinate, mario_y_coordinate);
 	}
 }
+
+bool fullscreen(SDL_Window** window, SDL_Renderer** renderer)
+{
+	int rc;
+	// tryb pe�noekranowy / fullscreen mode
+	rc = SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP, window, renderer);
+	if (rc != 0) {
+		SDL_Quit();
+		printf("SDL_CreateWindowAndRenderer error: %s\n", SDL_GetError());
+		return true;
+	};
+	return false;
+}
+
+
+

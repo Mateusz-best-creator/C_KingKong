@@ -32,6 +32,9 @@
   <ItemGroup>
     <ClInclude Include="template.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="temp.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{16725DAB-C5AF-413E-A856-9D4B087AFD39}</ProjectGuid>

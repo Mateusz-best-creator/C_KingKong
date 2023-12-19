@@ -23,4 +23,7 @@
       <UniqueIdentifier>{9473e36c-597f-4057-b010-375a4c4b6c01}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="temp.txt" />
+  </ItemGroup>
 </Project>
