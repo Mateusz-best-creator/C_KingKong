@@ -2,20 +2,8 @@
 #include<math.h>
 #include<stdio.h>
 #include<string.h>
-#include "template.h"
+#include "functions_definitions.h"
 #include <iostream>
-
-void DrawPlatforms(SDL_Surface*, int);
-void DrawLadders(SDL_Surface*, int);
-void calculateTime(double&, int&, int&, double&);
-int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&, bool&);
-void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Window*);
-void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
-	SDL_Renderer*, char*, int, int, int, int);
-void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down);
-bool fullscreen(SDL_Window** window, SDL_Renderer** renderer);
-bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface** charset,
-	SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 
 
 // main
@@ -63,6 +51,7 @@ int main(int argc, char** argv) {
 	if (SDL_Error)
 		return 1;
 
+	// Initialize all the colors
 	int czarny = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
 	int zielony = SDL_MapRGB(screen->format, 0x00, 0xFF, 0x00);
 	int czerwony = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
@@ -70,12 +59,12 @@ int main(int argc, char** argv) {
 	// Adding some colors
 	int brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
 
+	// Initialize all helper variables for measuring the time, frames, fps...
 	int tick1, tick2, quit = 0, frames = 0;
 	double delta, worldTime = 0.0, fpsTimer = 0.0, fps = 0.0, distance = 0.0, etiSpeed = 0.0;
 	tick1 = SDL_GetTicks();
 
-	/*const int MARIO_INITIAL_X = 50;
-		const int MARIO_INITIAL_Y = 387;*/
+	// Initial mario coordinates
 	int mario_x_coordinate = 50, mario_y_coordinate = 387;
 
 	// Boolean that indicates whether or not Mario is jumping
@@ -131,242 +120,6 @@ int main(int argc, char** argv) {
 	};
 	// Clear all the settings
 	clearSDL(charset, screen, scrtex, renderer, window);
+	return 0;
 };
 
-const int FIRST_ROW_LADDER = 351;
-const int FIRST_THIRD_FIFTH_ROW_LADDER_X = 580;
-const int SECOND_FOURTH_ROW_LADDER_X = 60;
-
-void DrawPlatforms(SDL_Surface* screen, int platform_color)
-{
-	for (size_t i = 0; i < 5; i++)
-		DrawRectangle(screen, SCREEN_WIDTH, 400 - i * 60, SCREEN_WIDTH, 10, platform_color, platform_color);
-	/*for (size_t j = 0; j < 10; j++)
-	{
-		if (i % 2 == 1)
-			DrawRectangle(screen, j * (SCREEN_WIDTH / 10),
-				400 - i * 60 + j * 1, SCREEN_WIDTH / 10, 10, platform_color, platform_color);
-		else
-			DrawRectangle(screen, j * (SCREEN_WIDTH / 10),
-				400 - i * 60 - j * 1, SCREEN_WIDTH / 10, 10, platform_color, platform_color);
-	}*/
-}
-
-void DrawLadders(SDL_Surface* screen, int ladder_color)
-{
-	// Draw ladders for first, third and fifth rows
-	for (int row = 0; row < 3; row++)
-	{
-		DrawRectangle(screen, FIRST_THIRD_FIFTH_ROW_LADDER_X, FIRST_ROW_LADDER - row * 120, 5, 50, ladder_color, ladder_color);
-		DrawRectangle(screen, FIRST_THIRD_FIFTH_ROW_LADDER_X + 20, FIRST_ROW_LADDER - row * 120, 5, 50, ladder_color, ladder_color);
-		for (size_t i = 1; i < 5; i++)
-			DrawRectangle(screen, FIRST_THIRD_FIFTH_ROW_LADDER_X, FIRST_ROW_LADDER - row * 120 + i * 10, 25, 5, ladder_color, ladder_color);
-		// x cor						y cor						    width height
-	}
-	// Draw ladders for second and fourth rows
-	for (int row = 0; row < 2; row++)
-	{
-		DrawRectangle(screen, SECOND_FOURTH_ROW_LADDER_X, FIRST_ROW_LADDER - 60 - row * 120, 5, 50, ladder_color, ladder_color);
-		DrawRectangle(screen, SECOND_FOURTH_ROW_LADDER_X + 20, FIRST_ROW_LADDER - 60 - row * 120, 5, 50, ladder_color, ladder_color);
-		for (size_t i = 1; i < 5; i++)
-			DrawRectangle(screen, SECOND_FOURTH_ROW_LADDER_X, FIRST_ROW_LADDER - 60 - row * 120 + i * 10, 25, 5, ladder_color, ladder_color);
-	}
-}
-
-void calculateTime(double& delta, int& tick1, int& tick2, double& worldTime)
-{
-	tick2 = SDL_GetTicks();
-	// w tym momencie t2-t1 to czas w milisekundach,
-	// jaki uplyna� od ostatniego narysowania ekranu
-	// delta to ten sam czas w sekundach
-	// here t2-t1 is the time in milliseconds since
-	// the last screen was drawn
-	// delta is the same time in seconds
-	delta = (tick2 - tick1) * 0.001;
-	tick1 = tick2;
-	worldTime += delta;
-}
-
-const int MARIO_SPEED = 6;
-
-int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordinate, 
-	bool& jumping, bool& going_down, int& jumping_pixels, bool& going_through_the_ladder)
-{
-	// Variable stores information in which row mario currently is
-	int mario_row = 0;
-	for (size_t i = 0; i < 5; i++)
-	{
-		if (mario_y_coordinate <= 390 - i * 60 && mario_y_coordinate >= 330 - i * 60)
-		{
-			mario_row = i + 1;
-			break;
-		}
-	}
-	
-	if ((mario_x_coordinate >= FIRST_THIRD_FIFTH_ROW_LADDER_X &&
-		mario_x_coordinate <= FIRST_THIRD_FIFTH_ROW_LADDER_X + 30 && // 30 -> ladder width
-		mario_row % 2 == 1) || 
-		(mario_x_coordinate >= SECOND_FOURTH_ROW_LADDER_X &&
-		mario_x_coordinate <= SECOND_FOURTH_ROW_LADDER_X + 30 &&
-		mario_row % 2 == 0))
-	{
-		going_through_the_ladder = true;
-	}
-	else
-		going_through_the_ladder = false;
-
-	// handling of events (if there were any)
-	while (SDL_PollEvent(&event)) {
-		switch (event.type) {
-		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
-			else if (event.key.keysym.sym == SDLK_RIGHT)
-			{
-				if (mario_x_coordinate >= 629)
-					continue;
-				mario_x_coordinate += MARIO_SPEED;
-			}
-			else if (event.key.keysym.sym == SDLK_LEFT)
-			{
-				if (mario_x_coordinate <= 11)
-					continue;
-				mario_x_coordinate -= MARIO_SPEED;
-			}
-			else if (event.key.keysym.sym == SDLK_UP)
-			{
-				if (going_through_the_ladder)
-				{
-					mario_y_coordinate -= MARIO_SPEED;
-				}
-			}
-			else if (event.key.keysym.sym == SDLK_SPACE)
-			{
-				if (!jumping)
-				{
-					// Jump important helper variables
-					jumping = true;
-					going_down = false;
-					jumping_pixels = 0;
-				}
-			}
-			else if (event.key.keysym.sym == SDLK_DOWN)
-			{
-				std::cout << "Mario row: " << mario_row << std::endl;
-				std::cout << "Mario x coordinate: " << mario_x_coordinate << std::endl;
-				std::cout << "Mario y coordinate: " << mario_y_coordinate << std::endl;
-				if (going_through_the_ladder)
-				{
-					if ((mario_y_coordinate < 387 && mario_row == 1) || // We can't go under the board
-						(mario_y_coordinate > 1239))
-						mario_y_coordinate += MARIO_SPEED;
-				}
-			}
-				break;
-		case SDL_QUIT:
-			return 1;
-		};
-	};
-}
-
-void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SDL_Renderer* renderer, SDL_Window* window)
-{
-	// zwolnienie powierzchni / freeing all surfaces
-	SDL_FreeSurface(charset);
-	SDL_FreeSurface(screen);
-	SDL_DestroyTexture(scrtex);
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-}
-
-void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
-	SDL_Renderer* renderer, char* text, int worldTime, int fps, int firstcolor, int secondcolor)
-{
-	// tekst informacyjny / info text
-	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, firstcolor, secondcolor);
-	//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
-	sprintf(text, "Szablon drugiego zadania, czas trwania = %.1lf s  %.0lf klatek / s", worldTime, fps);
-	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
-	//	      "Esc - exit, \030 - faster, \031 - slower"
-	sprintf(text, "Esc - wyjscie, \030 - przyspieszenie, \031 - zwolnienie");
-	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
-
-	SDL_UpdateTexture(scrtex, NULL, screen->pixels, screen->pitch);
-	//		SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, scrtex, NULL, NULL);
-	SDL_RenderPresent(renderer);
-}
-
-void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate,
-	int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down)
-{
-	// Print mario x, y coordinates to the console
-	//std::cout << "(x, y) = (" << mario_x_coordinate << ", " << mario_y_coordinate << ")\n";
-	if (jumping)
-	{
-		if (jumping_pixels > 30 || going_down)
-		{
-			going_down = true;
-			jumping_pixels -= 1;
-		}
-		else
-		{
-			jumping_pixels += 1;
-		}
-		DrawSurface(screen, mario, mario_x_coordinate, mario_y_coordinate - jumping_pixels);
-		if (jumping_pixels == 0 && going_down)
-			jumping = false;
-	}
-	else
-	{
-		// Draw mario surface
-		DrawSurface(screen, mario, mario_x_coordinate, mario_y_coordinate);
-	}
-}
-
-bool fullscreen(SDL_Window** window, SDL_Renderer** renderer)
-{
-	int rc;
-	// tryb pe�noekranowy / fullscreen mode
-	rc = SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP, window, renderer);
-	if (rc != 0) {
-		SDL_Quit();
-		printf("SDL_CreateWindowAndRenderer error: %s\n", SDL_GetError());
-		return true;
-	};
-	return false;
-}
-
-bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface** charset,
-	SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer) {
-	bool Error = false;
-
-	// Load charset image
-	*charset = SDL_LoadBMP("./cs8x8.bmp");
-	if (*charset == nullptr) {
-		printf("SDL_LoadBMP(cs8x8.bmp) error: %s\n", SDL_GetError());
-		// Handle errors and set Error = true
-		Error = true;
-	}
-	else {
-		SDL_SetColorKey(*charset, true, 0x000000);
-	}
-
-	// Load mario image
-	*mario = SDL_LoadBMP("./mario2.bmp");
-	if (*mario == nullptr) {
-		printf("SDL_LoadBMP(mario2.bmp) error: %s\n", SDL_GetError());
-		// Handle errors and set Error = true
-		Error = true;
-	}
-
-	// Load KingKong image
-	*king_kong = SDL_LoadBMP("./king_kong.bmp");
-	if (*king_kong == nullptr) {
-		printf("SDL_LoadBMP(king_kong.bmp) error: %s\n", SDL_GetError());
-		// Handle errors and set Error = true
-		Error = true;
-	}
-
-	return Error;
-}

@@ -19,8 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="drawingObjects\draw_ladders.cpp" />
+    <ClCompile Include="drawingObjects\draw_platforms.cpp" />
+    <ClCompile Include="helperFunctions\helper_functions.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="marioMovement\event_handling.cpp" />
+    <ClCompile Include="marioMovement\jumping.cpp" />
     <ClCompile Include="platforms.cpp" />
+    <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="cs8x8.bmp" />
@@ -30,10 +36,7 @@
     <Image Include="mario2.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="template.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="temp.txt" />
+    <ClInclude Include="functions_definitions.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

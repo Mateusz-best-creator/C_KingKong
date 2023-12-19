@@ -5,11 +5,15 @@
     <ClCompile Include="platforms.cpp">
       <Filter>template</Filter>
     </ClCompile>
+    <ClCompile Include="templateFunctions\template_functions.cpp" />
+    <ClCompile Include="helperFunctions\helper_functions.cpp" />
+    <ClCompile Include="drawingObjects\draw_platforms.cpp" />
+    <ClCompile Include="drawingObjects\draw_ladders.cpp" />
+    <ClCompile Include="marioMovement\jumping.cpp" />
+    <ClCompile Include="marioMovement\event_handling.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="template.h">
-      <Filter>template</Filter>
-    </ClInclude>
+    <ClInclude Include="functions_definitions.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="cs8x8.bmp" />
@@ -22,8 +26,5 @@
     <Filter Include="template">
       <UniqueIdentifier>{9473e36c-597f-4057-b010-375a4c4b6c01}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="temp.txt" />
   </ItemGroup>
 </Project>

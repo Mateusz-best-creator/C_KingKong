@@ -1,13 +1,4 @@
-#pragma once
-
-extern "C" {
-#include"./SDL2-2.0.10/include/SDL.h"
-#include"./SDL2-2.0.10/include/SDL_main.h"
-}
-
-#define SCREEN_WIDTH	640
-#define SCREEN_HEIGHT	480
-
+#include "../functions_definitions.h"
 
 
 // narysowanie napisu txt na powierzchni screen, zaczynaj¹c od punktu (x, y)
@@ -84,4 +75,3 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 	for (i = y + 1; i < y + k - 1; i++)
 		DrawLine(screen, x + 1, i, l - 2, 1, 0, fillColor);
 };
-
