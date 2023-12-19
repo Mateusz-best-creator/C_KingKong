@@ -21,17 +21,16 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="platforms.cpp" />
-    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="cs8x8.bmp" />
     <Image Include="eti.bmp" />
     <Image Include="king_kong.bmp" />
     <Image Include="mario.bmp" />
+    <Image Include="mario2.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="template.h" />
-    <ClInclude Include="window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

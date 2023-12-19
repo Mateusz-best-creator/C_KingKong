@@ -2,13 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="window.cpp" />
     <ClCompile Include="platforms.cpp">
       <Filter>template</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="window.h" />
     <ClInclude Include="template.h">
       <Filter>template</Filter>
     </ClInclude>
@@ -16,8 +14,9 @@
   <ItemGroup>
     <Image Include="cs8x8.bmp" />
     <Image Include="eti.bmp" />
-    <Image Include="king_kong.bmp" />
     <Image Include="mario.bmp" />
+    <Image Include="mario2.bmp" />
+    <Image Include="king_kong.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template">
