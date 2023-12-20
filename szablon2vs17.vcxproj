@@ -34,6 +34,7 @@
     <Image Include="mario_climbing.bmp" />
     <Image Include="mario.bmp" />
     <Image Include="mario2.bmp" />
+    <Image Include="mario_jumping.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

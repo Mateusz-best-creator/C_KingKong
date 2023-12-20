@@ -10,10 +10,11 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-int main(int argc, char** argv) {
-
+int main(int argc, char** argv) 
+{
 	SDL_Event event;
-	SDL_Surface* screen = nullptr, *charset = nullptr, *mario = nullptr, *king_kong = nullptr, *mario_climbing = nullptr;
+	SDL_Surface* screen = nullptr, *charset = nullptr, *mario = nullptr, *king_kong = nullptr, 
+		*mario_climbing = nullptr, *mario_jumping = nullptr;
 	SDL_Texture* scrtex = nullptr;
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
@@ -47,7 +48,7 @@ int main(int argc, char** argv) {
 	SDL_ShowCursor(SDL_DISABLE);
 
 	// Loading all .bmp images
-	SDL_Error = load_bmp_images(&mario, &king_kong, &mario_climbing, &charset, screen, scrtex, window, renderer);
+	SDL_Error = load_bmp_images(&mario, &king_kong, &mario_climbing, &mario_jumping, &charset, screen, scrtex, window, renderer);
 	if (SDL_Error)
 		return 1;
 
@@ -84,7 +85,7 @@ int main(int argc, char** argv) {
 		DrawPlatforms(screen, brazowy);
 
 		// Make mario jumping if possible, draw mario
-		jump(screen, mario, mario_climbing, mario_x_coordinate, mario_y_coordinate, 
+		jump(screen, mario, mario_climbing, mario_jumping, mario_x_coordinate, mario_y_coordinate, 
 			jumping, jumping_pixels, going_down, going_through_the_ladder);
 
 		// Draw king_kong surface
