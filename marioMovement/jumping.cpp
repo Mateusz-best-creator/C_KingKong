@@ -1,7 +1,7 @@
 #include "../functions_definitions.h"
 
-void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, int mario_y_coordinate,
-	bool& jumping, int& jumping_pixels, bool& going_down)
+void jump(SDL_Surface* screen, SDL_Surface* mario, SDL_Surface* mario_climbing, int mario_x_coordinate, int mario_y_coordinate,
+	bool& jumping, int& jumping_pixels, bool& going_down, bool going_trough_the_ladder)
 {
 	// Print mario x, y coordinates to the console
 	//std::cout << "(x, y) = (" << mario_x_coordinate << ", " << mario_y_coordinate << ")\n";
@@ -19,6 +19,11 @@ void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, int m
 		DrawSurface(screen, mario, mario_x_coordinate, mario_y_coordinate - jumping_pixels);
 		if (!jumping_pixels && going_down)
 			jumping = false;
+	}
+	else if (going_trough_the_ladder)
+	{
+		// Draw mario-climbing surface
+		DrawSurface(screen, mario_climbing, mario_x_coordinate, mario_y_coordinate);
 	}
 	else
 	{

@@ -79,7 +79,7 @@ void DrawLadders(SDL_Surface*, int);
 
 // Handling user events
 int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&, bool&);
-void jump(SDL_Surface*, SDL_Surface*, int, int, bool&, int&, bool&);
+void jump(SDL_Surface*, SDL_Surface*, SDL_Surface*, int, int, bool&, int&, bool&, bool);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);
@@ -87,7 +87,7 @@ void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Windo
 void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
 	SDL_Renderer*, char*, double&, double&, int, int);
 bool fullscreen(SDL_Window**, SDL_Renderer**);
-bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface** charset,
+bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface** mario_climbing, SDL_Surface** charset,
 	SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 void initialize_colors(SDL_Surface*, int&, int&, int&, int&, int&);
 

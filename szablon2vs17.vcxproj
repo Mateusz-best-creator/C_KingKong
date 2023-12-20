@@ -25,13 +25,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="marioMovement\event_handling.cpp" />
     <ClCompile Include="marioMovement\jumping.cpp" />
-    <ClCompile Include="platforms.cpp" />
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="cs8x8.bmp" />
     <Image Include="eti.bmp" />
     <Image Include="king_kong.bmp" />
+    <Image Include="mario_climbing.bmp" />
     <Image Include="mario.bmp" />
     <Image Include="mario2.bmp" />
   </ItemGroup>

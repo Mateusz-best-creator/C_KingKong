@@ -36,13 +36,13 @@ int handleEvents(SDL_Event& event, int& mario_x_coordinate, int& mario_y_coordin
 			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
 			else if (event.key.keysym.sym == SDLK_RIGHT)
 			{
-				if (mario_x_coordinate >= SCREEN_RIGHT_X_BORDER)
+				if (mario_x_coordinate >= SCREEN_RIGHT_X_BORDER || going_through_the_ladder)
 					continue;
 				mario_x_coordinate += MARIO_SPEED;
 			}
 			else if (event.key.keysym.sym == SDLK_LEFT)
 			{
-				if (mario_x_coordinate <= SCREEN_LEFT_X_BORDER)
+				if (mario_x_coordinate <= SCREEN_LEFT_X_BORDER || going_through_the_ladder)
 					continue;
 				mario_x_coordinate -= MARIO_SPEED;
 			}
