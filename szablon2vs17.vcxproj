@@ -32,9 +32,10 @@
     <Image Include="eti.bmp" />
     <Image Include="king_kong.bmp" />
     <Image Include="mario_climbing.bmp" />
+    <Image Include="mario_jumping_left.bmp" />
     <Image Include="mario_running_left.bmp" />
     <Image Include="mario_running_right.bmp" />
-    <Image Include="mario_jumping.bmp" />
+    <Image Include="mario_jumping_right.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

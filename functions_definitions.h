@@ -87,6 +87,11 @@ struct Mario
 	enum DIRECTION { LEFT, RIGHT } direction;
 };
 
+struct SDL_Surfaces
+{
+	SDL_Surface** screen, **charset, **mario_running_right, **mario_running_left, **king_kong, **mario_climbing, **mario_jumping;
+};
+
 // Drawing surfaces
 void DrawPlatforms(SDL_Surface*, int);
 void DrawLadders(SDL_Surface*, int);
@@ -101,8 +106,7 @@ void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Windo
 void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
 	SDL_Renderer*, char*, double&, double&, int, int);
 bool fullscreen(SDL_Window**, SDL_Renderer**);
-bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface**, SDL_Surface** mario_climbing, SDL_Surface** mario_jumping,
-	SDL_Surface** charset, SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
+bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 void initialize_colors(SDL_Surface*, int&, int&, int&, int&, int&);
 
 

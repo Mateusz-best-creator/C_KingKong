@@ -12,12 +12,16 @@ extern "C"
 #endif
 int main(int argc, char** argv) 
 {
+	// Initialize all SDL elements
 	SDL_Event event;
 	SDL_Surface* screen = nullptr, *charset = nullptr, *mario_running_right = nullptr, *mario_running_left = nullptr, *king_kong = nullptr, 
 		*mario_climbing = nullptr, *mario_jumping = nullptr;
 	SDL_Texture* scrtex = nullptr;
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
+
+	// Create structure of all surfaces
+	SDL_Surfaces surfaces = { &screen, &charset, &mario_running_right, &mario_running_left, &king_kong, &mario_climbing, &mario_jumping };
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		printf("SDL_Init error: %s\n", SDL_GetError());
@@ -48,7 +52,7 @@ int main(int argc, char** argv)
 	SDL_ShowCursor(SDL_DISABLE);
 
 	// Loading all .bmp images
-	SDL_Error = load_bmp_images(&mario_running_right, &mario_running_left, &king_kong, &mario_climbing, &mario_jumping, &charset, screen, scrtex, window, renderer);
+	SDL_Error = load_bmp_images(surfaces, scrtex, window, renderer);
 	if (SDL_Error)
 		return 1;
 
