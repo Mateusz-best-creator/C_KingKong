@@ -102,12 +102,12 @@ void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SD
 }
 
 void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
-	SDL_Renderer* renderer, char* text, double& worldTime, double& fps, int firstcolor, int secondcolor)
+	SDL_Renderer* renderer, char* text, TimeVariables& times, Colors& colors)
 {
 	// tekst informacyjny / info text
-	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, firstcolor, secondcolor);
+	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, colors.czerwony, colors.niebieski);
 	//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
-	sprintf(text, "Czas trwania = %.1lf s  %.0lf klatek / s", worldTime, fps);
+	sprintf(text, "Czas trwania = %.1lf s  %.0lf klatek / s", times.worldTime, times.fps);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
 	//	      "Esc - exit, \030 - faster, \031 - slower"
 	sprintf(text, "Esc - exit, n - new game, \x5f - jump, \030 - go up, \031 - go down");
@@ -119,13 +119,13 @@ void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* s
 	SDL_RenderPresent(renderer);
 }
 
-void initialize_colors(SDL_Surface* screen, int& czarny, int& zielony, int& czerwony, int& niebieski, int& brazowy)
+void initialize_colors(SDL_Surface* screen, Colors& colors)
 {
 	// Initialize all the colors
-	czarny = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
-	zielony = SDL_MapRGB(screen->format, 0x00, 0xFF, 0x00);
-	czerwony = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
-	niebieski = SDL_MapRGB(screen->format, 0x11, 0x11, 0xCC);
-	brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
+	colors.czarny = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
+	colors.zielony = SDL_MapRGB(screen->format, 0x00, 0xFF, 0x00);
+	colors.czerwony = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
+	colors.niebieski = SDL_MapRGB(screen->format, 0x11, 0x11, 0xCC);
+	colors.brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
 }
 

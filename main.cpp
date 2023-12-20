@@ -56,30 +56,28 @@ int main(int argc, char** argv)
 	if (SDL_Error)
 		return 1;
 
-	int czarny, zielony, czerwony, niebieski, brazowy;
 	// Initialize all the colors
-	initialize_colors(screen, czarny, zielony, czerwony, niebieski, brazowy);
+	Colors colors;
+	initialize_colors(screen, colors);
 
 	// Initialize all helper variables for measuring the time, frames, fps...
-	int tick1, tick2, quit = 0, frames = 0;
-	double delta, worldTime = 0.0, fpsTimer = 0.0, fps = 0.0, distance = 0.0, etiSpeed = 0.0;
-	tick1 = SDL_GetTicks();
+	TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	// Create mario object
 	Mario mario_info = { mario_initial_x_coordinate, mario_initial_y_coordinate, false, false, 0, false, Mario::RIGHT };
 
-	while (!quit) {
+	while (!times.quit) {
 
-		calculateTime(delta, tick1, tick2, worldTime);
+		calculateTime(times.delta, times.tick1, times.tick2, times.worldTime);
 
 		// Fill the entire screen with given color
-		SDL_FillRect(screen, NULL, czarny);
+		SDL_FillRect(screen, NULL, colors.czarny);
 
 		// Draw all ladders
-		DrawLadders(screen, brazowy);
+		DrawLadders(screen, colors.brazowy);
 
 		// Draw all platforms
-		DrawPlatforms(screen, brazowy);
+		DrawPlatforms(screen, colors.brazowy);
 
 		// Make mario jumping if possible, draw mario
 		jump(screen, mario_running_right, mario_running_left, mario_climbing, mario_jumping, mario_info);
@@ -87,19 +85,19 @@ int main(int argc, char** argv)
 		// Draw king_kong surface
 		DrawSurface(screen, king_kong, LEVEL1_KING_KONG_X, LEVEL1_KING_KONG_Y);
 
-		fpsTimer += delta;
-		if (fpsTimer > SECONDS_BETWEEN_REFRESH) {
-			fps = frames * REFRESH_RATE;
-			frames = 0;
-			fpsTimer -= SECONDS_BETWEEN_REFRESH;
+		times.fpsTimer += times.delta;
+		if (times.fpsTimer > SECONDS_BETWEEN_REFRESH) {
+			times.fps = times.frames * REFRESH_RATE;
+			times.frames = 0;
+			times.fpsTimer -= SECONDS_BETWEEN_REFRESH;
 		};
 
 		char text[128];
-		drawInfoRectangle(charset, screen, scrtex, renderer, text, worldTime, fps, czerwony, niebieski);
+		drawInfoRectangle(charset, screen, scrtex, renderer, text, times, colors);
 		
 		// Handle user event (space, upper arrow...)
-		quit = handleEvents(event, mario_info);
-		frames++;
+		times.quit = handleEvents(event, mario_info);
+		times.frames++;
 	};
 	// Clear all the settings
 	clearSDL(charset, screen, scrtex, renderer, window);
