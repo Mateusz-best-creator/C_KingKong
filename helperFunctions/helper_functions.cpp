@@ -81,12 +81,21 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Load Mario jumping image
-	*(surfaces.mario_jumping) = SDL_LoadBMP("./mario_jumping_right.bmp");
-	if (*(surfaces.mario_jumping) == nullptr) {
+	*(surfaces.mario_jumping_right) = SDL_LoadBMP("./mario_jumping_right.bmp");
+	if (*(surfaces.mario_jumping_right) == nullptr) {
 		printf("SDL_LoadBMP(mario_jumping_right.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
 		Error = true;
 	}
+
+	// Load Mario jumping image
+	*(surfaces.mario_jumping_left) = SDL_LoadBMP("./mario_jumping_left.bmp");
+	if (*(surfaces.mario_jumping_left) == nullptr) {
+		printf("SDL_LoadBMP(mario_jumping_right.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+
 	return Error;
 }
 

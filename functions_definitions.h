@@ -89,7 +89,8 @@ struct Mario
 
 struct SDL_Surfaces
 {
-	SDL_Surface** screen, **charset, **mario_running_right, **mario_running_left, **king_kong, **mario_climbing, **mario_jumping;
+	SDL_Surface** screen, **charset, **mario_running_right, **mario_running_left, 
+		**king_kong, **mario_climbing, **mario_jumping_right, **mario_jumping_left;
 };
 
 struct TimeVariables
@@ -109,7 +110,7 @@ void DrawLadders(SDL_Surface*, int);
 
 // Handling user events
 int handleEvents(SDL_Event&, Mario& mario_info);
-void jump(SDL_Surface*, SDL_Surface*, SDL_Surface*, SDL_Surface*, SDL_Surface*, Mario& mario_info);
+void jump(SDL_Surfaces&, Mario& mario_info);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);

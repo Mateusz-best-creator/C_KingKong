@@ -15,13 +15,14 @@ int main(int argc, char** argv)
 	// Initialize all SDL elements
 	SDL_Event event;
 	SDL_Surface* screen = nullptr, *charset = nullptr, *mario_running_right = nullptr, *mario_running_left = nullptr, *king_kong = nullptr, 
-		*mario_climbing = nullptr, *mario_jumping = nullptr;
+		*mario_climbing = nullptr, *mario_jumping_right = nullptr, *mario_jumping_left = nullptr;
 	SDL_Texture* scrtex = nullptr;
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 
 	// Create structure of all surfaces
-	SDL_Surfaces surfaces = { &screen, &charset, &mario_running_right, &mario_running_left, &king_kong, &mario_climbing, &mario_jumping };
+	SDL_Surfaces surfaces = { &screen, &charset, &mario_running_right, &mario_running_left, 
+		&king_kong, &mario_climbing, &mario_jumping_right, &mario_jumping_left };
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		printf("SDL_Init error: %s\n", SDL_GetError());
@@ -80,7 +81,7 @@ int main(int argc, char** argv)
 		DrawPlatforms(screen, colors.brazowy);
 
 		// Make mario jumping if possible, draw mario
-		jump(screen, mario_running_right, mario_running_left, mario_climbing, mario_jumping, mario_info);
+		jump(surfaces, mario_info);
 
 		// Draw king_kong surface
 		DrawSurface(screen, king_kong, LEVEL1_KING_KONG_X, LEVEL1_KING_KONG_Y);
