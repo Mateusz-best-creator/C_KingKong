@@ -25,6 +25,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="marioMovement\event_handling.cpp" />
     <ClCompile Include="marioMovement\jumping.cpp" />
+    <ClCompile Include="startGame\start_game.cpp" />
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>
   <ItemGroup>

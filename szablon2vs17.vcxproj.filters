@@ -8,6 +8,7 @@
     <ClCompile Include="drawingObjects\draw_ladders.cpp" />
     <ClCompile Include="marioMovement\jumping.cpp" />
     <ClCompile Include="marioMovement\event_handling.cpp" />
+    <ClCompile Include="startGame\start_game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

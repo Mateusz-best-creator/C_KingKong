@@ -93,6 +93,13 @@ struct SDL_Surfaces
 		**king_kong, **mario_climbing, **mario_jumping_right, **mario_jumping_left;
 };
 
+struct SDL_Elements
+{
+	SDL_Texture* scrtex = nullptr;
+	SDL_Window* window = nullptr;
+	SDL_Renderer* renderer = nullptr;
+};
+
 struct TimeVariables
 {
 	int tick1, tick2, quit = 0, frames = 0;
@@ -104,13 +111,16 @@ struct Colors
 	int czarny, zielony, czerwony, niebieski, brazowy;
 };
 
+//Starting the game
+void start_game(SDL_Surfaces& surfaces, SDL_Elements&);
+
 // Drawing surfaces
 void DrawPlatforms(SDL_Surface*, int);
 void DrawLadders(SDL_Surface*, int);
 
 // Handling user events
-int handleEvents(SDL_Event&, Mario& mario_info);
-void jump(SDL_Surfaces&, Mario& mario_info);
+int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&);
+void jump(SDL_Surfaces&, Mario&);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);

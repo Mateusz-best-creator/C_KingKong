@@ -47,7 +47,37 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	else {
 		SDL_SetColorKey(*(surfaces.charset), true, 0x000000);
 	}
-
+	/*
+	const int number_of_images = 6;
+	char* image_paths[number_of_images] =
+	{
+		"./mario_running_right.bmp",
+		"./mario_running_left.bmp",
+		"./king_kong.bmp",
+		"./mario_climbing.bmp",
+		"./mario_jumping_right.bmp",
+		"./mario_jumping_left.bmp",
+	};
+	SDL_Surface* images_to_load[number_of_images] =
+	{
+		*(surfaces.mario_running_right),
+		*(surfaces.mario_running_left),
+		*(surfaces.king_kong),
+		*(surfaces.mario_climbing),
+		*(surfaces.mario_jumping_right),
+		*(surfaces.mario_jumping_left),
+	};
+	
+	for (size_t i = 0; i < number_of_images; i++)
+	{
+		images_to_load[i] = SDL_LoadBMP(image_paths[i]);
+		if (images_to_load[i] == nullptr) {
+			printf("SDL_LoadBMP(%s) error: %s\n", image_paths[i], SDL_GetError());
+			// Handle errors and set Error = true
+			Error = true;
+		}
+	}
+	*/
 	// Load mario running right image
 	*(surfaces.mario_running_right) = SDL_LoadBMP("./mario_running_right.bmp");
 	if (*(surfaces.mario_running_right) == nullptr) {
@@ -57,7 +87,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Load mario running left image
-	*(surfaces.mario_running_left)  = SDL_LoadBMP("./mario_running_left.bmp");
+	*(surfaces.mario_running_left) = SDL_LoadBMP("./mario_running_left.bmp");
 	if (*(surfaces.mario_running_left) == nullptr) {
 		printf("SDL_LoadBMP(mario_running_left.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -95,7 +125,6 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
-
 	return Error;
 }
 

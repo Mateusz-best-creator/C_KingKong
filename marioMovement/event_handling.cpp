@@ -1,7 +1,7 @@
 #include "../functions_definitions.h"
 #include <iostream>
 
-int handleEvents(SDL_Event& event, Mario& mario_info)
+int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
 	// Variable stores information in which row mario currently is
 	int mario_row = 0;
@@ -33,6 +33,11 @@ int handleEvents(SDL_Event& event, Mario& mario_info)
 		switch (event.type) {
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
+			else if (event.key.keysym.sym == SDLK_n)
+			{
+				start_game(surfaces, SDL_elements);
+				return 1;
+			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
 			{
 				if (mario_info.x_coordinate >= SCREEN_RIGHT_X_BORDER || mario_info.going_through_the_ladder)
