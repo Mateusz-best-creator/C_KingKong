@@ -13,7 +13,7 @@ extern "C"
 int main(int argc, char** argv) 
 {
 	SDL_Event event;
-	SDL_Surface* screen = nullptr, *charset = nullptr, *mario = nullptr, *king_kong = nullptr, 
+	SDL_Surface* screen = nullptr, *charset = nullptr, *mario_running_right = nullptr, *mario_running_left = nullptr, *king_kong = nullptr, 
 		*mario_climbing = nullptr, *mario_jumping = nullptr;
 	SDL_Texture* scrtex = nullptr;
 	SDL_Window* window = nullptr;
@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 	SDL_ShowCursor(SDL_DISABLE);
 
 	// Loading all .bmp images
-	SDL_Error = load_bmp_images(&mario, &king_kong, &mario_climbing, &mario_jumping, &charset, screen, scrtex, window, renderer);
+	SDL_Error = load_bmp_images(&mario_running_right, &mario_running_left, &king_kong, &mario_climbing, &mario_jumping, &charset, screen, scrtex, window, renderer);
 	if (SDL_Error)
 		return 1;
 
@@ -61,15 +61,8 @@ int main(int argc, char** argv)
 	double delta, worldTime = 0.0, fpsTimer = 0.0, fps = 0.0, distance = 0.0, etiSpeed = 0.0;
 	tick1 = SDL_GetTicks();
 
-	// Initial mario coordinates
-	int mario_x_coordinate = 50, mario_y_coordinate = 387;
-
-	// Boolean that indicates whether or not Mario is jumping
-	bool jumping = false;
-	int jumping_pixels = 0;
-	bool going_down = false;
-
-	bool going_through_the_ladder = false;
+	// Create mario object
+	Mario mario_info = { mario_initial_x_coordinate, mario_initial_y_coordinate, false, false, 0, false, Mario::RIGHT };
 
 	while (!quit) {
 
@@ -85,8 +78,7 @@ int main(int argc, char** argv)
 		DrawPlatforms(screen, brazowy);
 
 		// Make mario jumping if possible, draw mario
-		jump(screen, mario, mario_climbing, mario_jumping, mario_x_coordinate, mario_y_coordinate, 
-			jumping, jumping_pixels, going_down, going_through_the_ladder);
+		jump(screen, mario_running_right, mario_running_left, mario_climbing, mario_jumping, mario_info);
 
 		// Draw king_kong surface
 		DrawSurface(screen, king_kong, LEVEL1_KING_KONG_X, LEVEL1_KING_KONG_Y);
@@ -102,8 +94,7 @@ int main(int argc, char** argv)
 		drawInfoRectangle(charset, screen, scrtex, renderer, text, worldTime, fps, czerwony, niebieski);
 		
 		// Handle user event (space, upper arrow...)
-		quit = handleEvents(event, mario_x_coordinate, mario_y_coordinate, 
-			jumping, going_down, jumping_pixels, going_through_the_ladder);
+		quit = handleEvents(event, mario_info);
 		frames++;
 	};
 	// Clear all the settings

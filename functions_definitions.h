@@ -10,8 +10,6 @@ extern "C" {
 #define SCREEN_WIDTH	640
 #define SCREEN_HEIGHT	480
 
-
-
 // narysowanie napisu txt na powierzchni screen, zaczynaj¹c od punktu (x, y)
 // charset to bitmapa 128x128 zawieraj¹ca znaki
 // draw a text txt on surface screen, starting from the point (x, y)
@@ -41,6 +39,8 @@ void DrawLine(SDL_Surface* screen, int x, int y, int l, int dx, int dy, Uint32 c
 void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 	Uint32 outlineColor, Uint32 fillColor);
 // End of the code form the template
+
+
 
 // Ladders constants
 const int FIRST_ROW_LADDER = 351;
@@ -73,13 +73,27 @@ const int LEVEL_3_AMOUNT_OF_LADDERS = 5;
 const int LEVEL1_KING_KONG_X = SCREEN_WIDTH / 2;
 const int LEVEL1_KING_KONG_Y = 80;
 
+// Initial mario coordinates
+const int mario_initial_x_coordinate = 50, mario_initial_y_coordinate = 387;
+
+struct Mario
+{
+	int x_coordinate;
+	int y_coordinate;
+	bool going_through_the_ladder;
+	bool jumping;
+	int jumping_pixels;
+	bool going_down;
+	enum DIRECTION { LEFT, RIGHT } direction;
+};
+
 // Drawing surfaces
 void DrawPlatforms(SDL_Surface*, int);
 void DrawLadders(SDL_Surface*, int);
 
 // Handling user events
-int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&, bool&);
-void jump(SDL_Surface*, SDL_Surface*, SDL_Surface*, SDL_Surface*, int, int, bool&, int&, bool&, bool);
+int handleEvents(SDL_Event&, Mario& mario_info);
+void jump(SDL_Surface*, SDL_Surface*, SDL_Surface*, SDL_Surface*, SDL_Surface*, Mario& mario_info);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);
@@ -87,7 +101,7 @@ void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Windo
 void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
 	SDL_Renderer*, char*, double&, double&, int, int);
 bool fullscreen(SDL_Window**, SDL_Renderer**);
-bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface** mario_climbing, SDL_Surface** mario_jumping, 
+bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface**, SDL_Surface** mario_climbing, SDL_Surface** mario_jumping,
 	SDL_Surface** charset, SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 void initialize_colors(SDL_Surface*, int&, int&, int&, int&, int&);
 
