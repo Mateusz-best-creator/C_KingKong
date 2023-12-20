@@ -75,15 +75,15 @@ void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SD
 }
 
 void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
-	SDL_Renderer* renderer, char* text, double worldTime, int fps, int firstcolor, int secondcolor)
+	SDL_Renderer* renderer, char* text, double& worldTime, double& fps, int firstcolor, int secondcolor)
 {
 	// tekst informacyjny / info text
 	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, firstcolor, secondcolor);
 	//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
-	sprintf(text, "Szablon drugiego zadania, czas trwania = %.1lf s  %.0lf klatek / s", worldTime, fps);
+	sprintf(text, "Czas trwania = %.1lf s  %.0lf klatek / s", worldTime, fps);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
 	//	      "Esc - exit, \030 - faster, \031 - slower"
-	sprintf(text, "Esc - wyjscie, \030 - przyspieszenie, \031 - zwolnienie");
+	sprintf(text, "Esc - exit, n - new game, \x5f - jump, \030 - go up, \031 - go down");
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
 
 	SDL_UpdateTexture(scrtex, NULL, screen->pixels, screen->pitch);

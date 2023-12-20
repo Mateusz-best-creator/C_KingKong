@@ -32,10 +32,10 @@ int main(int argc, char** argv) {
 	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-	SDL_SetWindowTitle(window, "Szablon do zdania drugiego 2017");
+	SDL_SetWindowTitle(window, "Mateusz Wieczorek s197743 Data Engeineering group 3");
 
-
-	screen = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, 32,
+	int depth = 32;
+	screen = SDL_CreateRGBSurface(0, SCREEN_WIDTH, SCREEN_HEIGHT, depth,
 		0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
 
 	scrtex = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888,
@@ -83,33 +83,24 @@ int main(int argc, char** argv) {
 		// Draw all platforms
 		DrawPlatforms(screen, brazowy);
 
-		jump(screen, mario, mario_x_coordinate, mario_y_coordinate, jumping, jumping_pixels, going_down);
+		// Make mario jumping if possible, draw mario
+		jump(screen, mario, mario_x_coordinate, mario_y_coordinate, 
+			jumping, jumping_pixels, going_down);
+
 		// Draw king_kong surface
-		DrawSurface(screen, king_kong, SCREEN_WIDTH / 2, 80);
+		DrawSurface(screen, king_kong, LEVEL1_KING_KONG_X, LEVEL1_KING_KONG_Y);
 
 		fpsTimer += delta;
-		if (fpsTimer > 0.5) {
-			fps = frames * 2;
+		if (fpsTimer > SECONDS_BETWEEN_REFRESH) {
+			fps = frames * REFRESH_RATE;
 			frames = 0;
-			fpsTimer -= 0.5;
+			fpsTimer -= SECONDS_BETWEEN_REFRESH;
 		};
 
 		char text[128];
-		//drawInfoRectangle(charset, screen, scrtex, renderer, text, worldTime, fps, czerwony, niebieski);
-		// tekst informacyjny / info text
-		DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, czerwony, niebieski);
-		//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
-		sprintf(text, "Szablon drugiego zadania, czas trwania = %.1lf s  %.0lf klatek / s", worldTime, fps);
-		DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
-		//	      "Esc - exit, \030 - faster, \031 - slower"
-		sprintf(text, "Esc - wyjscie, \030 - przyspieszenie, \031 - zwolnienie");
-		DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
-
-		SDL_UpdateTexture(scrtex, NULL, screen->pixels, screen->pitch);
-		//		SDL_RenderClear(renderer);
-		SDL_RenderCopy(renderer, scrtex, NULL, NULL);
-		SDL_RenderPresent(renderer);
-
+		drawInfoRectangle(charset, screen, scrtex, renderer, text, worldTime, fps, czerwony, niebieski);
+		
+		// Handle user event (space, upper arrow...)
 		quit = handleEvents(event, mario_x_coordinate, mario_y_coordinate, 
 			jumping, going_down, jumping_pixels, going_through_the_ladder);
 		frames++;

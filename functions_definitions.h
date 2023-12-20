@@ -42,23 +42,53 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 	Uint32 outlineColor, Uint32 fillColor);
 // End of the code form the template
 
+// Ladders constants
 const int FIRST_ROW_LADDER = 351;
 const int FIRST_THIRD_FIFTH_ROW_LADDER_X = 580;
 const int SECOND_FOURTH_ROW_LADDER_X = 60;
+const int LADDER_WIDTH = 20;
 
 const int MARIO_SPEED = 6;
 
-// My own functions
+const int PLATFORM_HEIGHT = 60;
+const int JUMP_HEIGHT = 30;
+const int JUMP_SPEED = 1;
 
+// Time constants
+const double SECONDS_BETWEEN_REFRESH = 0.5;
+const double REFRESH_RATE = 1 / SECONDS_BETWEEN_REFRESH;
+
+// Screen boarders
+const int SCREEN_LEFT_X_BORDER = 11;
+const int SCREEN_RIGHT_X_BORDER = 629;
+const int SCREEN_TOP_Y_BORDER = 1000;
+const int SCREEN_BOTTOM_Y_BORDER = 387;
+
+// Amount of ladders for each level
+const int LEVEL_1_AMOUNT_OF_LADDERS = 5;
+const int LEVEL_2_AMOUNT_OF_LADDERS = 5;
+const int LEVEL_3_AMOUNT_OF_LADDERS = 5;
+
+// (X, Y) coordinates for KingKong in each level
+const int LEVEL1_KING_KONG_X = SCREEN_WIDTH / 2;
+const int LEVEL1_KING_KONG_Y = 80;
+
+// Drawing surfaces
 void DrawPlatforms(SDL_Surface*, int);
 void DrawLadders(SDL_Surface*, int);
-void calculateTime(double&, int&, int&, double&);
+
+// Handling user events
 int handleEvents(SDL_Event&, int&, int&, bool&, bool&, int&, bool&);
+void jump(SDL_Surface*, SDL_Surface*, int, int, bool&, int&, bool&);
+
+// Helper functions
+void calculateTime(double&, int&, int&, double&);
 void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Window*);
 void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
-	SDL_Renderer*, char*, double, int, int, int);
-void jump(SDL_Surface* screen, SDL_Surface* mario, int mario_x_coordinate, int mario_y_coordinate, bool& jumping, int& jumping_pixels, bool& going_down);
-bool fullscreen(SDL_Window** window, SDL_Renderer** renderer);
+	SDL_Renderer*, char*, double&, double&, int, int);
+bool fullscreen(SDL_Window**, SDL_Renderer**);
 bool load_bmp_images(SDL_Surface** mario, SDL_Surface** king_kong, SDL_Surface** charset,
 	SDL_Surface* screen, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 void initialize_colors(SDL_Surface*, int&, int&, int&, int&, int&);
+
+
