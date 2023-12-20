@@ -59,8 +59,8 @@ const double SECONDS_BETWEEN_REFRESH = 0.5;
 const double REFRESH_RATE = 1 / SECONDS_BETWEEN_REFRESH;
 
 // Screen boarders
-const int SCREEN_LEFT_X_BORDER = 11;
-const int SCREEN_RIGHT_X_BORDER = 629;
+const int SCREEN_LEFT_X_BORDER = 14;
+const int SCREEN_RIGHT_X_BORDER = 626;
 const int SCREEN_TOP_Y_BORDER = 1000;
 const int SCREEN_BOTTOM_Y_BORDER = 387;
 

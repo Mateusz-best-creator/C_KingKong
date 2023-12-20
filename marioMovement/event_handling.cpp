@@ -1,6 +1,9 @@
 #include "../functions_definitions.h"
 #include <iostream>
 
+// This global variable will store the y coordinate when mario enters the ladder
+int initial_mario_ladder_y = 0;
+
 int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
 	// Variable stores information in which row mario currently is
@@ -23,6 +26,8 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			mario_info.x_coordinate <= SECOND_FOURTH_ROW_LADDER_X + LADDER_WIDTH &&
 			mario_row % 2 == 0))
 	{
+		if (initial_mario_ladder_y == 0)
+			initial_mario_ladder_y = mario_info.y_coordinate;
 		mario_info.going_through_the_ladder = true;
 	}
 	else
@@ -40,14 +45,17 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
 			{
-				if (mario_info.x_coordinate >= SCREEN_RIGHT_X_BORDER || mario_info.going_through_the_ladder)
+				if (mario_info.x_coordinate >= SCREEN_RIGHT_X_BORDER || 
+					(mario_info.going_through_the_ladder && initial_mario_ladder_y != mario_info.y_coordinate))
 					continue;
 				mario_info.direction = Mario::RIGHT;
 				mario_info.x_coordinate += MARIO_SPEED;
 			}
 			else if (event.key.keysym.sym == SDLK_LEFT)
 			{
-				if (mario_info.x_coordinate <= SCREEN_LEFT_X_BORDER || mario_info.going_through_the_ladder)
+				std::cout << initial_mario_ladder_y << " " << mario_info.y_coordinate << std::endl;
+				if (mario_info.x_coordinate <= SCREEN_LEFT_X_BORDER ||
+					(mario_info.going_through_the_ladder && initial_mario_ladder_y != mario_info.y_coordinate))
 					continue;
 				mario_info.direction = Mario::LEFT;
 				mario_info.x_coordinate -= MARIO_SPEED;
@@ -71,11 +79,10 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			}
 			else if (event.key.keysym.sym == SDLK_DOWN)
 			{
-				/*
 				std::cout << "Mario row: " << mario_row << std::endl;
-				std::cout << "Mario x coordinate: " << mario_x_coordinate << std::endl;
-				std::cout << "Mario y coordinate: " << mario_y_coordinate << std::endl;
-				*/
+				std::cout << "Mario x coordinate: " << mario_info.x_coordinate << std::endl;
+				std::cout << "Mario y coordinate: " << mario_info.y_coordinate << std::endl;
+				
 				if (mario_info.going_through_the_ladder)
 				{
 					if (mario_info.y_coordinate < SCREEN_BOTTOM_Y_BORDER && mario_row == 1) // We can't go under the board
