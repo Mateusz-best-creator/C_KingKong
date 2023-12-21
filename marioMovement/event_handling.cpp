@@ -41,19 +41,6 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			mario_info.above_ladder = false;
 	}
 
-	// Check if mario has just escaped from ladder
-	if ((mario_info.x_coordinate >= board.ladders_x_coordinates[0] &&
-		mario_info.x_coordinate <= board.ladders_x_coordinates[0] + board.ladder_width &&
-		mario_row % 2 == 0) ||
-		(mario_info.x_coordinate >= board.ladders_x_coordinates[1] &&
-			mario_info.x_coordinate <= board.ladders_x_coordinates[1] + board.ladder_width &&
-			mario_row % 2 == 1))
-	{
-		mario_info.above_ladder = true;
-	}
-	else
-		mario_info.above_ladder = false;
-
 	// handling of events (if there were any)
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
@@ -66,14 +53,36 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
 			{
-				if ((mario_info.x_coordinate >= SCREEN_RIGHT_X_BORDER || mario_info.going_through_the_ladder) && !mario_info.can_go_down)
+				if (mario_info.x_coordinate >= SCREEN_RIGHT_X_BORDER)
+					continue;
+				bool mario_can_go_right_from_ladder = false;
+				for (size_t i = 0; i < board.platforms_amount; i++)
+				{
+					if (mario_info.y_coordinate + MARIO_FLOOR_DISTANCE == board.platforms_y_coordinates[i])
+					{
+						mario_can_go_right_from_ladder = true;
+						break;
+					}
+				}
+				if (mario_info.going_through_the_ladder && !mario_can_go_right_from_ladder)
 					continue;
 				mario_info.direction = Mario::RIGHT;
 				mario_info.x_coordinate += MARIO_SPEED;
 			}
 			else if (event.key.keysym.sym == SDLK_LEFT)
 			{
-				if (mario_info.x_coordinate <= SCREEN_LEFT_X_BORDER || mario_info.going_through_the_ladder)
+				if (mario_info.x_coordinate <= SCREEN_LEFT_X_BORDER)
+					continue;
+				bool mario_can_go_left_from_ladder = false;
+				for (size_t i = 0; i < board.platforms_amount; i++)
+				{
+					if (mario_info.y_coordinate + MARIO_FLOOR_DISTANCE == board.platforms_y_coordinates[i])
+					{
+						mario_can_go_left_from_ladder = true;
+						break;
+					}
+				}
+				if (mario_info.going_through_the_ladder && !mario_can_go_left_from_ladder)
 					continue;
 				mario_info.direction = Mario::LEFT;
 				mario_info.x_coordinate -= MARIO_SPEED;
@@ -96,13 +105,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 				}
 			}
 			else if (event.key.keysym.sym == SDLK_DOWN)
-			{
-				std::cout << "Mario row: " << mario_row << std::endl;
-				std::cout << "Mario x coordinate: " << mario_info.x_coordinate << std::endl;
-				std::cout << "Mario y coordinate: " << mario_info.y_coordinate << std::endl;
-				std::cout << "Mario above ladder: " << mario_info.above_ladder << std::endl;
-				std::cout << "Platform coor: " << board.platforms_y_coordinates[0] << std::endl;
-				
+			{	
 				if (mario_info.going_through_the_ladder)
 				{
 					mario_info.can_go_down = true;
