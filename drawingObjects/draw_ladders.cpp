@@ -8,7 +8,6 @@ const int VERTICAL_WIDTH = 5;
 const int HORIZONTAL_HEIGHT = 5;
 const int HORIZONTAL_WIDTH = 25;
 const int HORIZONTAL_GAP = 10;
-const int LEFT_LADDER_LEG_Y = 351;
 
 void DrawLadders(SDL_Surface* screen, const BoardElements& board, int ladder_color)
 {

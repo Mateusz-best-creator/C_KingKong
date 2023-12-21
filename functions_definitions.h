@@ -41,7 +41,7 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 const int MARIO_SPEED = 6;
 
 const int JUMP_HEIGHT = 30;
-const int JUMP_SPEED = 3;
+const int JUMP_SPEED = 1;
 
 // Time constants
 const double SECONDS_BETWEEN_REFRESH = 0.5;
@@ -57,6 +57,7 @@ struct Mario
 	bool going_down;
 	enum DIRECTION { LEFT, RIGHT } direction;
 	bool above_ladder;
+	bool can_go_down;
 };
 
 struct SDL_Surfaces

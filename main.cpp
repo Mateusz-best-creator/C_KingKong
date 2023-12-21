@@ -62,6 +62,8 @@ int main(int argc, char** argv)
 	// Initialize the board for the appropriate level
 	BoardElements board = initialize_board(1);
 	start_game(surfaces, SDL_elements, board);
+	// Clear all the settings
+	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);
 	return 0;
 };
 

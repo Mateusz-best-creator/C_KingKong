@@ -21,6 +21,7 @@ BoardElements initialize_level_1_board()
 	BoardElements board;
 	// Initialize the entire board for level 1
 
+	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
 	// Initialize platforms width and beginning y coordinates
 	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
 	{
@@ -42,6 +43,7 @@ BoardElements initialize_level_1_board()
 	for (size_t i = 0; i < board.amount_of_ladders; i++)
 	{
 		board.ladders_y_coordinates[i] = 351 - board.platform_height * i;
+		board.ladders_rows[i] = i + 1;
 		// Ladder measurements
 		if ((i + 1) % 2)
 			board.ladders_x_coordinates[i] = 580;

@@ -14,7 +14,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 	TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	// Create mario object
-	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false };
+	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false };
 
 	while (!times.quit) {
 
@@ -52,6 +52,4 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);
 		times.frames++;
 	};
-	// Clear all the settings
-	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);
 }

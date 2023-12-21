@@ -142,8 +142,7 @@ void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SD
 {
 	// zwolnienie powierzchni / freeing all surfaces
 	SDL_FreeSurface(charset);
-	if (screen != nullptr)
-		SDL_FreeSurface(screen);
+	SDL_FreeSurface(screen);
 	SDL_DestroyTexture(scrtex);
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
