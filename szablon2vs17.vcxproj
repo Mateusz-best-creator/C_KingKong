@@ -25,7 +25,9 @@
     <ClCompile Include="LevelsBoards\board.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="marioMovement\event_handling.cpp" />
+    <ClCompile Include="marioMovement\get_mario_info.cpp" />
     <ClCompile Include="marioMovement\jumping.cpp" />
+    <ClCompile Include="marioMovement\keyboard_events.cpp" />
     <ClCompile Include="startGame\start_game.cpp" />
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>

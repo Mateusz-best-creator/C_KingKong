@@ -47,6 +47,8 @@ const int JUMP_SPEED = 1;
 const double SECONDS_BETWEEN_REFRESH = 0.5;
 const double REFRESH_RATE = 1 / SECONDS_BETWEEN_REFRESH;
 
+const int MARIO_FLOOR_DISTANCE = 3;
+
 struct Mario
 {
 	int x_coordinate;
@@ -105,3 +107,9 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 void initialize_colors(SDL_Surface*, Colors&);
 
 
+void get_mario_info(Mario&, const BoardElements&, int&);
+void left_arrow_event(Mario& mario_info, const BoardElements& board);
+void right_arrow_event(Mario& mario_info, const BoardElements& board);
+void upper_arrow_event(Mario& mario_info, const BoardElements& board);
+void lower_arrow_event(Mario& mario_info, const BoardElements& board);
+void space_event(Mario& mario_info);

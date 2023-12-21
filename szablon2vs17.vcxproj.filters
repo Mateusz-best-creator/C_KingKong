@@ -10,6 +10,8 @@
     <ClCompile Include="marioMovement\event_handling.cpp" />
     <ClCompile Include="startGame\start_game.cpp" />
     <ClCompile Include="LevelsBoards\board.cpp" />
+    <ClCompile Include="marioMovement\get_mario_info.cpp" />
+    <ClCompile Include="marioMovement\keyboard_events.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
