@@ -27,6 +27,7 @@ BoardElements initialize_level_1_board()
 	{
 		board.platforms_y_coordinates[i] = 390 - i * 60;
 		board.platforms_widths[i] = SCREEN_WIDTH;
+		board.platforms_x_coordinate[i] = 0;
 	}
 
 	// Initialize all other data

@@ -18,17 +18,6 @@
     <ClInclude Include="LevelsBoards\boards.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="cs8x8.bmp" />
-    <Image Include="eti.bmp" />
-    <Image Include="mario_running_right.bmp" />
-    <Image Include="king_kong.bmp" />
-    <Image Include="mario_climbing.bmp" />
-    <Image Include="mario_jumping_right.bmp" />
-    <Image Include="mario_running_left.bmp" />
-    <Image Include="mario_jumping_left.bmp" />
-    <Image Include="rolling_barell.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="template">
       <UniqueIdentifier>{9473e36c-597f-4057-b010-375a4c4b6c01}</UniqueIdentifier>
     </Filter>

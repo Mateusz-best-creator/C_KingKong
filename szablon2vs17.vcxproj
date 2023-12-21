@@ -32,17 +32,6 @@
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="rolling_barell.bmp" />
-    <Image Include="cs8x8.bmp" />
-    <Image Include="eti.bmp" />
-    <Image Include="king_kong.bmp" />
-    <Image Include="mario_climbing.bmp" />
-    <Image Include="mario_jumping_left.bmp" />
-    <Image Include="mario_running_left.bmp" />
-    <Image Include="mario_running_right.bmp" />
-    <Image Include="mario_jumping_right.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
     <ClInclude Include="LevelsBoards\boards.h" />
   </ItemGroup>

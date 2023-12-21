@@ -5,7 +5,7 @@
 int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board)
 {
 	// Variable stores information in which row mario currently is
-	int mario_row = 0;
+	int mario_row = 1;
 	get_mario_info(mario_info, board, mario_row);
 
 	// handling of events (if there were any)

@@ -8,6 +8,8 @@ const int SCREEN_RIGHT_X_BORDER = 626;
 const int SCREEN_TOP_Y_BORDER = 1000;
 const int SCREEN_BOTTOM_Y_BORDER = 387;
 
+const int PLATFORM_HEIGHT = 10;
+
 // Amount of ladders for each level
 const int LEVEL_1_AMOUNT_OF_LADDERS = 5;
 const int LEVEL_2_AMOUNT_OF_LADDERS = 5;
@@ -28,7 +30,8 @@ struct BoardElements
 {
 	int platforms_amount;
 	int platform_height;
-	int platforms_y_coordinates[LEVEL_1_PLATFORMS_AMOUNT], platforms_widths[LEVEL_1_PLATFORMS_AMOUNT];
+	int platforms_y_coordinates[LEVEL_1_PLATFORMS_AMOUNT], platforms_x_coordinate[LEVEL_1_PLATFORMS_AMOUNT];
+	int platforms_widths[LEVEL_1_PLATFORMS_AMOUNT];
 	int initial_mario_x, initial_mario_y;
 	int king_kong_x, king_kong_y;
 	int amount_of_ladders;

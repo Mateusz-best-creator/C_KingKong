@@ -39,7 +39,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	bool Error = false;
 
 	// Load charset image
-	*(surfaces.charset) = SDL_LoadBMP("./cs8x8.bmp");
+	*(surfaces.charset) = SDL_LoadBMP("./images/cs8x8.bmp");
 	if (surfaces.charset == nullptr) {
 		printf("SDL_LoadBMP(cs8x8.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -80,7 +80,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 	*/
 	// Load mario running right image
-	*(surfaces.mario_running_right) = SDL_LoadBMP("./mario_running_right.bmp");
+	*(surfaces.mario_running_right) = SDL_LoadBMP("./images/mario_running_right.bmp");
 	if (*(surfaces.mario_running_right) == nullptr) {
 		printf("SDL_LoadBMP(mario_running_right.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -88,7 +88,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Load mario running left image
-	*(surfaces.mario_running_left) = SDL_LoadBMP("./mario_running_left.bmp");
+	*(surfaces.mario_running_left) = SDL_LoadBMP("./images/mario_running_left.bmp");
 	if (*(surfaces.mario_running_left) == nullptr) {
 		printf("SDL_LoadBMP(mario_running_left.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -96,7 +96,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Load KingKong image
-	*(surfaces.king_kong) = SDL_LoadBMP("./king_kong.bmp");
+	*(surfaces.king_kong) = SDL_LoadBMP("./images/king_kong.bmp");
 	if (*(surfaces.king_kong) == nullptr) {
 		printf("SDL_LoadBMP(king_kong.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -104,7 +104,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Load Mario climbing image
-	*(surfaces.mario_climbing) = SDL_LoadBMP("./mario_climbing.bmp");
+	*(surfaces.mario_climbing) = SDL_LoadBMP("./images/mario_climbing.bmp");
 	if (*(surfaces.king_kong) == nullptr) {
 		printf("SDL_LoadBMP(mario_climbing.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -112,7 +112,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Load Mario jumping image
-	*(surfaces.mario_jumping_right) = SDL_LoadBMP("./mario_jumping_right.bmp");
+	*(surfaces.mario_jumping_right) = SDL_LoadBMP("./images/mario_jumping_right.bmp");
 	if (*(surfaces.mario_jumping_right) == nullptr) {
 		printf("SDL_LoadBMP(mario_jumping_right.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -120,7 +120,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Load Mario jumping image
-	*(surfaces.mario_jumping_left) = SDL_LoadBMP("./mario_jumping_left.bmp");
+	*(surfaces.mario_jumping_left) = SDL_LoadBMP("./images/mario_jumping_left.bmp");
 	if (*(surfaces.mario_jumping_left) == nullptr) {
 		printf("SDL_LoadBMP(mario_jumping_right.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
@@ -128,7 +128,7 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	}
 
 	// Rolling barell
-	*(surfaces.rolling_barell) = SDL_LoadBMP("./rolling_barell.bmp");
+	*(surfaces.rolling_barell) = SDL_LoadBMP("./images/rolling_barell.bmp");
 	if (*(surfaces.mario_jumping_left) == nullptr) {
 		printf("SDL_LoadBMP(rolling_barell.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
