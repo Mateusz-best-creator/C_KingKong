@@ -9,37 +9,38 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 {
 	// Variable stores information in which row mario currently is
 	int mario_row = 0;
-	int amount_of_ladders = LEVEL_1_AMOUNT_OF_LADDERS;
 
-	for (size_t i = 0; i < amount_of_ladders; i++)
+	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
 	{
-		if (mario_info.y_coordinate <= 390 - i * PLATFORM_HEIGHT && mario_info.y_coordinate >= 330 - i * PLATFORM_HEIGHT)
+		if (mario_info.y_coordinate <= board.platforms_y_coordinates[i] && 
+			mario_info.y_coordinate >= board.platforms_y_coordinates[i] - board.platform_height)
 		{
 			mario_row = i + 1;
 			break;
 		}
 	}
 
-	if ((mario_info.x_coordinate >= FIRST_THIRD_FIFTH_ROW_LADDER_X &&
-		mario_info.x_coordinate <= FIRST_THIRD_FIFTH_ROW_LADDER_X + LADDER_WIDTH &&
-		mario_row % 2 == 1) ||
-		(mario_info.x_coordinate >= SECOND_FOURTH_ROW_LADDER_X &&
-			mario_info.x_coordinate <= SECOND_FOURTH_ROW_LADDER_X + LADDER_WIDTH &&
-			mario_row % 2 == 0))
+	for (size_t i = 0; i < LEVEL_1_AMOUNT_OF_LADDERS; i++)
 	{
-		if (initial_mario_ladder_y == 0)
-			initial_mario_ladder_y = mario_info.y_coordinate;
-		mario_info.going_through_the_ladder = true;
+		if (mario_info.x_coordinate >= board.ladders_x_coordinates[i] &&
+			mario_info.x_coordinate <= board.ladders_x_coordinates[i] + board.ladder_width && mario_row == i + 1)
+		{
+			// Check if mario just entered the ladder
+			if (initial_mario_ladder_y == 0)
+				initial_mario_ladder_y = mario_info.y_coordinate;
+			mario_info.going_through_the_ladder = true;
+			break;
+		}
+		else
+			mario_info.going_through_the_ladder = false;
 	}
-	else
-		mario_info.going_through_the_ladder = false;
 
 	// Check if mario has just escaped from ladder
-	if ((mario_info.x_coordinate >= FIRST_THIRD_FIFTH_ROW_LADDER_X &&
-		mario_info.x_coordinate <= FIRST_THIRD_FIFTH_ROW_LADDER_X + LADDER_WIDTH &&
+	if ((mario_info.x_coordinate >= board.ladders_x_coordinates[0] &&
+		mario_info.x_coordinate <= board.ladders_x_coordinates[0] + board.ladder_width &&
 		mario_row % 2 == 0) ||
-		(mario_info.x_coordinate >= SECOND_FOURTH_ROW_LADDER_X &&
-			mario_info.x_coordinate <= SECOND_FOURTH_ROW_LADDER_X + LADDER_WIDTH &&
+		(mario_info.x_coordinate >= board.ladders_x_coordinates[1] &&
+			mario_info.x_coordinate <= board.ladders_x_coordinates[1] + board.ladder_width &&
 			mario_row % 2 == 1))
 	{
 		mario_info.above_ladder = true;

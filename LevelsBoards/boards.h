@@ -1,6 +1,6 @@
 #pragma once
 
-// Screen boarders
+// Screen boarders (same for all levels)
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 const int SCREEN_LEFT_X_BORDER = 14;
@@ -26,10 +26,13 @@ const int LEVEL1_KING_KONG_Y = 80;
 // Define all platrforms for level 1
 struct BoardElements
 {
+	int platform_height;
 	int platforms_y_coordinates[LEVEL_1_PLATFORMS_AMOUNT], platforms_widths[LEVEL_1_PLATFORMS_AMOUNT];
 	int initial_mario_x, initial_mario_y;
 	int king_kong_x, king_kong_y;
 	int amount_of_ladders;
+	int ladders_x_coordinates[LEVEL_1_AMOUNT_OF_LADDERS], ladders_y_coordinates[LEVEL_1_AMOUNT_OF_LADDERS];
+	int ladder_width;
 };
 BoardElements initialize_board(int level);
 BoardElements initialize_level_1_board();

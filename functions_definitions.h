@@ -38,20 +38,10 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 	Uint32 outlineColor, Uint32 fillColor);
 // End of the code form the template
 
-// Platforms y coordinates for level 1
-
-
-// Ladders constants
-const int FIRST_ROW_LADDER = 351;
-const int FIRST_THIRD_FIFTH_ROW_LADDER_X = 580;
-const int SECOND_FOURTH_ROW_LADDER_X = 60;
-const int LADDER_WIDTH = 20;
-
 const int MARIO_SPEED = 6;
 
-const int PLATFORM_HEIGHT = 60;
 const int JUMP_HEIGHT = 30;
-const int JUMP_SPEED = 1;
+const int JUMP_SPEED = 3;
 
 // Time constants
 const double SECONDS_BETWEEN_REFRESH = 0.5;
