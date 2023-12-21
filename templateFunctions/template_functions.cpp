@@ -1,5 +1,5 @@
 #include "../functions_definitions.h"
-
+#include <iostream>
 
 // narysowanie napisu txt na powierzchni screen, zaczynaj¹c od punktu (x, y)
 // charset to bitmapa 128x128 zawieraj¹ca znaki
@@ -33,6 +33,11 @@ void DrawString(SDL_Surface* screen, int x, int y, const char* text,
 // draw a surface sprite on a surface screen in point (x, y)
 // (x, y) is the center of sprite on screen
 void DrawSurface(SDL_Surface* screen, SDL_Surface* sprite, int x, int y) {
+	if (sprite == nullptr)
+	{
+		std::cout << "Error in DrawSurface() function, sprite == nullptr" << std::endl;
+		return;
+	}
 	SDL_Rect dest;
 	dest.x = x - sprite->w / 2;
 	dest.y = y - sprite->h / 2;

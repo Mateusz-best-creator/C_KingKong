@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<string.h>
 #include "functions_definitions.h"
-#include <iostream>
+#include "./LevelsBoards/boards.h"
 
 
 // main
@@ -15,11 +15,11 @@ int main(int argc, char** argv)
 	// Initialize all SDL elements
 	SDL_Event event;
 	SDL_Surface* screen = nullptr, *charset = nullptr, *mario_running_right = nullptr, *mario_running_left = nullptr, *king_kong = nullptr, 
-		*mario_climbing = nullptr, *mario_jumping_right = nullptr, *mario_jumping_left = nullptr;
+		*mario_climbing = nullptr, *mario_jumping_right = nullptr, *mario_jumping_left = nullptr, *rolling_barell = nullptr;
 
 	// Create structure of all surfaces
 	SDL_Surfaces surfaces = { &screen, &charset, &mario_running_right, &mario_running_left, 
-		&king_kong, &mario_climbing, &mario_jumping_right, &mario_jumping_left };
+		&king_kong, &mario_climbing, &mario_jumping_right, &mario_jumping_left, &rolling_barell };
 	// Create structure of other SDL elements (except event)
 	SDL_Elements SDL_elements = { nullptr, nullptr, nullptr };
 
@@ -59,7 +59,9 @@ int main(int argc, char** argv)
 	Colors colors;
 	initialize_colors(screen, colors);
 
-	start_game(surfaces, SDL_elements);
+	// Initialize the board for the appropriate level
+	BoardElements board = initialize_board(1);
+	start_game(surfaces, SDL_elements, board);
 	return 0;
 };
 

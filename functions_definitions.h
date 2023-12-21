@@ -1,14 +1,12 @@
 #pragma once
 
+#include "LevelsBoards/boards.h"
 
 // Code from the template
 extern "C" {
 #include"./SDL2-2.0.10/include/SDL.h"
 #include"./SDL2-2.0.10/include/SDL_main.h"
 }
-
-#define SCREEN_WIDTH	640
-#define SCREEN_HEIGHT	480
 
 // narysowanie napisu txt na powierzchni screen, zaczynaj¹c od punktu (x, y)
 // charset to bitmapa 128x128 zawieraj¹ca znaki
@@ -40,6 +38,7 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 	Uint32 outlineColor, Uint32 fillColor);
 // End of the code form the template
 
+// Platforms y coordinates for level 1
 
 
 // Ladders constants
@@ -58,24 +57,6 @@ const int JUMP_SPEED = 1;
 const double SECONDS_BETWEEN_REFRESH = 0.5;
 const double REFRESH_RATE = 1 / SECONDS_BETWEEN_REFRESH;
 
-// Screen boarders
-const int SCREEN_LEFT_X_BORDER = 14;
-const int SCREEN_RIGHT_X_BORDER = 626;
-const int SCREEN_TOP_Y_BORDER = 1000;
-const int SCREEN_BOTTOM_Y_BORDER = 387;
-
-// Amount of ladders for each level
-const int LEVEL_1_AMOUNT_OF_LADDERS = 5;
-const int LEVEL_2_AMOUNT_OF_LADDERS = 5;
-const int LEVEL_3_AMOUNT_OF_LADDERS = 5;
-
-// (X, Y) coordinates for KingKong in each level
-const int LEVEL1_KING_KONG_X = SCREEN_WIDTH / 2;
-const int LEVEL1_KING_KONG_Y = 80;
-
-// Initial mario coordinates
-const int mario_initial_x_coordinate = 50, mario_initial_y_coordinate = 387;
-
 struct Mario
 {
 	int x_coordinate;
@@ -85,12 +66,13 @@ struct Mario
 	int jumping_pixels;
 	bool going_down;
 	enum DIRECTION { LEFT, RIGHT } direction;
+	bool above_ladder;
 };
 
 struct SDL_Surfaces
 {
 	SDL_Surface** screen, **charset, **mario_running_right, **mario_running_left, 
-		**king_kong, **mario_climbing, **mario_jumping_right, **mario_jumping_left;
+		**king_kong, **mario_climbing, **mario_jumping_right, **mario_jumping_left, **rolling_barell;
 };
 
 struct SDL_Elements
@@ -112,14 +94,14 @@ struct Colors
 };
 
 //Starting the game
-void start_game(SDL_Surfaces& surfaces, SDL_Elements&);
+void start_game(SDL_Surfaces& surfaces, SDL_Elements&, const BoardElements&);
 
 // Drawing surfaces
-void DrawPlatforms(SDL_Surface*, int);
-void DrawLadders(SDL_Surface*, int);
+void DrawPlatforms(SDL_Surface*, const BoardElements&, int);
+void DrawLadders(SDL_Surface*, const BoardElements&, int);
 
 // Handling user events
-int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&);
+int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&, const BoardElements&);
 void jump(SDL_Surfaces&, Mario&);
 
 // Helper functions

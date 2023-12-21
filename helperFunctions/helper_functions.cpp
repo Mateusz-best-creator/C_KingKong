@@ -1,4 +1,5 @@
 ﻿#include "../functions_definitions.h"
+#include "../LevelsBoards/boards.h"
 
 #include <iostream>
 
@@ -125,6 +126,15 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
+
+	// Rolling barell
+	*(surfaces.rolling_barell) = SDL_LoadBMP("./rolling_barell.bmp");
+	if (*(surfaces.mario_jumping_left) == nullptr) {
+		printf("SDL_LoadBMP(rolling_barell.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+
 	return Error;
 }
 

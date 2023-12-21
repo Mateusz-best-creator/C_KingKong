@@ -1,10 +1,11 @@
 #include "../functions_definitions.h"
+#include "../LevelsBoards/boards.h"
 #include <iostream>
 
 // This global variable will store the y coordinate when mario enters the ladder
 int initial_mario_ladder_y = 0;
 
-int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
+int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board)
 {
 	// Variable stores information in which row mario currently is
 	int mario_row = 0;
@@ -33,6 +34,19 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 	else
 		mario_info.going_through_the_ladder = false;
 
+	// Check if mario has just escaped from ladder
+	if ((mario_info.x_coordinate >= FIRST_THIRD_FIFTH_ROW_LADDER_X &&
+		mario_info.x_coordinate <= FIRST_THIRD_FIFTH_ROW_LADDER_X + LADDER_WIDTH &&
+		mario_row % 2 == 0) ||
+		(mario_info.x_coordinate >= SECOND_FOURTH_ROW_LADDER_X &&
+			mario_info.x_coordinate <= SECOND_FOURTH_ROW_LADDER_X + LADDER_WIDTH &&
+			mario_row % 2 == 1))
+	{
+		mario_info.above_ladder = true;
+	}
+	else
+		mario_info.above_ladder = false;
+
 	// handling of events (if there were any)
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
@@ -40,7 +54,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
 			else if (event.key.keysym.sym == SDLK_n)
 			{
-				start_game(surfaces, SDL_elements);
+				start_game(surfaces, SDL_elements, board);
 				return 1;
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
@@ -82,11 +96,17 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 				std::cout << "Mario row: " << mario_row << std::endl;
 				std::cout << "Mario x coordinate: " << mario_info.x_coordinate << std::endl;
 				std::cout << "Mario y coordinate: " << mario_info.y_coordinate << std::endl;
+				std::cout << "Mario above ladder: " << mario_info.above_ladder << std::endl;
 				
 				if (mario_info.going_through_the_ladder)
 				{
 					if (mario_info.y_coordinate < SCREEN_BOTTOM_Y_BORDER && mario_row == 1) // We can't go under the board
 						mario_info.y_coordinate += MARIO_SPEED;
+				}
+				else if (mario_info.above_ladder)
+				{
+					mario_info.y_coordinate += MARIO_SPEED;
+					mario_info.going_through_the_ladder = true;
 				}
 			}
 			break;

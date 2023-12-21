@@ -1,6 +1,7 @@
 #include "../functions_definitions.h"
+#include "../LevelsBoards/boards.h"
 
-void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
+void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board)
 {
 	SDL_Event event;
 	SDL_Surface* screen = *(surfaces.screen);
@@ -13,7 +14,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 	TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	// Create mario object
-	Mario mario_info = { mario_initial_x_coordinate, mario_initial_y_coordinate, false, false, 0, false, Mario::RIGHT };
+	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false };
 
 	while (!times.quit) {
 
@@ -23,16 +24,19 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 		SDL_FillRect(screen, NULL, colors.czarny);
 
 		// Draw all ladders
-		DrawLadders(screen, colors.brazowy);
+		DrawLadders(screen, board, colors.brazowy);
 
 		// Draw all platforms
-		DrawPlatforms(screen, colors.brazowy);
+		DrawPlatforms(screen, board, colors.brazowy);
 
 		// Make mario jumping if possible, draw mario
 		jump(surfaces, mario_info);
 
 		// Draw king_kong surface
-		DrawSurface(screen, *(surfaces.king_kong), LEVEL1_KING_KONG_X, LEVEL1_KING_KONG_Y);
+		DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
+
+		// Draw barell
+		DrawSurface(screen, *(surfaces.rolling_barell), board.king_kong_x, board.king_kong_y);
 
 		times.fpsTimer += times.delta;
 		if (times.fpsTimer > SECONDS_BETWEEN_REFRESH) {
@@ -45,7 +49,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 		drawInfoRectangle(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
 
 		// Handle user event (space, upper arrow...)
-		times.quit = handleEvents(event, mario_info, surfaces, SDL_elements);
+		times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);
 		times.frames++;
 	};
 	// Clear all the settings

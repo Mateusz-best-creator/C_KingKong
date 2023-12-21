@@ -9,7 +9,7 @@ const int HORIZONTAL_HEIGHT = 5;
 const int HORIZONTAL_WIDTH = 25;
 const int HORIZONTAL_GAP = 10;
 
-void DrawLadders(SDL_Surface* screen, int ladder_color)
+void DrawLadders(SDL_Surface* screen, const BoardElements& board, int ladder_color)
 {
 	// Draw ladders for first, third and fifth rows
 	int right_ladders = 3;

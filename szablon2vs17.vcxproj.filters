@@ -9,9 +9,11 @@
     <ClCompile Include="marioMovement\jumping.cpp" />
     <ClCompile Include="marioMovement\event_handling.cpp" />
     <ClCompile Include="startGame\start_game.cpp" />
+    <ClCompile Include="LevelsBoards\board.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
+    <ClInclude Include="LevelsBoards\boards.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="cs8x8.bmp" />
@@ -22,6 +24,7 @@
     <Image Include="mario_jumping_right.bmp" />
     <Image Include="mario_running_left.bmp" />
     <Image Include="mario_jumping_left.bmp" />
+    <Image Include="rolling_barell.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template">
