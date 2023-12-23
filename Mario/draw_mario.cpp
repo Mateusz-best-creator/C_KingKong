@@ -1,6 +1,6 @@
 #include "../functions_definitions.h"
 
-void jump(SDL_Surfaces& surfaces, Mario& mario_info)
+void draw_mario(SDL_Surfaces& surfaces, Mario& mario_info)
 {
 	if (mario_info.jumping)
 	{

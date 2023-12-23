@@ -33,6 +33,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			else if (event.key.keysym.sym == SDLK_SPACE)
 			{
 				space_event(mario_info);
+
 			}
 			else if (event.key.keysym.sym == SDLK_DOWN)
 			{	

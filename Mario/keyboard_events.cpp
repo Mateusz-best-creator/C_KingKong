@@ -21,6 +21,10 @@ void left_arrow_event(Mario& mario_info, const BoardElements& board)
 
 void right_arrow_event(Mario& mario_info, const BoardElements& board)
 {
+	if (mario_info.jumping)
+	{
+		mario_info.x_coordinate += int (MARIO_SPEED / 2);
+	}
 	if (mario_info.x_coordinate >= SCREEN_RIGHT_X_BORDER)
 		return;
 	bool mario_can_go_right_from_ladder = false;
@@ -34,6 +38,7 @@ void right_arrow_event(Mario& mario_info, const BoardElements& board)
 	}
 	if (mario_info.going_through_the_ladder && !mario_can_go_right_from_ladder)
 		return;
+	
 	mario_info.direction = Mario::RIGHT;
 	mario_info.x_coordinate += MARIO_SPEED;
 }

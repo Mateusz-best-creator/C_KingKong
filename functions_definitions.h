@@ -41,7 +41,7 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 const int MARIO_SPEED = 6;
 
 const int JUMP_HEIGHT = 30;
-const int JUMP_SPEED = 1;
+const double JUMP_SPEED = 1;
 
 // Time constants
 const double SECONDS_BETWEEN_REFRESH = 0.5;
@@ -55,7 +55,7 @@ struct Mario
 	int y_coordinate;
 	bool going_through_the_ladder;
 	bool jumping;
-	int jumping_pixels;
+	double jumping_pixels;
 	bool going_down;
 	enum DIRECTION { LEFT, RIGHT } direction;
 	bool above_ladder;
@@ -95,7 +95,7 @@ void DrawLadders(SDL_Surface*, const BoardElements&, int);
 
 // Handling user events
 int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&, const BoardElements&);
-void jump(SDL_Surfaces&, Mario&);
+void draw_mario(SDL_Surfaces&, Mario&);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);

@@ -5,7 +5,6 @@
 #include "functions_definitions.h"
 #include "./LevelsBoards/boards.h"
 
-
 // main
 #ifdef __cplusplus
 extern "C"

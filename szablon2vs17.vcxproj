@@ -24,10 +24,10 @@
     <ClCompile Include="helperFunctions\helper_functions.cpp" />
     <ClCompile Include="LevelsBoards\board.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="marioMovement\event_handling.cpp" />
-    <ClCompile Include="marioMovement\get_mario_info.cpp" />
-    <ClCompile Include="marioMovement\jumping.cpp" />
-    <ClCompile Include="marioMovement\keyboard_events.cpp" />
+    <ClCompile Include="Mario\event_handling.cpp" />
+    <ClCompile Include="Mario\get_mario_info.cpp" />
+    <ClCompile Include="Mario\draw_mario.cpp" />
+    <ClCompile Include="Mario\keyboard_events.cpp" />
     <ClCompile Include="startGame\start_game.cpp" />
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>

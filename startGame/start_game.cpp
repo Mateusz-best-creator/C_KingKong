@@ -30,7 +30,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		DrawPlatforms(screen, board, colors.brazowy);
 
 		// Make mario jumping if possible, draw mario
-		jump(surfaces, mario_info);
+		draw_mario(surfaces, mario_info);
 
 		// Draw king_kong surface
 		DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
