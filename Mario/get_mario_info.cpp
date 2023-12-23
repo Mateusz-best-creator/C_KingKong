@@ -1,4 +1,5 @@
 #include "../functions_definitions.h"
+#include "../Mario/mario.h"
 
 void get_mario_info(Mario& mario_info, const BoardElements& board, int& mario_row)
 {

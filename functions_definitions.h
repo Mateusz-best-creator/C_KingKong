@@ -38,29 +38,9 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 	Uint32 outlineColor, Uint32 fillColor);
 // End of the code form the template
 
-const int MARIO_SPEED = 6;
-
-const int JUMP_HEIGHT = 30;
-const double JUMP_SPEED = 1;
-
 // Time constants
 const double SECONDS_BETWEEN_REFRESH = 0.5;
 const double REFRESH_RATE = 1 / SECONDS_BETWEEN_REFRESH;
-
-const int MARIO_FLOOR_DISTANCE = 3;
-
-struct Mario
-{
-	int x_coordinate;
-	int y_coordinate;
-	bool going_through_the_ladder;
-	bool jumping;
-	double jumping_pixels;
-	bool going_down;
-	enum DIRECTION { LEFT, RIGHT } direction;
-	bool above_ladder;
-	bool can_go_down;
-};
 
 struct SDL_Surfaces
 {
@@ -93,9 +73,6 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements&, const BoardElements&);
 void DrawPlatforms(SDL_Surface*, const BoardElements&, int);
 void DrawLadders(SDL_Surface*, const BoardElements&, int);
 
-// Handling user events
-int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&, const BoardElements&);
-void draw_mario(SDL_Surfaces&, Mario&);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);
@@ -105,11 +82,3 @@ void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
 bool fullscreen(SDL_Window**, SDL_Renderer**);
 bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 void initialize_colors(SDL_Surface*, Colors&);
-
-
-void get_mario_info(Mario&, const BoardElements&, int&);
-void left_arrow_event(Mario& mario_info, const BoardElements& board);
-void right_arrow_event(Mario& mario_info, const BoardElements& board);
-void upper_arrow_event(Mario& mario_info, const BoardElements& board);
-void lower_arrow_event(Mario& mario_info, const BoardElements& board);
-void space_event(Mario& mario_info);

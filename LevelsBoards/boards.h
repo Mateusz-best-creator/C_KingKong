@@ -25,6 +25,10 @@ const int LEVEL_1_MARIO_INITIAL_X = 50, LEVEL_1_MARIO_INITIAL_Y = 387;
 const int LEVEL1_KING_KONG_X = SCREEN_WIDTH / 2;
 const int LEVEL1_KING_KONG_Y = 80;
 
+// Winning coordinates for each level
+const int LEVEL_1_X1 = 584, LEVEL_1_X2 = 596;
+const int LEVEL_1_Y = 99;
+
 // Define all platrforms for level 1
 struct BoardElements
 {
@@ -38,6 +42,7 @@ struct BoardElements
 	int ladders_x_coordinates[LEVEL_1_AMOUNT_OF_LADDERS], ladders_y_coordinates[LEVEL_1_AMOUNT_OF_LADDERS];
 	int ladders_rows[LEVEL_1_AMOUNT_OF_LADDERS];
 	int ladder_width;
+	int winning_x1_coordinate, winning_x2_coordinate, winning_y_coordinate;
 };
 BoardElements initialize_board(int level);
 BoardElements initialize_level_1_board();

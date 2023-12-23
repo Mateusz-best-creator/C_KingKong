@@ -22,8 +22,10 @@
     <ClCompile Include="drawingObjects\draw_ladders.cpp" />
     <ClCompile Include="drawingObjects\draw_platforms.cpp" />
     <ClCompile Include="helperFunctions\helper_functions.cpp" />
+    <ClCompile Include="Interface\interface.cpp" />
     <ClCompile Include="LevelsBoards\board.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mario\check_if_mario_win.cpp" />
     <ClCompile Include="Mario\event_handling.cpp" />
     <ClCompile Include="Mario\get_mario_info.cpp" />
     <ClCompile Include="Mario\draw_mario.cpp" />
@@ -34,6 +36,7 @@
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
     <ClInclude Include="LevelsBoards\boards.h" />
+    <ClInclude Include="Mario\mario.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

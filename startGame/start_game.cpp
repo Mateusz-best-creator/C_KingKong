@@ -1,5 +1,7 @@
 #include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
+#include "../Mario/mario.h"
+#include <iostream>
 
 void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board)
 {
@@ -14,9 +16,26 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 	TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	// Create mario object
-	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false };
-
+	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 3, 0 };
+	/*
+	char interface_text[64];
+	while (!times.quit)
+	{
+		//*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer
+		interface(mario_info, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, interface_text, colors);
+		times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);
+	}
+	
+	// After executing the interface, reset times
+	times.quit = false;
+	*/
 	while (!times.quit) {
+
+		if (check_if_mario_win(board, mario_info))
+		{
+			std::cout << "Mario winning!!!" << std::endl;
+			break;
+		}
 
 		calculateTime(times.delta, times.tick1, times.tick2, times.worldTime);
 

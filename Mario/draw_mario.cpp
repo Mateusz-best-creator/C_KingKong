@@ -1,4 +1,5 @@
 #include "../functions_definitions.h"
+#include "../Mario/mario.h"
 
 void draw_mario(SDL_Surfaces& surfaces, Mario& mario_info)
 {

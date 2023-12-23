@@ -52,5 +52,10 @@ BoardElements initialize_level_1_board()
 			board.ladders_x_coordinates[i] = 60;
 	}
 
+	// Initialize winning coordinates
+	board.winning_x1_coordinate = LEVEL_1_X1;
+	board.winning_x2_coordinate = LEVEL_1_X2;
+	board.winning_y_coordinate = LEVEL_1_Y;
+
 	return board;
 }

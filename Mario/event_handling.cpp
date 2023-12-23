@@ -1,5 +1,6 @@
 #include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
+#include "../Mario/mario.h"
 #include <iostream>
 
 int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board)
@@ -28,6 +29,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			}
 			else if (event.key.keysym.sym == SDLK_UP)
 			{
+				std::cout << mario_info.x_coordinate << " " << mario_info.y_coordinate << std::endl;
 				upper_arrow_event(mario_info, board);
 			}
 			else if (event.key.keysym.sym == SDLK_SPACE)
