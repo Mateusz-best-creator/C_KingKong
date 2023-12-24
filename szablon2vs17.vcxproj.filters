@@ -13,12 +13,14 @@
     <ClCompile Include="Mario\get_mario_info.cpp" />
     <ClCompile Include="Mario\keyboard_events.cpp" />
     <ClCompile Include="Mario\check_if_mario_win.cpp" />
-    <ClCompile Include="Interface\interface.cpp" />
+    <ClCompile Include="Interface\player_interface.cpp" />
+    <ClCompile Include="Interface\initial_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
     <ClInclude Include="LevelsBoards\boards.h" />
     <ClInclude Include="Mario\mario.h" />
+    <ClInclude Include="Interface\interface.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template">

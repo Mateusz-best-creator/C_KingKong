@@ -135,6 +135,30 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		Error = true;
 	}
 
+	// Level 1 logo
+	*(surfaces.level_1_crown) = SDL_LoadBMP("./images/crown_logo.bmp");
+	if (*(surfaces.level_1_crown) == nullptr) {
+		printf("SDL_LoadBMP(images/crown_logo.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+
+	// Level 2 logo
+	*(surfaces.level_2_treasure) = SDL_LoadBMP("./images/treasure_logo.bmp");
+	if (*(surfaces.level_2_treasure) == nullptr) {
+		printf("SDL_LoadBMP(images/treasure_logo.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+
+	// Level 3 logo
+	*(surfaces.level_3_diamond) = SDL_LoadBMP("./images/diamond_logo.bmp");
+	if (*(surfaces.level_3_diamond) == nullptr) {
+		printf("SDL_LoadBMP(images/diamond_logo.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+
 	return Error;
 }
 
@@ -175,5 +199,6 @@ void initialize_colors(SDL_Surface* screen, Colors& colors)
 	colors.czerwony = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
 	colors.niebieski = SDL_MapRGB(screen->format, 0x11, 0x11, 0xCC);
 	colors.brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
+	colors.jasny_niebieski = SDL_MapRGB(screen->format, 0x42, 0xa0, 0xdd);
 }
 

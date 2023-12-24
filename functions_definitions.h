@@ -45,7 +45,8 @@ const double REFRESH_RATE = 1 / SECONDS_BETWEEN_REFRESH;
 struct SDL_Surfaces
 {
 	SDL_Surface** screen, **charset, **mario_running_right, **mario_running_left, 
-		**king_kong, **mario_climbing, **mario_jumping_right, **mario_jumping_left, **rolling_barell;
+		**king_kong, **mario_climbing, **mario_jumping_right, **mario_jumping_left, **rolling_barell, ** level_1_crown,
+		**level_2_treasure, **level_3_diamond;
 };
 
 struct SDL_Elements
@@ -63,7 +64,7 @@ struct TimeVariables
 
 struct Colors
 {
-	int czarny, zielony, czerwony, niebieski, brazowy;
+	int czarny, zielony, czerwony, niebieski, brazowy, jasny_niebieski;
 };
 
 //Starting the game
@@ -73,6 +74,8 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements&, const BoardElements&);
 void DrawPlatforms(SDL_Surface*, const BoardElements&, int);
 void DrawLadders(SDL_Surface*, const BoardElements&, int);
 
+// Interfaces
+int initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);
