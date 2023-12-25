@@ -25,6 +25,17 @@ BoardElements initialize_level_1_board()
 	BoardElements board;
 	board.level = 1;
 
+	// Coins coordinates for level 2
+	board.coins_x = new int[LEVEL_1_COINS_AMOUNT];
+	board.coins_y = new int[LEVEL_1_COINS_AMOUNT];
+	int coins_x[LEVEL_1_COINS_AMOUNT] = { 476, 308, 200, 344, 170 };
+	int coins_y[LEVEL_1_COINS_AMOUNT] = { 387, 327, 267, 207, 147 };
+	for (size_t i = 0; i < LEVEL_1_COINS_AMOUNT; i++)
+	{
+		board.coins_x[i] = coins_x[i];
+		board.coins_y[i] = coins_y[i];
+	}
+
 	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
 	board.platforms_ending_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
@@ -83,8 +94,20 @@ BoardElements initialize_level_1_board()
 */
 BoardElements initialize_level_2_board()
 {
+
 	BoardElements board;
 	board.level = 2;
+
+	// Coins coordinates for level 2
+	board.coins_x = new int[LEVEL_2_COINS_AMOUNT];
+	board.coins_y = new int[LEVEL_2_COINS_AMOUNT];
+	int coins_x[LEVEL_2_COINS_AMOUNT] = { 254, 476, 464, 446, 140, 200, 26 };
+	int coins_y[LEVEL_2_COINS_AMOUNT] = { 387, 387, 267, 207, 387, 267, 207 };
+	for (size_t i = 0; i < LEVEL_2_COINS_AMOUNT; i++)
+	{
+		board.coins_x[i] = coins_x[i];
+		board.coins_y[i] = coins_y[i];
+	}
 	
 	board.platforms_amount = LEVEL_2_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
@@ -187,6 +210,17 @@ BoardElements initialize_level_3_board()
 {
 	BoardElements board;
 	board.level = 3;
+
+	// Coins coordinates for level 2
+	board.coins_x = new int[LEVEL_3_COINS_AMOUNT];
+	board.coins_y = new int[LEVEL_3_COINS_AMOUNT];
+	int coins_x[LEVEL_3_COINS_AMOUNT] = { 116, 188, 20, 20, 446, 530, 446, 494 };
+	int coins_y[LEVEL_3_COINS_AMOUNT] = { 387, 387, 207, 147, 207, 387, 387, 267 };
+	for (size_t i = 0; i < LEVEL_3_COINS_AMOUNT; i++)
+	{
+		board.coins_x[i] = coins_x[i];
+		board.coins_y[i] = coins_y[i];
+	}
 	
 	board.platforms_amount = LEVEL_3_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
@@ -278,12 +312,14 @@ BoardElements initialize_level_3_board()
 void releaseMemory(BoardElements& board)
 {
 	delete[] board.platforms_x_coordinate;
-	delete[] board.platforms_ending_x_coordinate; // added
+	delete[] board.platforms_ending_x_coordinate;
 	delete[] board.platforms_y_coordinate;
 	delete[] board.platforms_widths;
 	delete[] board.ladders_x_coordinates;
 	delete[] board.ladders_y_coordinates;
 	delete[] board.ladders_rows;
-	delete[] board.platforms_rows; // added
+	delete[] board.platforms_rows;
+	/*delete[] board.coins_x;
+	delete[] board.coins_y;*/
 	printf("Memory released");
 }

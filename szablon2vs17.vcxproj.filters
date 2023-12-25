@@ -16,6 +16,7 @@
     <ClCompile Include="Interface\player_interface.cpp" />
     <ClCompile Include="Interface\initial_interface.cpp" />
     <ClCompile Include="drawingObjects\draw_rewards.cpp" />
+    <ClCompile Include="drawingObjects\draw_coins.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

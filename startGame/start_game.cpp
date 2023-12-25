@@ -31,6 +31,8 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		// Fill the entire screen with given color
 		SDL_FillRect(screen, NULL, colors.czarny);
 
+		draw_coins(board, surfaces);
+
 		// Draw all ladders
 		DrawLadders(screen, board, colors.brazowy);
 

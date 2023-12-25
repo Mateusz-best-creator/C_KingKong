@@ -35,7 +35,9 @@ const int LEVEL_1_WINNING_X1 = 590, LEVEL_1_WINNING_X2 = 602, LEVEL_1_WINNING_Y 
 const int LEVEL_2_WINNING_X1 = 330, LEVEL_2_WINNING_X2 = 348, LEVEL_2_WINNING_Y = 95;
 const int LEVEL_3_WINNING_X1 = 504, LEVEL_3_WINNING_X2 = 539, LEVEL_3_WINNING_Y = 147;
 
-// Define all platrforms for level 1
+const int LEVEL_1_COINS_AMOUNT = 5, LEVEL_2_COINS_AMOUNT = 7, LEVEL_3_COINS_AMOUNT = 8;
+
+// Define board structure
 struct BoardElements
 {
 	int level;
@@ -51,6 +53,7 @@ struct BoardElements
 	int *ladders_rows;
 	int ladder_width;
 	int winning_x1_coordinate, winning_x2_coordinate, winning_y_coordinate;
+	int* coins_x, * coins_y;
 };
 BoardElements initialize_board(int level);
 BoardElements initialize_level_1_board();
