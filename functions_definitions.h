@@ -65,7 +65,7 @@ struct TimeVariables
 
 struct Colors
 {
-	int czarny, zielony, czerwony, niebieski, brazowy, jasny_niebieski;
+	int czarny, zielony, czerwony, niebieski, brazowy, jasny_niebieski, szary;
 };
 
 //Starting the game
@@ -82,8 +82,6 @@ int initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&);
 // Helper functions
 void calculateTime(double&, int&, int&, double&);
 void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Window*);
-void drawInfoRectangle(SDL_Surface*, SDL_Surface*, SDL_Texture*,
-	SDL_Renderer*, char*,TimeVariables&, Colors&);
 bool fullscreen(SDL_Window**, SDL_Renderer**);
 bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 void initialize_colors(SDL_Surface*, Colors&);

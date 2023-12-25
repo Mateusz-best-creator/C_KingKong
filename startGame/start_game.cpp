@@ -18,8 +18,8 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 	// Create mario object
 	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 3, 0, 1, false };
 
-	while (!times.quit) {
-
+	while (!times.quit) 
+	{
 		if (check_if_mario_win(board, mario_info))
 		{
 			std::cout << "Mario winning!!!" << std::endl;
@@ -76,7 +76,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		};
 
 		char text[128];
-		drawInfoRectangle(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
+		drawInfoRectangle(mario_info, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
 
 		// Handle user event (space, upper arrow...)
 		times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);

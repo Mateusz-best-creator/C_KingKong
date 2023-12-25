@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Barells\barells.cpp" />
     <ClCompile Include="drawingObjects\draw_coins.cpp" />
     <ClCompile Include="drawingObjects\draw_ladders.cpp" />
     <ClCompile Include="drawingObjects\draw_platforms.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Barells\barells.h" />
     <ClInclude Include="functions_definitions.h" />
     <ClInclude Include="Interface\interface.h" />
     <ClInclude Include="LevelsBoards\boards.h" />

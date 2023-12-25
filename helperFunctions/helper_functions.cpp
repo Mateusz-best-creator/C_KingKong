@@ -1,6 +1,6 @@
 ﻿#include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
-
+#include "../Mario/mario.h"
 #include <iostream>
 
 void calculateTime(double& delta, int& tick1, int& tick2, double& worldTime)
@@ -166,17 +166,22 @@ void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SD
 	SDL_Quit();
 }
 
-void drawInfoRectangle(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
+void drawInfoRectangle(const Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
 	SDL_Renderer* renderer, char* text, TimeVariables& times, Colors& colors)
 {
+	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
+	sprintf(text, "Mario points: %d", mario_info.points);
+	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
+	sprintf(text, "Mario lifes: %d", 3);
+	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
 	// tekst informacyjny / info text
-	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, colors.czerwony, colors.niebieski);
+	DrawRectangle(screen, 4, 430, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
 	//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
 	sprintf(text, "Czas trwania = %.1lf s  %.0lf klatek / s", times.worldTime, times.fps);
-	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
+	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 435, text, charset);
 	//	      "Esc - exit, \030 - faster, \031 - slower"
 	sprintf(text, "Esc - exit, n - new game, \x5f - jump, \030 - go up, \031 - go down");
-	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
+	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 450, text, charset);
 
 	SDL_UpdateTexture(scrtex, NULL, screen->pixels, screen->pitch);
 	//		SDL_RenderClear(renderer);
@@ -193,5 +198,6 @@ void initialize_colors(SDL_Surface* screen, Colors& colors)
 	colors.niebieski = SDL_MapRGB(screen->format, 0x11, 0x11, 0xCC);
 	colors.brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
 	colors.jasny_niebieski = SDL_MapRGB(screen->format, 0x42, 0xa0, 0xdd);
+	colors.szary = SDL_MapRGB(screen->format, 0x33, 0x33, 0x33);
 }
 
