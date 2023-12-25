@@ -11,7 +11,7 @@ BoardElements initialize_board(int level)
 		case 2:
 			return initialize_level_2_board();
 		case 3:
-			break;
+			return initialize_level_3_board();
 		default:
 			break;
 	}
@@ -154,6 +154,82 @@ BoardElements initialize_level_2_board()
 	board.king_kong_x = LEVEL2_KING_KONG_X;
 	board.king_kong_y = LEVEL2_KING_KONG_Y;
 
+
+	return board;
+}
+
+BoardElements initialize_level_3_board()
+{
+	BoardElements board;
+
+	board.platforms_amount = LEVEL_3_PLATFORMS_AMOUNT;
+	board.platforms_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
+	board.platforms_y_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
+	board.platforms_widths = new int[LEVEL_3_PLATFORMS_AMOUNT];
+
+	// Initialize platforms
+	int first_platforms_X_cors[4] = {0, 167, 334, 501};
+	for (size_t i = 0; i < 4; i++)
+	{
+		board.platforms_x_coordinate[i] = first_platforms_X_cors[i];
+		board.platforms_y_coordinate[i] = 390;
+		board.platforms_widths[i] = 137;
+	}
+	for (size_t i = 4; i < 6; i++)
+	{
+		i == 4 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 340;
+		board.platforms_y_coordinate[i] = 330;
+		board.platforms_widths[i] = 300;
+	}
+	board.platforms_x_coordinate[6] = 0;
+	board.platforms_y_coordinate[6] = 270;
+	board.platforms_widths[6] = SCREEN_WIDTH;
+	for (size_t i = 7; i < 9; i++)
+	{
+		i == 7 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 390;
+		board.platforms_y_coordinate[i] = 210;
+		i == 7 ? board.platforms_widths[i] = 120 : board.platforms_widths[i] = 250;
+	}
+	board.platforms_x_coordinate[9] = 0;
+	board.platforms_y_coordinate[9] = 150;
+	board.platforms_widths[9] = SCREEN_WIDTH;
+
+	board.amount_of_ladders = LEVEL_3_AMOUNT_OF_LADDERS;
+	board.ladders_x_coordinates = new int[LEVEL_3_AMOUNT_OF_LADDERS];
+	board.ladders_y_coordinates = new int[LEVEL_3_AMOUNT_OF_LADDERS];
+	board.ladders_rows = new int[LEVEL_3_AMOUNT_OF_LADDERS];
+	board.ladder_width = 20;
+	board.platform_height = 60;
+
+	// Initialize ladders
+	int first_ladders_X_cors[4] = { 10, 257, 394, 581 };
+	for (size_t i = 0; i < 4; i++)
+	{
+		board.ladders_x_coordinates[i] = first_ladders_X_cors[i];
+		board.ladders_y_coordinates[i] = 351;
+		board.ladders_rows[i] = 1;
+	}
+	for (size_t i = 4; i < 6; i++)
+	{
+		i == 4 ? board.ladders_x_coordinates[i] = 100 : board.ladders_x_coordinates[i] = 550;
+		board.ladders_y_coordinates[i] = 291;
+		board.ladders_rows[i] = 2;
+	}
+	for (size_t i = 6; i < 8; i++)
+	{
+		i == 6 ? board.ladders_x_coordinates[i] = 40 : board.ladders_x_coordinates[i] = 580;
+		board.ladders_y_coordinates[i] = 231;
+		board.ladders_rows[i] = 3;
+	}
+	board.ladders_x_coordinates[8] = 80;
+	board.ladders_y_coordinates[8] = 171;
+	board.ladders_rows[8] = 4;
+
+
+	board.initial_mario_x = LEVEL_3_MARIO_INITIAL_X;
+	board.initial_mario_y = LEVEL_3_MARIO_INITIAL_Y;
+	board.king_kong_x = LEVEL3_KING_KONG_X;
+	board.king_kong_y = LEVEL3_KING_KONG_Y;
 
 	return board;
 }
