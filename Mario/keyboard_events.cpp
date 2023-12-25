@@ -8,7 +8,7 @@ void left_arrow_event(Mario& mario_info, const BoardElements& board)
 	bool mario_can_go_left_from_ladder = false;
 	for (size_t i = 0; i < board.platforms_amount; i++)
 	{
-		if (mario_info.y_coordinate + MARIO_FLOOR_DISTANCE == board.platforms_y_coordinates[i])
+		if (mario_info.y_coordinate + MARIO_FLOOR_DISTANCE == board.platforms_y_coordinate[i])
 		{
 			mario_can_go_left_from_ladder = true;
 			break;
@@ -31,7 +31,7 @@ void right_arrow_event(Mario& mario_info, const BoardElements& board)
 	bool mario_can_go_right_from_ladder = false;
 	for (size_t i = 0; i < board.platforms_amount; i++)
 	{
-		if (mario_info.y_coordinate + MARIO_FLOOR_DISTANCE == board.platforms_y_coordinates[i])
+		if (mario_info.y_coordinate + MARIO_FLOOR_DISTANCE == board.platforms_y_coordinate[i])
 		{
 			mario_can_go_right_from_ladder = true;
 			break;
@@ -59,7 +59,7 @@ void lower_arrow_event(Mario& mario_info, const BoardElements& board)
 		mario_info.can_go_down = true;
 		for (size_t k = 0; k < board.platforms_amount; k++)
 		{
-			if (board.platforms_y_coordinates[k] == mario_info.y_coordinate + MARIO_FLOOR_DISTANCE)
+			if (board.platforms_y_coordinate[k] == mario_info.y_coordinate + MARIO_FLOOR_DISTANCE)
 			{
 				mario_info.can_go_down = false;
 				break;

@@ -5,8 +5,8 @@ void get_mario_info(Mario& mario_info, const BoardElements& board, int& mario_ro
 {
 	for (size_t i = 0; i < board.platforms_amount; i++)
 	{
-		if (mario_info.y_coordinate <= board.platforms_y_coordinates[i] &&
-			mario_info.y_coordinate >= board.platforms_y_coordinates[i] - board.platform_height)
+		if (mario_info.y_coordinate <= board.platforms_y_coordinate[i] &&
+			mario_info.y_coordinate >= board.platforms_y_coordinate[i] - board.platform_height)
 		{
 			mario_row = i + 1;
 			break;

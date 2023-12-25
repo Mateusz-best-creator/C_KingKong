@@ -1,5 +1,6 @@
 #include "boards.h"
 #include "../functions_definitions.h"
+#include <stdio.h>
 
 BoardElements initialize_board(int level)
 {
@@ -8,7 +9,7 @@ BoardElements initialize_board(int level)
 		case 1:
 			return initialize_level_1_board();
 		case 2:
-			break;
+			return initialize_level_2_board();
 		case 3:
 			break;
 		default:
@@ -16,30 +17,33 @@ BoardElements initialize_board(int level)
 	}
 }
 
+/*
+	Initialize the entire board for level 1
+*/
 BoardElements initialize_level_1_board()
 {
 	BoardElements board;
-	// Initialize the entire board for level 1
 
 	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
+	board.platforms_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
+	board.platforms_y_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
+	board.platforms_widths = new int[LEVEL_1_PLATFORMS_AMOUNT];
+
 	// Initialize platforms width and beginning y coordinates
 	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
 	{
-		board.platforms_y_coordinates[i] = 390 - i * 60;
+		board.platforms_y_coordinate[i] = 390 - i * 60;
 		board.platforms_widths[i] = SCREEN_WIDTH;
 		board.platforms_x_coordinate[i] = 0;
 	}
 
 	// Initialize all other data
 	board.amount_of_ladders = LEVEL_1_AMOUNT_OF_LADDERS;
+	board.ladders_x_coordinates = new int[LEVEL_1_AMOUNT_OF_LADDERS];
+	board.ladders_y_coordinates = new int[LEVEL_1_AMOUNT_OF_LADDERS];
+	board.ladders_rows = new int[LEVEL_1_AMOUNT_OF_LADDERS];
 	board.ladder_width = 20;
 	board.platform_height = 60;
-		
-	// Initial coordinates
-	board.initial_mario_x = LEVEL_1_MARIO_INITIAL_X;
-	board.initial_mario_y = LEVEL_1_MARIO_INITIAL_Y;
-	board.king_kong_x = LEVEL1_KING_KONG_X;
-	board.king_kong_y = LEVEL1_KING_KONG_Y;
 
 	for (size_t i = 0; i < board.amount_of_ladders; i++)
 	{
@@ -51,11 +55,105 @@ BoardElements initialize_level_1_board()
 		else
 			board.ladders_x_coordinates[i] = 60;
 	}
+		
+	// Initial coordinates
+	board.initial_mario_x = LEVEL_1_MARIO_INITIAL_X;
+	board.initial_mario_y = LEVEL_1_MARIO_INITIAL_Y;
+	board.king_kong_x = LEVEL1_KING_KONG_X;
+	board.king_kong_y = LEVEL1_KING_KONG_Y;
 
 	// Initialize winning coordinates
-	board.winning_x1_coordinate = LEVEL_1_X1;
-	board.winning_x2_coordinate = LEVEL_1_X2;
-	board.winning_y_coordinate = LEVEL_1_Y;
+	board.winning_x1_coordinate = LEVEL_1_WINNING_X1;
+	board.winning_x2_coordinate = LEVEL_1_WINNING_X2;
+	board.winning_y_coordinate = LEVEL_1_WINNING_Y;
 
 	return board;
+}
+
+/*
+	Initialize the entire board for level 2
+*/
+BoardElements initialize_level_2_board()
+{
+	BoardElements board;
+	/*
+	board.platforms_amount = LEVEL_2_PLATFORMS_AMOUNT;
+	board.platforms_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
+	board.platforms_y_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
+	board.platforms_widths = new int[LEVEL_2_PLATFORMS_AMOUNT]
+	*/
+
+	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
+	board.platforms_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
+	board.platforms_y_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
+	board.platforms_widths = new int[LEVEL_1_PLATFORMS_AMOUNT];
+
+	// Initialize platforms width and beginning y coordinates
+	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
+	{
+		board.platforms_y_coordinate[i] = 390 - i * 60;
+		board.platforms_widths[i] = SCREEN_WIDTH;
+		board.platforms_x_coordinate[i] = 0;
+	}
+	
+	
+	board.amount_of_ladders = LEVEL_2_AMOUNT_OF_LADDERS;
+	board.ladders_x_coordinates = new int[LEVEL_2_AMOUNT_OF_LADDERS];
+	board.ladders_y_coordinates = new int[LEVEL_2_AMOUNT_OF_LADDERS];
+	board.ladders_rows = new int[LEVEL_2_AMOUNT_OF_LADDERS];
+	board.ladder_width = 20;
+	board.platform_height = 60;
+
+	// Initialize ladders
+	for (size_t i = 0; i < 3; i++)
+	{
+		board.ladders_y_coordinates[i] = 351;
+		board.ladders_rows[i] = 1;
+	}
+	board.ladders_x_coordinates[0] = 60;
+	board.ladders_x_coordinates[1] = SCREEN_WIDTH / 2;
+	board.ladders_x_coordinates[2] = 560;
+	for (size_t i = 3; i < 5; i++)
+	{ 
+		board.ladders_y_coordinates[i] = 291;
+		board.ladders_rows[i] = 2;
+	}
+	board.ladders_x_coordinates[3] = 120;
+	board.ladders_x_coordinates[4] = 530;
+	for (size_t i = 5; i < 8; i++)
+	{
+		board.ladders_y_coordinates[i] = 231;
+		board.ladders_rows[i] = 3;
+	}
+	board.ladders_x_coordinates[5] = 60;
+	board.ladders_x_coordinates[6] = SCREEN_WIDTH / 2 - 20;
+	board.ladders_x_coordinates[7] = 560;
+	for (size_t i = 8; i < 10; i++)
+	{
+		board.ladders_y_coordinates[i] = 171;
+		board.ladders_rows[i] = 4;
+	}
+	board.ladders_x_coordinates[8] = 130;
+	board.ladders_x_coordinates[9] = 580;
+	board.ladders_x_coordinates[10] = SCREEN_WIDTH / 2;
+	board.ladders_y_coordinates[10] = 111;
+
+	board.initial_mario_x = LEVEL_2_MARIO_INITIAL_X;
+	board.initial_mario_y = LEVEL_2_MARIO_INITIAL_Y;
+	board.king_kong_x = LEVEL2_KING_KONG_X;
+	board.king_kong_y = LEVEL2_KING_KONG_Y;
+
+
+	return board;
+}
+
+void releaseMemory(BoardElements& board)
+{
+	delete[] board.platforms_x_coordinate;
+	delete[] board.platforms_y_coordinate;
+	delete[] board.platforms_widths;
+	delete[] board.ladders_x_coordinates;
+	delete[] board.ladders_y_coordinates;
+	delete[] board.ladders_rows;
+	printf("Memory released");
 }

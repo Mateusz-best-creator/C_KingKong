@@ -22,12 +22,18 @@ int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elem
 		// tekst informacyjny / info text
 		DrawRectangle(screen, DESC_RECTANGLE_INIT_X_Y, DESC_RECTANGLE_INIT_X_Y, 
 			DESC_RECTANGLE_WIDTH, DESC_RECTANGLE_HEIGHT, colors.czerwony, colors.niebieski);
-		sprintf(desc_text, "Embark on a  thrilling retro adventure  with my C++-crafted DonkeyKong");
-		DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2, DESC_LINE_1, desc_text, charset);
-		sprintf(desc_text, "game. You'll dodge barrels, climb ladders, and find amazing treasures!");
-		DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2, DESC_LINE_2, desc_text, charset);
-		sprintf(desc_text, "Enter - pick a level, \030 - choose lower level, \031 - choose higher level");
-		DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2, DESC_LINE_3, desc_text, charset);
+		const char* desc[3] =
+		{
+			"Embark on a  thrilling retro adventure  with my C++-crafted DonkeyKong",
+			"game. You'll dodge barrels, climb ladders, and find amazing treasures!",
+			"Enter - pick a level, \030 - choose lower level, \031 - choose higher level"
+		};
+		const int lines_Y[3] = {DESC_LINE_1, DESC_LINE_2, DESC_LINE_3};
+		for (size_t i = 0; i < 3; i++)
+		{
+			sprintf(desc_text, desc[i]);
+			DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2, lines_Y[i], desc_text, charset);
+		}
 
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, screen->pixels, screen->pitch);
 		//		SDL_RenderClear(renderer);
@@ -51,7 +57,7 @@ int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elem
 			DrawSurface(screen, level_logos[i], SCREEN_WIDTH / 2, INITIAL_SURFACE_Y + i * OFFSET);
 		}
 	}
-    return 1;
+    return level;
 }
 
 bool handle_initial_interface_events(SDL_Event& event, int& level)
@@ -63,11 +69,12 @@ bool handle_initial_interface_events(SDL_Event& event, int& level)
                 return false;
 			else if (event.key.keysym.sym == SDLK_DOWN)
 			{
-				if (level < 3)
+				if (level < AMOUNT_OF_LEVELS)
 					level++;
 			}
 			else if (event.key.keysym.sym == SDLK_UP)
 			{
+				// We do not have level 0
 				if (level > 1)
 					level--;
 			}

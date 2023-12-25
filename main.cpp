@@ -63,6 +63,7 @@ int main(int argc, char** argv)
 	BoardElements board = initialize_board(initial_interface(surfaces, SDL_elements, colors));
 
 	start_game(surfaces, SDL_elements, board);
+	releaseMemory(board);
 	// Clear all the settings
 	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);
 	return 0;
