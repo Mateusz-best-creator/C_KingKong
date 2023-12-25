@@ -26,8 +26,10 @@ BoardElements initialize_level_1_board()
 
 	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
+	board.platforms_ending_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
 	board.platforms_y_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
 	board.platforms_widths = new int[LEVEL_1_PLATFORMS_AMOUNT];
+	board.platforms_rows = new int[LEVEL_1_PLATFORMS_AMOUNT];
 
 	// Initialize platforms width and beginning y coordinates
 	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
@@ -35,7 +37,12 @@ BoardElements initialize_level_1_board()
 		board.platforms_y_coordinate[i] = 390 - i * 60;
 		board.platforms_widths[i] = SCREEN_WIDTH;
 		board.platforms_x_coordinate[i] = 0;
+		board.platforms_rows[i] = i + 1;
 	}
+
+	// Calculate ending x coordinates for each platform
+	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
+		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
 
 	// Initialize all other data
 	board.amount_of_ladders = LEVEL_1_AMOUNT_OF_LADDERS;
@@ -79,33 +86,44 @@ BoardElements initialize_level_2_board()
 	
 	board.platforms_amount = LEVEL_2_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
+	board.platforms_ending_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
 	board.platforms_y_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
 	board.platforms_widths = new int[LEVEL_2_PLATFORMS_AMOUNT];
+	board.platforms_rows = new int[LEVEL_2_PLATFORMS_AMOUNT];
 
 	for (size_t i = 0; i < 3; i++)
 	{
 		board.platforms_x_coordinate[i] = 230 * i;
 		board.platforms_y_coordinate[i] = 390;
 		board.platforms_widths[i] = 180;
+		board.platforms_rows[i] = 1;
 	}
 	board.platforms_x_coordinate[3] = 0;
 	board.platforms_y_coordinate[3] = 330;
 	board.platforms_widths[3] = SCREEN_WIDTH;
+	board.platforms_rows[3] = 2;
 	for (size_t i = 4; i < 6; i++)
 	{
 		i == 4 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 440;
 		i == 4 ? board.platforms_widths[i] = 400 : board.platforms_widths[i] = 200;
 		board.platforms_y_coordinate[i] = 270;
+		board.platforms_rows[i] = 3;
 	}
 	for (size_t i = 6; i < 8; i++)
 	{
 		i == 6 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 230;
 		i == 6 ? board.platforms_widths[i] = 200 : board.platforms_widths[i] = 410;
 		board.platforms_y_coordinate[i] = 210;
+		board.platforms_rows[i] = 4;
 	}
 	board.platforms_x_coordinate[8] = 0;
 	board.platforms_y_coordinate[8] = 150;
 	board.platforms_widths[8] = SCREEN_WIDTH;
+	board.platforms_rows[8] = 5;
+
+	// Calculate ending x coordinates for each platform
+	for (size_t i = 0; i < LEVEL_2_PLATFORMS_AMOUNT; i++)
+		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
 	
 	
 	board.amount_of_ladders = LEVEL_2_AMOUNT_OF_LADDERS;
@@ -169,8 +187,10 @@ BoardElements initialize_level_3_board()
 
 	board.platforms_amount = LEVEL_3_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
+	board.platforms_ending_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
 	board.platforms_y_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
 	board.platforms_widths = new int[LEVEL_3_PLATFORMS_AMOUNT];
+	board.platforms_rows = new int[LEVEL_3_PLATFORMS_AMOUNT];
 
 	// Initialize platforms
 	int first_platforms_X_cors[4] = {0, 167, 334, 501};
@@ -179,25 +199,34 @@ BoardElements initialize_level_3_board()
 		board.platforms_x_coordinate[i] = first_platforms_X_cors[i];
 		board.platforms_y_coordinate[i] = 390;
 		board.platforms_widths[i] = 137;
+		board.platforms_rows[i] = 1;
 	}
 	for (size_t i = 4; i < 6; i++)
 	{
 		i == 4 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 340;
 		board.platforms_y_coordinate[i] = 330;
 		board.platforms_widths[i] = 300;
+		board.platforms_rows[i] = 2;
 	}
 	board.platforms_x_coordinate[6] = 0;
 	board.platforms_y_coordinate[6] = 270;
 	board.platforms_widths[6] = SCREEN_WIDTH;
+	board.platforms_rows[6] = 3;
 	for (size_t i = 7; i < 9; i++)
 	{
 		i == 7 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 390;
 		board.platforms_y_coordinate[i] = 210;
 		i == 7 ? board.platforms_widths[i] = 120 : board.platforms_widths[i] = 250;
+		board.platforms_rows[i] = 4;
 	}
 	board.platforms_x_coordinate[9] = 0;
 	board.platforms_y_coordinate[9] = 150;
 	board.platforms_widths[9] = SCREEN_WIDTH;
+	board.platforms_rows[9] = 5;
+
+	// Calculate ending x coordinates for each platform
+	for (size_t i = 0; i < LEVEL_3_PLATFORMS_AMOUNT; i++)
+		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
 
 	board.amount_of_ladders = LEVEL_3_AMOUNT_OF_LADDERS;
 	board.ladders_x_coordinates = new int[LEVEL_3_AMOUNT_OF_LADDERS];
@@ -246,10 +275,12 @@ BoardElements initialize_level_3_board()
 void releaseMemory(BoardElements& board)
 {
 	delete[] board.platforms_x_coordinate;
+	delete[] board.platforms_ending_x_coordinate; // added
 	delete[] board.platforms_y_coordinate;
 	delete[] board.platforms_widths;
 	delete[] board.ladders_x_coordinates;
 	delete[] board.ladders_y_coordinates;
 	delete[] board.ladders_rows;
+	delete[] board.platforms_rows; // added
 	printf("Memory released");
 }

@@ -25,6 +25,7 @@ struct Mario
 	bool can_go_down;
 	int lives;
 	long points;
+	int mario_row;
 };
 
 // Handling user events

@@ -1,10 +1,24 @@
 #include "../functions_definitions.h"
 #include "../Mario/mario.h"
+#include <iostream>
 
 void left_arrow_event(Mario& mario_info, const BoardElements& board)
 {
 	if (mario_info.x_coordinate <= SCREEN_LEFT_X_BORDER)
 		return;
+	bool can_move_left = false;
+	// Check if mario will still be on the platform
+	for (size_t i = 0; i < board.platforms_amount; i++)
+	{
+		if (mario_info.mario_row != board.platforms_rows[i])
+			continue;
+		if (mario_info.x_coordinate - MARIO_SPEED * 3 >= board.platforms_x_coordinate[i] &&
+			mario_info.x_coordinate - MARIO_SPEED <= board.platforms_ending_x_coordinate[i])
+		{
+			can_move_left = true;
+			break;
+		}
+	}
 	bool mario_can_go_left_from_ladder = false;
 	for (size_t i = 0; i < board.platforms_amount; i++)
 	{
@@ -17,7 +31,8 @@ void left_arrow_event(Mario& mario_info, const BoardElements& board)
 	if (mario_info.going_through_the_ladder && !mario_can_go_left_from_ladder)
 		return;
 	mario_info.direction = Mario::LEFT;
-	mario_info.x_coordinate -= MARIO_SPEED;
+	if (can_move_left)
+		mario_info.x_coordinate -= MARIO_SPEED;
 }
 
 void right_arrow_event(Mario& mario_info, const BoardElements& board)
@@ -28,6 +43,21 @@ void right_arrow_event(Mario& mario_info, const BoardElements& board)
 	}
 	if (mario_info.x_coordinate >= SCREEN_RIGHT_X_BORDER)
 		return;
+
+	bool can_move_right = false;
+	// Check if mario will still be on the platform
+	for (size_t i = 0; i < board.platforms_amount; i++)
+	{
+		if (mario_info.mario_row != board.platforms_rows[i])
+			continue;
+		if (mario_info.x_coordinate + MARIO_SPEED >= board.platforms_x_coordinate[i] &&
+			mario_info.x_coordinate + MARIO_SPEED * 3 <= board.platforms_ending_x_coordinate[i])
+		{
+			can_move_right = true;
+			break;
+		}
+	}
+
 	bool mario_can_go_right_from_ladder = false;
 	for (size_t i = 0; i < board.platforms_amount; i++)
 	{
@@ -41,7 +71,8 @@ void right_arrow_event(Mario& mario_info, const BoardElements& board)
 		return;
 	
 	mario_info.direction = Mario::RIGHT;
-	mario_info.x_coordinate += MARIO_SPEED;
+	if (can_move_right)
+		mario_info.x_coordinate += MARIO_SPEED;
 }
 
 void upper_arrow_event(Mario& mario_info, const BoardElements& board)

@@ -40,8 +40,9 @@ struct BoardElements
 {
 	int platforms_amount;
 	int platform_height;
-	int *platforms_y_coordinate, *platforms_x_coordinate;
+	int *platforms_y_coordinate, *platforms_x_coordinate, *platforms_ending_x_coordinate;
 	int *platforms_widths;
+	int* platforms_rows;
 	int initial_mario_x, initial_mario_y;
 	int king_kong_x, king_kong_y;
 	int amount_of_ladders;

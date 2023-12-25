@@ -8,6 +8,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 	// Variable stores information in which row mario currently is
 	int mario_row = 1;
 	get_mario_info(mario_info, board, mario_row);
+	mario_info.mario_row = mario_row;
 
 	// handling of events (if there were any)
 	while (SDL_PollEvent(&event)) {
@@ -21,8 +22,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
 			{
-				std::cout << mario_row << std::endl;
-				std::cout << board.ladders_rows[8] << std::endl;
+				std::cout << "Mario row: " << mario_info.mario_row << std::endl;
 				right_arrow_event(mario_info, board);
 			}
 			else if (event.key.keysym.sym == SDLK_LEFT)
