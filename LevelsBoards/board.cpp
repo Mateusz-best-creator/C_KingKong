@@ -23,6 +23,7 @@ BoardElements initialize_board(int level)
 BoardElements initialize_level_1_board()
 {
 	BoardElements board;
+	board.level = 1;
 
 	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
@@ -83,6 +84,7 @@ BoardElements initialize_level_1_board()
 BoardElements initialize_level_2_board()
 {
 	BoardElements board;
+	board.level = 2;
 	
 	board.platforms_amount = LEVEL_2_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
@@ -184,7 +186,8 @@ BoardElements initialize_level_2_board()
 BoardElements initialize_level_3_board()
 {
 	BoardElements board;
-
+	board.level = 3;
+	
 	board.platforms_amount = LEVEL_3_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
 	board.platforms_ending_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];

@@ -48,37 +48,6 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	else {
 		SDL_SetColorKey(*(surfaces.charset), true, 0x000000);
 	}
-	/*
-	const int number_of_images = 6;
-	char* image_paths[number_of_images] =
-	{
-		"./mario_running_right.bmp",
-		"./mario_running_left.bmp",
-		"./king_kong.bmp",
-		"./mario_climbing.bmp",
-		"./mario_jumping_right.bmp",
-		"./mario_jumping_left.bmp",
-	};
-	SDL_Surface* images_to_load[number_of_images] =
-	{
-		*(surfaces.mario_running_right),
-		*(surfaces.mario_running_left),
-		*(surfaces.king_kong),
-		*(surfaces.mario_climbing),
-		*(surfaces.mario_jumping_right),
-		*(surfaces.mario_jumping_left),
-	};
-	
-	for (size_t i = 0; i < number_of_images; i++)
-	{
-		images_to_load[i] = SDL_LoadBMP(image_paths[i]);
-		if (images_to_load[i] == nullptr) {
-			printf("SDL_LoadBMP(%s) error: %s\n", image_paths[i], SDL_GetError());
-			// Handle errors and set Error = true
-			Error = true;
-		}
-	}
-	*/
 	// Load mario running right image
 	*(surfaces.mario_running_right) = SDL_LoadBMP("./images/mario_running_right.bmp");
 	if (*(surfaces.mario_running_right) == nullptr) {
@@ -155,6 +124,27 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 	*(surfaces.level_3_diamond) = SDL_LoadBMP("./images/diamond_logo.bmp");
 	if (*(surfaces.level_3_diamond) == nullptr) {
 		printf("SDL_LoadBMP(images/diamond_logo.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Load mario running right image
+	*(surfaces.level_1_winning_icon) = SDL_LoadBMP("./images/crown_logo_winning.bmp");
+	if (*(surfaces.level_1_winning_icon) == nullptr) {
+		printf("SDL_LoadBMP(crown_logo_winning.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Load mario running right image
+	*(surfaces.level_2_winning_icon) = SDL_LoadBMP("./images/treasure_logo_winning.bmp");
+	if (*(surfaces.level_1_winning_icon) == nullptr) {
+		printf("SDL_LoadBMP(treasure_logo_winning.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Load mario running right image
+	*(surfaces.level_3_winning_icon) = SDL_LoadBMP("./images/diamond_logo_winning.bmp");
+	if (*(surfaces.level_1_winning_icon) == nullptr) {
+		printf("SDL_LoadBMP(diamond_logo_winning.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
 		Error = true;
 	}

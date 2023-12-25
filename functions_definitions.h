@@ -46,7 +46,7 @@ struct SDL_Surfaces
 {
 	SDL_Surface** screen, **charset, **mario_running_right, **mario_running_left, 
 		**king_kong, **mario_climbing, **mario_jumping_right, **mario_jumping_left, **rolling_barell, ** level_1_crown,
-		**level_2_treasure, **level_3_diamond;
+		**level_2_treasure, **level_3_diamond, **level_1_winning_icon, **level_2_winning_icon, **level_3_winning_icon;
 };
 
 struct SDL_Elements

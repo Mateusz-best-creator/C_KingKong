@@ -46,6 +46,23 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		// Draw barell
 		DrawSurface(screen, *(surfaces.rolling_barell), board.king_kong_x, board.king_kong_y);
 
+		// Draw final treasures
+		switch (board.level)
+		{
+		case 1:
+			DrawSurface(screen, *(surfaces.level_1_winning_icon), LEVEL_1_WINNING_X1, LEVEL_1_WINNING_Y);
+			break;
+		case 2:
+			DrawSurface(screen, *(surfaces.level_2_winning_icon), LEVEL_2_WINNING_X1, LEVEL_2_WINNING_Y);
+			break;
+		case 3:
+			DrawSurface(screen, *(surfaces.level_3_winning_icon), LEVEL_3_WINNING_X1, LEVEL_3_WINNING_Y);
+			break;
+		default:
+			break;
+		}
+		
+
 		times.fpsTimer += times.delta;
 		if (times.fpsTimer > SECONDS_BETWEEN_REFRESH) {
 			times.fps = times.frames * REFRESH_RATE;
