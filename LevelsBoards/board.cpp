@@ -76,25 +76,36 @@ BoardElements initialize_level_1_board()
 BoardElements initialize_level_2_board()
 {
 	BoardElements board;
-	/*
+	
 	board.platforms_amount = LEVEL_2_PLATFORMS_AMOUNT;
 	board.platforms_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
 	board.platforms_y_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
-	board.platforms_widths = new int[LEVEL_2_PLATFORMS_AMOUNT]
-	*/
+	board.platforms_widths = new int[LEVEL_2_PLATFORMS_AMOUNT];
 
-	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
-	board.platforms_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
-	board.platforms_y_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
-	board.platforms_widths = new int[LEVEL_1_PLATFORMS_AMOUNT];
-
-	// Initialize platforms width and beginning y coordinates
-	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
+	for (size_t i = 0; i < 3; i++)
 	{
-		board.platforms_y_coordinate[i] = 390 - i * 60;
-		board.platforms_widths[i] = SCREEN_WIDTH;
-		board.platforms_x_coordinate[i] = 0;
+		board.platforms_x_coordinate[i] = 230 * i;
+		board.platforms_y_coordinate[i] = 390;
+		board.platforms_widths[i] = 180;
 	}
+	board.platforms_x_coordinate[3] = 0;
+	board.platforms_y_coordinate[3] = 330;
+	board.platforms_widths[3] = SCREEN_WIDTH;
+	for (size_t i = 4; i < 6; i++)
+	{
+		i == 4 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 440;
+		i == 4 ? board.platforms_widths[i] = 400 : board.platforms_widths[i] = 200;
+		board.platforms_y_coordinate[i] = 270;
+	}
+	for (size_t i = 6; i < 8; i++)
+	{
+		i == 6 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 230;
+		i == 6 ? board.platforms_widths[i] = 200 : board.platforms_widths[i] = 410;
+		board.platforms_y_coordinate[i] = 210;
+	}
+	board.platforms_x_coordinate[8] = 0;
+	board.platforms_y_coordinate[8] = 150;
+	board.platforms_widths[8] = SCREEN_WIDTH;
 	
 	
 	board.amount_of_ladders = LEVEL_2_AMOUNT_OF_LADDERS;
