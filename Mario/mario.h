@@ -26,6 +26,7 @@ struct Mario
 	int lives;
 	long points;
 	int mario_row;
+	bool just_grabbed_coin;
 };
 
 // Handling user events
@@ -38,6 +39,10 @@ void space_event(Mario& mario_info);
 
 // Drawing mario (also animation of the jump)
 void draw_mario(SDL_Surfaces&, Mario&);
+
+// Grabbing a coin
+void grab_coin(Mario& mario_info, const BoardElements& board);
+void grab_coin_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset);
 
 void get_mario_info(Mario&, const BoardElements&, int&);
 bool check_if_mario_win(const BoardElements&, Mario&);

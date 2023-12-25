@@ -54,6 +54,7 @@ struct BoardElements
 	int ladder_width;
 	int winning_x1_coordinate, winning_x2_coordinate, winning_y_coordinate;
 	int* coins_x, * coins_y;
+	bool* grabbed_coins;
 };
 BoardElements initialize_board(int level);
 BoardElements initialize_level_1_board();

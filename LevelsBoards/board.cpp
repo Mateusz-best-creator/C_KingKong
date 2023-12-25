@@ -28,12 +28,14 @@ BoardElements initialize_level_1_board()
 	// Coins coordinates for level 2
 	board.coins_x = new int[LEVEL_1_COINS_AMOUNT];
 	board.coins_y = new int[LEVEL_1_COINS_AMOUNT];
+	board.grabbed_coins = new bool[LEVEL_1_COINS_AMOUNT];
 	int coins_x[LEVEL_1_COINS_AMOUNT] = { 476, 308, 200, 344, 170 };
 	int coins_y[LEVEL_1_COINS_AMOUNT] = { 387, 327, 267, 207, 147 };
 	for (size_t i = 0; i < LEVEL_1_COINS_AMOUNT; i++)
 	{
 		board.coins_x[i] = coins_x[i];
 		board.coins_y[i] = coins_y[i];
+		board.grabbed_coins[i] = false;
 	}
 
 	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
@@ -101,12 +103,14 @@ BoardElements initialize_level_2_board()
 	// Coins coordinates for level 2
 	board.coins_x = new int[LEVEL_2_COINS_AMOUNT];
 	board.coins_y = new int[LEVEL_2_COINS_AMOUNT];
+	board.grabbed_coins = new bool[LEVEL_2_COINS_AMOUNT];
 	int coins_x[LEVEL_2_COINS_AMOUNT] = { 254, 476, 464, 446, 140, 200, 26 };
 	int coins_y[LEVEL_2_COINS_AMOUNT] = { 387, 387, 267, 207, 387, 267, 207 };
 	for (size_t i = 0; i < LEVEL_2_COINS_AMOUNT; i++)
 	{
 		board.coins_x[i] = coins_x[i];
 		board.coins_y[i] = coins_y[i];
+		board.grabbed_coins[i] = false;
 	}
 	
 	board.platforms_amount = LEVEL_2_PLATFORMS_AMOUNT;
@@ -214,12 +218,14 @@ BoardElements initialize_level_3_board()
 	// Coins coordinates for level 2
 	board.coins_x = new int[LEVEL_3_COINS_AMOUNT];
 	board.coins_y = new int[LEVEL_3_COINS_AMOUNT];
+	board.grabbed_coins = new bool[LEVEL_3_COINS_AMOUNT];
 	int coins_x[LEVEL_3_COINS_AMOUNT] = { 116, 188, 20, 20, 446, 530, 446, 494 };
 	int coins_y[LEVEL_3_COINS_AMOUNT] = { 387, 387, 207, 147, 207, 387, 387, 267 };
 	for (size_t i = 0; i < LEVEL_3_COINS_AMOUNT; i++)
 	{
 		board.coins_x[i] = coins_x[i];
 		board.coins_y[i] = coins_y[i];
+		board.grabbed_coins[i] = false;
 	}
 	
 	board.platforms_amount = LEVEL_3_PLATFORMS_AMOUNT;

@@ -4,6 +4,7 @@
 
 void left_arrow_event(Mario& mario_info, const BoardElements& board)
 {
+	grab_coin(mario_info, board);
 	if (mario_info.x_coordinate <= SCREEN_LEFT_X_BORDER)
 		return;
 	bool can_move_left = false;
@@ -37,6 +38,7 @@ void left_arrow_event(Mario& mario_info, const BoardElements& board)
 
 void right_arrow_event(Mario& mario_info, const BoardElements& board)
 {
+	grab_coin(mario_info, board);
 	if (mario_info.jumping)
 	{
 		mario_info.x_coordinate += int (MARIO_SPEED / 2);
@@ -77,14 +79,14 @@ void right_arrow_event(Mario& mario_info, const BoardElements& board)
 
 void upper_arrow_event(Mario& mario_info, const BoardElements& board)
 {
+	grab_coin(mario_info, board);
 	if (mario_info.going_through_the_ladder)
-	{
 		mario_info.y_coordinate -= MARIO_SPEED;
-	}
 }
 
 void lower_arrow_event(Mario& mario_info, const BoardElements& board)
 {
+	grab_coin(mario_info, board);
 	if (mario_info.going_through_the_ladder)
 	{
 		mario_info.can_go_down = true;
