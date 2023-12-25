@@ -15,7 +15,7 @@ int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elem
 	char desc_text[150];
 
 	bool choosing_level = true;
-	int level = 1;
+	int option = 1;
 
 	while (choosing_level)
 	{
@@ -40,12 +40,12 @@ int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elem
 		SDL_RenderCopy(SDL_elements.renderer, SDL_elements.scrtex, NULL, NULL);
 		SDL_RenderPresent(SDL_elements.renderer);
 
-		choosing_level = handle_initial_interface_events(event, level);
+		choosing_level = handle_initial_interface_events(event, option);
 		// Fill the entire screen with given color
 		SDL_FillRect(screen, NULL, colors.czarny);
 
 		// Draw rectangle pointing to appropriate level
-		level_rectangle(screen, level, colors);
+		level_rectangle(screen, option, colors);
 		
 		SDL_Surface* level_logos[3] = { *(surfaces.level_1_crown) , *(surfaces.level_2_treasure) , *(surfaces.level_3_diamond) };
 		char* level_desc[3] = { "Level 1", "Level 2", "Level 3" };
@@ -57,7 +57,7 @@ int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elem
 			DrawSurface(screen, level_logos[i], SCREEN_WIDTH / 2, INITIAL_SURFACE_Y + i * OFFSET);
 		}
 	}
-    return level;
+    return option;
 }
 
 bool handle_initial_interface_events(SDL_Event& event, int& level)

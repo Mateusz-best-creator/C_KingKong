@@ -148,11 +148,16 @@ BoardElements initialize_level_2_board()
 	board.ladders_x_coordinates[9] = 580;
 	board.ladders_x_coordinates[10] = SCREEN_WIDTH / 2;
 	board.ladders_y_coordinates[10] = 111;
+	board.ladders_rows[10] = 5;
 
 	board.initial_mario_x = LEVEL_2_MARIO_INITIAL_X;
 	board.initial_mario_y = LEVEL_2_MARIO_INITIAL_Y;
 	board.king_kong_x = LEVEL2_KING_KONG_X;
 	board.king_kong_y = LEVEL2_KING_KONG_Y;
+
+	board.winning_x1_coordinate = LEVEL_2_WINNING_X1;
+	board.winning_x2_coordinate = LEVEL_2_WINNING_X2;
+	board.winning_y_coordinate = LEVEL_2_WINNING_Y;
 
 
 	return board;
@@ -230,6 +235,10 @@ BoardElements initialize_level_3_board()
 	board.initial_mario_y = LEVEL_3_MARIO_INITIAL_Y;
 	board.king_kong_x = LEVEL3_KING_KONG_X;
 	board.king_kong_y = LEVEL3_KING_KONG_Y;
+
+	board.winning_x1_coordinate = LEVEL_3_WINNING_X1;
+	board.winning_x2_coordinate = LEVEL_3_WINNING_X2;
+	board.winning_y_coordinate = LEVEL_3_WINNING_Y;
 
 	return board;
 }

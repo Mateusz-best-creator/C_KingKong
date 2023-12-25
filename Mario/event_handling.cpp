@@ -21,6 +21,8 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
 			{
+				std::cout << mario_row << std::endl;
+				std::cout << board.ladders_rows[8] << std::endl;
 				right_arrow_event(mario_info, board);
 			}
 			else if (event.key.keysym.sym == SDLK_LEFT)

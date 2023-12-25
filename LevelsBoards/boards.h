@@ -32,6 +32,8 @@ const int LEVEL3_KING_KONG_X = 600, LEVEL3_KING_KONG_Y = 130;
 
 // Winning coordinates for each level
 const int LEVEL_1_WINNING_X1 = 584, LEVEL_1_WINNING_X2 = 596, LEVEL_1_WINNING_Y = 99;
+const int LEVEL_2_WINNING_X1 = 320, LEVEL_2_WINNING_X2 = 338, LEVEL_2_WINNING_Y = 105;
+const int LEVEL_3_WINNING_X1 = 509, LEVEL_3_WINNING_X2 = 539, LEVEL_3_WINNING_Y = 147;
 
 // Define all platrforms for level 1
 struct BoardElements
