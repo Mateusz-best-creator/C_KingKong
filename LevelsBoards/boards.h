@@ -35,7 +35,11 @@ const int LEVEL_1_WINNING_X1 = 590, LEVEL_1_WINNING_X2 = 602, LEVEL_1_WINNING_Y 
 const int LEVEL_2_WINNING_X1 = 330, LEVEL_2_WINNING_X2 = 348, LEVEL_2_WINNING_Y = 95;
 const int LEVEL_3_WINNING_X1 = 504, LEVEL_3_WINNING_X2 = 539, LEVEL_3_WINNING_Y = 147;
 
+// Coins amount for each level
 const int LEVEL_1_COINS_AMOUNT = 5, LEVEL_2_COINS_AMOUNT = 7, LEVEL_3_COINS_AMOUNT = 8;
+
+// Barells amount for each level
+const int LEVEL_1_BARELLS_AMOUNT = 4, LEVEL_2_BARELLS_AMOUNT = 4, LEVEL_3_BARELLS_AMOUNT = 4;
 
 // Define board structure
 struct BoardElements
@@ -55,6 +59,9 @@ struct BoardElements
 	int winning_x1_coordinate, winning_x2_coordinate, winning_y_coordinate;
 	int* coins_x, * coins_y;
 	bool* grabbed_coins;
+	int barells_amount;
+	int* barells_left_border, *barells_right_border, *barells_y_coordinate;
+	int* barells_rows, *barells_direction;
 };
 BoardElements initialize_board(int level);
 BoardElements initialize_level_1_board();
@@ -63,4 +70,5 @@ BoardElements initialize_level_3_board();
 void releaseMemory(BoardElements&);
 void initialize_values(int level, BoardElements& board, const int coins_amount, const int platforms_amount,
 	const int amount_of_ladders, const int mario_x, const int mario_y, const int king_kong_x,
-	const int king_kong_y, const int winning_x1, const int winning_x2, const int winning_y);
+	const int king_kong_y, const int winning_x1, const int winning_x2, const int winning_y,
+	const int barells_amount);

@@ -8,7 +8,7 @@
 
 const int MARIO_FLOOR_DISTANCE = 3;
 const int MARIO_SPEED = 6;
-const int JUMP_HEIGHT = 30;
+const int JUMP_HEIGHT = 40;
 const double JUMP_SPEED = 0.5;
 const int POINTS_FOR_COMPLETING_LEVEL = 2500;
 

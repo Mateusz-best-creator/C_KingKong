@@ -27,7 +27,10 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 
 	// Create mario object
 	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, lifes, points, 1, false };
-	Barell barell = { 100, 150, 0, 1 };
+	
+	// Initialize all barells
+	Barell* barells = new Barell[board.barells_amount];
+	init_barells(board, barells);
 
 	while (!times.quit) 
 	{
@@ -56,9 +59,8 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		// Draw king_kong surface
 		DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
 
-		// Draw barell
-		draw_barell(barell, surfaces);
-		move_barell(barell);
+		// Moving all barells
+		move_barells(barells, board, surfaces);
 
 		// Draw final treasures
 		switch (board.level)

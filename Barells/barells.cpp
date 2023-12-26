@@ -1,37 +1,52 @@
 #include "barells.h"
 #include "../functions_definitions.h"
+#include "../LevelsBoards/boards.h"
+#include <iostream>
 
-void draw_barell(Barell& barell, SDL_Surfaces& surfaces)
+void init_barells(const BoardElements& board, Barell* barells)
 {
-	DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), barell.x_coordinate, barell.y_coordinate);
-	/*if (barell.image_index > 6)
-		barell.image_index = 1;
-	switch (barell.image_index)
+	int dir = 0;
+	for (size_t i = 0; i < board.barells_amount; i++)
 	{
-	case 1:
-		DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_6), barell.x_coordinate, barell.y_coordinate);
-		break;
-	case 2:
-		DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_5), barell.x_coordinate, barell.y_coordinate);
-		break;
-	case 3:
-		DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_4), barell.x_coordinate, barell.y_coordinate);
-		break;
-	case 4:
-		DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_3), barell.x_coordinate, barell.y_coordinate);
-		break;
-	case 5:
-		DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_2), barell.x_coordinate, barell.y_coordinate);
-		break;
-	case 6:
-		DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), barell.x_coordinate, barell.y_coordinate);
-		break;
+		barells[i].row = board.barells_rows[i];
+		dir = board.barells_direction[i];
+		barells[i].direction = dir;
+		if (dir == 0)
+		{
+			barells[i].x_coordinate = board.barells_left_border[i];
+		}
+		else
+		{
+			barells[i].x_coordinate = board.barells_right_border[i];
+		}
+		barells[i].right_border = board.barells_right_border[i];
+		barells[i].left_border = board.barells_left_border[i];
+		barells[i].y_coordinate = board.barells_y_coordinate[i];
 	}
-	barell.image_index++;*/
 }
 
-void move_barell(Barell& barell)
+void move_barells(Barell* barells, const BoardElements& board, const SDL_Surfaces& surfaces)
 {
+	// Move all barells
+	for (size_t i = 0; i < board.barells_amount; i++)
+	{
+		draw_barell(barells[i], surfaces);
+		move_barell(barells[i], board.level);
+	}
+}
+
+void draw_barell(Barell& barell, const SDL_Surfaces& surfaces)
+{
+	DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), barell.x_coordinate, barell.y_coordinate);
+}
+
+void move_barell(Barell& barell, int level)
+{
+	if (barell.direction == 1 && barell.x_coordinate >= barell.right_border)
+		barell.direction = 0;
+	else if (barell.direction == 0 && barell.x_coordinate <= barell.left_border)
+		barell.direction = 1;
+
 	if (barell.direction == 1)
 		move_barell_right(barell);
 	else if (barell.direction == 0)
@@ -40,14 +55,14 @@ void move_barell(Barell& barell)
 
 void move_barell_right(Barell& barell)
 {
-	if (barell.x_coordinate >= SCREEN_WIDTH - 20)
-		barell.x_coordinate = 50;
+	if (barell.x_coordinate >= barell.right_border)
+		barell.x_coordinate = barell.left_border;
 	barell.x_coordinate += BARELL_SPEED;
 }
 
 void move_barell_left(Barell& barell)
 {
-	if (barell.x_coordinate <= 50)
-		barell.x_coordinate = SCREEN_WIDTH - 20;
+	if (barell.x_coordinate <= barell.left_border)
+		barell.x_coordinate = barell.right_border;
 	barell.x_coordinate -= BARELL_SPEED;
 }

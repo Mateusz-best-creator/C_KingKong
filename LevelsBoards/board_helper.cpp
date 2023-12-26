@@ -2,7 +2,8 @@
 
 void initialize_values(int level, BoardElements& board, const int coins_amount, const int platforms_amount,
 					   const int amount_of_ladders, const int mario_x, const int mario_y, const int king_kong_x,
-					   const int king_kong_y, const int winning_x1, const int winning_x2, const int winning_y)
+					   const int king_kong_y, const int winning_x1, const int winning_x2, const int winning_y,
+					   const int barells_amount)
 {
 	board.coins_x = new int[coins_amount];
 	board.coins_y = new int[coins_amount];
@@ -33,4 +34,12 @@ void initialize_values(int level, BoardElements& board, const int coins_amount, 
 	board.winning_x1_coordinate = winning_x1;
 	board.winning_x2_coordinate = winning_x2;
 	board.winning_y_coordinate = winning_y;
+
+	// Initialize barells
+	board.barells_amount = barells_amount;
+	board.barells_y_coordinate = new int[barells_amount];
+	board.barells_left_border = new int[barells_amount];
+	board.barells_right_border = new int[barells_amount];
+	board.barells_rows = new int[barells_amount];
+	board.barells_direction = new int[barells_amount];
 }

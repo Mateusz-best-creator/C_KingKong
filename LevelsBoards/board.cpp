@@ -28,7 +28,7 @@ BoardElements initialize_level_1_board()
 	// Initialize all values
 	initialize_values(1, board, LEVEL_1_COINS_AMOUNT, LEVEL_1_PLATFORMS_AMOUNT, LEVEL_1_AMOUNT_OF_LADDERS,
 		LEVEL_1_MARIO_INITIAL_X, LEVEL_1_MARIO_INITIAL_Y, LEVEL1_KING_KONG_X, LEVEL1_KING_KONG_Y,
-		LEVEL_1_WINNING_X1, LEVEL_1_WINNING_X2, LEVEL_1_WINNING_Y);
+		LEVEL_1_WINNING_X1, LEVEL_1_WINNING_X2, LEVEL_1_WINNING_Y, LEVEL_1_BARELLS_AMOUNT);
 
 	// Initialize coins coordinates
 	int coins_x[LEVEL_1_COINS_AMOUNT] = { 476, 308, 200, 344, 170 };
@@ -62,6 +62,18 @@ BoardElements initialize_level_1_board()
 		else
 			board.ladders_x_coordinates[i] = 60;
 	}
+	// Initialize barells
+	for (size_t i = 0; i < LEVEL_1_BARELLS_AMOUNT; i++)
+	{
+		board.barells_y_coordinate[i] = 330 - i * 60;
+		board.barells_rows[i] = i + 2;
+		board.barells_left_border[i] = 100 - i * 10;
+		board.barells_right_border[i] = SCREEN_WIDTH - 70 + i * 10;
+		if (i % 2 == 1)
+			board.barells_direction[i] = 0; // LEFT
+		else
+			board.barells_direction[i] = 1; // RIGHT
+	}
 	return board;
 }
 
@@ -70,14 +82,13 @@ BoardElements initialize_level_1_board()
 */
 BoardElements initialize_level_2_board()
 {
-
 	BoardElements board;
 	board.level = 2;
 
 	// Initialize all values
 	initialize_values(2, board, LEVEL_2_COINS_AMOUNT, LEVEL_2_PLATFORMS_AMOUNT, LEVEL_2_AMOUNT_OF_LADDERS,
 		LEVEL_2_MARIO_INITIAL_X, LEVEL_2_MARIO_INITIAL_Y, LEVEL2_KING_KONG_X, LEVEL2_KING_KONG_Y,
-		LEVEL_2_WINNING_X1, LEVEL_2_WINNING_X2, LEVEL_2_WINNING_Y);
+		LEVEL_2_WINNING_X1, LEVEL_2_WINNING_X2, LEVEL_2_WINNING_Y, LEVEL_2_BARELLS_AMOUNT);
 
 	int coins_x[LEVEL_2_COINS_AMOUNT] = { 254, 476, 464, 446, 140, 200, 26 };
 	int coins_y[LEVEL_2_COINS_AMOUNT] = { 387, 387, 267, 207, 387, 267, 207 };
@@ -156,6 +167,21 @@ BoardElements initialize_level_2_board()
 	board.ladders_x_coordinates[10] = SCREEN_WIDTH / 2;
 	board.ladders_y_coordinates[10] = 111;
 	board.ladders_rows[10] = 5;
+
+	// Initialize barells
+	board.barells_amount = LEVEL_2_BARELLS_AMOUNT;
+	int dirs[] = { 0, 0, 1, 1 };
+	int left_borders[] = { 50, 20, 254, 100 };
+	int right_borders[] = { SCREEN_WIDTH - 50, 374, 620, SCREEN_WIDTH - 100 };
+	for (size_t i = 0; i < LEVEL_2_BARELLS_AMOUNT; i++)
+	{
+		board.barells_direction[i] = dirs[i];
+		board.barells_left_border[i] = left_borders[i];
+		board.barells_right_border[i] = right_borders[i];
+		board.barells_rows[i] = i + 2;
+		board.barells_y_coordinate[i] = 330 - i * 60;
+	}
+
 	return board;
 }
 
@@ -167,7 +193,7 @@ BoardElements initialize_level_3_board()
 	// Initialize all values
 	initialize_values(3, board, LEVEL_3_COINS_AMOUNT, LEVEL_3_PLATFORMS_AMOUNT, LEVEL_3_AMOUNT_OF_LADDERS,
 		LEVEL_3_MARIO_INITIAL_X, LEVEL_3_MARIO_INITIAL_Y, LEVEL3_KING_KONG_X, LEVEL3_KING_KONG_Y,
-		LEVEL_3_WINNING_X1, LEVEL_3_WINNING_X2, LEVEL_3_WINNING_Y);
+		LEVEL_3_WINNING_X1, LEVEL_3_WINNING_X2, LEVEL_3_WINNING_Y, LEVEL_3_BARELLS_AMOUNT);
 
 	int coins_x[LEVEL_3_COINS_AMOUNT] = { 116, 188, 20, 20, 446, 530, 446, 494 };
 	int coins_y[LEVEL_3_COINS_AMOUNT] = { 387, 387, 207, 147, 207, 387, 387, 267 };
@@ -236,6 +262,20 @@ BoardElements initialize_level_3_board()
 	board.ladders_y_coordinates[8] = 171;
 	board.ladders_rows[8] = 4;
 
+	// Initialize barells
+	board.barells_amount = LEVEL_3_BARELLS_AMOUNT;
+	int dirs[] = { 1, 1, 0, 1 };
+	int left_borders[] = { 350, 20, 416, 50 };
+	int right_borders[] = { 626, SCREEN_WIDTH - 20, 626, 476 };
+	for (size_t i = 0; i < LEVEL_3_BARELLS_AMOUNT; i++)
+	{
+		board.barells_direction[i] = dirs[i];
+		board.barells_left_border[i] = left_borders[i];
+		board.barells_right_border[i] = right_borders[i];
+		board.barells_rows[i] = i + 2;
+		board.barells_y_coordinate[i] = 330 - i * 60;
+	}
+
 	return board;
 }
 
@@ -251,5 +291,10 @@ void releaseMemory(BoardElements& board)
 	delete[] board.platforms_rows;
 	delete[] board.coins_x;
 	delete[] board.coins_y;
+	delete[] board.barells_left_border;
+	delete[] board.barells_right_border;
+	delete[] board.barells_rows;
+	delete[] board.barells_direction;
+	delete[] board.barells_y_coordinate;
 	printf("Memory released");
 }
