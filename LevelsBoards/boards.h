@@ -67,7 +67,7 @@ BoardElements initialize_board(int level);
 BoardElements initialize_level_1_board();
 BoardElements initialize_level_2_board();
 BoardElements initialize_level_3_board();
-void releaseMemory(BoardElements&);
+void releaseMemory(const BoardElements& board);
 void initialize_values(int level, BoardElements& board, const int coins_amount, const int platforms_amount,
 	const int amount_of_ladders, const int mario_x, const int mario_y, const int king_kong_x,
 	const int king_kong_y, const int winning_x1, const int winning_x2, const int winning_y,

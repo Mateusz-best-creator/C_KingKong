@@ -3,6 +3,7 @@
 #include "../Mario/mario.h"
 #include "../Barells/barells.h"
 #include <iostream>
+#include <cstdlib>
 
 static int lifes = 3;
 static long points = 0;
@@ -12,6 +13,8 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 	if (lost_life)
 	{
 		lifes--;
+		if (lifes <= 0)
+			exit(0);
 	}
 	points += gained_points;
 
@@ -27,7 +30,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 
 	// Create mario object
 	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, lifes, points, 1, false };
-	
+
 	// Initialize all barells
 	Barell* barells = new Barell[board.barells_amount];
 	init_barells(board, barells);
@@ -61,6 +64,9 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 
 		// Moving all barells
 		move_barells(barells, board, surfaces);
+
+		// Check collisions
+		collision_with_barell(mario_info, barells, board, surfaces, SDL_elements);
 
 		// Draw final treasures
 		switch (board.level)

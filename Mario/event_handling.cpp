@@ -2,6 +2,7 @@
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
 #include <iostream>
+#include <cstdlib>
 
 
 int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, 
@@ -21,7 +22,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 	{
 		switch (event.type) {
 		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
+			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
 			else if (event.key.keysym.sym == SDLK_n)
 			{
 				start_game(surfaces, SDL_elements, board, false, mario_info.points);

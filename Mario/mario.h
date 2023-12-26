@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../functions_definitions.h"
+#include "../Barells/barells.h"
 
 /*
 	In this file we store all the infomation about Mario object
@@ -51,3 +52,7 @@ void get_mario_info(Mario&, const BoardElements&, int&);
 bool check_if_mario_win(const BoardElements&, Mario&);
 void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
 	SDL_Renderer* renderer, char* text, Colors& colors);
+
+// Collision with barell
+void collision_with_barell(Mario& mario_info, Barell* barells,
+	const BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements);

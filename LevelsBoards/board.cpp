@@ -279,7 +279,7 @@ BoardElements initialize_level_3_board()
 	return board;
 }
 
-void releaseMemory(BoardElements& board)
+void releaseMemory(const BoardElements& board)
 {
 	delete[] board.platforms_x_coordinate;
 	delete[] board.platforms_ending_x_coordinate;
