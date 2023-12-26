@@ -18,7 +18,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
 			else if (event.key.keysym.sym == SDLK_n)
 			{
-				start_game(surfaces, SDL_elements, board);
+				start_game(surfaces, SDL_elements, board, false, mario_info.points);
 				return 1;
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)

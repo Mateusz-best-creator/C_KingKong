@@ -23,7 +23,7 @@ struct Mario
 	enum DIRECTION { LEFT, RIGHT } direction;
 	bool above_ladder;
 	bool can_go_down;
-	int lives;
+	int lifes;
 	long points;
 	int mario_row;
 	bool just_grabbed_coin;
@@ -41,7 +41,7 @@ void space_event(Mario& mario_info);
 void draw_mario(SDL_Surfaces&, Mario&);
 
 // Interface while playing
-void drawInfoRectangle(const Mario&, SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, char*, TimeVariables&, Colors&);
+void drawInfoRectangle(const Mario&, SDL_Surfaces&, SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, char*, TimeVariables&, Colors&);
 
 // Grabbing a coin
 void grab_coin(Mario& mario_info, const BoardElements& board);

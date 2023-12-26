@@ -151,6 +151,12 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
+	*(surfaces.heart_icon) = SDL_LoadBMP("./images/heart.bmp");
+	if (*(surfaces.heart_icon) == nullptr) {
+		printf("SDL_LoadBMP(heart_icon.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
 
 	return Error;
 }
@@ -166,13 +172,18 @@ void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SD
 	SDL_Quit();
 }
 
-void drawInfoRectangle(const Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
+void drawInfoRectangle(const Mario& mario_info, SDL_Surfaces& surfaces, SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
 	SDL_Renderer* renderer, char* text, TimeVariables& times, Colors& colors)
 {
+	// Draw hearts
+	for (size_t i = 0; i < mario_info.lifes; i++)
+	{
+		DrawSurface(screen, *(surfaces.heart_icon), SCREEN_WIDTH - 130 + i * 45, 70);
+	}
 	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
 	sprintf(text, "Mario points: %d", mario_info.points);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
-	sprintf(text, "Mario lifes: %d", 3);
+	sprintf(text, "Mario lifes: %d", mario_info.lifes);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
 	// tekst informacyjny / info text
 	DrawRectangle(screen, 4, 430, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);

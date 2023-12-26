@@ -3,8 +3,17 @@
 #include "../Mario/mario.h"
 #include <iostream>
 
-void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board)
+static int lifes = 3;
+static long points = 0;
+
+void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board, bool lost_life, long gained_points)
 {
+	if (lost_life)
+	{
+		lifes--;
+	}
+	points += gained_points;
+
 	SDL_Event event;
 	SDL_Surface* screen = *(surfaces.screen);
 
@@ -16,7 +25,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 	TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	// Create mario object
-	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 3, 0, 1, false };
+	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, lifes, points, 1, false };
 
 	while (!times.quit) 
 	{
@@ -48,6 +57,9 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		// Draw barell
 		DrawSurface(screen, *(surfaces.rolling_barell), board.king_kong_x, board.king_kong_y);
 
+		// Draw hearts (how many lifes mario has)
+
+
 		// Draw final treasures
 		switch (board.level)
 		{
@@ -76,7 +88,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		};
 
 		char text[128];
-		drawInfoRectangle(mario_info, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
+		drawInfoRectangle(mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
 
 		// Handle user event (space, upper arrow...)
 		times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);
