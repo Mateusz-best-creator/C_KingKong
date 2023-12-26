@@ -47,7 +47,8 @@ struct SDL_Surfaces
 	SDL_Surface** screen, ** charset, ** mario_running_right, ** mario_running_left,
 		** king_kong, ** mario_climbing, ** mario_jumping_right, ** mario_jumping_left, ** level_1_crown,
 		** level_2_treasure, ** level_3_diamond, ** level_1_winning_icon, ** level_2_winning_icon, ** level_3_winning_icon,
-		** coin_icon, ** heart_icon, ** rolling_barell_1;
+		** coin_icon, ** heart_icon, ** rolling_barell_1, ** quit_icon, ** report_icon, ** golden_cup_icon,
+		** authentication_icon, ** saving_icon, ** loading_icon;
 };
 
 struct SDL_Elements
@@ -69,15 +70,12 @@ struct Colors
 };
 
 //Starting the game
-bool start_game(SDL_Surfaces& surfaces, SDL_Elements&, const BoardElements&, bool, long);
+void start_game(SDL_Surfaces& surfaces, SDL_Elements&, const BoardElements&, bool, long);
 
 // Drawing surfaces
 void DrawPlatforms(SDL_Surface*, const BoardElements&, int);
 void DrawLadders(SDL_Surface*, const BoardElements&, int);
 void draw_coins(const BoardElements&, const SDL_Surfaces&);
-
-// Interfaces
-int initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);

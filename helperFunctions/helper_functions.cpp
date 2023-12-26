@@ -155,6 +155,44 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
+	// Quitting icon
+	*(surfaces.quit_icon) = SDL_LoadBMP("./images/quit.bmp");
+	if (*(surfaces.quit_icon) == nullptr) {
+		printf("SDL_LoadBMP(/quit.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Report icon
+	*(surfaces.report_icon) = SDL_LoadBMP("./images/report.bmp");
+	if (*(surfaces.report_icon) == nullptr) {
+		printf("SDL_LoadBMP(/report.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	*(surfaces.golden_cup_icon) = SDL_LoadBMP("./images/golden_cup.bmp");
+	if (*(surfaces.golden_cup_icon) == nullptr) {
+		printf("SDL_LoadBMP(/golden_cup.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	*(surfaces.authentication_icon) = SDL_LoadBMP("./images/authentication.bmp");
+	if (*(surfaces.authentication_icon) == nullptr) {
+		printf("SDL_LoadBMP(/authentication.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	*(surfaces.saving_icon) = SDL_LoadBMP("./images/saving.bmp");
+	if (*(surfaces.saving_icon) == nullptr) {
+		printf("SDL_LoadBMP(/saving.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	*(surfaces.loading_icon) = SDL_LoadBMP("./images/loading.bmp");
+	if (*(surfaces.loading_icon) == nullptr) {
+		printf("SDL_LoadBMP(/saving.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
 	return Error;
 }
 

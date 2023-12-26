@@ -8,13 +8,13 @@
 static int lifes = 3;
 static long points = 0;
 
-bool start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board, bool lost_life, long gained_points)
+void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardElements& board, bool lost_life, long gained_points)
 {
 	if (lost_life)
 	{
 		lifes--;
 		if (lifes <= 0)
-			exit(0)
+			exit(0);
 	}
 	points += gained_points;
 

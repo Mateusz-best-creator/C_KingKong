@@ -4,6 +4,8 @@
 #include<string.h>
 #include "functions_definitions.h"
 #include "./LevelsBoards/boards.h"
+#include "./Interface/interface.h"
+#include <cstdlib>
 
 // main
 #ifdef __cplusplus
@@ -15,13 +17,16 @@ int main(int argc, char** argv)
 	SDL_Surface* screen = nullptr, * charset = nullptr, * mario_running_right = nullptr, * mario_running_left = nullptr, * king_kong = nullptr,
 		* mario_climbing = nullptr, * mario_jumping_right = nullptr, * mario_jumping_left = nullptr, * level_1_crown = nullptr,
 		* level_2_treasure = nullptr, * level_3_diamond = nullptr, * level_1_winning_icon = nullptr, * level_2_winning_icon = nullptr,
-		* level_3_winning_icon = nullptr, * coin_icon, * heart_icon = nullptr, * rolling_barell_1 = nullptr;
+		* level_3_winning_icon = nullptr, * coin_icon, * heart_icon = nullptr, * rolling_barell_1 = nullptr, * quit_icon = nullptr,
+		* report_icon = nullptr, * golden_cup_icon = nullptr, * authentication_icon = nullptr, * saving_icon = nullptr, * loading_icon = nullptr;
 
 	// Create structure of all surfaces
 	SDL_Surfaces surfaces = { &screen, &charset, &mario_running_right, &mario_running_left,
 		&king_kong, &mario_climbing, &mario_jumping_right, &mario_jumping_left, &level_1_crown,
 		&level_2_treasure, &level_3_diamond, &level_1_winning_icon, &level_2_winning_icon, &level_3_winning_icon,
-		&coin_icon, &heart_icon, &rolling_barell_1 };
+		&coin_icon, &heart_icon, &rolling_barell_1, & quit_icon, & report_icon, &golden_cup_icon,
+		&authentication_icon, &saving_icon, &loading_icon };
+
 	// Create structure of other SDL elements
 	SDL_Elements SDL_elements = { nullptr, nullptr, nullptr };
 
@@ -61,8 +66,15 @@ int main(int argc, char** argv)
 	Colors colors;
 	initialize_colors(screen, colors);
 
+	int x = 1, y = 1, option = 1;
+	initial_interface(surfaces, SDL_elements, colors, x, y);
+	if (x != 2)
+		exit(0);
+	else if (x == 2)
+		option = y;
+
 	// Initialize the board for the appropriate level
-	BoardElements board = initialize_board(initial_interface(surfaces, SDL_elements, colors));
+	BoardElements board = initialize_board(option);
 
 	start_game(surfaces, SDL_elements, board, false, 0);
 	releaseMemory(board);

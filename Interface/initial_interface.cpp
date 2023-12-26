@@ -1,12 +1,13 @@
 #include "../functions_definitions.h"
 #include "interface.h"
 #include <string.h>
+#include <cstdlib>
 #include <iostream>
 
-bool handle_initial_interface_events(SDL_Event&, int& level);
-void level_rectangle(SDL_Surface*, const int, const Colors&);
+bool handle_initial_interface_events(SDL_Event&, int& x, int& y);
+void level_rectangle(SDL_Surface*, const int, const int, const Colors&);
 
-int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elements, const Colors& colors)
+void initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elements, const Colors& colors, int& x, int& y)
 {
     SDL_Event event;
 	SDL_Surface* screen = *(surfaces.screen);
@@ -15,7 +16,6 @@ int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elem
 	char desc_text[150];
 
 	bool choosing_level = true;
-	int option = 1;
 
 	while (choosing_level)
 	{
@@ -40,46 +40,63 @@ int initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elem
 		SDL_RenderCopy(SDL_elements.renderer, SDL_elements.scrtex, NULL, NULL);
 		SDL_RenderPresent(SDL_elements.renderer);
 
-		choosing_level = handle_initial_interface_events(event, option);
+		choosing_level = handle_initial_interface_events(event, x, y);
 		// Fill the entire screen with given color
 		SDL_FillRect(screen, NULL, colors.czarny);
 
 		// Draw rectangle pointing to appropriate level
-		level_rectangle(screen, option, colors);
+		level_rectangle(screen, x, y, colors);
 		
-		SDL_Surface* level_logos[3] = { *(surfaces.level_1_crown) , *(surfaces.level_2_treasure) , *(surfaces.level_3_diamond) };
+		SDL_Surface* level_logos[9] =
+		{
+			*(surfaces.quit_icon), *(surfaces.level_1_crown), *(surfaces.authentication_icon),
+			*(surfaces.saving_icon) , *(surfaces.level_2_treasure), *(surfaces.report_icon),
+			* (surfaces.loading_icon) , *(surfaces.level_3_diamond), *(surfaces.golden_cup_icon)
+		};
+		char* options_desc[9] =
+		{
+			"Quit", "Level 1", "Authentication",
+			"Save to file", "Level 2", "Results account",
+			"Read from file", "Level 3", "Hall of fame"
+		};
 		char* level_desc[3] = { "Level 1", "Level 2", "Level 3" };
 		// Print icons for each level, print levels informations
-		for (size_t i = 0; i < AMOUNT_OF_LEVELS; i++)
+		int counter = 0;
+		for (size_t i = 0; i < 3; i++)
 		{
-			sprintf(desc_text, level_desc[i]);
-			DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2, INITIAL_STRING_Y + i * OFFSET, desc_text, charset);
-			DrawSurface(screen, level_logos[i], SCREEN_WIDTH / 2, INITIAL_SURFACE_Y + i * OFFSET);
+			for (size_t j = 0; j < 3; j++)
+			{
+				// Printing text
+				sprintf(desc_text, options_desc[counter]);
+				if (j == 0)
+					DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2 - 200, INITIAL_STRING_Y + i * Y_OFFSET, desc_text, charset);
+				else
+					DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2 - 200 + j * 200, INITIAL_STRING_Y + i * Y_OFFSET, desc_text, charset);
+				// Printing icons
+				DrawSurface(screen, level_logos[counter], 120 + j * 200, INITIAL_SURFACE_Y + i * Y_OFFSET);
+				counter++;
+			}
 		}
 	}
-    return option;
 }
 
-bool handle_initial_interface_events(SDL_Event& event, int& level)
+bool handle_initial_interface_events(SDL_Event& event, int& x, int& y)
 {
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
         case SDL_KEYDOWN:
-            if (event.key.keysym.sym == SDLK_RETURN)
-                return false;
-			else if (event.key.keysym.sym == SDLK_DOWN)
-			{
-				if (level < AMOUNT_OF_LEVELS)
-					level++;
-			}
-			else if (event.key.keysym.sym == SDLK_UP)
-			{
-				// We do not have level 0
-				if (level > 1)
-					level--;
-			}
+			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
+			else if (event.key.keysym.sym == SDLK_RETURN)
+				return false;
+			else if (event.key.keysym.sym == SDLK_DOWN && y < 3)
+				y++;
+			else if (event.key.keysym.sym == SDLK_UP && y > 1)
+				y--;
+			else if (event.key.keysym.sym == SDLK_LEFT && x > 1)
+				x--;
+			else if (event.key.keysym.sym == SDLK_RIGHT && x < 3)
+				x++;
             break;  
-
         case SDL_QUIT:
             return false;
         }
@@ -87,20 +104,27 @@ bool handle_initial_interface_events(SDL_Event& event, int& level)
     return true;
 }
 
-void level_rectangle(SDL_Surface* screen, const int level, const Colors& colors)
+/*
+	Drawing blue rectangle on the appropriate place based on x and y values.
+*/
+void level_rectangle(SDL_Surface* screen, const int x, const int y, const Colors& colors)
 {
-	switch (level)
-	{
-	case 1:
-		DrawRectangle(screen, RECTANGLES_X, RECTANGLE_1_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
-		break;
-	case 2:
-		DrawRectangle(screen, RECTANGLES_X, RECTANGLE_2_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
-		break;
-	case 3:
-		DrawRectangle(screen, RECTANGLES_X, RECTANGLE_3_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
-		break;
-	default:
-		break;
-	}
+	if (x == 1 && y == 1)
+		DrawRectangle(screen, RECTANGLES_1_X, RECTANGLE_1_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 1 && y == 2)
+		DrawRectangle(screen, RECTANGLES_1_X, RECTANGLE_2_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 1 && y == 3)
+		DrawRectangle(screen, RECTANGLES_1_X, RECTANGLE_3_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 2 && y == 1)
+		DrawRectangle(screen, RECTANGLES_2_X, RECTANGLE_1_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 2 && y == 2)
+		DrawRectangle(screen, RECTANGLES_2_X, RECTANGLE_2_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 2 && y == 3)
+		DrawRectangle(screen, RECTANGLES_2_X, RECTANGLE_3_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 3 && y == 1)
+		DrawRectangle(screen, RECTANGLES_3_X, RECTANGLE_1_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 3 && y == 2)
+		DrawRectangle(screen, RECTANGLES_3_X, RECTANGLE_2_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
+	else if (x == 3 && y == 3)
+		DrawRectangle(screen, RECTANGLES_3_X, RECTANGLE_3_Y, RECTANGLE_WIDTH, RECTANGLE_HEIGHT, colors.jasny_niebieski, colors.czarny);
 }

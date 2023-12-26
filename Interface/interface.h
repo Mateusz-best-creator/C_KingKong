@@ -1,19 +1,24 @@
 #pragma once
 
+#include "../functions_definitions.h"
+
 /*
 	Initial interface constants
 */
 
-const int AMOUNT_OF_LEVELS = 3;
+const int AMOUNT_OF_OPTIONS = 9;
 
 const int RECTANGLE_HEIGHT = 110;
 const int RECTANGLE_WIDTH = 150;
-const int RECTANGLES_X = SCREEN_WIDTH / 2 - 75;
+
+const int RECTANGLES_1_X = 45;
+const int RECTANGLES_2_X = SCREEN_WIDTH / 2 - 75;
+const int RECTANGLES_3_X = 445;
 const int RECTANGLE_1_Y = 70;
 const int RECTANGLE_2_Y = 190;
 const int RECTANGLE_3_Y = 310;
 
-const int OFFSET = 120;
+const int Y_OFFSET = 120;
 const int INITIAL_SURFACE_Y = 120;
 const int INITIAL_STRING_Y = 165;
 
@@ -23,3 +28,6 @@ const int DESC_RECTANGLE_HEIGHT = 60;
 const int DESC_LINE_1 = 10;
 const int DESC_LINE_2 = 28;
 const int DESC_LINE_3 = 45;
+
+// Interfaces
+void initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&, int&, int&);
