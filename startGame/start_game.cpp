@@ -1,6 +1,7 @@
 #include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
+#include "../Barells/barells.h"
 #include <iostream>
 
 static int lifes = 3;
@@ -26,6 +27,7 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 
 	// Create mario object
 	Mario mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, lifes, points, 1, false };
+	Barell barell = { 100, 150, 0, 1 };
 
 	while (!times.quit) 
 	{
@@ -55,10 +57,8 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const BoardE
 		DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
 
 		// Draw barell
-		DrawSurface(screen, *(surfaces.rolling_barell), board.king_kong_x, board.king_kong_y);
-
-		// Draw hearts (how many lifes mario has)
-
+		draw_barell(barell, surfaces);
+		move_barell(barell);
 
 		// Draw final treasures
 		switch (board.level)

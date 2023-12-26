@@ -13,15 +13,17 @@ int main(int argc, char** argv)
 {
 	// Initialize all SDL elements
 	SDL_Surface* screen = nullptr, *charset = nullptr, *mario_running_right = nullptr, *mario_running_left = nullptr, *king_kong = nullptr, 
-		*mario_climbing = nullptr, *mario_jumping_right = nullptr, *mario_jumping_left = nullptr, *rolling_barell = nullptr, *level_1_crown = nullptr,
+		*mario_climbing = nullptr, *mario_jumping_right = nullptr, *mario_jumping_left = nullptr, *level_1_crown = nullptr,
 		*level_2_treasure = nullptr, *level_3_diamond = nullptr, *level_1_winning_icon = nullptr, *level_2_winning_icon = nullptr,
-		*level_3_winning_icon = nullptr, *coin_icon, *heart_icon = nullptr;
+		*level_3_winning_icon = nullptr, *coin_icon, *heart_icon = nullptr, *rolling_barell_1 = nullptr, * rolling_barell_2 = nullptr,
+		* rolling_barell_3 = nullptr, * rolling_barell_4 = nullptr, * rolling_barell_5 = nullptr, * rolling_barell_6 = nullptr;
 
 	// Create structure of all surfaces
 	SDL_Surfaces surfaces = { &screen, &charset, &mario_running_right, &mario_running_left, 
-		&king_kong, &mario_climbing, &mario_jumping_right, &mario_jumping_left, &rolling_barell, &level_1_crown,
+		&king_kong, &mario_climbing, &mario_jumping_right, &mario_jumping_left, &level_1_crown,
 		&level_2_treasure, &level_3_diamond, &level_1_winning_icon, &level_2_winning_icon, &level_3_winning_icon,
-		&coin_icon, & heart_icon };
+		&coin_icon, & heart_icon, & rolling_barell_1, & rolling_barell_2, & rolling_barell_3,
+		& rolling_barell_4 , & rolling_barell_5 , & rolling_barell_6 };
 	// Create structure of other SDL elements
 	SDL_Elements SDL_elements = { nullptr, nullptr, nullptr };
 
@@ -56,7 +58,7 @@ int main(int argc, char** argv)
 	SDL_Error = load_bmp_images(surfaces, SDL_elements.scrtex, SDL_elements.window, SDL_elements.renderer);
 	if (SDL_Error)
 		return 1;
-
+	
 	// Initialize all the colors
 	Colors colors;
 	initialize_colors(screen, colors);

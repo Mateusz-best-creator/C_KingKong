@@ -18,6 +18,7 @@
     <ClCompile Include="drawingObjects\draw_coins.cpp" />
     <ClCompile Include="Barells\barells.cpp" />
     <ClCompile Include="LevelsBoards\board_helper.cpp" />
+    <ClCompile Include="Mario\barell_collision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

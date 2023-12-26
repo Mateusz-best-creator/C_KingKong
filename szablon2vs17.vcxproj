@@ -29,6 +29,7 @@
     <ClCompile Include="LevelsBoards\board.cpp" />
     <ClCompile Include="LevelsBoards\board_helper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mario\barell_collision.cpp" />
     <ClCompile Include="Mario\check_if_mario_win.cpp" />
     <ClCompile Include="Mario\event_handling.cpp" />
     <ClCompile Include="Mario\get_mario_info.cpp" />

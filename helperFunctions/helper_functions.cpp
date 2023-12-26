@@ -95,14 +95,6 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		Error = true;
 	}
 
-	// Rolling barell
-	*(surfaces.rolling_barell) = SDL_LoadBMP("./images/rolling_barell.bmp");
-	if (*(surfaces.mario_jumping_left) == nullptr) {
-		printf("SDL_LoadBMP(rolling_barell.bmp) error: %s\n", SDL_GetError());
-		// Handle errors and set Error = true
-		Error = true;
-	}
-
 	// Level 1 logo
 	*(surfaces.level_1_crown) = SDL_LoadBMP("./images/crown_logo.bmp");
 	if (*(surfaces.level_1_crown) == nullptr) {
@@ -156,7 +148,48 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
-
+	// Rolling barell
+	*(surfaces.rolling_barell_1) = SDL_LoadBMP("./images/Barells/rolling_barell_1.bmp");
+	if (*(surfaces.rolling_barell_1) == nullptr) {
+		printf("SDL_LoadBMP(/Barells/rolling_barell_1.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Rolling barell
+	*(surfaces.rolling_barell_2) = SDL_LoadBMP("./images/Barells/rolling_barell_2.bmp");
+	if (*(surfaces.mario_jumping_left) == nullptr) {
+		printf("SDL_LoadBMP(Barells/rolling_barell_2.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Rolling barell
+	*(surfaces.rolling_barell_3) = SDL_LoadBMP("./images/Barells/rolling_barell_3.bmp");
+	if (*(surfaces.rolling_barell_3) == nullptr) {
+		printf("SDL_LoadBMP(Barells/rolling_barell_3.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Rolling barell
+	*(surfaces.rolling_barell_4) = SDL_LoadBMP("./images/Barells/rolling_barell_4.bmp");
+	if (*(surfaces.rolling_barell_4) == nullptr) {
+		printf("SDL_LoadBMP(Barells/rolling_barell_4.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Rolling barell
+	*(surfaces.rolling_barell_5) = SDL_LoadBMP("./images/Barells/rolling_barell_5.bmp");
+	if (*(surfaces.rolling_barell_5) == nullptr) {
+		printf("SDL_LoadBMP(Barells/rolling_barell_5.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
+	// Rolling barell
+	*(surfaces.rolling_barell_6) = SDL_LoadBMP("./images/Barells/rolling_barell_6.bmp");
+	if (*(surfaces.rolling_barell_6) == nullptr) {
+		printf("SDL_LoadBMP(Barells/rolling_barell_6.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
 	return Error;
 }
 
