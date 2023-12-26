@@ -31,8 +31,7 @@ bool fullscreen(SDL_Window** window, SDL_Renderer** renderer)
 }
 
 /*
-SDL_Surface** mario_running_right, SDL_Surface** mario_running_left, SDL_Surface** king_kong,
-	SDL_Surface** mario_climbing, SDL_Surface** mario_jumping, SDL_Surface** charset
+	Load all bmp images needed in our game.
 */
 bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer) 
 {

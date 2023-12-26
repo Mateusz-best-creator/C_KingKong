@@ -75,6 +75,8 @@ void right_arrow_event(Mario& mario_info, const BoardElements& board)
 	mario_info.direction = Mario::RIGHT;
 	if (can_move_right)
 		mario_info.x_coordinate += MARIO_SPEED;
+
+
 }
 
 void upper_arrow_event(Mario& mario_info, const BoardElements& board)

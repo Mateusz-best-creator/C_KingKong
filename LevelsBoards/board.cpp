@@ -25,10 +25,12 @@ BoardElements initialize_level_1_board()
 	BoardElements board;
 	board.level = 1;
 
-	// Coins coordinates for level 2
-	board.coins_x = new int[LEVEL_1_COINS_AMOUNT];
-	board.coins_y = new int[LEVEL_1_COINS_AMOUNT];
-	board.grabbed_coins = new bool[LEVEL_1_COINS_AMOUNT];
+	// Initialize all values
+	initialize_values(1, board, LEVEL_1_COINS_AMOUNT, LEVEL_1_PLATFORMS_AMOUNT, LEVEL_1_AMOUNT_OF_LADDERS,
+		LEVEL_1_MARIO_INITIAL_X, LEVEL_1_MARIO_INITIAL_Y, LEVEL1_KING_KONG_X, LEVEL1_KING_KONG_Y,
+		LEVEL_1_WINNING_X1, LEVEL_1_WINNING_X2, LEVEL_1_WINNING_Y);
+
+	// Initialize coins coordinates
 	int coins_x[LEVEL_1_COINS_AMOUNT] = { 476, 308, 200, 344, 170 };
 	int coins_y[LEVEL_1_COINS_AMOUNT] = { 387, 327, 267, 207, 147 };
 	for (size_t i = 0; i < LEVEL_1_COINS_AMOUNT; i++)
@@ -37,14 +39,6 @@ BoardElements initialize_level_1_board()
 		board.coins_y[i] = coins_y[i];
 		board.grabbed_coins[i] = false;
 	}
-
-	board.platforms_amount = LEVEL_1_PLATFORMS_AMOUNT;
-	board.platforms_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
-	board.platforms_ending_x_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
-	board.platforms_y_coordinate = new int[LEVEL_1_PLATFORMS_AMOUNT];
-	board.platforms_widths = new int[LEVEL_1_PLATFORMS_AMOUNT];
-	board.platforms_rows = new int[LEVEL_1_PLATFORMS_AMOUNT];
-
 	// Initialize platforms width and beginning y coordinates
 	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
 	{
@@ -58,14 +52,6 @@ BoardElements initialize_level_1_board()
 	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
 		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
 
-	// Initialize all other data
-	board.amount_of_ladders = LEVEL_1_AMOUNT_OF_LADDERS;
-	board.ladders_x_coordinates = new int[LEVEL_1_AMOUNT_OF_LADDERS];
-	board.ladders_y_coordinates = new int[LEVEL_1_AMOUNT_OF_LADDERS];
-	board.ladders_rows = new int[LEVEL_1_AMOUNT_OF_LADDERS];
-	board.ladder_width = 20;
-	board.platform_height = 60;
-
 	for (size_t i = 0; i < board.amount_of_ladders; i++)
 	{
 		board.ladders_y_coordinates[i] = 351 - board.platform_height * i;
@@ -76,18 +62,6 @@ BoardElements initialize_level_1_board()
 		else
 			board.ladders_x_coordinates[i] = 60;
 	}
-		
-	// Initial coordinates
-	board.initial_mario_x = LEVEL_1_MARIO_INITIAL_X;
-	board.initial_mario_y = LEVEL_1_MARIO_INITIAL_Y;
-	board.king_kong_x = LEVEL1_KING_KONG_X;
-	board.king_kong_y = LEVEL1_KING_KONG_Y;
-
-	// Initialize winning coordinates
-	board.winning_x1_coordinate = LEVEL_1_WINNING_X1;
-	board.winning_x2_coordinate = LEVEL_1_WINNING_X2;
-	board.winning_y_coordinate = LEVEL_1_WINNING_Y;
-
 	return board;
 }
 
@@ -100,10 +74,11 @@ BoardElements initialize_level_2_board()
 	BoardElements board;
 	board.level = 2;
 
-	// Coins coordinates for level 2
-	board.coins_x = new int[LEVEL_2_COINS_AMOUNT];
-	board.coins_y = new int[LEVEL_2_COINS_AMOUNT];
-	board.grabbed_coins = new bool[LEVEL_2_COINS_AMOUNT];
+	// Initialize all values
+	initialize_values(2, board, LEVEL_2_COINS_AMOUNT, LEVEL_2_PLATFORMS_AMOUNT, LEVEL_2_AMOUNT_OF_LADDERS,
+		LEVEL_2_MARIO_INITIAL_X, LEVEL_2_MARIO_INITIAL_Y, LEVEL2_KING_KONG_X, LEVEL2_KING_KONG_Y,
+		LEVEL_2_WINNING_X1, LEVEL_2_WINNING_X2, LEVEL_2_WINNING_Y);
+
 	int coins_x[LEVEL_2_COINS_AMOUNT] = { 254, 476, 464, 446, 140, 200, 26 };
 	int coins_y[LEVEL_2_COINS_AMOUNT] = { 387, 387, 267, 207, 387, 267, 207 };
 	for (size_t i = 0; i < LEVEL_2_COINS_AMOUNT; i++)
@@ -113,13 +88,6 @@ BoardElements initialize_level_2_board()
 		board.grabbed_coins[i] = false;
 	}
 	
-	board.platforms_amount = LEVEL_2_PLATFORMS_AMOUNT;
-	board.platforms_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
-	board.platforms_ending_x_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
-	board.platforms_y_coordinate = new int[LEVEL_2_PLATFORMS_AMOUNT];
-	board.platforms_widths = new int[LEVEL_2_PLATFORMS_AMOUNT];
-	board.platforms_rows = new int[LEVEL_2_PLATFORMS_AMOUNT];
-
 	for (size_t i = 0; i < 3; i++)
 	{
 		board.platforms_x_coordinate[i] = 230 * i;
@@ -153,14 +121,6 @@ BoardElements initialize_level_2_board()
 	// Calculate ending x coordinates for each platform
 	for (size_t i = 0; i < LEVEL_2_PLATFORMS_AMOUNT; i++)
 		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
-	
-	
-	board.amount_of_ladders = LEVEL_2_AMOUNT_OF_LADDERS;
-	board.ladders_x_coordinates = new int[LEVEL_2_AMOUNT_OF_LADDERS];
-	board.ladders_y_coordinates = new int[LEVEL_2_AMOUNT_OF_LADDERS];
-	board.ladders_rows = new int[LEVEL_2_AMOUNT_OF_LADDERS];
-	board.ladder_width = 20;
-	board.platform_height = 60;
 
 	// Initialize ladders
 	for (size_t i = 0; i < 3; i++)
@@ -196,17 +156,6 @@ BoardElements initialize_level_2_board()
 	board.ladders_x_coordinates[10] = SCREEN_WIDTH / 2;
 	board.ladders_y_coordinates[10] = 111;
 	board.ladders_rows[10] = 5;
-
-	board.initial_mario_x = LEVEL_2_MARIO_INITIAL_X;
-	board.initial_mario_y = LEVEL_2_MARIO_INITIAL_Y;
-	board.king_kong_x = LEVEL2_KING_KONG_X;
-	board.king_kong_y = LEVEL2_KING_KONG_Y;
-
-	board.winning_x1_coordinate = LEVEL_2_WINNING_X1;
-	board.winning_x2_coordinate = LEVEL_2_WINNING_X2;
-	board.winning_y_coordinate = LEVEL_2_WINNING_Y;
-
-
 	return board;
 }
 
@@ -215,10 +164,11 @@ BoardElements initialize_level_3_board()
 	BoardElements board;
 	board.level = 3;
 
-	// Coins coordinates for level 2
-	board.coins_x = new int[LEVEL_3_COINS_AMOUNT];
-	board.coins_y = new int[LEVEL_3_COINS_AMOUNT];
-	board.grabbed_coins = new bool[LEVEL_3_COINS_AMOUNT];
+	// Initialize all values
+	initialize_values(3, board, LEVEL_3_COINS_AMOUNT, LEVEL_3_PLATFORMS_AMOUNT, LEVEL_3_AMOUNT_OF_LADDERS,
+		LEVEL_3_MARIO_INITIAL_X, LEVEL_3_MARIO_INITIAL_Y, LEVEL3_KING_KONG_X, LEVEL3_KING_KONG_Y,
+		LEVEL_3_WINNING_X1, LEVEL_3_WINNING_X2, LEVEL_3_WINNING_Y);
+
 	int coins_x[LEVEL_3_COINS_AMOUNT] = { 116, 188, 20, 20, 446, 530, 446, 494 };
 	int coins_y[LEVEL_3_COINS_AMOUNT] = { 387, 387, 207, 147, 207, 387, 387, 267 };
 	for (size_t i = 0; i < LEVEL_3_COINS_AMOUNT; i++)
@@ -227,14 +177,6 @@ BoardElements initialize_level_3_board()
 		board.coins_y[i] = coins_y[i];
 		board.grabbed_coins[i] = false;
 	}
-	
-	board.platforms_amount = LEVEL_3_PLATFORMS_AMOUNT;
-	board.platforms_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
-	board.platforms_ending_x_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
-	board.platforms_y_coordinate = new int[LEVEL_3_PLATFORMS_AMOUNT];
-	board.platforms_widths = new int[LEVEL_3_PLATFORMS_AMOUNT];
-	board.platforms_rows = new int[LEVEL_3_PLATFORMS_AMOUNT];
-
 	// Initialize platforms
 	int first_platforms_X_cors[4] = {0, 167, 334, 501};
 	for (size_t i = 0; i < 4; i++)
@@ -270,14 +212,6 @@ BoardElements initialize_level_3_board()
 	// Calculate ending x coordinates for each platform
 	for (size_t i = 0; i < LEVEL_3_PLATFORMS_AMOUNT; i++)
 		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
-
-	board.amount_of_ladders = LEVEL_3_AMOUNT_OF_LADDERS;
-	board.ladders_x_coordinates = new int[LEVEL_3_AMOUNT_OF_LADDERS];
-	board.ladders_y_coordinates = new int[LEVEL_3_AMOUNT_OF_LADDERS];
-	board.ladders_rows = new int[LEVEL_3_AMOUNT_OF_LADDERS];
-	board.ladder_width = 20;
-	board.platform_height = 60;
-
 	// Initialize ladders
 	int first_ladders_X_cors[4] = { 10, 257, 394, 581 };
 	for (size_t i = 0; i < 4; i++)
@@ -302,16 +236,6 @@ BoardElements initialize_level_3_board()
 	board.ladders_y_coordinates[8] = 171;
 	board.ladders_rows[8] = 4;
 
-
-	board.initial_mario_x = LEVEL_3_MARIO_INITIAL_X;
-	board.initial_mario_y = LEVEL_3_MARIO_INITIAL_Y;
-	board.king_kong_x = LEVEL3_KING_KONG_X;
-	board.king_kong_y = LEVEL3_KING_KONG_Y;
-
-	board.winning_x1_coordinate = LEVEL_3_WINNING_X1;
-	board.winning_x2_coordinate = LEVEL_3_WINNING_X2;
-	board.winning_y_coordinate = LEVEL_3_WINNING_Y;
-
 	return board;
 }
 
@@ -325,7 +249,7 @@ void releaseMemory(BoardElements& board)
 	delete[] board.ladders_y_coordinates;
 	delete[] board.ladders_rows;
 	delete[] board.platforms_rows;
-	/*delete[] board.coins_x;
-	delete[] board.coins_y;*/
+	delete[] board.coins_x;
+	delete[] board.coins_y;
 	printf("Memory released");
 }

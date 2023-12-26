@@ -11,8 +11,14 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 	int mario_row = 1;
 	get_mario_info(mario_info, board, mario_row);
 	mario_info.mario_row = mario_row;
+
+	if (mario_info.jumping)
+	{
+		return 0;
+	}
 	// handling of events (if there were any)
-	while (SDL_PollEvent(&event)) {
+	while (SDL_PollEvent(&event)) 
+	{
 		switch (event.type) {
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) return 1;
