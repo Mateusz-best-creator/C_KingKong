@@ -69,7 +69,7 @@ struct Colors
 };
 
 //Starting the game
-void start_game(SDL_Surfaces& surfaces, SDL_Elements&, const BoardElements&, bool, long);
+bool start_game(SDL_Surfaces& surfaces, SDL_Elements&, const BoardElements&, bool, long);
 
 // Drawing surfaces
 void DrawPlatforms(SDL_Surface*, const BoardElements&, int);
