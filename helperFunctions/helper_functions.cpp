@@ -207,7 +207,7 @@ void clearSDL(SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex, SD
 	SDL_Quit();
 }
 
-void drawInfoRectangle(const Mario& mario_info, SDL_Surfaces& surfaces, SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
+void drawInfoRectangle(const BoardElements& board, const Mario& mario_info, SDL_Surfaces& surfaces, SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
 	SDL_Renderer* renderer, char* text, TimeVariables& times, Colors& colors)
 {
 	// Draw hearts
@@ -216,7 +216,7 @@ void drawInfoRectangle(const Mario& mario_info, SDL_Surfaces& surfaces, SDL_Surf
 		DrawSurface(screen, *(surfaces.heart_icon), SCREEN_WIDTH - 130 + i * 45, 70);
 	}
 	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
-	sprintf(text, "Mario points: %d", mario_info.points);
+	sprintf(text, "Mario points for level %d : %d", board.level, mario_info.points);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
 	sprintf(text, "Mario lifes: %d", mario_info.lifes);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);

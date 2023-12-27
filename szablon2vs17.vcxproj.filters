@@ -23,6 +23,7 @@
     <ClCompile Include="read_write_to_file\write_to_file.cpp" />
     <ClCompile Include="startGame\game.cpp" />
     <ClCompile Include="Interface\continue_interface.cpp" />
+    <ClCompile Include="Interface\congratulations_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

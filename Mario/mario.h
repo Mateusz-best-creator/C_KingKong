@@ -42,7 +42,8 @@ void space_event(Mario& mario_info);
 void draw_mario(SDL_Surfaces&, Mario&);
 
 // Interface while playing
-void drawInfoRectangle(const Mario&, SDL_Surfaces&, SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, char*, TimeVariables&, Colors&);
+void drawInfoRectangle(const BoardElements&, const Mario&, SDL_Surfaces&, SDL_Surface*, SDL_Surface*, 
+	SDL_Texture*, SDL_Renderer*, char*, TimeVariables&, Colors&);
 
 // Grabbing a coin
 void grab_coin(Mario& mario_info, const BoardElements& board);

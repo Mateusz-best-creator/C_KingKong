@@ -9,7 +9,7 @@
 static int lifes = 3;
 static long points = 0;
 
-void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
+bool start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
 	bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
 {
 	if (lost_life)
@@ -54,7 +54,6 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
     {
         if (check_if_mario_win(board, mario_info))
         {
-            std::cout << "Mario winning!!!" << std::endl;
             mario_won = true;
             break;
         }
@@ -112,12 +111,12 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
         }
 
         char text[128];
-        drawInfoRectangle(mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
+        drawInfoRectangle(board, mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
 
         // Handle user events (space, upper arrow...)
         times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);
         times.frames++;
     }
     delete[] barells;
-
+    return mario_won;
 }

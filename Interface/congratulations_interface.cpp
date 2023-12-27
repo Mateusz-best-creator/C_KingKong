@@ -1,31 +1,26 @@
 #include "interface.h"
-#include "../functions_definitions.h"
-#include "../Mario/mario.h"
 #include <iostream>
 
-bool handle_continue_interface_events(SDL_Event&, int&);
+bool handle_congratulations_interface_events(SDL_Event&);
 
-bool continue_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, Mario& mario_info, BoardElements& board)
+void congratulations_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
 	SDL_Event event;
 	Colors colors;
 	initialize_colors(*(surfaces.screen), colors);
 	SDL_FillRect(*(surfaces.screen), NULL, colors.czarny);
 
-	int option = 1;
 	char text[100];
 	bool choosing_option = true;
 
 	while (choosing_option)
 	{
 		DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 54, colors.szary, colors.szary);
-		sprintf(text, "Mario points for level %d : %d Mario lifes: %d", board.level, mario_info.points, mario_info.lifes);
+		sprintf(text, "Congratulations you have completed all 3 level!");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 10, text, *(surfaces.charset));
-		sprintf(text, "C: Continue the game");
+		sprintf(text, "Type anything to go to the initial_interface.");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 26, text, *(surfaces.charset));
-		sprintf(text, "B: Stop the game");
-		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 42, text, *(surfaces.charset));
-		
+
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);
 		//		SDL_RenderClear(renderer);
 		SDL_RenderCopy(SDL_elements.renderer, SDL_elements.scrtex, NULL, NULL);
@@ -33,31 +28,16 @@ bool continue_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, Mari
 
 		// Fill the entire screen with given color
 		SDL_FillRect((*(surfaces.screen)), NULL, colors.czarny);
-		choosing_option = handle_continue_interface_events(event, option);
+		choosing_option = handle_congratulations_interface_events(event);
 	}
-
-	if (option == 1)
-		return true;
-	return false;
 }
 
-bool handle_continue_interface_events(SDL_Event& event, int& x)
+bool handle_congratulations_interface_events(SDL_Event& event)
 {
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_c)
-			{
-				x = 1;
-				return false;
-			}
-			else if (event.key.keysym.sym == SDLK_b)
-			{
-				x = 0;
-				return false;
-			}
-			else
-				return true;
+			return false;
 		case SDL_QUIT:
 			return false;
 		}
