@@ -22,7 +22,7 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 				game(surfaces, elements, true);
 				break;
 			}
-			bool play_again = continue_interface(surfaces);
+			bool play_again = continue_interface(surfaces, elements);
 			if (!play_again)
 				game(surfaces, elements, true);
 			else
