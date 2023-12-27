@@ -16,9 +16,9 @@ void congratulations_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_element
 	while (choosing_option)
 	{
 		DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 54, colors.szary, colors.szary);
-		sprintf(text, "Congratulations you have completed all 3 level!");
+		sprintf(text, "Congratulations, you have completed all 3 levels\u24C1");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 10, text, *(surfaces.charset));
-		sprintf(text, "Type anything to go to the initial_interface.");
+		sprintf(text, "Type anything to go to the initial_interface");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 26, text, *(surfaces.charset));
 
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);

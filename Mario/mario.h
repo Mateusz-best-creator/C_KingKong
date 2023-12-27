@@ -10,7 +10,7 @@
 const int MARIO_FLOOR_DISTANCE = 3;
 const int MARIO_SPEED = 6;
 const int JUMP_HEIGHT = 40;
-const double JUMP_SPEED = 0.5;
+const double JUMP_SPEED = 0.25;
 const int POINTS_FOR_COMPLETING_LEVEL = 5000;
 
 struct Mario
@@ -28,6 +28,27 @@ struct Mario
 	long points;
 	int mario_row;
 	bool just_grabbed_coin;
+	
+	/*
+		Results from each level
+	*/
+	bool initialized;
+	int index;
+	char* name;
+	int level_1_scores[10];
+	int level_2_scores[10];
+	int level_3_scores[10];
+	int level_1_times[10];
+	int level_2_times[10];
+	int level_3_times[10];
+	int level_1_best_score;
+	int level_2_best_score;
+	int level_3_best_score;
+	int level_1_best_time;
+	int level_2_best_time;
+	int level_3_best_time;
+	int total_best_scores;
+	int total_best_time;
 };
 
 // Handling user events

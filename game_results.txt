@@ -1,0 +1,12 @@
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 
+Level 2 best time: 0
+Level 3 times: 
+Level 3 best time: 0

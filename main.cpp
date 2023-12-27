@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 	SDL_Error = load_bmp_images(surfaces, SDL_elements.scrtex, SDL_elements.window, SDL_elements.renderer);
 	if (SDL_Error)
 		return 1;
-	
+
 	bool play_again = false;
 	play_again = game(surfaces, SDL_elements, true);
 	while (play_again)

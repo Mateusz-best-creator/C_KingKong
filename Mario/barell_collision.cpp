@@ -20,8 +20,8 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 			mario_info.lifes--;
 			if (mario_info.lifes <= 0)
 			{
-				game(surfaces, elements, true);
-				break;
+				save_after_lost_interface(surfaces, elements, mario_info, board);
+				return;
 			}
 			bool play_again = continue_interface(surfaces, elements, mario_info, board);
 			if (!play_again)

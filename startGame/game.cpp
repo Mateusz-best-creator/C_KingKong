@@ -45,8 +45,11 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	}
 	// Loading game from file option
 	else if (x == 1 && y == 3)
-	{
 		start_game(surfaces, SDL_elements, board, false, 0, true, true); // Always load as initial state
+	// Authentication section
+	else if (x == 3 && y == 2)
+	{
+
 	}
 	else if (x != 2)
 		exit(0);

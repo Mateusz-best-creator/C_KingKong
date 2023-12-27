@@ -24,6 +24,8 @@
     <ClCompile Include="startGame\game.cpp" />
     <ClCompile Include="Interface\continue_interface.cpp" />
     <ClCompile Include="Interface\congratulations_interface.cpp" />
+    <ClCompile Include="Interface\authentication_interface.cpp" />
+    <ClCompile Include="Interface\save_after_lost_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
