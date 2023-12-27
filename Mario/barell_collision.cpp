@@ -16,17 +16,18 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 			(mario_info.x_coordinate - 14 + 30 >= barells[i].x_coordinate &&
 			mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping)
 		{
+			// Update lifes
 			mario_info.lifes--;
 			if (mario_info.lifes <= 0)
 			{
 				game(surfaces, elements, true);
 				break;
 			}
-			bool play_again = continue_interface(surfaces, elements);
+			bool play_again = continue_interface(surfaces, elements, mario_info);
 			if (!play_again)
 				game(surfaces, elements, true);
 			else
-				start_game(surfaces, elements, board, true, mario_info.points, false, false);
+				start_game(surfaces, elements, board, true, 0, false, false);
 			return;
 		}
 	}

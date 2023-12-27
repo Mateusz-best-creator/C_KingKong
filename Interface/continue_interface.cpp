@@ -1,10 +1,11 @@
 #include "interface.h"
 #include "../functions_definitions.h"
+#include "../Mario/mario.h"
 #include <iostream>
 
 bool handle_continue_interface_events(SDL_Event&, int&);
 
-bool continue_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
+bool continue_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, Mario& mario_info)
 {
 	SDL_Event event;
 	Colors colors;
@@ -18,11 +19,13 @@ bool continue_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 
 	while (choosing_option)
 	{
-		DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
-		sprintf(text, "C: Continue the game");
+		DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 54, colors.szary, colors.szary);
+		sprintf(text, "Mario points: %d Mario lifes: %d", mario_info.points, mario_info.lifes);
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 10, text, *(surfaces.charset));
-		sprintf(text, "B: Stop the game");
+		sprintf(text, "C: Continue the game");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 26, text, *(surfaces.charset));
+		sprintf(text, "B: Stop the game");
+		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 42, text, *(surfaces.charset));
 		
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);
 		//		SDL_RenderClear(renderer);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../functions_definitions.h"
+#include "../Mario/mario.h" 
 
 /*
 	Initial interface constants
@@ -31,4 +32,4 @@ const int DESC_LINE_3 = 45;
 
 // Interfaces
 void initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&, int&, int&);
-bool continue_interface(SDL_Surfaces&, SDL_Elements&);
+bool continue_interface(SDL_Surfaces&, SDL_Elements&, Mario&);

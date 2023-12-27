@@ -48,11 +48,14 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
     // Initialize the barells, based on board
     init_barells(board, barells);
 
+    bool mario_won = false;
+
     while (!times.quit)
     {
         if (check_if_mario_win(board, mario_info))
         {
             std::cout << "Mario winning!!!" << std::endl;
+            mario_won = true;
             break;
         }
 
@@ -116,4 +119,5 @@ void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
         times.frames++;
     }
     delete[] barells;
+
 }
