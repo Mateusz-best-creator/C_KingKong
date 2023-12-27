@@ -4,7 +4,7 @@
 #include "../LevelsBoards/boards.h"
 
 void collision_with_barell(Mario& mario_info, Barell* barells, 
-	const BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements)
+	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements)
 {
 	for (size_t i = 0; i < board.barells_amount; i++)
 	{
@@ -16,7 +16,7 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 			mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping)
 		{
 			mario_info.lifes--;
-			start_game(surfaces, elements, board, true, mario_info.points);
+			start_game(surfaces, elements, board, true, mario_info.points, false);
 			return;
 		}
 	}

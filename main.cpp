@@ -5,6 +5,7 @@
 #include "functions_definitions.h"
 #include "./LevelsBoards/boards.h"
 #include "./Interface/interface.h"
+#include "./read_write_to_file/read_write_to_file.h"
 #include <cstdlib>
 
 // main
@@ -68,15 +69,22 @@ int main(int argc, char** argv)
 
 	int x = 1, y = 1, option = 1;
 	initial_interface(surfaces, SDL_elements, colors, x, y);
-	if (x != 2)
-		exit(0);
-	else if (x == 2)
-		option = y;
+	
+	BoardElements board;
 
 	// Initialize the board for the appropriate level
-	BoardElements board = initialize_board(option);
+	if (x == 2)
+	{
+		board = initialize_board(y);
+		start_game(surfaces, SDL_elements, board, false, 0, false);
+	}
+	else if (x == 1 && y == 3)
+	{
+		start_game(surfaces, SDL_elements, board, false, 0, true);
+	}
+	else if (x != 2)
+		exit(0);
 
-	start_game(surfaces, SDL_elements, board, false, 0);
 	releaseMemory(board);
 	// Clear all the settings
 	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);

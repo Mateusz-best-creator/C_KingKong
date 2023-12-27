@@ -31,7 +31,7 @@ struct Mario
 };
 
 // Handling user events
-int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&, const BoardElements&);
+int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&);
 void left_arrow_event(Mario& mario_info, const BoardElements& board);
 void right_arrow_event(Mario& mario_info, const BoardElements& board);
 void upper_arrow_event(Mario& mario_info, const BoardElements& board);
@@ -55,4 +55,4 @@ void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL
 
 // Collision with barell
 void collision_with_barell(Mario& mario_info, Barell* barells,
-	const BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements);
+	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements);

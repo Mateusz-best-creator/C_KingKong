@@ -35,6 +35,8 @@
     <ClCompile Include="Mario\get_mario_info.cpp" />
     <ClCompile Include="Mario\draw_mario.cpp" />
     <ClCompile Include="Mario\keyboard_events.cpp" />
+    <ClCompile Include="read_write_to_file\read_from_file.cpp" />
+    <ClCompile Include="read_write_to_file\write_to_file.cpp" />
     <ClCompile Include="startGame\start_game.cpp" />
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>
@@ -44,6 +46,10 @@
     <ClInclude Include="Interface\interface.h" />
     <ClInclude Include="LevelsBoards\boards.h" />
     <ClInclude Include="Mario\mario.h" />
+    <ClInclude Include="read_write_to_file\read_write_to_file.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="read_from_file.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

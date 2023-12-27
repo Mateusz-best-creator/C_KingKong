@@ -19,6 +19,8 @@
     <ClCompile Include="Barells\barells.cpp" />
     <ClCompile Include="LevelsBoards\board_helper.cpp" />
     <ClCompile Include="Mario\barell_collision.cpp" />
+    <ClCompile Include="read_write_to_file\read_from_file.cpp" />
+    <ClCompile Include="read_write_to_file\write_to_file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
@@ -26,10 +28,14 @@
     <ClInclude Include="Mario\mario.h" />
     <ClInclude Include="Interface\interface.h" />
     <ClInclude Include="Barells\barells.h" />
+    <ClInclude Include="read_write_to_file\read_write_to_file.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template">
       <UniqueIdentifier>{9473e36c-597f-4057-b010-375a4c4b6c01}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="read_from_file.txt" />
   </ItemGroup>
 </Project>

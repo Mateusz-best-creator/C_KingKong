@@ -5,8 +5,7 @@
 #include <cstdlib>
 
 
-int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, 
-	const BoardElements& board)
+int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board)
 {
 	// Variable stores information in which row mario currently is
 	int mario_row = 1;
@@ -25,7 +24,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
 			else if (event.key.keysym.sym == SDLK_n)
 			{
-				start_game(surfaces, SDL_elements, board, false, mario_info.points);
+				start_game(surfaces, SDL_elements, board, false, 0, false);
 				return 1;
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
