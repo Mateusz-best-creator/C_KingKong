@@ -1,0 +1,13 @@
+Level 1 0
+Mario 170 387
+Lifes 3 0
+ThroughLadder 0 0
+Jumping 0 0
+GoingDown 0 0
+Direction 1 0
+AboveLadder 0 0
+CanGoDown 0 0
+Points 1500 0
+MarioRow 2 0
+JustGrabbedCoin 0 0
+Coins 22111 0

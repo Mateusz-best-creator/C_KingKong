@@ -57,6 +57,7 @@ struct BoardElements
 	int *ladders_rows;
 	int ladder_width;
 	int winning_x1_coordinate, winning_x2_coordinate, winning_y_coordinate;
+	int amount_of_coins;
 	int* coins_x, * coins_y;
 	bool* grabbed_coins;
 	int barells_amount;
