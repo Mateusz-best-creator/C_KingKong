@@ -24,6 +24,7 @@
     <ClCompile Include="drawingObjects\draw_ladders.cpp" />
     <ClCompile Include="drawingObjects\draw_platforms.cpp" />
     <ClCompile Include="helperFunctions\helper_functions.cpp" />
+    <ClCompile Include="Interface\continue_interface.cpp" />
     <ClCompile Include="Interface\initial_interface.cpp" />
     <ClCompile Include="Interface\player_interface.cpp" />
     <ClCompile Include="LevelsBoards\board.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="Mario\keyboard_events.cpp" />
     <ClCompile Include="read_write_to_file\read_from_file.cpp" />
     <ClCompile Include="read_write_to_file\write_to_file.cpp" />
+    <ClCompile Include="startGame\game.cpp" />
     <ClCompile Include="startGame\start_game.cpp" />
     <ClCompile Include="templateFunctions\template_functions.cpp" />
   </ItemGroup>

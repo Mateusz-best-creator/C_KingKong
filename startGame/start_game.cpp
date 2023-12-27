@@ -10,15 +10,18 @@ static int lifes = 3;
 static long points = 0;
 
 void start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
-	bool lost_life, long gained_points, bool load_game_from_file)
+	bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
 {
 	if (lost_life)
 	{
 		lifes--;
-		if (lifes <= 0)
-			exit(0);
 	}
 	points += gained_points;
+    if (initial_state)
+    {
+        points = 0;
+        lifes = 3;
+    }
 
 	SDL_Event event;
 	SDL_Surface* screen = *(surfaces.screen);

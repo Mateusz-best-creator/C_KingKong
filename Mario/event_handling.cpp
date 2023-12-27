@@ -24,8 +24,10 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
 			else if (event.key.keysym.sym == SDLK_n)
 			{
+				// Free the memory
+				releaseMemory(board);
+				game(surfaces, SDL_elements, true); // Start completely new game
 				//start_game(surfaces, SDL_elements, board, false, 0, false);
-				
 				return 1;
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)

@@ -62,30 +62,8 @@ int main(int argc, char** argv)
 	SDL_Error = load_bmp_images(surfaces, SDL_elements.scrtex, SDL_elements.window, SDL_elements.renderer);
 	if (SDL_Error)
 		return 1;
-	
-	// Initialize all the colors
-	Colors colors;
-	initialize_colors(screen, colors);
+	game(surfaces, SDL_elements, true);
 
-	int x = 1, y = 1, option = 1;
-	initial_interface(surfaces, SDL_elements, colors, x, y);
-	
-	BoardElements board;
-
-	// Initialize the board for the appropriate level
-	if (x == 2)
-	{
-		board = initialize_board(y);
-		start_game(surfaces, SDL_elements, board, false, 0, false);
-	}
-	else if (x == 1 && y == 3)
-	{
-		start_game(surfaces, SDL_elements, board, false, 0, true);
-	}
-	else if (x != 2)
-		exit(0);
-
-	releaseMemory(board);
 	// Clear all the settings
 	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);
 	return 0;
