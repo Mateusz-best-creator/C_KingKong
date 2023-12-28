@@ -36,13 +36,13 @@ struct Mario
 	int level_1_index;
 	int level_2_index;
 	int level_3_index;
-	char* name;
-	int level_1_scores[10];
-	int level_2_scores[10];
-	int level_3_scores[10];
-	double level_1_times[10];
-	double level_2_times[10];
-	double level_3_times[10];
+	char name[40];
+	int level_1_scores[20];
+	int level_2_scores[20];
+	int level_3_scores[20];
+	double level_1_times[20];
+	double level_2_times[20];
+	double level_3_times[20];
 	int level_1_best_score;
 	int level_2_best_score;
 	int level_3_best_score;
@@ -76,8 +76,8 @@ void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL
 	SDL_Renderer* renderer, char* text, Colors& colors);
 
 // Collision with barell
-void collision_with_barell(Mario& mario_info, Barell* barells,
-	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables&);
+void collision_with_barell(Mario&, Barell*, BoardElements&, SDL_Surfaces&, SDL_Elements&, TimeVariables&);
+void update_mario_metrics(Mario&, TimeVariables&, int);
 
 // Starting the game
 bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);

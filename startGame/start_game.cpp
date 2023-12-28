@@ -3,11 +3,13 @@
 #include "../Mario/mario.h"
 #include "../Barells/barells.h"
 #include "../read_write_to_file/read_write_to_file.h"
+#include "../Interface/interface.h"
 #include <iostream>
 #include <cstdlib>
 
 static int lifes = 3;
 static long points = 0;
+static int times_mario_won = 0;
 
 bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
 	bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
@@ -20,6 +22,7 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
 	points += gained_points;
     if (initial_state)
     {
+        times_mario_won = 0;
         points = 0;
         lifes = 3;
     }
@@ -57,7 +60,8 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
     {
         if (check_if_mario_win(board, mario_info))
         {
-            mario_won = true;
+            update_mario_metrics(mario_info, times, board.level);
+            save_game(mario_info);
             break;
         }
 

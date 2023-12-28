@@ -5,6 +5,7 @@
 
 static int levels_completed = 0;
 static int POINTS = 0;
+static char name[60];
 
 bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state)
 {
@@ -28,6 +29,10 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	{
 		board = initialize_board(y);
 		mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 0, 0, 1, false };
+		if (name[0] != '\0')
+			std::strcpy(mario_info.name, name);
+		else
+			std::strcpy(mario_info.name, "Unknown");
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, initial_state);
 		while (mario_won)
 		{
@@ -49,13 +54,13 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	// Loading game from file option
 	else if (x == 1 && y == 3)
 	{
-	
 		start_game(mario_info, surfaces, SDL_elements, board, false, 0, true, true); // Always load as initial state
 	}
 	// Authentication section
-	else if (x == 3 && y == 2)
+	else if (x == 3 && y == 1)
 	{
-		save_game(mario_info);
+		std::strcpy(name, authentication_interface(mario_info, surfaces, SDL_elements));
+		return true;
 	}
 	else if (x != 2)
 		exit(0);

@@ -8,12 +8,13 @@ void save_game( const Mario& mario_info)
 		printf("Error opening the file.\n");
 		exit(0);
 	}
-
+	fprintf(file, "Player name: %s\n", mario_info.name);
 	save_data(file, mario_info, mario_info.level_1_scores, mario_info.level_2_scores, mario_info.level_3_scores,
 		mario_info.level_1_best_score, mario_info.level_2_best_score, mario_info.level_3_best_score, "scores", "score");
-	fprintf(file, "\n================================\n");
+	fprintf(file, "\n================================\n\n");
 	save_data(file, mario_info, mario_info.level_1_times, mario_info.level_2_times, mario_info.level_3_times,
 		mario_info.level_1_best_time, mario_info.level_2_best_time, mario_info.level_3_best_time, "times", "time");
+	fprintf(file, "\n================================\n\n");
 
 	fclose(file);
 }
