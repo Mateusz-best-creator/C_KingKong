@@ -181,9 +181,9 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
-	*(surfaces.saving_icon) = SDL_LoadBMP("./images/saving.bmp");
-	if (*(surfaces.saving_icon) == nullptr) {
-		printf("SDL_LoadBMP(/saving.bmp) error: %s\n", SDL_GetError());
+	*(surfaces.generate_level_icon) = SDL_LoadBMP("./images/hammer.bmp");
+	if (*(surfaces.generate_level_icon) == nullptr) {
+		printf("SDL_LoadBMP(/hammer.bmp) error: %s\n", SDL_GetError());
 		// Handle errors and set Error = true
 		Error = true;
 	}

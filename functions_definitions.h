@@ -48,7 +48,7 @@ struct SDL_Surfaces
 		** king_kong, ** mario_climbing, ** mario_jumping_right, ** mario_jumping_left, ** level_1_crown,
 		** level_2_treasure, ** level_3_diamond, ** level_1_winning_icon, ** level_2_winning_icon, ** level_3_winning_icon,
 		** coin_icon, ** heart_icon, ** rolling_barell_1, ** quit_icon, ** report_icon, ** golden_cup_icon,
-		** authentication_icon, ** saving_icon, ** loading_icon;
+		** authentication_icon, ** generate_level_icon, ** loading_icon;
 };
 
 struct SDL_Elements

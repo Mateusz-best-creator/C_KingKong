@@ -59,13 +59,13 @@ void initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_ele
 		SDL_Surface* level_logos[9] =
 		{
 			*(surfaces.quit_icon), *(surfaces.level_1_crown), *(surfaces.authentication_icon),
-			*(surfaces.saving_icon) , *(surfaces.level_2_treasure), *(surfaces.report_icon),
+			*(surfaces.generate_level_icon) , *(surfaces.level_2_treasure), *(surfaces.report_icon),
 			* (surfaces.loading_icon) , *(surfaces.level_3_diamond), *(surfaces.golden_cup_icon)
 		};
 		char* options_desc[9] =
 		{
 			"Quit", "Level 1", "Authentication",
-			"Save to file", "Level 2", "Results account",
+			"Generate level", "Level 2", "Results account",
 			"Read from file", "Level 3", "Hall of fame"
 		};
 		char* level_desc[3] = { "Level 1", "Level 2", "Level 3" };

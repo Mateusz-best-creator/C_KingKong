@@ -1,18 +1,18 @@
-Player name: Mati
+Player name: Unknown
 Level 1 scores: 
-Level 1 best score: 0
+Level 1 best score: -858993460
 Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 500 5000 10000 
-Level 3 best score: 10000
+Level 2 best score: -858993460
+Level 3 scores: 1000 
+Level 3 best score: 1000
 
 Level 1 times: 
-Level 1 best time: 0
+Level 1 best time: -9.25596e+61
 Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 8.858 9.942 8.858 
-Level 3 best time: 8.858
+Level 2 best time: -9.25596e+61
+Level 3 times: 5.057 
+Level 3 best time: 5.057
 
-Mati total amount of points: 10500
+Unknown total amount of points: 6500
 ================================
 
