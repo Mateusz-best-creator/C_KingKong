@@ -64,9 +64,9 @@ int main(int argc, char** argv)
 		return 1;
 
 	bool play_again = false;
-	play_again = game(surfaces, SDL_elements, true);
+	play_again = game(surfaces, SDL_elements, true, true);
 	while (play_again)
-		play_again = game(surfaces, SDL_elements, true);
+		play_again = game(surfaces, SDL_elements, true, true);
 
 	// Clear all the settings
 	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);

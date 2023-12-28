@@ -4,11 +4,14 @@
 #include <iostream>
 
 static int levels_completed = 0;
-static int points = 0;
 static char name[21] = { "Unknown" };
 
-bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state)
+
+bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state, bool reset_levels)
 {
+	if (reset_levels)
+		levels_completed = 0;
+
 	// Initialize all the colors
 	Colors colors;
 	initialize_colors(*(surfaces.screen), colors);
@@ -18,7 +21,7 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 
 	BoardElements board;
 	Mario mario_info;
-	mario_info.all_points = 0 + points;
+	mario_info.all_points = 0;
 
 	bool mario_won = false;
 
@@ -41,8 +44,9 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, initial_state);
 		while (mario_won)
 		{
-			points += POINTS_FOR_COMPLETING_LEVEL;
 			levels_completed++;
+			std::cout << "MARIO WON!" << std::endl;
+			mario_info.all_points += POINTS_FOR_COMPLETING_LEVEL;
 			if (levels_completed >= 3)
 			{
 				levels_completed = 0;

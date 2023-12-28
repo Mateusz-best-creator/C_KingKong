@@ -11,6 +11,8 @@ static int lifes = 3;
 static long local_points = 0;
 static int times_mario_won = 0;
 
+int new_game;
+
 bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
 	bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
 {
