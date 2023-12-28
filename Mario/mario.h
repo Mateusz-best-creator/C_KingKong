@@ -83,8 +83,3 @@ void update_mario_metrics(Mario&, TimeVariables&, int);
 
 // Starting the game
 bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);
-
-void save_game(const Mario&);
-// Function overloading for double and int types
-void save_data(FILE*, const Mario&, const int*, const int*, const int*, const int, const int, const int, const char*, const char*);
-void save_data(FILE*, const Mario&, const double*, const double*, const double*, const double, const double, const double, const char*, const char*);

@@ -20,13 +20,12 @@
     <ClCompile Include="LevelsBoards\board_helper.cpp" />
     <ClCompile Include="Mario\barell_collision.cpp" />
     <ClCompile Include="read_write_to_file\read_from_file.cpp" />
-    <ClCompile Include="read_write_to_file\write_to_file.cpp" />
     <ClCompile Include="startGame\game.cpp" />
     <ClCompile Include="Interface\continue_interface.cpp" />
     <ClCompile Include="Interface\congratulations_interface.cpp" />
     <ClCompile Include="Interface\authentication_interface.cpp" />
     <ClCompile Include="Interface\save_after_lost_interface.cpp" />
-    <ClCompile Include="Mario\saving_the_game.cpp" />
+    <ClCompile Include="read_write_to_file\write_to_file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

@@ -18,12 +18,12 @@ void load_table_from_file(Mario& mario, BoardElements& board)
         you have to uncomment appropriate piece of code
         and comment out the rest "file choosing" options
     */
-    
+    /*
     if (fopen_s(&file, "./read_from_file_level_1.txt", "r") != 0) {
         printf("Error opening the file.\n");
         exit(0);
     }
-    
+    */
     /*
     if (fopen_s(&file, "./read_from_file_level_2.txt", "r") != 0) {
         printf("Error opening the file.\n");
@@ -35,7 +35,6 @@ void load_table_from_file(Mario& mario, BoardElements& board)
         printf("Error opening the file.\n");
         exit(0);
     }
-    
     
 
     char name[20];
@@ -62,6 +61,10 @@ void load_mario_informations(BoardElements& board, Mario& mario, const char* nam
     {
         mario.x_coordinate = x;
         mario.y_coordinate = y;
+    }
+    else if (strcmp(name, "Level") == 0)
+    {
+        board = initialize_board(x);
     }
     else if (strcmp(name, "AllPoints") == 0)
         mario.all_points = x;
