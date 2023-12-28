@@ -46,7 +46,7 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 		{
 			levels_completed++;
 			std::cout << "MARIO WON!" << std::endl;
-			mario_info.all_points += POINTS_FOR_COMPLETING_LEVEL;
+			mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 			if (levels_completed >= 3)
 			{
 				levels_completed = 0;

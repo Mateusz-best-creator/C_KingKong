@@ -39,6 +39,7 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 				safe = save_after_lost_interface(surfaces, elements, mario_info, board);
 				if (safe)
 				{
+					mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 					save_game(mario_info);
 				}
 				game(surfaces, elements, true, false);

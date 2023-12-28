@@ -1,68 +1,17 @@
 Player name: Unknown
-Level 1 scores: 
-Level 1 best score: 0
+Level 1 scores: 1000 500 1000 
+Level 1 best score: 1000
 Level 2 scores: 
 Level 2 best score: 0
-Level 3 scores: 500 5000 
-Level 3 best score: 5000
-Level 1 times: 
-Level 1 best time: 0
-Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 9.511 10.211 
-Level 3 best time: 9.511
-
-Unknown total amount of points: 5000
-================================
-
-Player name: Unknown
-Level 1 scores: 
-Level 1 best score: 0
-Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 500 5000 10000 
-Level 3 best score: 10000
-Level 1 times: 
-Level 1 best time: 0
-Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 9.511 10.211 9.511 
-Level 3 best time: 9.511
-
-Unknown total amount of points: 10000
-================================
-
-Player name: Unknown
-Level 1 scores: 
-Level 1 best score: 0
-Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 0 5500 
+Level 3 scores: 5500 
 Level 3 best score: 5500
-Level 1 times: 
-Level 1 best time: 0
+Level 1 times: 34.92 6.128 8.675 
+Level 1 best time: 6.128
 Level 2 times: 
 Level 2 best time: 0
-Level 3 times: 2.131 9.366 
-Level 3 best time: 2.131
+Level 3 times: 10.82 
+Level 3 best time: 10.82
 
-Unknown total amount of points: 500
-================================
-
-Player name: Unknown
-Level 1 scores: 
-Level 1 best score: 0
-Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 0 5500 10500 
-Level 3 best score: 10500
-Level 1 times: 
-Level 1 best time: 0
-Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 2.131 9.366 2.131 
-Level 3 best time: 2.131
-
-Unknown total amount of points: 500
+Unknown total amount of points: 6500
 ================================
 
