@@ -39,6 +39,7 @@
     <ClCompile Include="Mario\get_mario_info.cpp" />
     <ClCompile Include="Mario\draw_mario.cpp" />
     <ClCompile Include="Mario\keyboard_events.cpp" />
+    <ClCompile Include="read_write_to_file\get_results_from_file.cpp" />
     <ClCompile Include="read_write_to_file\read_from_file.cpp" />
     <ClCompile Include="read_write_to_file\write_to_file.cpp" />
     <ClCompile Include="startGame\game.cpp" />

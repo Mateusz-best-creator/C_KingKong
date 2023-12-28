@@ -24,15 +24,18 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 
 	// Player choose to quit
 	if (x == 1 && y == 1)
-		exit(0);
+		return false;
 	// Choosing to play 
 	else if (x == 2)
 	{
 		board = initialize_board(y);
 		mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 0, 0, 0, 1, false };
-		
+
 		if (std::strcmp(name, "Unknown") != 0)
+		{
 			std::strcpy(mario_info.name, name);
+			levels_completed = 0;
+		}
 		else
 			std::strcpy(mario_info.name, "Unknown");
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, initial_state);
@@ -63,12 +66,12 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	// Authentication section
 	else if (x == 3 && y == 1)
 	{
+		std::cout << "authentication!!!" << std::endl;
 		std::strcpy(name, authentication_interface(mario_info, surfaces, SDL_elements));
 		return true;
 	}
 	else if (x != 2)
-		exit(0);
+		return false;
 
-	releaseMemory(board);
-	return false;
+	return true;
 }

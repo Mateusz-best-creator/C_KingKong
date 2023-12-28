@@ -26,6 +26,7 @@
     <ClCompile Include="Interface\authentication_interface.cpp" />
     <ClCompile Include="Interface\save_after_lost_interface.cpp" />
     <ClCompile Include="read_write_to_file\write_to_file.cpp" />
+    <ClCompile Include="read_write_to_file\get_results_from_file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

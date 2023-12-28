@@ -125,6 +125,8 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
 
         // Handle user events (space, upper arrow...)
         times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);
+        if (times.quit == 2)
+            return false;
         times.frames++;
     }
     delete[] barells;

@@ -26,6 +26,10 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 			mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping)
 		{
 			update_mario_metrics(mario_info, times, board.level);
+			mario_info.all_points -= mario_info.points;
+			mario_info.points = 0;
+			for (size_t i = 0; i < board.amount_of_coins; i++)
+				board.grabbed_coins[i] = false;
 			
 			bool safe = false;
 			// Update lifes
