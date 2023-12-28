@@ -34,4 +34,4 @@ const int DESC_LINE_3 = 45;
 void initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&, int&, int&);
 bool continue_interface(SDL_Surfaces&, SDL_Elements&, Mario&, BoardElements&);
 void congratulations_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements);
-void save_after_lost_interface(SDL_Surfaces&, SDL_Elements&, Mario&, BoardElements&);
+bool save_after_lost_interface(SDL_Surfaces&, SDL_Elements&, Mario&, BoardElements&);

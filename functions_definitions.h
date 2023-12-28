@@ -69,8 +69,6 @@ struct Colors
 	int czarny, zielony, czerwony, niebieski, brazowy, jasny_niebieski, szary;
 };
 
-// Starting the game
-bool start_game(SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);
 bool game(SDL_Surfaces&, SDL_Elements&, bool);
 
 // Drawing surfaces

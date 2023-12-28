@@ -2,6 +2,7 @@
 
 #include "../functions_definitions.h"
 #include "../Barells/barells.h"
+#include <stdio.h>
 
 /*
 	In this file we store all the infomation about Mario object
@@ -32,8 +33,9 @@ struct Mario
 	/*
 		Results from each level
 	*/
-	bool initialized;
-	int index;
+	int level_1_index;
+	int level_2_index;
+	int level_3_index;
 	char* name;
 	int level_1_scores[10];
 	int level_2_scores[10];
@@ -78,3 +80,9 @@ void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL
 // Collision with barell
 void collision_with_barell(Mario& mario_info, Barell* barells,
 	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements);
+
+// Starting the game
+bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);
+
+void save_game(const BoardElements& board, const Mario& mario_info);
+void save_data(FILE*, const Mario&, const int*, const int*, const int*, const int, const int, const int, const char*, const char*);

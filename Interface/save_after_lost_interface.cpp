@@ -3,10 +3,8 @@
 #include <iostream>
 
 bool handle_after_lost_interface_events(SDL_Event&, int&);
-void save_game(const BoardElements& board, const Mario& mario_info);
-void save_data(FILE*, const Mario&, const int*, const int*, const int*, const int, const int, const int, const char*, const char*);
 
-void save_after_lost_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, Mario& mario_info, BoardElements& board)
+bool save_after_lost_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, Mario& mario_info, BoardElements& board)
 {
 	SDL_Event event;
 	Colors colors;
@@ -38,9 +36,9 @@ void save_after_lost_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_element
 	}
 	if (option == 1)
 	{
-		save_game(board, mario_info);
+		return true;
 	}
-	game(surfaces, SDL_elements, true);
+	return false;
 }
 
 bool handle_after_lost_interface_events(SDL_Event& event, int& x)
@@ -50,6 +48,7 @@ bool handle_after_lost_interface_events(SDL_Event& event, int& x)
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_y)
 			{
+				std::cout << "Saving to file" << std::endl;
 				x = 1;
 				return false;
 			}
@@ -65,49 +64,4 @@ bool handle_after_lost_interface_events(SDL_Event& event, int& x)
 		}
 	}
 	return true;
-}
-
-void save_game(const BoardElements& board, const Mario& mario_info)
-{
-	FILE* file;
-	if (fopen_s(&file, "./game_results.txt", "w") != 0) {
-		printf("Error opening the file.\n");
-		exit(0);
-	}
-
-	save_data(file, mario_info, mario_info.level_1_scores, mario_info.level_2_scores, mario_info.level_3_scores,
-		mario_info.level_1_best_score, mario_info.level_2_best_score, mario_info.level_3_best_score, "scores", "score");
-	save_data(file, mario_info, mario_info.level_1_times, mario_info.level_2_times, mario_info.level_3_times,
-		mario_info.level_1_best_time, mario_info.level_2_best_time, mario_info.level_3_best_time, "times", "time");
-
-	fclose(file);
-}
-
-void save_data(FILE* file, const Mario& mario_info, const int* level_1_results, const int* level_2_results, 
-	const int* level_3_results, const int best_1, const int best_2, const int best_3, const char* s1, const char* s2)
-{
-	for (int i = 0; i < 3; i++)
-	{
-		fprintf(file, "Level %d %s: ", i+1, s1);
-		for (int j = 0; j < mario_info.index; j++)
-			switch (i)
-			{
-			case 0:
-				fprintf(file, "%d ", level_1_results[j]);
-				break;
-			case 1:
-				fprintf(file, "%d ", level_2_results[j]);
-				break;
-			case 2:
-				fprintf(file, "%d ", level_3_results[j]);
-				break;
-			}
-		fprintf(file, "\nLevel %d best %s: ", i+1, s2);
-		if (i == 0)
-			fprintf(file, "%d\n", best_1);
-		else if (i == 1)
-			fprintf(file, "%d\n", best_2);
-		else
-			fprintf(file, "%d\n", best_3);
-	}
 }

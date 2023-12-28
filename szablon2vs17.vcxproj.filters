@@ -26,6 +26,7 @@
     <ClCompile Include="Interface\congratulations_interface.cpp" />
     <ClCompile Include="Interface\authentication_interface.cpp" />
     <ClCompile Include="Interface\save_after_lost_interface.cpp" />
+    <ClCompile Include="Mario\saving_the_game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

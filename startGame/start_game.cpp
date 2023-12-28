@@ -9,13 +9,14 @@
 static int lifes = 3;
 static long points = 0;
 
-bool start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
+bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
 	bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
 {
 	if (lost_life)
 	{
 		lifes--;
-	}
+	    
+    }
 	points += gained_points;
     if (initial_state)
     {
@@ -33,8 +34,6 @@ bool start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
 	// Initialize all helper variables for measuring the time, frames, fps...
 	TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-	Mario mario_info;
-
 	if (load_game_from_file)
 	{
 		load_table_from_file(mario_info, board);
@@ -42,8 +41,12 @@ bool start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
     Barell* barells = new Barell[board.barells_amount];
     if (!load_game_from_file)
     {
-        // Create mario object
-        mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, lifes, points, 1, false };
+        mario_info.points = points;
+        mario_info.lifes = lifes;
+        mario_info.x_coordinate = board.initial_mario_x;
+        mario_info.y_coordinate = board.initial_mario_y;
+        for (size_t i = 0; i < board.amount_of_coins; i++)
+            board.grabbed_coins[i] = false;
     }
     // Initialize the barells, based on board
     init_barells(board, barells);
@@ -80,9 +83,6 @@ bool start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
         // Moving all barells
         move_barells(barells, board, surfaces);
 
-        // Check collisions
-        collision_with_barell(mario_info, barells, board, surfaces, SDL_elements);
-
         // Draw final treasures
         switch (board.level)
         {
@@ -109,6 +109,9 @@ bool start_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElement
             times.frames = 0;
             times.fpsTimer -= SECONDS_BETWEEN_REFRESH;
         }
+
+        // Check collisions
+        collision_with_barell(mario_info, barells, board, surfaces, SDL_elements);
 
         char text[128];
         drawInfoRectangle(board, mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
