@@ -1,5 +1,6 @@
 Level 1 0
 Mario 170 387
+AllPoints 1500 0
 Lifes 3 0
 ThroughLadder 0 0
 Jumping 0 0

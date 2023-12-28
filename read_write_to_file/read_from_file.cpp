@@ -63,6 +63,8 @@ void load_mario_informations(BoardElements& board, Mario& mario, const char* nam
         mario.x_coordinate = x;
         mario.y_coordinate = y;
     }
+    else if (strcmp(name, "AllPoints") == 0)
+        mario.all_points = x;
     else if (strcmp(name, "Lifes") == 0)
         mario.lifes = x;
     else if (strcmp(name, "ThroughLadder") == 0)

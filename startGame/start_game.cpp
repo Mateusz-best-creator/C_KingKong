@@ -8,7 +8,7 @@
 #include <cstdlib>
 
 static int lifes = 3;
-static long points = 0;
+static long local_points = 0;
 static int times_mario_won = 0;
 
 bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
@@ -19,11 +19,11 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
 		lifes--;
 	    
     }
-	points += gained_points;
+    local_points += gained_points;
     if (initial_state)
     {
         times_mario_won = 0;
-        points = 0;
+        local_points = 0;
         lifes = 3;
     }
 
@@ -44,12 +44,14 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
     Barell* barells = new Barell[board.barells_amount];
     if (!load_game_from_file)
     {
-        mario_info.points = points;
+        mario_info.points = local_points;
         mario_info.lifes = lifes;
         mario_info.x_coordinate = board.initial_mario_x;
         mario_info.y_coordinate = board.initial_mario_y;
+        /* Do not reset the coins if mario loses a life
         for (size_t i = 0; i < board.amount_of_coins; i++)
             board.grabbed_coins[i] = false;
+        */
     }
     // Initialize the barells, based on board
     init_barells(board, barells);

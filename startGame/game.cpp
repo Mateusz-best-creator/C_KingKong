@@ -38,7 +38,7 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, initial_state);
 		while (mario_won)
 		{
-			points += mario_info.points;
+			points += POINTS_FOR_COMPLETING_LEVEL;
 			levels_completed++;
 			if (levels_completed >= 3)
 			{
@@ -57,6 +57,7 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	// Loading game from file option
 	else if (x == 1 && y == 3)
 	{
+		std::strcpy(mario_info.name, "Unknown");
 		start_game(mario_info, surfaces, SDL_elements, board, false, 0, true, true); // Always load as initial state
 	}
 	// Authentication section

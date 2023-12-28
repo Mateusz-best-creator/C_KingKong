@@ -1,5 +1,6 @@
 Level 3 0
 Mario 116 327
+AllPoints 6500 0
 Lifes 1 0
 ThroughLadder 1 0
 Jumping 0 0
