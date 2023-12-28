@@ -4,8 +4,8 @@
 #include <iostream>
 
 static int levels_completed = 0;
-static int POINTS = 0;
-static char name[60];
+static int points = 0;
+static char name[21] = { "Unknown" };
 
 bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state)
 {
@@ -14,10 +14,11 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	initialize_colors(*(surfaces.screen), colors);
 
 	int x = 1, y = 1, option = 1;
-	initial_interface(surfaces, SDL_elements, colors, x, y);
+	initial_interface(surfaces, SDL_elements, colors, x, y, name);
 
 	BoardElements board;
 	Mario mario_info;
+	mario_info.all_points = 0 + points;
 
 	bool mario_won = false;
 
@@ -28,14 +29,16 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	else if (x == 2)
 	{
 		board = initialize_board(y);
-		mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 0, 0, 1, false };
-		if (name[0] != '\0')
+		mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 0, 0, 0, 1, false };
+		
+		if (std::strcmp(name, "Unknown") != 0)
 			std::strcpy(mario_info.name, name);
 		else
 			std::strcpy(mario_info.name, "Unknown");
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, initial_state);
 		while (mario_won)
 		{
+			points += mario_info.points;
 			levels_completed++;
 			if (levels_completed >= 3)
 			{

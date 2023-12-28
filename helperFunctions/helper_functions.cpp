@@ -218,7 +218,7 @@ void drawInfoRectangle(const BoardElements& board, const Mario& mario_info, SDL_
 	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
 	sprintf(text, "Mario points for level %d : %d   Mario lifes: %d", board.level, mario_info.points, mario_info.lifes);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
-	sprintf(text, "Player name: %s", mario_info.name);
+	sprintf(text, "Player name: %s   %s all points: %d", mario_info.name, mario_info.name, mario_info.all_points);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
 	// tekst informacyjny / info text
 	DrawRectangle(screen, 4, 430, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);

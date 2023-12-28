@@ -7,7 +7,7 @@ char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_El
 {
     SDL_Event event;
     bool quit = false;
-    char name[40];
+    char name[21];
     int index = 0;
     name[index] = '\0';
     char text[100];
@@ -18,7 +18,7 @@ char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_El
     while (!quit)
     {
         DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 54, colors.szary, colors.szary);
-        sprintf(text, "Please enter you name: ");
+        sprintf(text, "Please enter you name, maximum length is 25 characters: ");
         DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 10, text, *(surfaces.charset));
         sprintf(text, "Your name: %s", name);
         DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 26, text, *(surfaces.charset));
@@ -45,7 +45,7 @@ bool handle_authentication_interface_events(char* name, int& index)
         if (event.type == SDL_QUIT)
             return true;
         else if (event.type == SDL_KEYDOWN) {
-            if (event.key.keysym.sym == SDLK_RETURN)
+            if (event.key.keysym.sym == SDLK_RETURN && index > 0)
                 return true;
             else if (event.key.keysym.sym == SDLK_BACKSPACE && index > 0)
             {
@@ -53,7 +53,7 @@ bool handle_authentication_interface_events(char* name, int& index)
                 name[index] = '\0';
             }
         }
-        else if (event.type == SDL_TEXTINPUT && index < 60)
+        else if (event.type == SDL_TEXTINPUT && index < 20)
         {
             name[index] = *(event.text.text);
             index++;

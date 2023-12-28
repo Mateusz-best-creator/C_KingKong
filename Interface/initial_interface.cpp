@@ -7,26 +7,35 @@
 bool handle_initial_interface_events(SDL_Event&, int& x, int& y);
 void level_rectangle(SDL_Surface*, const int, const int, const Colors&);
 
-void initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elements, const Colors& colors, int& x, int& y)
+void initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_elements, 
+	const Colors& colors, int& x, int& y, const char name[])
 {
     SDL_Event event;
 	SDL_Surface* screen = *(surfaces.screen);
 	SDL_Surface* charset = *(surfaces.charset);
 
 	char desc_text[150];
+	char player_name[50];
+	player_name[0] = '\0';
 
 	bool choosing_level = true;
 
 	while (choosing_level)
 	{
-		// tekst informacyjny / info text
+		// Bottom rectangle displaying the name of the player
+		DrawRectangle(screen, DESC_RECTANGLE_INIT_X_Y, 430,
+			DESC_RECTANGLE_WIDTH, 40, colors.szary, colors.szary);
+		sprintf(player_name, "You are currently logged as: %s", name);
+		DrawString(screen, screen->w / 2 - strlen(player_name) * 8 / 2, 450, player_name, charset);
+
+		// tekst informacyjny
 		DrawRectangle(screen, DESC_RECTANGLE_INIT_X_Y, DESC_RECTANGLE_INIT_X_Y, 
-			DESC_RECTANGLE_WIDTH, DESC_RECTANGLE_HEIGHT, colors.czerwony, colors.niebieski);
+			DESC_RECTANGLE_WIDTH, DESC_RECTANGLE_HEIGHT, colors.szary, colors.szary);
 		const char* desc[3] =
 		{
 			"Embark on a  thrilling retro adventure  with my C++-crafted DonkeyKong",
 			"game. You'll dodge barrels, climb ladders, and find amazing treasures!",
-			"Enter - pick a level, \030 - choose lower level, \031 - choose higher level"
+			"Enter - pick an option, \030 - go down, \031 - go up, \032 - go left, \033 - go right"
 		};
 		const int lines_Y[3] = {DESC_LINE_1, DESC_LINE_2, DESC_LINE_3};
 		for (size_t i = 0; i < 3; i++)

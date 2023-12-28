@@ -13,6 +13,7 @@ const int MARIO_SPEED = 6;
 const int JUMP_HEIGHT = 40;
 const double JUMP_SPEED = 0.25;
 const int POINTS_FOR_COMPLETING_LEVEL = 5000;
+const int POINTS_FOR_GRABBING_COIN = 500;
 
 struct Mario
 {
@@ -27,6 +28,7 @@ struct Mario
 	bool can_go_down;
 	int lifes;
 	long points;
+	long all_points;
 	int mario_row;
 	bool just_grabbed_coin;
 	
@@ -36,7 +38,7 @@ struct Mario
 	int level_1_index;
 	int level_2_index;
 	int level_3_index;
-	char name[40];
+	char name[21];
 	int level_1_scores[20];
 	int level_2_scores[20];
 	int level_3_scores[20];

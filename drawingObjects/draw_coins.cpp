@@ -33,7 +33,8 @@ void grab_coin(Mario& mario_info, const BoardElements& board)
 	{
 		if (mario_info.x_coordinate == board.coins_x[i] && mario_info.y_coordinate == board.coins_y[i] && !board.grabbed_coins[i])
 		{
-			mario_info.points += 500;
+			mario_info.points += POINTS_FOR_GRABBING_COIN;
+			mario_info.all_points += POINTS_FOR_GRABBING_COIN;
 			board.grabbed_coins[i] = true;
 			mario_info.just_grabbed_coin = true;
 			return;
