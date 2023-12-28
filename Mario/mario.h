@@ -40,17 +40,15 @@ struct Mario
 	int level_1_scores[10];
 	int level_2_scores[10];
 	int level_3_scores[10];
-	int level_1_times[10];
-	int level_2_times[10];
-	int level_3_times[10];
+	double level_1_times[10];
+	double level_2_times[10];
+	double level_3_times[10];
 	int level_1_best_score;
 	int level_2_best_score;
 	int level_3_best_score;
-	int level_1_best_time;
-	int level_2_best_time;
-	int level_3_best_time;
-	int total_best_scores;
-	int total_best_time;
+	double level_1_best_time;
+	double level_2_best_time;
+	double level_3_best_time;
 };
 
 // Handling user events
@@ -79,10 +77,12 @@ void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL
 
 // Collision with barell
 void collision_with_barell(Mario& mario_info, Barell* barells,
-	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements);
+	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables&);
 
 // Starting the game
 bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);
 
-void save_game(const BoardElements& board, const Mario& mario_info);
+void save_game(const Mario&);
+// Function overloading for double and int types
 void save_data(FILE*, const Mario&, const int*, const int*, const int*, const int, const int, const int, const char*, const char*);
+void save_data(FILE*, const Mario&, const double*, const double*, const double*, const double, const double, const double, const char*, const char*);

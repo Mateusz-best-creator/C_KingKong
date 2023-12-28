@@ -111,7 +111,7 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
         }
 
         // Check collisions
-        collision_with_barell(mario_info, barells, board, surfaces, SDL_elements);
+        collision_with_barell(mario_info, barells, board, surfaces, SDL_elements, times);
 
         char text[128];
         drawInfoRectangle(board, mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);

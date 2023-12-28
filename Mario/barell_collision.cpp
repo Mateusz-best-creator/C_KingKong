@@ -10,9 +10,10 @@ static int level_2_index = 0;
 static int level_3_index = 0;
 
 int return_max(const int[], int);
+double return_min(const double[], int);
 
 void collision_with_barell(Mario& mario_info, Barell* barells, 
-	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements)
+	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables& times)
 {
 	for (size_t i = 0; i < board.barells_amount; i++)
 	{
@@ -29,16 +30,22 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 			case 1:
 				mario_info.level_1_scores[level_1_index] = mario_info.points;
 				mario_info.level_1_best_score = return_max(mario_info.level_1_scores, level_1_index);
+				mario_info.level_1_times[level_1_index] = times.worldTime;
+				mario_info.level_1_best_time = return_min(mario_info.level_1_times, level_1_index);
 				level_1_index++;
 				break;
 			case 2:
 				mario_info.level_2_scores[level_2_index] = mario_info.points;
 				mario_info.level_2_best_score = return_max(mario_info.level_2_scores, level_2_index);
+				mario_info.level_2_times[level_2_index] = times.worldTime;
+				mario_info.level_2_best_time = return_min(mario_info.level_2_times, level_2_index);
 				level_2_index++;
 				break;
 			case 3:
 				mario_info.level_3_scores[level_3_index] = mario_info.points;
 				mario_info.level_3_best_score = return_max(mario_info.level_3_scores, level_3_index);
+				mario_info.level_3_times[level_3_index] = times.worldTime;
+				mario_info.level_3_best_time = return_min(mario_info.level_3_times, level_3_index);
 				level_3_index++;
 				break;
 			}
@@ -53,7 +60,7 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 				safe = save_after_lost_interface(surfaces, elements, mario_info, board);
 				if (safe)
 				{
-					save_game(board, mario_info);
+					save_game(mario_info);
 				}
 				game(surfaces, elements, true);
 				return;
@@ -80,4 +87,13 @@ int return_max(const int array[], int size)
 		if (max < array[i])
 			max = array[i];
 	return max;
+}
+
+double return_min(const double array[], int size)
+{
+	int min = array[0];
+	for (size_t i = 1; i < size; i++)
+		if (min > array[i])
+			min = array[i];
+	return min;
 }

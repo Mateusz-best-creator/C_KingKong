@@ -55,7 +55,7 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	// Authentication section
 	else if (x == 3 && y == 2)
 	{
-
+		save_game(mario_info);
 	}
 	else if (x != 2)
 		exit(0);
