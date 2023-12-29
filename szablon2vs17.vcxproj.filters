@@ -29,6 +29,7 @@
     <ClCompile Include="read_write_to_file\read_players_metrics.cpp" />
     <ClCompile Include="playersAccount\hall_of_fame.cpp" />
     <ClCompile Include="playersAccount\players_account.cpp" />
+    <ClCompile Include="Mario\jumped_over_barell.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

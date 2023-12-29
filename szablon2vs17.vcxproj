@@ -39,6 +39,7 @@
     <ClCompile Include="Mario\get_mario_info.cpp" />
     <ClCompile Include="Mario\draw_mario.cpp" />
     <ClCompile Include="Mario\keyboard_events.cpp" />
+    <ClCompile Include="Mario\jumped_over_barell.cpp" />
     <ClCompile Include="playersAccount\hall_of_fame.cpp" />
     <ClCompile Include="playersAccount\players_account.cpp" />
     <ClCompile Include="read_write_to_file\read_players_metrics.cpp" />

@@ -69,6 +69,8 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         // Moving all barells
         move_barells(barells, board, surfaces);
 
+        jumped_over_barell(mario_info, board, barells, screen, *(surfaces.charset));
+
         // Draw final treasures
         switch (board.level)
         {
@@ -88,6 +90,8 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         // Draw message if mario grabbed a coin
         if (mario_info.just_grabbed_coin)
             grab_coin_message(mario_info, screen, *(surfaces.charset));
+        if (mario_info.just_jumped_over_barell)
+            jump_over_barell_message(mario_info, screen, *(surfaces.charset));
 
         times.fpsTimer += times.delta;
         if (times.fpsTimer > SECONDS_BETWEEN_REFRESH) {
