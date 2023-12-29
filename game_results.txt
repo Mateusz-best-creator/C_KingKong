@@ -1,17 +1,75 @@
 Player name: Unknown
-Level 1 scores: 1000 500 1000 
-Level 1 best score: 1000
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 0 500 0 
+Level 2 best score: 500
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 2.159 4.638 1.906 
+Level 2 best time: 1.906
+Level 3 times: 
+Level 3 best time: 0
+Unknown total_amount_of_points: 500
+================================
+Player name: Mateusz Pomidor
+Level 1 scores: 
+Level 1 best score: 0
 Level 2 scores: 
 Level 2 best score: 0
 Level 3 scores: 5500 
 Level 3 best score: 5500
-Level 1 times: 34.92 6.128 8.675 
-Level 1 best time: 6.128
+Level 1 times: 
+Level 1 best time: 0
 Level 2 times: 
 Level 2 best time: 0
-Level 3 times: 10.82 
-Level 3 best time: 10.82
-
-Unknown total amount of points: 6500
+Level 3 times: 10.183 
+Level 3 best time: 10.183
+Mateusz Pomidor total amount of points: 500
 ================================
-
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 5500 
+Level 3 best score: 5500
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 
+Level 2 best time: 0
+Level 3 times: 10.721 
+Level 3 best time: 10.721
+Unknown total amount of points: 500
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 5500 
+Level 3 best score: 5500
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 
+Level 2 best time: 0
+Level 3 times: 10.23 
+Level 3 best time: 10.23
+Unknown total amount of points: 500
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 5500 
+Level 3 best score: 5500
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 
+Level 2 best time: 0
+Level 3 times: 9.812 
+Level 3 best time: 9.812
+Unknown total amount of points: 500
+================================

@@ -65,7 +65,7 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
         if (check_if_mario_win(board, mario_info))
         {
             update_mario_metrics(mario_info, times, board.level);
-            save_game(mario_info);
+            //save_game(mario_info);
             mario_won = true;
             break;
         }

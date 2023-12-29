@@ -26,7 +26,9 @@
     <ClCompile Include="Interface\authentication_interface.cpp" />
     <ClCompile Include="Interface\save_after_lost_interface.cpp" />
     <ClCompile Include="read_write_to_file\write_to_file.cpp" />
-    <ClCompile Include="read_write_to_file\get_results_from_file.cpp" />
+    <ClCompile Include="read_write_to_file\read_players_metrics.cpp" />
+    <ClCompile Include="playersAccount\hall_of_fame.cpp" />
+    <ClCompile Include="playersAccount\players_account.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />
@@ -35,6 +37,7 @@
     <ClInclude Include="Interface\interface.h" />
     <ClInclude Include="Barells\barells.h" />
     <ClInclude Include="read_write_to_file\read_write_to_file.h" />
+    <ClInclude Include="playersAccount\players_account.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template">

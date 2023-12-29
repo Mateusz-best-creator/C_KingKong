@@ -1,6 +1,8 @@
 #include "../functions_definitions.h"
 #include "../Interface/interface.h"
 #include "../Mario/mario.h"
+#include "../read_write_to_file/read_write_to_file.h"
+#include "../playersAccount/players_account.h"
 #include <iostream>
 
 static int levels_completed = 0;
@@ -49,6 +51,7 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 			mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 			if (levels_completed >= 3)
 			{
+				save_game(mario_info);
 				levels_completed = 0;
 				congratulations_interface(surfaces, SDL_elements);
 				return true;
@@ -73,6 +76,10 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 		std::cout << "authentication!!!" << std::endl;
 		std::strcpy(name, authentication_interface(mario_info, surfaces, SDL_elements));
 		return true;
+	}
+	else if (x == 3 && y == 2)
+	{
+		players_account(surfaces, SDL_elements);
 	}
 	else if (x != 2)
 		return false;
