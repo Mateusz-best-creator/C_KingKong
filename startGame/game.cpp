@@ -78,9 +78,9 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 		return true;
 	}
 	else if (x == 3 && y == 2)
-	{
 		players_account(surfaces, SDL_elements);
-	}
+	else if (x == 3 && y == 3)
+		hall_of_fame(surfaces, SDL_elements);
 	else if (x != 2)
 		return false;
 

@@ -245,5 +245,8 @@ void initialize_colors(SDL_Surface* screen, Colors& colors)
 	colors.brazowy = SDL_MapRGB(screen->format, 0xA5, 0x12A, 0x2A);
 	colors.jasny_niebieski = SDL_MapRGB(screen->format, 0x42, 0xa0, 0xdd);
 	colors.szary = SDL_MapRGB(screen->format, 0x33, 0x33, 0x33);
+	colors.zloty = SDL_MapRGB(screen->format, 0xff, 0xc8, 0x37);
+	colors.srebrny = SDL_MapRGB(screen->format, 0xc1, 0xc9, 0xc8);
+	colors.miedziany = SDL_MapRGB(screen->format, 0xa5, 0x2a, 0x2a);
 }
 

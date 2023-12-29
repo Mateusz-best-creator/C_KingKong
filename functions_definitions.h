@@ -66,7 +66,7 @@ struct TimeVariables
 
 struct Colors
 {
-	int czarny, zielony, czerwony, niebieski, brazowy, jasny_niebieski, szary;
+	int czarny, zielony, czerwony, niebieski, brazowy, jasny_niebieski, szary, zloty, srebrny, miedziany;
 };
 
 bool game(SDL_Surfaces&, SDL_Elements&, bool, bool);

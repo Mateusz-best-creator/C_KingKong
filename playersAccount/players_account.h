@@ -16,3 +16,4 @@ struct Player
 
 Player* read_players_metrics(int&);
 void players_account(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements);
+void hall_of_fame(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements);
