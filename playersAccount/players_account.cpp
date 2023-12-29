@@ -19,18 +19,27 @@ void players_account(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 
 	while (checking)
 	{
-		for (size_t i = 0; i < num_players; i++)
+		if (num_players == 0)
 		{
-			DrawRectangle(*(surfaces.screen), 4, 10 + i * 90, SCREEN_WIDTH - 8, 75, colors.szary, colors.szary);
-			sprintf(text, "%s", players[i].name);
-			DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 15 + i * 90, text, *(surfaces.charset));
-			sprintf(text, "Level 1: best score: %d best time: %g", players[i].level_1_best_score, players[i].level_1_best_time);
-			DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 35 + i * 90, text, *(surfaces.charset));
-			sprintf(text, "Level 2: best score: %d best time %g", players[i].level_2_best_score, players[i].level_2_best_time);
-			DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 50 + i * 90, text, *(surfaces.charset));
-			sprintf(text, "Level 3: best score: %d best time: %g Total points: %d", 
-				players[i].level_3_best_score, players[i].level_3_best_time, players[i].total_points);
-			DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 65 + i * 90, text, *(surfaces.charset));
+			DrawRectangle(*(surfaces.screen), 4, 200, SCREEN_WIDTH - 8, 75, colors.szary, colors.szary);
+			sprintf(text, "Player list is empty");
+			DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 230, text, *(surfaces.charset));
+		}
+		else
+		{
+			for (size_t i = 0; i < num_players; i++)
+			{
+				DrawRectangle(*(surfaces.screen), 4, 10 + i * 90, SCREEN_WIDTH - 8, 75, colors.szary, colors.szary);
+				sprintf(text, "%s", players[i].name);
+				DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 15 + i * 90, text, *(surfaces.charset));
+				sprintf(text, "Level 1: best score: %d best time: %g", players[i].level_1_best_score, players[i].level_1_best_time);
+				DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 35 + i * 90, text, *(surfaces.charset));
+				sprintf(text, "Level 2: best score: %d best time %g", players[i].level_2_best_score, players[i].level_2_best_time);
+				DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 50 + i * 90, text, *(surfaces.charset));
+				sprintf(text, "Level 3: best score: %d best time: %g Total points: %d",
+					players[i].level_3_best_score, players[i].level_3_best_time, players[i].total_points);
+				DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 65 + i * 90, text, *(surfaces.charset));
+			}
 		}
 
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);
