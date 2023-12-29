@@ -5,24 +5,17 @@
 #include "../playersAccount/players_account.h"
 #include <iostream>
 
-static int levels_completed = 0;
-static char name[21] = { "Unknown" };
-
-
-bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state, bool reset_levels)
+bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state)
 {
-	if (reset_levels)
-		levels_completed = 0;
-
 	// Initialize all the colors
 	Colors colors;
 	initialize_colors(*(surfaces.screen), colors);
 
 	int x = 1, y = 1, option = 1;
-	initial_interface(surfaces, SDL_elements, colors, x, y, name);
+	initial_interface(surfaces, SDL_elements, colors, x, y, mario_info.name);
 
 	BoardElements board;
-	Mario mario_info;
+	
 	mario_info.all_points = 0;
 
 	bool mario_won = false;
@@ -33,25 +26,21 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	// Choosing to play 
 	else if (x == 2)
 	{
+		// Initialize the board and based on that mario initial coordinates
 		board = initialize_board(y);
-		mario_info = { board.initial_mario_x, board.initial_mario_y, false, false, 0, false, Mario::RIGHT, false, false, 0, 0, 0, 1, false };
+		mario_info.x_coordinate = board.initial_mario_x;
+		mario_info.y_coordinate = board.initial_mario_y;
 
-		if (std::strcmp(name, "Unknown") != 0)
-		{
-			std::strcpy(mario_info.name, name);
-			levels_completed = 0;
-		}
-		else
-			std::strcpy(mario_info.name, "Unknown");
-		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, initial_state);
+		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false);
 		while (mario_won == 1)
 		{
-			levels_completed++;
+			mario_info.levels_completed++;
 			mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
-			if (levels_completed >= 3)
+			mario_info.points = 0;
+			save_game(mario_info);
+			if (mario_info.levels_completed >= 3)
 			{
-				save_game(mario_info);
-				levels_completed = 0;
+				mario_info.levels_completed = 0;
 				congratulations_interface(surfaces, SDL_elements);
 				return true;
 			}
@@ -60,19 +49,20 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 				y = 1;
 			releaseMemory(board);
 			board = initialize_board(y);
-			mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, false);
+			mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false);
 		}
 	}
 	// Loading game from file option
 	else if (x == 1 && y == 3)
 	{
-		std::strcpy(mario_info.name, "Unknown");
-		start_game(mario_info, surfaces, SDL_elements, board, false, 0, true, true); // Always load as initial state
+		strcpy(mario_info.name, "Unknown");
+		start_game(mario_info, surfaces, SDL_elements, board, false, 0, true);
 	}
 	// Authentication section
 	else if (x == 3 && y == 1)
 	{
-		std::strcpy(name, authentication_interface(mario_info, surfaces, SDL_elements, colors));
+		mario_info.name[0] = '\0';
+		strcpy(mario_info.name, authentication_interface(mario_info, surfaces, SDL_elements, colors));
 		return true;
 	}
 	else if (x == 3 && y == 2)

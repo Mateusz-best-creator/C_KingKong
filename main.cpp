@@ -6,6 +6,7 @@
 #include "./LevelsBoards/boards.h"
 #include "./Interface/interface.h"
 #include "./read_write_to_file/read_write_to_file.h"
+#include "Mario/mario.h"
 #include <cstdlib>
 
 // main
@@ -64,9 +65,19 @@ int main(int argc, char** argv)
 		return 1;
 
 	bool play_again = false;
-	play_again = game(surfaces, SDL_elements, true, true);
+	Mario mario_info { 100, 100, false, false, 0, false, Mario::RIGHT, false, false, 0, 0, 0, 1, false };
+	mario_info.lifes = 3;
+	strcpy(mario_info.name, "Unknown");
+	play_again = game(mario_info, surfaces, SDL_elements, true);
 	while (play_again)
-		play_again = game(surfaces, SDL_elements, true, true);
+	{
+		play_again = game(mario_info, surfaces, SDL_elements, true);
+		mario_info.levels_completed = 0;
+		mario_info.all_points = 0;
+		mario_info.points = 0;
+		mario_info.lifes = 3;
+	}
+		
 
 	// Clear all the settings
 	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);

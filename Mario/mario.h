@@ -83,4 +83,5 @@ int collision_with_barell(Mario&, Barell*, BoardElements&, SDL_Surfaces&, SDL_El
 void update_mario_metrics(Mario&, TimeVariables&, int);
 
 // Starting the game
-int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);
+bool game(Mario&, SDL_Surfaces&, SDL_Elements&, bool);
+int start_game(Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&, bool, long, bool);

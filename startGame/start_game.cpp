@@ -7,28 +7,9 @@
 #include <iostream>
 #include <cstdlib>
 
-static int lifes = 3;
-static long local_points = 0;
-static int times_mario_won = 0;
-
-int new_game;
-
 int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board,
-    bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
+    bool lost_life, long gained_points, bool load_game_from_file)
 {
-    if (lost_life)
-    {
-        lifes--;
-
-    }
-    local_points += gained_points;
-    if (initial_state)
-    {
-        times_mario_won = 0;
-        local_points = 0;
-        lifes = 3;
-    }
-
     SDL_Event event;
     SDL_Surface* screen = *(surfaces.screen);
 
@@ -46,8 +27,6 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     Barell* barells = new Barell[board.barells_amount];
     if (!load_game_from_file)
     {
-        mario_info.points = local_points;
-        mario_info.lifes = lifes;
         mario_info.x_coordinate = board.initial_mario_x;
         mario_info.y_coordinate = board.initial_mario_y;
     }
@@ -62,6 +41,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         {
             update_mario_metrics(mario_info, times, board.level);
             save_game(mario_info);
+            save_all_games(mario_info);
             mario_won = 1;
             break;
         }
@@ -124,10 +104,9 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         }
         else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
         {
+            std::cout << "Touched a barell: lifes: " << mario_info.lifes << std::endl;
             board = initialize_board(board.level);
             init_barells(board, barells);
-            mario_info.all_points -= mario_info.points;
-            mario_info.points = 0;
             mario_info.x_coordinate = board.initial_mario_x;
             mario_info.y_coordinate = board.initial_mario_y;
             continue;

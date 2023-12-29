@@ -45,12 +45,7 @@ void load_table_from_file(Mario& mario, BoardElements& board)
         // Loading Mario informations from file
         load_mario_informations(board, mario, name, x, y);
         load_board_informations(board, mario, name, x, y);
-
-        printf("Name: %s\n", name);
-        printf("X: %d\n", x);
-        printf("Y: %d\n", y);
     }
-
     // Close the file
     fclose(file);
 }
