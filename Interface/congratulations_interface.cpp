@@ -1,5 +1,6 @@
 #include "interface.h"
-#include <iostream>
+
+#include <string.h>
 
 bool handle_congratulations_interface_events(SDL_Event&);
 

@@ -4,7 +4,8 @@
 #include "../Barells/barells.h"
 #include "../read_write_to_file/read_write_to_file.h"
 #include "../Interface/interface.h"
-#include <iostream>
+
+#include <string.h>
 #include <cstdlib>
 
 int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board,
@@ -104,7 +105,6 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         }
         else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
         {
-            std::cout << "Touched a barell: lifes: " << mario_info.lifes << std::endl;
             board = initialize_board(board.level);
             init_barells(board, barells);
             mario_info.x_coordinate = board.initial_mario_x;
@@ -118,7 +118,10 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         // Handle user events (space, upper arrow...)
         times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board);
         if (times.quit == 2)
+        {
+            strcpy(mario_info.name, "Unknown");
             return false;
+        }
         times.frames++;
     }
     delete[] barells;

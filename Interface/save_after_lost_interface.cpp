@@ -1,6 +1,7 @@
 #include "interface.h"
+
+#include <string.h>
 #include <stdio.h>
-#include <iostream>
 
 bool handle_after_lost_interface_events(SDL_Event&, int&);
 
@@ -48,7 +49,6 @@ bool handle_after_lost_interface_events(SDL_Event& event, int& x)
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_y)
 			{
-				std::cout << "Saving to file" << std::endl;
 				x = 1;
 				return false;
 			}

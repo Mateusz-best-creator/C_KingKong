@@ -1,7 +1,8 @@
 ﻿#include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
-#include <iostream>
+
+#include <string.h>
 
 void calculateTime(double& delta, int& tick1, int& tick2, double& worldTime)
 {

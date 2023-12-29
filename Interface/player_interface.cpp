@@ -1,7 +1,7 @@
 #include "../functions_definitions.h"
 #include "../Mario/mario.h"
+
 #include <string.h>
-#include <iostream>
 
 void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL_Texture* scrtex,
 	SDL_Renderer* renderer, char* text, Colors& colors)

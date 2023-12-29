@@ -1,7 +1,6 @@
 #include "barells.h"
 #include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
-#include <iostream>
 
 void init_barells(const BoardElements& board, Barell* barells)
 {

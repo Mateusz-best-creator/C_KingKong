@@ -1,6 +1,8 @@
 #include "players_account.h"
 #include "../functions_definitions.h"
-#include <iostream>
+
+#include <stdio.h>
+#include <string.h>
 
 bool handle_players_interface_events(SDL_Event&);
 

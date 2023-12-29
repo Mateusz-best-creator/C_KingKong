@@ -2,6 +2,7 @@
 
 #include "../functions_definitions.h"
 #include "../Barells/barells.h"
+
 #include <stdio.h>
 
 /*
@@ -27,8 +28,8 @@ struct Mario
 	bool above_ladder;
 	bool can_go_down;
 	int lifes;
-	long points;
-	long all_points;
+	int points;
+	int all_points;
 	int mario_row;
 	bool just_grabbed_coin;
 	

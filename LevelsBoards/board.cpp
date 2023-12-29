@@ -1,5 +1,6 @@
 #include "boards.h"
 #include "../functions_definitions.h"
+
 #include <stdio.h>
 
 BoardElements initialize_board(int level)

@@ -1,18 +1,21 @@
 #include "../Mario/mario.h"
 #include "read_write_to_file.h"
+
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 
 void save_game(const Mario& mario_info)
 {
 	FILE* metrics_file;
-	// Open antoher file, which we will be use for ordering the players
-	if (fopen_s(&metrics_file, "./players_metrics.txt", "a") != 0) {
+	// Open another file, which we will use for ordering the players
+	if ((metrics_file = fopen("./players_metrics.txt", "a")) == NULL) 
+	{
 		printf("Error opening players_metrics (write_to_file.cpp) file.\n");
 		exit(0);
 	}
 
-	fprintf(metrics_file, "Player %s %d %d %d %lf %lf %lf %d\n", mario_info.name, mario_info.level_1_best_score,
+	fprintf(metrics_file, "%s %d %d %d %lf %lf %lf %d\n", mario_info.name, mario_info.level_1_best_score,
 		mario_info.level_2_best_score, mario_info.level_3_best_score, 
 		mario_info.level_1_best_time, mario_info.level_2_best_time, 
 		mario_info.level_3_best_time, mario_info.all_points);

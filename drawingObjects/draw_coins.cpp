@@ -1,7 +1,6 @@
 #include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
-#include <iostream>
 
 void draw_coins(const BoardElements& board, const SDL_Surfaces& surfaces)
 {

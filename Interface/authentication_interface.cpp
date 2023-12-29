@@ -1,5 +1,6 @@
 #include "interface.h"
-#include <iostream>
+
+#include <string.h>
 
 bool handle_authentication_interface_events(char* name, int& index);
 

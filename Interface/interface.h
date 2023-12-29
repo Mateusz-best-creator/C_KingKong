@@ -30,7 +30,7 @@ const int DESC_LINE_1 = 10;
 const int DESC_LINE_2 = 28;
 const int DESC_LINE_3 = 45;
 
-// Interfaces
+// Interfaces methods
 void initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&, int&, int&, const char[]);
 bool continue_interface(SDL_Surfaces&, SDL_Elements&, Mario&, BoardElements&);
 void congratulations_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements);

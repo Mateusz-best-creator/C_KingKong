@@ -1,10 +1,10 @@
 #include "read_write_to_file.h"
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
+
 #include <stdio.h>
 #include <cstdlib>
 #include <cstring>
-#include <iostream>
 
 void load_mario_informations(BoardElements&, Mario&, const char*, int, int);
 void load_board_informations(BoardElements&, Mario&, const char*, int, int);

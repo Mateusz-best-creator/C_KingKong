@@ -1,8 +1,8 @@
 #include "read_write_to_file.h"
 #include "../playersAccount/players_account.h"
+
 #include <stdio.h>
 #include <string.h>
-#include <iostream>
 
 const int MAX_PLAYERS = 5;
 
@@ -28,7 +28,6 @@ Player* read_players_metrics(int& num_players)
     while (fscanf(file, "%s %s %d %d %d %lf %lf %lf %d", id, name, &level1_points, &level2_points, &level3_points,
         &level1_time, &level2_time, &level3_time, &total) == 9)
     {
-        std::cout << "Name: " << name << std::endl;
         if (strcmp(id, "Player") == 0)
         {
             // Check if we arleady have that player in our database

@@ -1,8 +1,8 @@
 #include "../functions_definitions.h"
 #include "interface.h"
-#include <string.h>
+
 #include <cstdlib>
-#include <iostream>
+#include <string.h>
 
 bool handle_initial_interface_events(SDL_Event&, int& x, int& y);
 void level_rectangle(SDL_Surface*, const int, const int, const Colors&);

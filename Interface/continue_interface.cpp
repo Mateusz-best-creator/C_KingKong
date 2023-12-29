@@ -1,7 +1,8 @@
 #include "interface.h"
 #include "../functions_definitions.h"
 #include "../Mario/mario.h"
-#include <iostream>
+
+#include <string.h>
 
 bool handle_continue_interface_events(SDL_Event&, int&);
 

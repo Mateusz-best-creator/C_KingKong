@@ -3,7 +3,8 @@
 #include "../Mario/mario.h"
 #include "../read_write_to_file/read_write_to_file.h"
 #include "../playersAccount/players_account.h"
-#include <iostream>
+
+#include <string.h>
 
 bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state)
 {
@@ -32,6 +33,7 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 		mario_info.y_coordinate = board.initial_mario_y;
 
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false);
+		
 		while (mario_won == 1)
 		{
 			mario_info.levels_completed++;

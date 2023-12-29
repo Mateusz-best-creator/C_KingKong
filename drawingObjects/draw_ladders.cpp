@@ -1,5 +1,4 @@
 #include "../functions_definitions.h"
-#include <iostream>
 
 // Measurements
 const int VERTICAL_HEIGHT = 50;

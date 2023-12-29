@@ -1,6 +1,8 @@
 #include "players_account.h"
 #include "../functions_definitions.h"
-#include <iostream>
+
+#include <string.h>
+#include <stdio.h>
 
 bool hall_of_fame_interface_events(SDL_Event&);
 int partition(Player arr[], int low, int high);
@@ -80,6 +82,12 @@ bool hall_of_fame_interface_events(SDL_Event& event)
 	return true;
 }
 
+void swap(Player& a, Player& b) {
+	Player temp = a;
+	a = b;
+	b = temp;
+}
+
 int partition(Player arr[], int low, int high) 
 {
 	Player pivot = arr[high];
@@ -88,11 +96,11 @@ int partition(Player arr[], int low, int high)
 	for (int j = low; j <= high - 1; ++j) {
 		if (arr[j].total_points >= pivot.total_points) {
 			i++;
-			std::swap(arr[i], arr[j]);
+			swap(arr[i], arr[j]);
 		}
 	}
 
-	std::swap(arr[i + 1], arr[high]);
+	swap(arr[i + 1], arr[high]);
 	return i + 1;
 }
 

@@ -4,11 +4,6 @@
 #include "../LevelsBoards/boards.h"
 #include "../Interface/interface.h"
 #include "../read_write_to_file/read_write_to_file.h"
-#include <iostream>
-
-static int level_1_index = 0;
-static int level_2_index = 0;
-static int level_3_index = 0;
 
 int return_max(const int[], int);
 double return_min(const double[], int);
@@ -41,6 +36,7 @@ int collision_with_barell(Mario& mario_info, Barell* barells,
 				{
 					mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 					save_game(mario_info);
+					save_all_games(mario_info);
 				}
 				return 0;
 			}
@@ -59,6 +55,9 @@ int collision_with_barell(Mario& mario_info, Barell* barells,
 
 void update_mario_metrics(Mario& mario_info, TimeVariables& times, int level)
 {
+	int level_1_index = mario_info.level_1_index;
+	int level_2_index = mario_info.level_2_index;
+	int level_3_index = mario_info.level_3_index;
 	// Update all mario game results variables
 	switch (level)
 	{
@@ -67,26 +66,23 @@ void update_mario_metrics(Mario& mario_info, TimeVariables& times, int level)
 		mario_info.level_1_best_score = return_max(mario_info.level_1_scores, level_1_index);
 		mario_info.level_1_times[level_1_index] = times.worldTime;
 		mario_info.level_1_best_time = return_min(mario_info.level_1_times, level_1_index);
-		level_1_index++;
+		mario_info.level_1_index++;
 		break;
 	case 2:
 		mario_info.level_2_scores[level_2_index] = mario_info.points;
 		mario_info.level_2_best_score = return_max(mario_info.level_2_scores, level_2_index);
 		mario_info.level_2_times[level_2_index] = times.worldTime;
 		mario_info.level_2_best_time = return_min(mario_info.level_2_times, level_2_index);
-		level_2_index++;
+		mario_info.level_2_index++;
 		break;
 	case 3:
 		mario_info.level_3_scores[level_3_index] = mario_info.points;
 		mario_info.level_3_best_score = return_max(mario_info.level_3_scores, level_3_index);
 		mario_info.level_3_times[level_3_index] = times.worldTime;
 		mario_info.level_3_best_time = return_min(mario_info.level_3_times, level_3_index);
-		level_3_index++;
+		mario_info.level_3_index++;
 		break;
 	}
-	mario_info.level_1_index = level_1_index;
-	mario_info.level_2_index = level_2_index;
-	mario_info.level_3_index = level_3_index;
 }
 
 int return_max(const int array[], int size)
