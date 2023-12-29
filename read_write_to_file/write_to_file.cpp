@@ -8,7 +8,7 @@ void save_game(const Mario& mario_info)
 	FILE* file;
 	if (fopen_s(&file, "./game_results.txt", "a") != 0) 
 	{
-		printf("Error opening the file.\n");
+		printf("Error opening game_results file.\n");
 		exit(0);
 	}
 	fprintf(file, "Player name: %s\n", mario_info.name);
@@ -23,7 +23,7 @@ void save_game(const Mario& mario_info)
 
 	// Open antoher file, which we will be use for ordering the players
 	if (fopen_s(&file, "./players_metrics.txt", "a") != 0) {
-		printf("Error opening the file.\n");
+		printf("Error opening players_metrics file.\n");
 		exit(0);
 	}
 

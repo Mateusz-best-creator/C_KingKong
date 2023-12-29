@@ -13,7 +13,7 @@ static int level_3_index = 0;
 int return_max(const int[], int);
 double return_min(const double[], int);
 
-void collision_with_barell(Mario& mario_info, Barell* barells, 
+int collision_with_barell(Mario& mario_info, Barell* barells,
 	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables& times)
 {
 	for (size_t i = 0; i < board.barells_amount; i++)
@@ -23,14 +23,14 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 		if (((mario_info.x_coordinate <= barells[i].x_coordinate + 20 &&
 			mario_info.x_coordinate >= barells[i].x_coordinate) ||
 			(mario_info.x_coordinate - 14 + 30 >= barells[i].x_coordinate &&
-			mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping)
+				mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping)
 		{
 			update_mario_metrics(mario_info, times, board.level);
 			mario_info.all_points -= mario_info.points;
 			mario_info.points = 0;
 			for (size_t i = 0; i < board.amount_of_coins; i++)
 				board.grabbed_coins[i] = false;
-			
+
 			bool safe = false;
 			// Update lifes
 			mario_info.lifes--;
@@ -42,19 +42,16 @@ void collision_with_barell(Mario& mario_info, Barell* barells,
 					mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 					save_game(mario_info);
 				}
-				game(surfaces, elements, true, false);
-				return;
+				return 0;
 			}
 			bool play_again = continue_interface(surfaces, elements, mario_info, board);
 			if (!play_again)
 			{
-				game(surfaces, elements, true, false);
-				return;
+				return 0;
 			}
 			else
 			{
-				start_game(mario_info, surfaces, elements, board, true, 0, false, false);
-				return;
+				return 1;
 			}
 		}
 	}

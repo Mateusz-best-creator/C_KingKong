@@ -1,6 +1,5 @@
 #include "../functions_definitions.h"
 #include "../Mario/mario.h"
-#include <iostream>
 
 void left_arrow_event(Mario& mario_info, const BoardElements& board)
 {

@@ -38,6 +38,7 @@ void DrawSurface(SDL_Surface* screen, SDL_Surface* sprite, int x, int y) {
 		std::cout << "Error in DrawSurface() function, sprite == nullptr" << std::endl;
 		return;
 	}
+	//std::cout << "X & Y = " << x << " " << y << std::endl;
 	SDL_Rect dest;
 	dest.x = x - sprite->w / 2;
 	dest.y = y - sprite->h / 2;

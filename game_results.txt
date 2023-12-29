@@ -1,75 +1,105 @@
 Player name: Unknown
 Level 1 scores: 
 Level 1 best score: 0
-Level 2 scores: 0 500 0 
-Level 2 best score: 500
+Level 2 scores: 500 6000 
+Level 2 best score: 6000
 Level 3 scores: 
 Level 3 best score: 0
 Level 1 times: 
 Level 1 best time: 0
-Level 2 times: 2.159 4.638 1.906 
-Level 2 best time: 1.906
+Level 2 times: 10.619 24.882 
+Level 2 best time: 10.619
 Level 3 times: 
 Level 3 best time: 0
-Unknown total_amount_of_points: 500
-================================
-Player name: Mateusz Pomidor
-Level 1 scores: 
-Level 1 best score: 0
-Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 5500 
-Level 3 best score: 5500
-Level 1 times: 
-Level 1 best time: 0
-Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 10.183 
-Level 3 best time: 10.183
-Mateusz Pomidor total amount of points: 500
+Unknown total amount of points: 1000
 ================================
 Player name: Unknown
 Level 1 scores: 
 Level 1 best score: 0
-Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 5500 
-Level 3 best score: 5500
+Level 2 scores: 500 6000 
+Level 2 best score: 6000
+Level 3 scores: 0 0 6000 
+Level 3 best score: 6000
 Level 1 times: 
 Level 1 best time: 0
-Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 10.721 
-Level 3 best time: 10.721
-Unknown total amount of points: 500
+Level 2 times: 10.619 24.882 
+Level 2 best time: 10.619
+Level 3 times: 2.322 4.72 16.242 
+Level 3 best time: 2.322
+Unknown total amount of points: 7000
+================================
+Player name: Pomidorek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 6000 
+Level 2 best score: 6000
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 15.255 
+Level 2 best time: 15.255
+Level 3 times: 
+Level 3 best time: 0
+Pomidorek total amount of points: 1000
+================================
+Player name: Pomidorek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 6000 
+Level 2 best score: 6000
+Level 3 scores: 0 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 15.255 
+Level 2 best time: 15.255
+Level 3 times: 1.613 
+Level 3 best time: 1.613
+Pomidorek total amount of points: 6000
 ================================
 Player name: Unknown
 Level 1 scores: 
 Level 1 best score: 0
-Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 5500 
-Level 3 best score: 5500
+Level 2 scores: 0 5000 
+Level 2 best score: 5000
+Level 3 scores: 
+Level 3 best score: 0
 Level 1 times: 
 Level 1 best time: 0
-Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 10.23 
-Level 3 best time: 10.23
-Unknown total amount of points: 500
+Level 2 times: 2.687 14.797 
+Level 2 best time: 2.687
+Level 3 times: 
+Level 3 best time: 0
+Unknown total amount of points: 0
 ================================
 Player name: Unknown
 Level 1 scores: 
 Level 1 best score: 0
-Level 2 scores: 
-Level 2 best score: 0
-Level 3 scores: 5500 
-Level 3 best score: 5500
+Level 2 scores: 0 5000 
+Level 2 best score: 5000
+Level 3 scores: 0 0 0 
+Level 3 best score: 0
 Level 1 times: 
 Level 1 best time: 0
-Level 2 times: 
-Level 2 best time: 0
-Level 3 times: 9.812 
-Level 3 best time: 9.812
-Unknown total amount of points: 500
+Level 2 times: 2.687 14.797 
+Level 2 best time: 2.687
+Level 3 times: 1.948 3.657 5.205 
+Level 3 best time: 1.948
+Unknown total amount of points: 5000
+================================
+Player name: Ola
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 0 0 0 
+Level 2 best score: 0
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0
+Level 2 times: 2.268 4.393 6.515 
+Level 2 best time: 2.268
+Level 3 times: 
+Level 3 best time: 0
+Ola total amount of points: 0
 ================================

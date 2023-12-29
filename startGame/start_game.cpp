@@ -13,13 +13,13 @@ static int times_mario_won = 0;
 
 int new_game;
 
-bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, 
-	bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
+int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board,
+    bool lost_life, long gained_points, bool load_game_from_file, bool initial_state)
 {
-	if (lost_life)
-	{
-		lifes--;
-	    
+    if (lost_life)
+    {
+        lifes--;
+
     }
     local_points += gained_points;
     if (initial_state)
@@ -29,20 +29,20 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
         lifes = 3;
     }
 
-	SDL_Event event;
-	SDL_Surface* screen = *(surfaces.screen);
+    SDL_Event event;
+    SDL_Surface* screen = *(surfaces.screen);
 
-	// Initialize all the colors
-	Colors colors;
-	initialize_colors(screen, colors);
+    // Initialize all the colors
+    Colors colors;
+    initialize_colors(screen, colors);
 
-	// Initialize all helper variables for measuring the time, frames, fps...
-	TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    // Initialize all helper variables for measuring the time, frames, fps...
+    TimeVariables times = { SDL_GetTicks(), 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-	if (load_game_from_file)
-	{
-		load_table_from_file(mario_info, board);
-	}
+    if (load_game_from_file)
+    {
+        load_table_from_file(mario_info, board);
+    }
     Barell* barells = new Barell[board.barells_amount];
     if (!load_game_from_file)
     {
@@ -50,23 +50,19 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
         mario_info.lifes = lifes;
         mario_info.x_coordinate = board.initial_mario_x;
         mario_info.y_coordinate = board.initial_mario_y;
-        /* Do not reset the coins if mario loses a life
-        for (size_t i = 0; i < board.amount_of_coins; i++)
-            board.grabbed_coins[i] = false;
-        */
     }
     // Initialize the barells, based on board
     init_barells(board, barells);
 
-    bool mario_won = false;
+    int mario_won = 0;
 
     while (!times.quit)
     {
         if (check_if_mario_win(board, mario_info))
         {
             update_mario_metrics(mario_info, times, board.level);
-            //save_game(mario_info);
-            mario_won = true;
+            save_game(mario_info);
+            mario_won = 1;
             break;
         }
 
@@ -119,8 +115,23 @@ bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_ele
             times.fpsTimer -= SECONDS_BETWEEN_REFRESH;
         }
 
+        int barell_collision_result = -1;
         // Check collisions
-        collision_with_barell(mario_info, barells, board, surfaces, SDL_elements, times);
+        barell_collision_result = collision_with_barell(mario_info, barells, board, surfaces, SDL_elements, times);
+        if (barell_collision_result == 0)
+        {
+            return 0;
+        }
+        else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
+        {
+            board = initialize_board(board.level);
+            init_barells(board, barells);
+            mario_info.all_points -= mario_info.points;
+            mario_info.points = 0;
+            mario_info.x_coordinate = board.initial_mario_x;
+            mario_info.y_coordinate = board.initial_mario_y;
+            continue;
+        }
 
         char text[128];
         drawInfoRectangle(board, mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);

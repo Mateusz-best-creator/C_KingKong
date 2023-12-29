@@ -32,7 +32,7 @@ void load_table_from_file(Mario& mario, BoardElements& board)
     */
     
     if (fopen_s(&file, "./read_from_file_level_3.txt", "r") != 0) {
-        printf("Error opening the file.\n");
+        printf("Error opening read_from_file_level_3 file.\n");
         exit(0);
     }
     

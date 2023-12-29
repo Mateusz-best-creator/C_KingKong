@@ -35,4 +35,4 @@ void initial_interface(const SDL_Surfaces&, const SDL_Elements&, const Colors&, 
 bool continue_interface(SDL_Surfaces&, SDL_Elements&, Mario&, BoardElements&);
 void congratulations_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements);
 bool save_after_lost_interface(SDL_Surfaces&, SDL_Elements&, Mario&, BoardElements&);
-char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements);
+char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const Colors&);

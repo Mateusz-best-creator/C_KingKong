@@ -3,7 +3,7 @@
 
 bool handle_authentication_interface_events(char* name, int& index);
 
-char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
+char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const Colors& colors)
 {
     SDL_Event event;
     bool quit = false;
@@ -11,9 +11,6 @@ char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_El
     int index = 0;
     name[index] = '\0';
     char text[100];
-    
-    Colors colors;
-    initialize_colors(*(surfaces.screen), colors);
 
     while (!quit)
     {

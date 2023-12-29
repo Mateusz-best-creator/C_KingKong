@@ -44,10 +44,9 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 		else
 			std::strcpy(mario_info.name, "Unknown");
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false, initial_state);
-		while (mario_won)
+		while (mario_won == 1)
 		{
 			levels_completed++;
-			std::cout << "MARIO WON!" << std::endl;
 			mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 			if (levels_completed >= 3)
 			{
@@ -73,8 +72,7 @@ bool game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state
 	// Authentication section
 	else if (x == 3 && y == 1)
 	{
-		std::cout << "authentication!!!" << std::endl;
-		std::strcpy(name, authentication_interface(mario_info, surfaces, SDL_elements));
+		std::strcpy(name, authentication_interface(mario_info, surfaces, SDL_elements, colors));
 		return true;
 	}
 	else if (x == 3 && y == 2)

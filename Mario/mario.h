@@ -51,6 +51,7 @@ struct Mario
 	double level_1_best_time;
 	double level_2_best_time;
 	double level_3_best_time;
+	int levels_completed;
 };
 
 // Handling user events
@@ -78,8 +79,8 @@ void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL
 	SDL_Renderer* renderer, char* text, Colors& colors);
 
 // Collision with barell
-void collision_with_barell(Mario&, Barell*, BoardElements&, SDL_Surfaces&, SDL_Elements&, TimeVariables&);
+int collision_with_barell(Mario&, Barell*, BoardElements&, SDL_Surfaces&, SDL_Elements&, TimeVariables&);
 void update_mario_metrics(Mario&, TimeVariables&, int);
 
 // Starting the game
-bool start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);
+int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&, BoardElements&, bool, long, bool, bool);
