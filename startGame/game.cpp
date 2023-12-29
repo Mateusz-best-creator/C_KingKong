@@ -33,7 +33,8 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 		mario_info.y_coordinate = board.initial_mario_y;
 
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false);
-		
+		mario_info.has_trophy = false;
+
 		while (mario_won == 1)
 		{
 			mario_info.levels_completed++;

@@ -52,6 +52,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         // Fill the entire screen with the given color
         SDL_FillRect(screen, NULL, colors.czarny);
 
+        // Draw all coins
         draw_coins(board, surfaces);
 
         // Draw all ladders
@@ -59,6 +60,9 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
 
         // Draw all platforms
         DrawPlatforms(screen, board, colors.brazowy);
+
+        // Draw trophies
+        draw_trophies(mario_info, board, surfaces, colors);
 
         // Make mario jumping if possible, draw mario
         draw_mario(surfaces, mario_info);
@@ -87,11 +91,15 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
             break;
         }
 
-        // Draw message if mario grabbed a coin
+        // Draw message if mario grabbed something
         if (mario_info.just_grabbed_coin)
             grab_coin_message(mario_info, screen, *(surfaces.charset));
         if (mario_info.just_jumped_over_barell)
             jump_over_barell_message(mario_info, screen, *(surfaces.charset));
+        if (mario_info.just_grabbed_trophy)
+            grab_trophy_message(mario_info, screen, *(surfaces.charset));
+        if (mario_info.just_putted_trophy)
+            put_trophy_message(mario_info, screen, *(surfaces.charset));
 
         times.fpsTimer += times.delta;
         if (times.fpsTimer > SECONDS_BETWEEN_REFRESH) {

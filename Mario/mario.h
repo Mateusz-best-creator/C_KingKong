@@ -16,6 +16,7 @@ const double JUMP_SPEED = 0.25;
 const int POINTS_FOR_COMPLETING_LEVEL = 5000;
 const int POINTS_FOR_GRABBING_COIN = 500;
 const int POINTS_FOR_JUMPING_OVER_BARELL = 100;
+const int POINTS_FOR_PUTTING_TROPHY = 2000;
 
 struct Mario
 {
@@ -34,6 +35,7 @@ struct Mario
 	int mario_row;
 	bool just_grabbed_coin;
 	bool just_jumped_over_barell;
+	bool just_grabbed_trophy, has_trophy, just_putted_trophy;
 	
 	/*
 		Results from each level
@@ -91,3 +93,8 @@ int start_game(Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&, bool, long,
 
 void jumped_over_barell(Mario&, BoardElements&, Barell*, SDL_Surface*, SDL_Surface*);
 void jump_over_barell_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset);
+
+// Grabbing trophies
+void draw_trophies(Mario& mario_info, BoardElements& board, const SDL_Surfaces& surfaces, const Colors& colors);
+void grab_trophy_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset);
+void put_trophy_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset);

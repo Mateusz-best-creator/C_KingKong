@@ -30,6 +30,7 @@
     <ClCompile Include="playersAccount\hall_of_fame.cpp" />
     <ClCompile Include="playersAccount\players_account.cpp" />
     <ClCompile Include="Mario\jumped_over_barell.cpp" />
+    <ClCompile Include="drawingObjects\draw_trophies.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

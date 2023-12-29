@@ -194,6 +194,12 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
+	*(surfaces.trophy_icon) = SDL_LoadBMP("./images/trophy.bmp");
+	if (*(surfaces.trophy_icon) == nullptr) {
+		printf("SDL_LoadBMP(/trophy.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
 	return Error;
 }
 

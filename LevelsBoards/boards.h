@@ -41,6 +41,11 @@ const int LEVEL_1_COINS_AMOUNT = 5, LEVEL_2_COINS_AMOUNT = 7, LEVEL_3_COINS_AMOU
 // Barells amount for each level
 const int LEVEL_1_BARELLS_AMOUNT = 4, LEVEL_2_BARELLS_AMOUNT = 4, LEVEL_3_BARELLS_AMOUNT = 4;
 
+// Trophies coordinates
+const int LEVEL_1_GET_TROPHY_X = 308, LEVEL_1_GET_TROPHY_Y = 387, LEVEL_1_PUT_TROPHY_X = 308, LEVEL_1_PUT_TROPHY_Y = 147;
+const int LEVEL_2_GET_TROPHY_X = 356, LEVEL_2_GET_TROPHY_Y = 267, LEVEL_2_PUT_TROPHY_X = 614, LEVEL_2_PUT_TROPHY_Y = 387;
+const int LEVEL_3_GET_TROPHY_X = 170, LEVEL_3_GET_TROPHY_Y = 327, LEVEL_3_PUT_TROPHY_X = 362, LEVEL_3_PUT_TROPHY_Y = 387;
+
 // Define board structure
 struct BoardElements
 {
@@ -63,6 +68,8 @@ struct BoardElements
 	int barells_amount;
 	int* barells_left_border, *barells_right_border, *barells_y_coordinate;
 	int* barells_rows, *barells_direction;
+	int get_trophy_x, get_trophy_y, put_trophy_x, put_trophy_y;
+	bool display_get_trophy, display_put_trophy;
 };
 BoardElements initialize_board(int level);
 BoardElements initialize_level_1_board();
@@ -73,3 +80,4 @@ void initialize_values(int level, BoardElements& board, const int coins_amount, 
 	const int amount_of_ladders, const int mario_x, const int mario_y, const int king_kong_x,
 	const int king_kong_y, const int winning_x1, const int winning_x2, const int winning_y,
 	const int barells_amount);
+void init_trophies(BoardElements& board, int grab_x, int grab_y, int put_x, int put_y);

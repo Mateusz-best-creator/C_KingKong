@@ -1,5 +1,14 @@
 #include "boards.h"
 
+void init_trophies(BoardElements& board, int grab_x, int grab_y, int put_x, int put_y)
+{
+	// Initialize trophies coordinates
+	board.get_trophy_x = grab_x;
+	board.get_trophy_y = grab_y;
+	board.put_trophy_x = put_x;
+	board.put_trophy_y = put_y;
+}
+
 void initialize_values(int level, BoardElements& board, const int coins_amount, const int platforms_amount,
 					   const int amount_of_ladders, const int mario_x, const int mario_y, const int king_kong_x,
 					   const int king_kong_y, const int winning_x1, const int winning_x2, const int winning_y,
@@ -23,6 +32,8 @@ void initialize_values(int level, BoardElements& board, const int coins_amount, 
 	board.ladders_rows = new int[amount_of_ladders];
 	board.ladder_width = 20;
 	board.platform_height = 60;
+	board.display_get_trophy = true;
+	board.display_put_trophy = false;
 
 	// Initial coordinates
 	board.initial_mario_x = mario_x;

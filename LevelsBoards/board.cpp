@@ -76,6 +76,8 @@ BoardElements initialize_level_1_board()
 		else
 			board.barells_direction[i] = 1; // RIGHT
 	}
+	init_trophies(board, LEVEL_1_GET_TROPHY_X, LEVEL_1_GET_TROPHY_Y, LEVEL_1_PUT_TROPHY_X, LEVEL_1_PUT_TROPHY_Y);
+
 	return board;
 }
 
@@ -184,6 +186,7 @@ BoardElements initialize_level_2_board()
 		board.barells_rows[i] = i + 2;
 		board.barells_y_coordinate[i] = 330 - i * 60;
 	}
+	init_trophies(board, LEVEL_2_GET_TROPHY_X, LEVEL_2_GET_TROPHY_Y, LEVEL_2_PUT_TROPHY_X, LEVEL_2_PUT_TROPHY_Y);
 
 	return board;
 }
@@ -279,7 +282,8 @@ BoardElements initialize_level_3_board()
 		board.barells_rows[i] = i + 2;
 		board.barells_y_coordinate[i] = 330 - i * 60;
 	}
-
+	init_trophies(board, LEVEL_3_GET_TROPHY_X, LEVEL_3_GET_TROPHY_Y, LEVEL_3_PUT_TROPHY_X, LEVEL_3_PUT_TROPHY_Y);
+	
 	return board;
 }
 
