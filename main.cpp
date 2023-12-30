@@ -73,10 +73,11 @@ int main(int argc, char** argv)
 	mario_info.lifes = 3;
 	mario_info.has_trophy = false;
 	strcpy(mario_info.name, "Unknown");
-	play_again = game(mario_info, surfaces, SDL_elements, true);
+	int level_switch = -1;
+	play_again = game(mario_info, surfaces, SDL_elements, level_switch);
 	while (play_again)
 	{
-		play_again = game(mario_info, surfaces, SDL_elements, true);
+		play_again = game(mario_info, surfaces, SDL_elements, level_switch);
 		reset_mario_variables(mario_info);
 	}
 

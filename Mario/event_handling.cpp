@@ -3,7 +3,7 @@
 #include "../Mario/mario.h"
 
 #include <cstdlib>
-
+#include <iostream>
 
 int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board)
 {
@@ -22,6 +22,19 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 		switch (event.type) {
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
+			else if (event.key.keysym.sym == SDLK_1)
+			{
+				std::cout << "Keyboard 1" << std::endl;
+				return 3;
+			}
+			else if (event.key.keysym.sym == SDLK_2)
+			{
+				return 4;
+			}
+			else if (event.key.keysym.sym == SDLK_3)
+			{
+				return 5;
+			}
 			else if (event.key.keysym.sym == SDLK_n)
 			{
 				return 2;

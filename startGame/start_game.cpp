@@ -83,7 +83,6 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
 
         // Draw falling barell
         falling_barell(times, flying_barell, surfaces);
-        std::cout << flying_barell.x_coordinate << " " << flying_barell.y_coordinate << std::endl;
         jumped_over_barell(mario_info, board, barells, screen, *(surfaces.charset));
 
         // Draw final treasures
@@ -144,7 +143,12 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         if (times.quit == 2)
         {
             strcpy(mario_info.name, "Unknown");
-            return false;
+            return 0;
+        }
+        else if (times.quit == 3 || times.quit == 4 || times.quit == 5)
+        {
+            std::cout << "HSLO " << times.quit << std::endl;
+            return times.quit;
         }
         times.frames++;
     }

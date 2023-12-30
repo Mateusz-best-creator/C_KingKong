@@ -6,21 +6,28 @@
 #include "../generatingBoards/generating_boards.h"
 
 #include <string.h>
+#include <iostream>
 
-bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, bool initial_state)
+bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, int& level_switch)
 {
 	// Initialize all the colors
 	Colors colors;
 	initialize_colors(*(surfaces.screen), colors);
 
 	int x = 1, y = 1, option = 1;
-	initial_interface(surfaces, SDL_elements, colors, x, y, mario_info.name);
-
+	if (level_switch == -1)
+		initial_interface(surfaces, SDL_elements, colors, x, y, mario_info.name);
+	else
+	{
+		x = 2;
+		y = level_switch;
+		level_switch = -1;
+	}
 	BoardElements board;
 	
 	mario_info.all_points = 0;
 
-	bool mario_won = false;
+	int mario_won = 0;
 
 	// Player choose to quit
 	if (x == 1 && y == 1)
@@ -35,6 +42,11 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false);
 		mario_info.has_trophy = false;
+		if (mario_won == 4 || mario_won == 5 || mario_won == 6)
+		{
+			level_switch = mario_won - 2;
+			return true;
+		}
 
 		while (mario_won == 1)
 		{
