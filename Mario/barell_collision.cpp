@@ -21,10 +21,13 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 	if (((mario_info.x_coordinate >= flying_barell.x_coordinate
 		&& mario_info.x_coordinate <= flying_barell.x_coordinate + FLYING_BARELL_WIDTH) 
 		|| mario_info.x_coordinate + MARIO_WIDTH > flying_barell.x_coordinate && mario_info.x_coordinate <= flying_barell.x_coordinate)
-		&& mario_info.y_coordinate - MARIO_HEIGHT - 20 <= flying_barell.y_coordinate - FLYING_BARELL_HEIGHT && flying_barell.falling_down)
+		&& mario_info.y_coordinate - MARIO_HEIGHT - 15 <= flying_barell.y_coordinate - FLYING_BARELL_HEIGHT 
+		&& mario_info.y_coordinate >= flying_barell.y_coordinate
+		&& flying_barell.falling_down)
 	{
 		touched_flying_barell = true;
 		flying_barell.falling_down = false;
+		flying_barell.y_coordinate = 70;
 	}
 
 	for (size_t i = 0; i < board.barells_amount; i++)
@@ -36,9 +39,9 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 			(mario_info.x_coordinate - 14 + 30 >= barells[i].x_coordinate &&
 				mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping) || touched_flying_barell)
 		{
+			update_mario_after_collision(mario_info, board, times);
 			times.worldTime = 0;
 			flying_barell.delta = 0;
-			update_mario_after_collision(mario_info, board, times);
 
 			bool safe = false;
 			// Update lifes

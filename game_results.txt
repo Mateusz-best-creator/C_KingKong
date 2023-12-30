@@ -298,3 +298,78 @@ Level 3 times:
 Level 3 best time: 0.000000
 Unknown total amount of points: 500
 ================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 900 5100 
+Level 2 best score: 5100
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 0.000000 14.290000 
+Level 2 best time: 0.000000
+Level 3 times: 
+Level 3 best time: 0.000000
+Unknown total amount of points: 100
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 900 5100 
+Level 2 best score: 5100
+Level 3 scores: 8200 
+Level 3 best score: 8200
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 0.000000 14.290000 
+Level 2 best time: 0.000000
+Level 3 times: 38.088000 
+Level 3 best time: 38.088000
+Unknown total amount of points: 8300
+================================
+Player name: Unknown
+Level 1 scores: 500 500 
+Level 1 best score: 500
+Level 2 scores: 900 5100 
+Level 2 best score: 5100
+Level 3 scores: 8200 
+Level 3 best score: 8200
+Level 1 times: 0.000000 0.000000 
+Level 1 best time: 0.000000
+Level 2 times: 0.000000 14.290000 
+Level 2 best time: 0.000000
+Level 3 times: 38.088000 
+Level 3 best time: 38.088000
+Unknown total amount of points: 13800
+================================
+Player name: Pomidorek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 500 0 0 
+Level 2 best score: 500
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 8.207000 3.103000 3.225000 
+Level 2 best time: 3.103000
+Level 3 times: 
+Level 3 best time: 0.000000
+Pomidorek total amount of points: 500
+================================
+Player name: Olusia
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 1000 0 0 
+Level 2 best score: 1000
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 12.599000 9.972000 9.322000 
+Level 2 best time: 9.322000
+Level 3 times: 
+Level 3 best time: 0.000000
+Olusia total amount of points: 1000
+================================

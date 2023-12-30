@@ -9,8 +9,7 @@
 #include <cstdlib>
 #include <iostream>
 
-int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board,
-    bool lost_life, long gained_points, bool load_game_from_file)
+int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, bool load_game_from_file)
 {
     SDL_Event event;
     SDL_Surface* screen = *(surfaces.screen);

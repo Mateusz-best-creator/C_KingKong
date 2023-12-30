@@ -3,6 +3,7 @@
 #include "../Mario/mario.h"
 #include "../read_write_to_file/read_write_to_file.h"
 #include "../playersAccount/players_account.h"
+#include "../generatingBoards/generating_boards.h"
 
 #include <string.h>
 
@@ -32,7 +33,7 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 		mario_info.x_coordinate = board.initial_mario_x;
 		mario_info.y_coordinate = board.initial_mario_y;
 
-		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false);
+		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false);
 		mario_info.has_trophy = false;
 
 		while (mario_won == 1)
@@ -51,14 +52,14 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 				y = 1;
 			releaseMemory(board);
 			board = initialize_board(y);
-			mario_won = start_game(mario_info, surfaces, SDL_elements, board, false, 0, false);
+			mario_won = start_game(mario_info, surfaces, SDL_elements, board, false);
 		}
 	}
 	// Loading game from file option
 	else if (x == 1 && y == 3)
 	{
 		strcpy(mario_info.name, "Unknown");
-		start_game(mario_info, surfaces, SDL_elements, board, false, 0, true);
+		start_game(mario_info, surfaces, SDL_elements, board, true);
 	}
 	// Authentication section
 	else if (x == 3 && y == 1)
@@ -71,8 +72,10 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 		players_account(surfaces, SDL_elements);
 	else if (x == 3 && y == 3)
 		hall_of_fame(surfaces, SDL_elements);
-	else if (x != 2)
+	else if (x == 1 && y == 2)
+	{
+		infinite_game();
 		return false;
-
+	}
 	return true;
 }

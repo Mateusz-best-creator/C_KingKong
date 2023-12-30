@@ -89,7 +89,7 @@ void update_mario_metrics(Mario&, TimeVariables&, int);
 
 // Starting the game
 bool game(Mario&, SDL_Surfaces&, SDL_Elements&, bool);
-int start_game(Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&, bool, long, bool);
+int start_game(Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&, bool);
 
 void jumped_over_barell(Mario&, BoardElements&, Barell*, SDL_Surface*, SDL_Surface*);
 void jump_over_barell_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset);

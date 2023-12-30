@@ -1,6 +1,7 @@
 #pragma once
 
 // Screen boarders (same for all levels)
+const int ROWS = 5;
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 const int SCREEN_LEFT_X_BORDER = 14;
