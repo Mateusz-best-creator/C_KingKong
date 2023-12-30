@@ -8,14 +8,13 @@ int getRandomNumber(int min, int max);
 void draw_falling_barell(FallingBarell& barell, const SDL_Surfaces& surfaces);
 void move_falling_barell(FallingBarell& barell);
 
-static int delta = 0;
 
 void falling_barell(TimeVariables& times, FallingBarell& barell, const SDL_Surfaces& surfaces)
 {
 	// Throw barell every FALLING_BARELL_TIME seconds
-	if (times.worldTime - delta > FALLING_BARELL_TIME && !barell.falling_down)
+	if (times.worldTime - barell.delta > FALLING_BARELL_TIME && !barell.falling_down)
 	{
-		delta += FALLING_BARELL_TIME;
+		barell.delta = times.worldTime;
 		// Initialize falling barell
 		barell.x_coordinate = getRandomNumber(40, 600);
 		barell.y_coordinate = 70;
@@ -28,8 +27,11 @@ void falling_barell(TimeVariables& times, FallingBarell& barell, const SDL_Surfa
 		move_falling_barell(barell);
 	}
 
-	if (barell.y_coordinate > 387)
+	if (barell.y_coordinate > 420)
+	{
 		barell.falling_down = false;
+		barell.y_coordinate = 70;
+	}
 }
 
 void draw_falling_barell(FallingBarell& barell, const SDL_Surfaces& surfaces)

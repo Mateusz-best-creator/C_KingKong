@@ -15,7 +15,7 @@ struct Barell
 
 struct FallingBarell
 {
-	double x_coordinate, y_coordinate;
+	double x_coordinate, y_coordinate, delta;
 	bool falling_down;
 };
 

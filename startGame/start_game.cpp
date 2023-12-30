@@ -8,6 +8,7 @@
 #include <string.h>
 #include <cstdlib>
 #include <iostream>
+
 int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board,
     bool lost_life, long gained_points, bool load_game_from_file)
 {
@@ -37,6 +38,9 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     // Initialize one falling barell
     FallingBarell flying_barell;
     flying_barell.falling_down = false;
+    flying_barell.x_coordinate = 300;
+    flying_barell.y_coordinate = 70;
+    flying_barell.delta = 0;
 
     int mario_won = 0;
 
@@ -80,7 +84,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
 
         // Draw falling barell
         falling_barell(times, flying_barell, surfaces);
-
+        std::cout << flying_barell.x_coordinate << " " << flying_barell.y_coordinate << std::endl;
         jumped_over_barell(mario_info, board, barells, screen, *(surfaces.charset));
 
         // Draw final treasures

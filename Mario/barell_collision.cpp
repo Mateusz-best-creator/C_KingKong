@@ -9,24 +9,36 @@
 
 int return_max(const int[], int);
 double return_min(const double[], int);
+void update_mario_after_collision(Mario& mario_info, BoardElements& board, TimeVariables& times);
+
+const int MARIO_WIDTH = 30, MARIO_HEIGHT = 30;
+const int FLYING_BARELL_WIDTH = 25, FLYING_BARELL_HEIGHT = 25;
 
 int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& flying_barell,
 	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables& times)
 {
+	bool touched_flying_barell = false;
+	if (((mario_info.x_coordinate >= flying_barell.x_coordinate
+		&& mario_info.x_coordinate <= flying_barell.x_coordinate + FLYING_BARELL_WIDTH) 
+		|| mario_info.x_coordinate + MARIO_WIDTH > flying_barell.x_coordinate && mario_info.x_coordinate <= flying_barell.x_coordinate)
+		&& mario_info.y_coordinate - MARIO_HEIGHT - 20 <= flying_barell.y_coordinate - FLYING_BARELL_HEIGHT && flying_barell.falling_down)
+	{
+		touched_flying_barell = true;
+		flying_barell.falling_down = false;
+	}
+
 	for (size_t i = 0; i < board.barells_amount; i++)
 	{
-		if (mario_info.mario_row != barells[i].row || mario_info.going_through_the_ladder)
+		if ((mario_info.mario_row != barells[i].row || mario_info.going_through_the_ladder) && !touched_flying_barell)
 			continue;
-		if (((mario_info.x_coordinate <= barells[i].x_coordinate + 20 &&
+		if ((((mario_info.x_coordinate <= barells[i].x_coordinate + 20 &&
 			mario_info.x_coordinate >= barells[i].x_coordinate) ||
 			(mario_info.x_coordinate - 14 + 30 >= barells[i].x_coordinate &&
-				mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping)
+				mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping) || touched_flying_barell)
 		{
-			update_mario_metrics(mario_info, times, board.level);
-			mario_info.all_points -= mario_info.points;
-			mario_info.points = 0;
-			for (size_t i = 0; i < board.amount_of_coins; i++)
-				board.grabbed_coins[i] = false;
+			times.worldTime = 0;
+			flying_barell.delta = 0;
+			update_mario_after_collision(mario_info, board, times);
 
 			bool safe = false;
 			// Update lifes
@@ -104,4 +116,13 @@ double return_min(const double array[], int size)
 		if (min > array[i])
 			min = array[i];
 	return min;
+}
+
+void update_mario_after_collision(Mario& mario_info, BoardElements& board, TimeVariables& times)
+{
+	update_mario_metrics(mario_info, times, board.level);
+	mario_info.all_points -= mario_info.points;
+	mario_info.points = 0;
+	for (size_t i = 0; i < board.amount_of_coins; i++)
+		board.grabbed_coins[i] = false;
 }
