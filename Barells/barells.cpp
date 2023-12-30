@@ -65,3 +65,4 @@ void move_barell_left(Barell& barell)
 		barell.x_coordinate = barell.right_border;
 	barell.x_coordinate -= BARELL_SPEED;
 }
+

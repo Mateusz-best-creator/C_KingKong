@@ -10,7 +10,7 @@
 int return_max(const int[], int);
 double return_min(const double[], int);
 
-int collision_with_barell(Mario& mario_info, Barell* barells,
+int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& flying_barell,
 	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables& times)
 {
 	for (size_t i = 0; i < board.barells_amount; i++)

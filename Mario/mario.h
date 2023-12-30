@@ -84,7 +84,7 @@ void interface(Mario& mario_info, SDL_Surface* charset, SDL_Surface* screen, SDL
 	SDL_Renderer* renderer, char* text, Colors& colors);
 
 // Collision with barell
-int collision_with_barell(Mario&, Barell*, BoardElements&, SDL_Surfaces&, SDL_Elements&, TimeVariables&);
+int collision_with_barell(Mario&, Barell*, FallingBarell&, BoardElements&, SDL_Surfaces&, SDL_Elements&, TimeVariables&);
 void update_mario_metrics(Mario&, TimeVariables&, int);
 
 // Starting the game

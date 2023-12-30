@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Barells\barells.cpp" />
+    <ClCompile Include="Barells\falling_barells.cpp" />
     <ClCompile Include="drawingObjects\draw_coins.cpp" />
     <ClCompile Include="drawingObjects\draw_ladders.cpp" />
     <ClCompile Include="drawingObjects\draw_platforms.cpp" />

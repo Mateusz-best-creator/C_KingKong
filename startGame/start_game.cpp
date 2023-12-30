@@ -34,6 +34,10 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     // Initialize the barells, based on board
     init_barells(board, barells);
 
+    // Initialize one falling barell
+    FallingBarell flying_barell;
+    flying_barell.falling_down = false;
+
     int mario_won = 0;
 
     while (!times.quit)
@@ -74,6 +78,9 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         // Moving all barells
         move_barells(barells, board, surfaces);
 
+        // Draw falling barell
+        falling_barell(times, flying_barell, surfaces);
+
         jumped_over_barell(mario_info, board, barells, screen, *(surfaces.charset));
 
         // Draw final treasures
@@ -111,7 +118,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
 
         int barell_collision_result = -1;
         // Check collisions
-        barell_collision_result = collision_with_barell(mario_info, barells, board, surfaces, SDL_elements, times);
+        barell_collision_result = collision_with_barell(mario_info, barells, flying_barell, board, surfaces, SDL_elements, times);
         if (barell_collision_result == 0) // lifes == 0
         {
             return 0;
