@@ -81,7 +81,6 @@ int main(int argc, char** argv)
 		reset_mario_variables(mario_info);
 	}
 
-
 	// Clear all the settings
 	clearSDL(*(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, SDL_elements.window);
 	return 0;

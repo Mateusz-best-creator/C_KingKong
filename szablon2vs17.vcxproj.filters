@@ -32,7 +32,6 @@
     <ClCompile Include="Mario\jumped_over_barell.cpp" />
     <ClCompile Include="drawingObjects\draw_trophies.cpp" />
     <ClCompile Include="Barells\falling_barells.cpp" />
-    <ClCompile Include="generatingBoards\generate_board.cpp" />
     <ClCompile Include="generatingBoards\infinite_game.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,7 +42,6 @@
     <ClInclude Include="Barells\barells.h" />
     <ClInclude Include="read_write_to_file\read_write_to_file.h" />
     <ClInclude Include="playersAccount\players_account.h" />
-    <ClInclude Include="generatingBoards\generating_boards.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template">

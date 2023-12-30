@@ -26,8 +26,6 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 		&& flying_barell.falling_down)
 	{
 		touched_flying_barell = true;
-		flying_barell.falling_down = false;
-		flying_barell.y_coordinate = 70;
 	}
 
 	for (size_t i = 0; i < board.barells_amount; i++)
@@ -42,6 +40,8 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 			update_mario_after_collision(mario_info, board, times);
 			times.worldTime = 0;
 			flying_barell.delta = 0;
+			flying_barell.falling_down = false;
+			flying_barell.y_coordinate = 70;
 
 			bool safe = false;
 			// Update lifes

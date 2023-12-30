@@ -6,9 +6,19 @@
 #include <stdlib.h>
 
 void save_game(const char* filename, Mario mario_info) {
+	
+	std::cout << mario_info.name << std::endl;
+	std::cout << mario_info.level_1_best_score << std::endl;
+	std::cout << mario_info.level_2_best_score << std::endl;
+	std::cout << mario_info.level_3_best_score << std::endl;
+	std::cout << mario_info.level_1_best_time << std::endl;
+	std::cout << mario_info.level_2_best_time << std::endl;
+	std::cout << mario_info.level_3_best_time << std::endl;
+	std::cout << mario_info.all_points << std::endl;
+	
 	FILE* file = fopen(filename, "a"); // Open file in append mode
 	if (file == NULL) {
-		fprintf(stderr, "Error opening file: %s\n", filename);
+		fprintf(stderr, "Error opening file: %s", filename);
 		return;
 	}
 

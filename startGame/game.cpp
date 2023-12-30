@@ -3,7 +3,6 @@
 #include "../Mario/mario.h"
 #include "../read_write_to_file/read_write_to_file.h"
 #include "../playersAccount/players_account.h"
-#include "../generatingBoards/generating_boards.h"
 
 #include <string.h>
 #include <iostream>
@@ -86,8 +85,8 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 		hall_of_fame(surfaces, SDL_elements);
 	else if (x == 1 && y == 2)
 	{
-		infinite_game();
-		return false;
+		infinite_game(surfaces, SDL_elements);
+		return true;
 	}
 	return true;
 }
