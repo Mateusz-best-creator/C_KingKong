@@ -13,7 +13,7 @@ Player* read_players_metrics(int& num_players)
 
     FILE* file;
     // Open antoher file, which we will be use for ordering the players
-    if (fopen_s(&file, "./players_metrics.txt", "r") != 0) {
+    if (fopen_s(&file, "./player_metrics.txt", "r") != 0) {
         printf("Error opening the file.\n");
         exit(0);
     }

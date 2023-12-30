@@ -5,27 +5,26 @@
 #include <iostream>
 #include <stdlib.h>
 
-void save_game(const Mario& mario_info)
-{
-	std::cout << "Mario name: " << mario_info.name << std::endl;
-	std::cout << "level 1 score: " << mario_info.level_1_best_score << std::endl;
-	std::cout << "level 2 score: " << mario_info.level_2_best_score << std::endl;
-	std::cout << "level 3 score: " << mario_info.level_3_best_score << std::endl;
-	std::cout << "level 1 time: " << mario_info.level_1_best_time << std::endl;
-	std::cout << "level 2 time: " << mario_info.level_2_best_time << std::endl;
-	std::cout << "level 3 time: " << mario_info.level_3_best_time << std::endl;
-	std::cout << "total: " << mario_info.all_points << std::endl;
+void save_game(const char* filename, Mario mario_info) {
+	FILE* file = fopen(filename, "a"); // Open file in append mode
+	if (file == NULL) {
+		fprintf(stderr, "Error opening file: %s\n", filename);
+		return;
+	}
 
-	/*
-	FILE* metrics_file = fopen("./players_metrics.txt", "a");
+	// Append Mario information to the file
+	fprintf(file, "Player %s %d %d %d %.2f %.2f %.2f %d\n",
+		mario_info.name,
+		mario_info.level_1_best_score,
+		mario_info.level_2_best_score,
+		mario_info.level_3_best_score,
+		mario_info.level_1_best_time,
+		mario_info.level_2_best_time,
+		mario_info.level_3_best_time,
+		mario_info.all_points);
 
-	fprintf(metrics_file, "Player %s %d %d %d\n",
-		mario_info.name, mario_info.level_1_best_score, mario_info.level_2_best_score, mario_info.level_3_best_score);
-	fprintf(metrics_file, " %lf %lf %lf %d \n", mario_info.level_1_best_time, 
-		mario_info.level_2_best_time, mario_info.level_3_best_time, mario_info.all_points);
-
-	fclose(metrics_file);
-	*/
+	// Close the file
+	fclose(file);
 }
 
 void save_all_games(const Mario& mario_info)

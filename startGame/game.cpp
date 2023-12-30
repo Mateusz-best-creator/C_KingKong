@@ -40,7 +40,6 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 			mario_info.levels_completed++;
 			mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 			mario_info.points = 0;
-			save_game(mario_info);
 			if (mario_info.levels_completed >= 3)
 			{
 				mario_info.levels_completed = 0;

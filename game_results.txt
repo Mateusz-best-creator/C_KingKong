@@ -58,3 +58,93 @@ Level 3 times: 1.438000 8.262000 9.927000
 Level 3 best time: 1.438000
 Ola total amount of points: 600
 ================================
+Player name: Mateusz
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 5100 
+Level 3 best score: 5100
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 
+Level 2 best time: 0.000000
+Level 3 times: 11.397000 
+Level 3 best time: 11.397000
+Mateusz total amount of points: 100
+================================
+Player name: Mateusz
+Level 1 scores: 500 500 500 
+Level 1 best score: 500
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 5100 
+Level 3 best score: 5100
+Level 1 times: 7.820000 13.969000 23.477000 
+Level 1 best time: 7.820000
+Level 2 times: 
+Level 2 best time: 0.000000
+Level 3 times: 11.397000 
+Level 3 best time: 11.397000
+Mateusz total amount of points: 5600
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 0 0 0 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 
+Level 2 best time: 0.000000
+Level 3 times: 1.556000 3.061000 5.075000 
+Level 3 best time: 1.556000
+Unknown total amount of points: 0
+================================
+Player name: Mateuszek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 500 0 100 
+Level 2 best score: 500
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 6.189000 8.328000 14.463000 
+Level 2 best time: 6.189000
+Level 3 times: 
+Level 3 best time: 0.000000
+Mateuszek total amount of points: 500
+================================
+Player name: Pomidorek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 1200 0 5600 
+Level 3 best score: 5600
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 
+Level 2 best time: 0.000000
+Level 3 times: 10.949000 12.934000 25.144000 
+Level 3 best time: 10.949000
+Pomidorek total amount of points: 600
+================================
+Player name: Pomidorek
+Level 1 scores: 500 
+Level 1 best score: 500
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 1200 0 5600 
+Level 3 best score: 5600
+Level 1 times: 7.720000 
+Level 1 best time: 7.720000
+Level 2 times: 
+Level 2 best time: 0.000000
+Level 3 times: 10.949000 12.934000 25.144000 
+Level 3 best time: 10.949000
+Pomidorek total amount of points: 6100
+================================

@@ -38,7 +38,7 @@ int collision_with_barell(Mario& mario_info, Barell* barells,
 				{
 					std::cout << "SAVING players metrics..." << std::endl;
 					mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
-					save_game(mario_info);
+					save_game("player_metrics.txt", mario_info);
 					save_all_games(mario_info);
 				}
 				return 0;
