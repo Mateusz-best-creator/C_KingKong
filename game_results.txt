@@ -1,15 +1,60 @@
-Player name: Unknown
+Player name: Mateusz
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 0 0 0 
+Level 2 best score: 0
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 1.937000 3.777000 5.581000 
+Level 2 best time: 1.937000
+Level 3 times: 
+Level 3 best time: 0.000000
+Mateusz total amount of points: 0
+================================
+Player name: Pomidorek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 100 5000 
+Level 2 best score: 5000
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 7.092000 19.237000 
+Level 2 best time: 7.092000
+Level 3 times: 
+Level 3 best time: 0.000000
+Pomidorek total amount of points: 0
+================================
+Player name: Pomidorek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 100 5000 
+Level 2 best score: 5000
+Level 3 scores: 0 600 
+Level 3 best score: 600
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 7.092000 19.237000 
+Level 2 best time: 7.092000
+Level 3 times: 2.214000 9.919000 
+Level 3 best time: 2.214000
+Pomidorek total amount of points: 5600
+================================
+Player name: Ola
 Level 1 scores: 
 Level 1 best score: 0
 Level 2 scores: 
 Level 2 best score: 0
-Level 3 scores: 3200 0 0 
-Level 3 best score: 3200
+Level 3 scores: 0 600 0 
+Level 3 best score: 600
 Level 1 times: 
 Level 1 best time: 0.000000
 Level 2 times: 
 Level 2 best time: 0.000000
-Level 3 times: 29.584000 34.463000 43.549000 
-Level 3 best time: 29.584000
-Unknown total amount of points: 3200
+Level 3 times: 1.438000 8.262000 9.927000 
+Level 3 best time: 1.438000
+Ola total amount of points: 600
 ================================

@@ -7,7 +7,7 @@
 
 #include <string.h>
 #include <cstdlib>
-
+#include <iostream>
 int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board,
     bool lost_life, long gained_points, bool load_game_from_file)
 {
@@ -40,9 +40,10 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     {
         if (check_if_mario_win(board, mario_info))
         {
+            std::cout << "MARIO WINNING, SAVING TO FILE" << std::endl;
             update_mario_metrics(mario_info, times, board.level);
-            save_game(mario_info);
             save_all_games(mario_info);
+            save_game(mario_info);
             mario_won = 1;
             break;
         }
@@ -111,12 +112,13 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         int barell_collision_result = -1;
         // Check collisions
         barell_collision_result = collision_with_barell(mario_info, barells, board, surfaces, SDL_elements, times);
-        if (barell_collision_result == 0)
+        if (barell_collision_result == 0) // lifes == 0
         {
             return 0;
         }
         else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
         {
+            // Reset the board and set initial mario coordinates
             board = initialize_board(board.level);
             init_barells(board, barells);
             mario_info.x_coordinate = board.initial_mario_x;

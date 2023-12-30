@@ -5,6 +5,8 @@
 #include "../Interface/interface.h"
 #include "../read_write_to_file/read_write_to_file.h"
 
+#include <iostream>
+
 int return_max(const int[], int);
 double return_min(const double[], int);
 
@@ -34,6 +36,7 @@ int collision_with_barell(Mario& mario_info, Barell* barells,
 				safe = save_after_lost_interface(surfaces, elements, mario_info, board);
 				if (safe)
 				{
+					std::cout << "SAVING players metrics..." << std::endl;
 					mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 					save_game(mario_info);
 					save_all_games(mario_info);

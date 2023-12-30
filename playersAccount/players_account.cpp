@@ -10,7 +10,7 @@ void players_account(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
 	int num_players = 0;
 	Player* players = read_players_metrics(num_players);
-	
+
 	SDL_Event event;
 	Colors colors;
 	initialize_colors(*(surfaces.screen), colors);

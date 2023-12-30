@@ -7,20 +7,25 @@
 
 void save_game(const Mario& mario_info)
 {
-	FILE* metrics_file;
-	// Open another file, which we will use for ordering the players
-	if ((metrics_file = fopen("./players_metrics.txt", "a")) == NULL) 
-	{
-		printf("Error opening players_metrics (write_to_file.cpp) file.\n");
-		exit(0);
-	}
+	std::cout << "Mario name: " << mario_info.name << std::endl;
+	std::cout << "level 1 score: " << mario_info.level_1_best_score << std::endl;
+	std::cout << "level 2 score: " << mario_info.level_2_best_score << std::endl;
+	std::cout << "level 3 score: " << mario_info.level_3_best_score << std::endl;
+	std::cout << "level 1 time: " << mario_info.level_1_best_time << std::endl;
+	std::cout << "level 2 time: " << mario_info.level_2_best_time << std::endl;
+	std::cout << "level 3 time: " << mario_info.level_3_best_time << std::endl;
+	std::cout << "total: " << mario_info.all_points << std::endl;
 
-	fprintf(metrics_file, "%s %d %d %d %lf %lf %lf %d\n", mario_info.name, mario_info.level_1_best_score,
-		mario_info.level_2_best_score, mario_info.level_3_best_score, 
-		mario_info.level_1_best_time, mario_info.level_2_best_time, 
-		mario_info.level_3_best_time, mario_info.all_points);
+	/*
+	FILE* metrics_file = fopen("./players_metrics.txt", "a");
+
+	fprintf(metrics_file, "Player %s %d %d %d\n",
+		mario_info.name, mario_info.level_1_best_score, mario_info.level_2_best_score, mario_info.level_3_best_score);
+	fprintf(metrics_file, " %lf %lf %lf %d \n", mario_info.level_1_best_time, 
+		mario_info.level_2_best_time, mario_info.level_3_best_time, mario_info.all_points);
 
 	fclose(metrics_file);
+	*/
 }
 
 void save_all_games(const Mario& mario_info)

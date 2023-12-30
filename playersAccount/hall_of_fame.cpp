@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <iostream>
 
 bool hall_of_fame_interface_events(SDL_Event&);
 int partition(Player arr[], int low, int high);
@@ -11,6 +12,7 @@ void quickSort(Player arr[], int low, int high);
 void hall_of_fame(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
 	int num_players = 0;
+	std::cout << "calling read players metrics..." << std::endl;
 	Player* players = read_players_metrics(num_players);
 	quickSort(players, 0, num_players - 1);
 
@@ -88,7 +90,7 @@ void swap(Player& a, Player& b) {
 	b = temp;
 }
 
-int partition(Player arr[], int low, int high) 
+int partition(Player arr[], int low, int high)
 {
 	Player pivot = arr[high];
 	int i = low - 1;
@@ -104,7 +106,7 @@ int partition(Player arr[], int low, int high)
 	return i + 1;
 }
 
-void quickSort(Player arr[], int low, int high) 
+void quickSort(Player arr[], int low, int high)
 {
 	if (low < high) {
 		int pi = partition(arr, low, high);
