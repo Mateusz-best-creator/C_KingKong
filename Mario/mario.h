@@ -9,6 +9,7 @@
 	In this file we store all the infomation about Mario object
 */
 
+const int MARIO_WIDTH = 30, MARIO_HEIGHT = 30, MARIO_X_OFFSET = 14, MARIO_Y_OFFSET = 14;
 const int MARIO_FLOOR_DISTANCE = 3;
 const int MARIO_SPEED = 6;
 const int JUMP_HEIGHT = 40;
@@ -17,6 +18,8 @@ const int POINTS_FOR_COMPLETING_LEVEL = 5000;
 const int POINTS_FOR_GRABBING_COIN = 500;
 const int POINTS_FOR_JUMPING_OVER_BARELL = 100;
 const int POINTS_FOR_PUTTING_TROPHY = 2000;
+
+const enum Results { CANT_MOVE = 0, QUIT, NEW_GAME, SWITCH_TO_LEVEL_1, SWITCH_TO_LEVEL_2, SWITCH_TO_LEVEL_3, CANT_SWITCH_LEVEL };
 
 struct Mario
 {

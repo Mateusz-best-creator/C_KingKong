@@ -1,4 +1,5 @@
 #include "mario.h"
+#include "../functions_definitions.h"
 
 bool jumped_over = false;
 
@@ -8,10 +9,10 @@ void jumped_over_barell(Mario& mario_info, BoardElements& board, Barell* barells
 	{
 		if (mario_info.mario_row != barells[i].row || mario_info.going_through_the_ladder)
 			continue;
-		if (((mario_info.x_coordinate <= barells[i].x_coordinate + 20 &&
+		if (((mario_info.x_coordinate <= barells[i].x_coordinate + BARELL_WIDTH &&
 			mario_info.x_coordinate >= barells[i].x_coordinate) ||
-			(mario_info.x_coordinate - 14 + 30 >= barells[i].x_coordinate &&
-				mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && mario_info.jumping)
+			(mario_info.x_coordinate - MARIO_X_OFFSET + MARIO_WIDTH >= barells[i].x_coordinate &&
+				mario_info.x_coordinate - MARIO_X_OFFSET + MARIO_WIDTH <= barells[i].x_coordinate + BARELL_WIDTH)) && mario_info.jumping)
 		{
 			jumped_over = true;
 			break;
@@ -30,5 +31,5 @@ void jump_over_barell_message(const Mario& mario, SDL_Surface* screen, SDL_Surfa
 {
 	char text[20];
 	sprintf(text, "100");
-	DrawString(screen, mario.x_coordinate - 10, mario.y_coordinate - 40, text, charset);
+	DrawString(screen, mario.x_coordinate - MESSAGE_X_OFFSET, mario.y_coordinate - MESSAGE_Y_OFFSET, text, charset);
 }

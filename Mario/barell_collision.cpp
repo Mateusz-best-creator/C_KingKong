@@ -11,8 +11,7 @@ int return_max(const int[], int);
 double return_min(const double[], int);
 void update_mario_after_collision(Mario& mario_info, BoardElements& board, TimeVariables& times);
 
-const int MARIO_WIDTH = 30, MARIO_HEIGHT = 30;
-const int FLYING_BARELL_WIDTH = 25, FLYING_BARELL_HEIGHT = 25;
+enum CollisionResults { STOP_THE_GAME = 0, CONTINUE_GAME = 1 };
 
 int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& flying_barell,
 	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables& times)
@@ -21,7 +20,7 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 	if (((mario_info.x_coordinate >= flying_barell.x_coordinate
 		&& mario_info.x_coordinate <= flying_barell.x_coordinate + FLYING_BARELL_WIDTH) 
 		|| mario_info.x_coordinate + MARIO_WIDTH > flying_barell.x_coordinate && mario_info.x_coordinate <= flying_barell.x_coordinate)
-		&& mario_info.y_coordinate - MARIO_HEIGHT - 15 <= flying_barell.y_coordinate - FLYING_BARELL_HEIGHT 
+		&& mario_info.y_coordinate - MARIO_HEIGHT - MARIO_Y_OFFSET <= flying_barell.y_coordinate - FLYING_BARELL_HEIGHT 
 		&& mario_info.y_coordinate >= flying_barell.y_coordinate
 		&& flying_barell.falling_down)
 	{
@@ -32,16 +31,17 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 	{
 		if ((mario_info.mario_row != barells[i].row || mario_info.going_through_the_ladder) && !touched_flying_barell)
 			continue;
-		if ((((mario_info.x_coordinate <= barells[i].x_coordinate + 20 &&
+		if ((((mario_info.x_coordinate <= barells[i].x_coordinate + BARELL_WIDTH &&
 			mario_info.x_coordinate >= barells[i].x_coordinate) ||
-			(mario_info.x_coordinate - 14 + 30 >= barells[i].x_coordinate &&
-				mario_info.x_coordinate - 14 + 30 <= barells[i].x_coordinate + 25)) && !mario_info.jumping) || touched_flying_barell)
+			(mario_info.x_coordinate - MARIO_X_OFFSET + MARIO_WIDTH >= barells[i].x_coordinate &&
+				mario_info.x_coordinate - MARIO_X_OFFSET + MARIO_WIDTH <= barells[i].x_coordinate + BARELL_WIDTH)) && 
+			!mario_info.jumping) || touched_flying_barell)
 		{
 			update_mario_after_collision(mario_info, board, times);
 			times.worldTime = 0;
 			flying_barell.delta = 0;
 			flying_barell.falling_down = false;
-			flying_barell.y_coordinate = 70;
+			flying_barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
 
 			bool safe = false;
 			// Update lifes
@@ -51,21 +51,20 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 				safe = save_after_lost_interface(surfaces, elements, mario_info, board);
 				if (safe)
 				{
-					std::cout << "SAVING players metrics..." << std::endl;
 					mario_info.all_points = mario_info.level_1_best_score + mario_info.level_2_best_score + mario_info.level_3_best_score;
 					save_game("player_metrics.txt", mario_info);
 					save_all_games(mario_info);
 				}
-				return 0;
+				return STOP_THE_GAME;
 			}
 			bool play_again = continue_interface(surfaces, elements, mario_info, board);
 			if (!play_again)
 			{
-				return 0;
+				return STOP_THE_GAME;
 			}
 			else
 			{
-				return 1;
+				return CONTINUE_GAME;
 			}
 		}
 	}

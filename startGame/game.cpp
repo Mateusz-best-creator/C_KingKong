@@ -14,13 +14,13 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 	initialize_colors(*(surfaces.screen), colors);
 
 	int x = 1, y = 1, option = 1;
-	if (level_switch == -1)
+	if (level_switch == CANT_SWITCH_LEVEL)
 		initial_interface(surfaces, SDL_elements, colors, x, y, mario_info.name);
 	else
 	{
 		x = 2;
 		y = level_switch;
-		level_switch = -1;
+		level_switch = CANT_SWITCH_LEVEL;
 	}
 	BoardElements board;
 	
@@ -41,7 +41,7 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false);
 		mario_info.has_trophy = false;
-		if (mario_won == 4 || mario_won == 5 || mario_won == 6)
+		if (mario_won == SWITCH_TO_LEVEL_1 || mario_won == SWITCH_TO_LEVEL_2 || mario_won == SWITCH_TO_LEVEL_3)
 		{
 			level_switch = mario_won - 2;
 			return true;

@@ -16,8 +16,8 @@ void falling_barell(TimeVariables& times, FallingBarell& barell, const SDL_Surfa
 	{
 		barell.delta = times.worldTime;
 		// Initialize falling barell
-		barell.x_coordinate = getRandomNumber(40, 600);
-		barell.y_coordinate = 70;
+		barell.x_coordinate = getRandomNumber(FALLING_BARELL_LEFT_BORDER, FALLING_BARELL_RIGHT_BORDER);
+		barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
 		barell.falling_down = true;
 	}
 
@@ -27,10 +27,10 @@ void falling_barell(TimeVariables& times, FallingBarell& barell, const SDL_Surfa
 		move_falling_barell(barell);
 	}
 
-	if (barell.y_coordinate > 420)
+	if (barell.y_coordinate > ENDING_FALLING_BARELL_Y)
 	{
 		barell.falling_down = false;
-		barell.y_coordinate = 70;
+		barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
 	}
 }
 

@@ -41,6 +41,7 @@ void draw_barell(Barell& barell, const SDL_Surfaces& surfaces)
 
 void move_barell(Barell& barell, int level)
 {
+	// 0 means left, 1 means right
 	if (barell.direction == 1 && barell.x_coordinate >= barell.right_border)
 		barell.direction = 0;
 	else if (barell.direction == 0 && barell.x_coordinate <= barell.left_border)

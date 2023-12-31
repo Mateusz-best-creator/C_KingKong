@@ -14,7 +14,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 
 	if (mario_info.jumping)
 	{
-		return 0;
+		return CANT_MOVE;
 	}
 	// handling of events (if there were any)
 	while (SDL_PollEvent(&event)) 
@@ -24,20 +24,19 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
 			else if (event.key.keysym.sym == SDLK_1)
 			{
-				std::cout << "Keyboard 1" << std::endl;
-				return 3;
+				return SWITCH_TO_LEVEL_1;
 			}
 			else if (event.key.keysym.sym == SDLK_2)
 			{
-				return 4;
+				return SWITCH_TO_LEVEL_2;
 			}
 			else if (event.key.keysym.sym == SDLK_3)
 			{
-				return 5;
+				return SWITCH_TO_LEVEL_3;
 			}
 			else if (event.key.keysym.sym == SDLK_n)
 			{
-				return 2;
+				return NEW_GAME;
 			}
 			else if (event.key.keysym.sym == SDLK_RIGHT)
 			{
@@ -62,7 +61,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			}
 			break;
 		case SDL_QUIT:
-			return 1;
+			return QUIT;
 		};
 	};
 }

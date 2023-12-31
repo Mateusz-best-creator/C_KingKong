@@ -46,5 +46,5 @@ void grab_coin_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* cha
 {
 	char text[20];
 	sprintf(text, "500");
-	DrawString(screen, mario.x_coordinate - 10, mario.y_coordinate - 40, text, charset);
+	DrawString(screen, mario.x_coordinate - MESSAGE_X_OFFSET, mario.y_coordinate - MESSAGE_Y_OFFSET, text, charset);
 }

@@ -4,11 +4,13 @@
 
 bool handle_authentication_interface_events(char* name, int& index);
 
+const int NAME_MAX_LENGTH = 20;
+
 char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, const Colors& colors)
 {
     SDL_Event event;
     bool quit = false;
-    char name[21];
+    char name[NAME_MAX_LENGTH + 1]; // + 1 for null character
     int index = 0;
     name[index] = '\0';
     char text[100];
@@ -51,7 +53,7 @@ bool handle_authentication_interface_events(char* name, int& index)
                 name[index] = '\0';
             }
         }
-        else if (event.type == SDL_TEXTINPUT && index < 20)
+        else if (event.type == SDL_TEXTINPUT && index < NAME_MAX_LENGTH)
         {
             name[index] = *(event.text.text);
             index++;

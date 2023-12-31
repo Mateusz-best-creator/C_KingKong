@@ -3,6 +3,7 @@
 
 void get_mario_info(Mario& mario_info, const BoardElements& board, int& mario_row)
 {
+	// Based on platforms y coordinates, determine in which row mario is
 	if (mario_info.y_coordinate <= 390 && mario_info.y_coordinate > 330)
 		mario_row = 1;
 	else if (mario_info.y_coordinate <= 330 && mario_info.y_coordinate > 270)

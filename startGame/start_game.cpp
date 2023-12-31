@@ -37,8 +37,8 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     // Initialize one falling barell
     FallingBarell flying_barell;
     flying_barell.falling_down = false;
-    flying_barell.x_coordinate = 300;
-    flying_barell.y_coordinate = 70;
+    flying_barell.x_coordinate = INITIAL_FALLING_BARELL_X;
+    flying_barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
     flying_barell.delta = 0;
 
     int mario_won = 0;
@@ -147,7 +147,6 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         }
         else if (times.quit == 3 || times.quit == 4 || times.quit == 5)
         {
-            std::cout << "HSLO " << times.quit << std::endl;
             return times.quit;
         }
         times.frames++;

@@ -42,6 +42,10 @@ void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 const double SECONDS_BETWEEN_REFRESH = 0.5;
 const double REFRESH_RATE = 1 / SECONDS_BETWEEN_REFRESH;
 
+const int MESSAGE_X_OFFSET = 10;
+const int MESSAGE_Y_OFFSET = 40;
+const int LONG_MESSAGE_X_OFFSET = 60;
+
 struct SDL_Surfaces
 {
 	SDL_Surface** screen, ** charset, ** mario_running_right, ** mario_running_left,

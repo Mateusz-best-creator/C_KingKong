@@ -2,6 +2,11 @@
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
 
+const int TROPHY_X_OFFSET = 20;
+const int TROPHY_Y_OFFSET = 13;
+const int GOLD_PLATFORM_WIDTH = 40;
+const int GOLD_PLATFORM_HEIGHT = 10;
+
 void draw_trophies(Mario& mario_info, BoardElements& board, const SDL_Surfaces& surfaces, const Colors& colors)
 {
 	if (board.display_get_trophy)
@@ -16,14 +21,15 @@ void draw_trophies(Mario& mario_info, BoardElements& board, const SDL_Surfaces& 
 			DrawSurface(*(surfaces.screen), *(surfaces.trophy_icon), board.get_trophy_x, board.get_trophy_y);
 	}
 	else
-		DrawRectangle(*(surfaces.screen), board.put_trophy_x - 20, board.put_trophy_y + 13, 40, 10, colors.zloty, colors.zloty);
+		DrawRectangle(*(surfaces.screen), board.put_trophy_x - TROPHY_X_OFFSET, board.put_trophy_y + TROPHY_Y_OFFSET,
+			GOLD_PLATFORM_WIDTH, GOLD_PLATFORM_HEIGHT, colors.zloty, colors.zloty);
 
 	if (board.display_put_trophy && !mario_info.has_trophy)
 		DrawSurface(*(surfaces.screen), *(surfaces.trophy_icon), board.put_trophy_x, board.put_trophy_y);
 
 	if (mario_info.has_trophy)
 	{
-		if (mario_info.x_coordinate >= board.put_trophy_x - 20 && mario_info.x_coordinate <= board.put_trophy_x + 20
+		if (mario_info.x_coordinate >= board.put_trophy_x - TROPHY_X_OFFSET && mario_info.x_coordinate <= board.put_trophy_x + TROPHY_X_OFFSET
 			&& mario_info.y_coordinate == board.put_trophy_y)
 		{
 			mario_info.has_trophy = false;
@@ -39,12 +45,12 @@ void grab_trophy_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* c
 {
 	char text[30];
 	sprintf(text, "You capture trophy!");
-	DrawString(screen, mario.x_coordinate - 60, mario.y_coordinate - 40, text, charset);
+	DrawString(screen, mario.x_coordinate - LONG_MESSAGE_X_OFFSET, mario.y_coordinate - MESSAGE_Y_OFFSET, text, charset);
 }
 
 void put_trophy_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset)
 {
 	char text[20];
 	sprintf(text, "2000");
-	DrawString(screen, mario.x_coordinate - 10, mario.y_coordinate - 40, text, charset);
+	DrawString(screen, mario.x_coordinate - MESSAGE_X_OFFSET, mario.y_coordinate - MESSAGE_Y_OFFSET, text, charset);
 }

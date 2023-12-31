@@ -15,15 +15,15 @@ void save_game(const char* filename, Mario mario_info) {
 	std::cout << mario_info.level_2_best_time << std::endl;
 	std::cout << mario_info.level_3_best_time << std::endl;
 	std::cout << mario_info.all_points << std::endl;
-	
+	std::cout << "Saving players metrics from write_to_file.cpp..." << std::endl;
 	FILE* file = fopen(filename, "a"); // Open file in append mode
 	if (file == NULL) {
-		fprintf(stderr, "Error opening file: %s", filename);
+		perror("Error opening file write_to_file.cpp");
 		return;
 	}
-
+	mario_info.name[strlen(mario_info.name) + 1] = '\0';
 	// Append Mario information to the file
-	fprintf(file, "Player %s %d %d %d %.2f %.2f %.2f %d\n",
+	fprintf(file, "%s %d %d %d %.2f %.2f %.2f %d\n",
 		mario_info.name,
 		mario_info.level_1_best_score,
 		mario_info.level_2_best_score,
@@ -34,7 +34,9 @@ void save_game(const char* filename, Mario mario_info) {
 		mario_info.all_points);
 
 	// Close the file
-	fclose(file);
+	if (fclose(file) != 0) {
+		perror("Error closing file");
+	}
 }
 
 void save_all_games(const Mario& mario_info)

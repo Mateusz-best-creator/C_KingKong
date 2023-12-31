@@ -12,7 +12,6 @@ void quickSort(Player arr[], int low, int high);
 void hall_of_fame(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
 	int num_players = 0;
-	std::cout << "calling read players metrics..." << std::endl;
 	Player* players = read_players_metrics(num_players);
 	quickSort(players, 0, num_players - 1);
 
