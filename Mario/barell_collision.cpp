@@ -19,7 +19,7 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 	bool touched_flying_barell = false;
 	if (((mario_info.x_coordinate >= flying_barell.x_coordinate
 		&& mario_info.x_coordinate <= flying_barell.x_coordinate + FLYING_BARELL_WIDTH) 
-		|| mario_info.x_coordinate + MARIO_WIDTH > flying_barell.x_coordinate && mario_info.x_coordinate <= flying_barell.x_coordinate)
+		|| mario_info.x_coordinate + MARIO_WIDTH - 10 > flying_barell.x_coordinate && mario_info.x_coordinate <= flying_barell.x_coordinate)
 		&& mario_info.y_coordinate - MARIO_HEIGHT - MARIO_Y_OFFSET <= flying_barell.y_coordinate - FLYING_BARELL_HEIGHT 
 		&& mario_info.y_coordinate >= flying_barell.y_coordinate
 		&& flying_barell.falling_down)

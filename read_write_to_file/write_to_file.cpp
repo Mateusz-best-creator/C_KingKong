@@ -37,6 +37,7 @@ void save_game(const char* filename, Mario mario_info) {
 	if (fclose(file) != 0) {
 		perror("Error closing file");
 	}
+	//fclose(file);
 }
 
 void save_all_games(const Mario& mario_info)

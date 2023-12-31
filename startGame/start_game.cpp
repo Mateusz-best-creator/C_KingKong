@@ -49,8 +49,8 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         {
             std::cout << "MARIO WINNING, SAVING TO FILE" << std::endl;
             update_mario_metrics(mario_info, times, board.level);
-            save_all_games(mario_info);
-            save_game("player_metrics.txt", mario_info);
+            //save_all_games(mario_info);
+            save_game("./player_metrics.txt", mario_info);
             mario_won = 1;
             break;
         }

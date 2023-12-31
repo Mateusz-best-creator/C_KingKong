@@ -14,13 +14,13 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 	initialize_colors(*(surfaces.screen), colors);
 
 	int x = 1, y = 1, option = 1;
-	if (level_switch == CANT_SWITCH_LEVEL)
+	if (level_switch == -1)
 		initial_interface(surfaces, SDL_elements, colors, x, y, mario_info.name);
 	else
 	{
 		x = 2;
 		y = level_switch;
-		level_switch = CANT_SWITCH_LEVEL;
+		level_switch = -1;
 	}
 	BoardElements board;
 	
@@ -75,7 +75,6 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 	// Authentication section
 	else if (x == 3 && y == 1)
 	{
-		mario_info.name[0] = '\0';
 		strcpy(mario_info.name, authentication_interface(mario_info, surfaces, SDL_elements, colors));
 		return true;
 	}
