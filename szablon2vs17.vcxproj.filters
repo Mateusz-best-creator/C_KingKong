@@ -54,4 +54,7 @@
     <Text Include="read_from_file_level_2.txt" />
     <Text Include="read_from_file_level_3.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
 </Project>

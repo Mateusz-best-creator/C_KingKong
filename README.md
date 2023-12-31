@@ -9,7 +9,7 @@ Welcome to the C++ Crafted Donkey Kong Game – an exciting and nostalgic gaming
    - Climb ladders, jump barrels, and navigate challenging levels just like in the original game.
 
 ### 2. Multi-Level Adventure:
-   - Conquer multiple levels of increasing difficulty as you strive to rescue the princess from the clutches of Donkey Kong.
+   - Conquer multiple levels of increasing difficulty as you are trying to get the treasure.
    - Each level presents new challenges and obstacles to keep you engaged and entertained.
 
 ### 3. Hall of Fame:
@@ -18,7 +18,6 @@ Welcome to the C++ Crafted Donkey Kong Game – an exciting and nostalgic gaming
 
 ### 4. Collectibles Galore:
    - Grab coins, trophies, and treasures as you progress through the game.
-   - Accumulate points and unlock special achievements by collecting valuable items scattered throughout the levels.
 
 ### 5. Save and Load:
    - Save your progress and continue your game later with the convenient save and load feature.
@@ -53,7 +52,7 @@ Use the arrow keys to move a rectangle and select one of the following options:
    - Move to level 3 for an even more challenging experience.
 
 9. **Hall of Fame:**
-   - View the Hall of Fame where players are sorted based on their scores.
+   - View the Hall of Fame where top 5 players are sorted based on their scores.
 
 ### Game Instructions:
 
@@ -63,6 +62,9 @@ Use the arrow keys to move a rectangle and select one of the following options:
 2. **Controls:**
    - Use arrow keys to move.
    - Press spacebar to jump.
+   - Press n to start completely new game
+   - Press s to save current state of the game
+   - Press 1, 2 or 3 to automatically switch to another level
    - Navigate through the levels, avoiding obstacles, and reach the top to grab the treasure.
 
 3. **Competition:**

@@ -67,6 +67,9 @@
     <Text Include="read_from_file_level_2.txt" />
     <Text Include="read_from_file_level_3.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{16725DAB-C5AF-413E-A856-9D4B087AFD39}</ProjectGuid>
