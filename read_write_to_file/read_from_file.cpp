@@ -44,7 +44,15 @@ void load_table_from_file(Mario& mario, BoardElements& board)
     
 
     char name[20];
+    char mario_name[20];
     int x, y;
+    // First row should always be a name
+    if (fscanf(file, "%s", mario_name) == 1)
+    {
+        mario_name[strlen(mario_name)] = '\0';
+        strcpy(mario.name, mario_name);
+    }
+    
     // Read data from the file using fscanf
     while (fscanf(file, "%s %d %d", name, &x, &y) == 3) 
     {
@@ -121,4 +129,36 @@ void load_board_informations(BoardElements& board, Mario& mario, const char* nam
         board.display_get_trophy = bool(x);
     else if (strcmp(name, "DisplayPutTrophy") == 0)
         board.display_put_trophy = bool(x);
+}
+
+void load_barells_from_file(Barell* barells, FallingBarell& flying_barell)
+{
+    FILE* file;
+    if (fopen_s(&file, "./saved_game_state.txt", "r") != 0) {
+        printf("Error opening saved_game_state file.\n");
+        exit(0);
+    }
+
+    char name[20];
+    double x, y;
+    int index = 0;
+    fscanf(file, "%s", name);
+    while (fscanf(file, "%s %lf %lf", name, &x, &y) == 3)
+    {
+        if (strcmp(name, "Barell") == 0)
+        {
+            barells[index].x_coordinate = x;
+            barells[index].y_coordinate = y;
+        }
+        else if (strcmp(name, "BarellDir") == 0)
+        {
+            barells[index].direction = x;
+            index++;
+        }
+        else if (strcmp(name, "FlyingBarellCoor") == 0)
+        {
+            flying_barell.x_coordinate = x;
+            flying_barell.y_coordinate = y;
+        }
+    }
 }

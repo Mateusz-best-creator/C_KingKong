@@ -1,3 +1,4 @@
+Ola
 Level 1 0
 Mario 170 387
 AllPoints 1500 0
@@ -12,3 +13,6 @@ Points 1500 0
 MarioRow 2 0
 JustGrabbedCoin 0 0
 Coins 22111 0
+HasTrophy 0 0
+DisplayGrabTrophy 1 0
+DisplayPutTrophy 0 0

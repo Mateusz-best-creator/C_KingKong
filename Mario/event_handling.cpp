@@ -6,7 +6,8 @@
 #include <cstdlib>
 #include <iostream>
 
-int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board)
+int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, 
+	BoardElements& board, Barell* barells, FallingBarell& flying_barell)
 {
 	// Variable stores information in which row mario currently is
 	int mario_row = 1;
@@ -25,7 +26,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
 			else if (event.key.keysym.sym == SDLK_s)
 			{
-				save_game_state(mario_info, board);
+				save_game_state(mario_info, board, barells, flying_barell);
 				exit(0);
 			}
 			else if (event.key.keysym.sym == SDLK_1)

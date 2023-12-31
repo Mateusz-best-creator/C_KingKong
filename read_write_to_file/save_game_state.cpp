@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-void save_game_state(const Mario& mario_info, const BoardElements& board)
+void save_game_state(const Mario& mario_info, const BoardElements& board, Barell* barells, FallingBarell& flying_barell)
 {
     FILE* file = fopen("saved_game_state.txt", "w");
 
@@ -25,6 +25,7 @@ void save_game_state(const Mario& mario_info, const BoardElements& board)
     board_coins[board.amount_of_coins] = '\0';
       
     // Write to the file using fprintf
+    fprintf(file, "%s\n", mario_info.name);
     fprintf(file, "Level %d 0\n", board.level);
     fprintf(file, "Mario %d %d\n", mario_info.x_coordinate, mario_info.y_coordinate);
     fprintf(file, "AllPoints %d 0\n", mario_info.all_points);
@@ -38,11 +39,21 @@ void save_game_state(const Mario& mario_info, const BoardElements& board)
     fprintf(file, "Points %d 0\n", mario_info.points);
     fprintf(file, "MarioRow %d 0\n", mario_info.mario_row);
     fprintf(file, "JustGrabbedCoin %d 0\n", mario_info.just_grabbed_coin);
-    fprintf(file, "Coins %s 0", board_coins);
+    fprintf(file, "Coins %s 0\n", board_coins);
     // Additional features about trophy
-    fprintf(file, "HasTrophy %d 0", mario_info.has_trophy);
-    fprintf(file, "DisplayGrabTrophy %d 0", board.display_get_trophy);
-    fprintf(file, "DisplayPutTrophy %d 0", board.display_put_trophy);
+    fprintf(file, "HasTrophy %d 0\n", mario_info.has_trophy);
+    fprintf(file, "DisplayGrabTrophy %d 0\n", board.display_get_trophy);
+    fprintf(file, "DisplayPutTrophy %d 0\n", board.display_put_trophy);
+
+    // Send barells coordinates
+    for (size_t i = 0; i < board.barells_amount; i++)
+    {
+        fprintf(file, "Barell %lf %lf\n", barells[i].x_coordinate, barells[i].y_coordinate);
+        fprintf(file, "BarellDir %d 0\n", barells[i].direction);
+    }
+       
+    // Send flying barell coordinates
+    fprintf(file, "FlyingBarellCoor %lf %lf\n", flying_barell.x_coordinate, flying_barell.y_coordinate);
 
     releaseMemory(board);
     delete[] board_coins;

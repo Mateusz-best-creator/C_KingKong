@@ -103,3 +103,33 @@ Level 3 times: 1.441000 1.456000 1.840000
 Level 3 best time: 1.441000
 Mat total amount of points: 0
 ================================
+Player name: Antek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 600 5600 
+Level 2 best score: 5600
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 11.044000 20.044000 
+Level 2 best time: 11.044000
+Level 3 times: 
+Level 3 best time: 0.000000
+Antek total amount of points: 600
+================================
+Player name: Antek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 600 5600 
+Level 2 best score: 5600
+Level 3 scores: 100 0 
+Level 3 best score: 100
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 11.044000 20.044000 
+Level 2 best time: 11.044000
+Level 3 times: 7.023000 1.863000 
+Level 3 best time: 1.863000
+Antek total amount of points: 5700
+================================

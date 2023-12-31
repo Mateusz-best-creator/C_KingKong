@@ -1,5 +1,6 @@
-Level 3 0
-Mario 194 387
+Unknown
+Level 2 0
+Mario 608 267
 AllPoints 500 0
 Lifes 3 0
 ThroughLadder 0 0
@@ -9,6 +10,18 @@ Direction 1 0
 AboveLadder 0 0
 CanGoDown 0 0
 Points 500 0
-MarioRow 1 0
-JustGrabbedCoin 1 0
-Coins 12111111 0HasTrophy 1 0DisplayGrabTrophy 0 0DisplayPutTrophy 0 0
+MarioRow 3 0
+JustGrabbedCoin 0 0
+Coins 1121111 0
+HasTrophy 0 0
+DisplayGrabTrophy 1 0
+DisplayPutTrophy 0 0
+Barell 422.800000 330.000000
+BarellDir 0 0
+Barell 20.800000 270.000000
+BarellDir 0 0
+Barell 595.200000 210.000000
+BarellDir 1 0
+Barell 367.200000 150.000000
+BarellDir 1 0
+FlyingBarellCoor 81.000000 294.400000

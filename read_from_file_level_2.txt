@@ -1,3 +1,4 @@
+Agnieszka
 Level 2 0
 Mario 230 327
 AllPoints 12000 0
@@ -12,3 +13,6 @@ Points 2000 0
 MarioRow 3 0
 JustGrabbedCoin 0 0
 Coins 2211221 0
+HasTrophy 0 0
+DisplayGrabTrophy 1 0
+DisplayPutTrophy 0 0

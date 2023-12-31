@@ -1,3 +1,4 @@
+Krzysztof
 Level 3 0
 Mario 116 327
 AllPoints 6500 0
@@ -12,3 +13,6 @@ Points 1000 0
 MarioRow 3 0
 JustGrabbedCoin 0 0
 Coins 11211211 0
+HasTrophy 0 0
+DisplayGrabTrophy 1 0
+DisplayPutTrophy 0 0
