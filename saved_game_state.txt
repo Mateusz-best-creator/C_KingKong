@@ -1,0 +1,14 @@
+Level 2 0
+Mario 590 387
+AllPoints 3600 0
+Lifes 3 0
+ThroughLadder 0 0
+Jumping 0 0
+GoingDown 1 0
+Direction 0 0
+AboveLadder 0 0
+CanGoDown 1 0
+Points 3600 0
+MarioRow 1 0
+JustGrabbedCoin 0 0
+Coins 1211121 0HasTrophy 0 0DisplayGrabTrophy 0 0DisplayPutTrophy 1 0

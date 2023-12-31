@@ -30,9 +30,15 @@ void load_table_from_file(Mario& mario, BoardElements& board)
         exit(0);
     }
     */
+    /*
+     if (fopen_s(&file, "./read_from_file_level_3.txt", "r") != 0) {
+        printf("Error opening saved_game_state file.\n");
+        exit(0);
+    }
+    */
     
-    if (fopen_s(&file, "./read_from_file_level_3.txt", "r") != 0) {
-        printf("Error opening read_from_file_level_3 file.\n");
+    if (fopen_s(&file, "./saved_game_state.txt", "r") != 0) {
+        printf("Error opening saved_game_state file.\n");
         exit(0);
     }
     
@@ -91,6 +97,8 @@ void load_mario_informations(BoardElements& board, Mario& mario, const char* nam
         mario.mario_row = x;
     else if (strcmp(name, "JustGrabbedCoin") == 0)
         mario.just_grabbed_coin = bool(x);
+    else if (strcmp(name, "HasTrophy") == 0)
+        mario.has_trophy = bool(x);
 }
 
 void load_board_informations(BoardElements& board, Mario& mario, const char* name, int x, int y)
@@ -109,5 +117,8 @@ void load_board_informations(BoardElements& board, Mario& mario, const char* nam
             temp /= 10;
         }
     }
-
+    else if (strcmp(name, "DisplayGrabTrophy") == 0)
+        board.display_get_trophy = bool(x);
+    else if (strcmp(name, "DisplayPutTrophy") == 0)
+        board.display_put_trophy = bool(x);
 }

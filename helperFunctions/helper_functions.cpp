@@ -230,10 +230,10 @@ void drawInfoRectangle(const BoardElements& board, const Mario& mario_info, SDL_
 	// tekst informacyjny / info text
 	DrawRectangle(screen, 4, 430, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
 	//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
-	sprintf(text, "Czas trwania = %.1lf s  %.0lf klatek / s, Esc - exit, n - new game,", times.worldTime, times.fps);
+	sprintf(text, "Czas trwania = %.1lf s  %.0lf klatek / s, Esc - exit, n - new game", times.worldTime, times.fps);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 435, text, charset);
 	//	      "Esc - exit, \030 - faster, \031 - slower"
-	sprintf(text, "\x5f - jump, \030 - go up, \031 - go down, \032 - go left, \033 - go right");
+	sprintf(text, "s - save game, \x5f - jump, \030 - go up, \031 - go down, \032 - go left, \033 - go right");
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 450, text, charset);
 
 	SDL_UpdateTexture(scrtex, NULL, screen->pixels, screen->pitch);

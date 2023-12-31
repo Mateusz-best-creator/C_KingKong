@@ -47,6 +47,7 @@
     <ClCompile Include="playersAccount\players_account.cpp" />
     <ClCompile Include="read_write_to_file\read_players_metrics.cpp" />
     <ClCompile Include="read_write_to_file\read_from_file.cpp" />
+    <ClCompile Include="read_write_to_file\save_game_state.cpp" />
     <ClCompile Include="read_write_to_file\write_to_file.cpp" />
     <ClCompile Include="startGame\game.cpp" />
     <ClCompile Include="startGame\start_game.cpp" />

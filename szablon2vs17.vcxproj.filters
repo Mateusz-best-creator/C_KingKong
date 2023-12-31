@@ -33,6 +33,7 @@
     <ClCompile Include="drawingObjects\draw_trophies.cpp" />
     <ClCompile Include="Barells\falling_barells.cpp" />
     <ClCompile Include="generatingBoards\infinite_game.cpp" />
+    <ClCompile Include="read_write_to_file\save_game_state.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

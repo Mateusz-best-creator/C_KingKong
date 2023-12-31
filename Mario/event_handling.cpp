@@ -1,6 +1,7 @@
 #include "../functions_definitions.h"
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
+#include "../read_write_to_file/read_write_to_file.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -22,6 +23,11 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 		switch (event.type) {
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
+			else if (event.key.keysym.sym == SDLK_s)
+			{
+				save_game_state(mario_info, board);
+				exit(0);
+			}
 			else if (event.key.keysym.sym == SDLK_1)
 			{
 				return SWITCH_TO_LEVEL_1;
