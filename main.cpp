@@ -24,14 +24,14 @@ int main(int argc, char** argv)
 		* level_2_treasure = nullptr, * level_3_diamond = nullptr, * level_1_winning_icon = nullptr, * level_2_winning_icon = nullptr,
 		* level_3_winning_icon = nullptr, * coin_icon, * heart_icon = nullptr, * rolling_barell_1 = nullptr, * quit_icon = nullptr,
 		* report_icon = nullptr, * golden_cup_icon = nullptr, * authentication_icon = nullptr, * generate_level_icon = nullptr,
-		* loading_icon = nullptr, * trophy_icon = nullptr;
+		* loading_icon = nullptr, * trophy_icon = nullptr, * king_kong_throwing_barell = nullptr;
 
 	// Create structure of all surfaces
 	SDL_Surfaces surfaces = { &screen, &charset, &mario_running_right, &mario_running_left,
 		&king_kong, &mario_climbing, &mario_jumping_right, &mario_jumping_left, &level_1_crown,
 		&level_2_treasure, &level_3_diamond, &level_1_winning_icon, &level_2_winning_icon, &level_3_winning_icon,
 		&coin_icon, &heart_icon, &rolling_barell_1, &quit_icon, &report_icon, &golden_cup_icon,
-		&authentication_icon, &generate_level_icon, &loading_icon, &trophy_icon };
+		&authentication_icon, &generate_level_icon, &loading_icon, &trophy_icon, &king_kong_throwing_barell };
 
 	// Create structure of other SDL elements
 	SDL_Elements SDL_elements = { nullptr, nullptr, nullptr };

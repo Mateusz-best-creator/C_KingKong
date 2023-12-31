@@ -1,6 +1,7 @@
 #include "../Mario/mario.h"
 #include "../LevelsBoards/boards.h"
 #include "../functions_definitions.h"
+#include "infinite_game.h"
 
 #include <iostream>
 
@@ -8,6 +9,7 @@ bool generate_board_interface(SDL_Event& event);
 
 void infinite_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
+	//BoardElements board = generating_board();
 	SDL_Event event;
 	Colors colors;
 	initialize_colors(*(surfaces.screen), colors);

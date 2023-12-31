@@ -200,6 +200,12 @@ bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* wi
 		// Handle errors and set Error = true
 		Error = true;
 	}
+	*(surfaces.king_kong_throwing_barell) = SDL_LoadBMP("./images/monkey_throwing_barell.bmp");
+	if (*(surfaces.king_kong_throwing_barell) == nullptr) {
+		printf("SDL_LoadBMP(monkey_throwing_barell.bmp) error: %s\n", SDL_GetError());
+		// Handle errors and set Error = true
+		Error = true;
+	}
 	return Error;
 }
 

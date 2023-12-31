@@ -23,8 +23,10 @@
     <ClCompile Include="Barells\falling_barells.cpp" />
     <ClCompile Include="drawingObjects\draw_coins.cpp" />
     <ClCompile Include="drawingObjects\draw_ladders.cpp" />
+    <ClCompile Include="drawingObjects\draw_monkey.cpp" />
     <ClCompile Include="drawingObjects\draw_platforms.cpp" />
     <ClCompile Include="drawingObjects\draw_trophies.cpp" />
+    <ClCompile Include="generatingBoards\generate_board.cpp" />
     <ClCompile Include="generatingBoards\infinite_game.cpp" />
     <ClCompile Include="helperFunctions\helper_functions.cpp" />
     <ClCompile Include="Interface\authentication_interface.cpp" />
@@ -56,6 +58,7 @@
   <ItemGroup>
     <ClInclude Include="Barells\barells.h" />
     <ClInclude Include="functions_definitions.h" />
+    <ClInclude Include="generatingBoards\infinite_game.h" />
     <ClInclude Include="Interface\interface.h" />
     <ClInclude Include="LevelsBoards\boards.h" />
     <ClInclude Include="Mario\mario.h" />
@@ -63,6 +66,7 @@
     <ClInclude Include="read_write_to_file\read_write_to_file.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="player_metrics.txt" />
     <Text Include="read_from_file_level_1.txt" />
     <Text Include="read_from_file_level_2.txt" />
     <Text Include="read_from_file_level_3.txt" />

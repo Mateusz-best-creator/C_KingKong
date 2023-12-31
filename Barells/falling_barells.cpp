@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int getRandomNumber(int min, int max);
+int random_n(int min, int max);
 void draw_falling_barell(FallingBarell& barell, const SDL_Surfaces& surfaces);
 void move_falling_barell(FallingBarell& barell);
 
@@ -16,7 +16,7 @@ void falling_barell(TimeVariables& times, FallingBarell& barell, const SDL_Surfa
 	{
 		barell.delta = times.worldTime;
 		// Initialize falling barell
-		barell.x_coordinate = getRandomNumber(FALLING_BARELL_LEFT_BORDER, FALLING_BARELL_RIGHT_BORDER);
+		barell.x_coordinate = random_n(FALLING_BARELL_LEFT_BORDER, FALLING_BARELL_RIGHT_BORDER);
 		barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
 		barell.falling_down = true;
 	}
@@ -39,7 +39,7 @@ void draw_falling_barell(FallingBarell& barell, const SDL_Surfaces& surfaces)
 	DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), barell.x_coordinate, barell.y_coordinate);
 }
 
-int getRandomNumber(int min, int max) {
+int random_n(int min, int max) {
 	return min + rand() % (max - min + 1);
 }
 

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "LevelsBoards/boards.h"
 
@@ -8,8 +8,8 @@ extern "C" {
 #include"./SDL2-2.0.10/include/SDL_main.h"
 }
 
-// narysowanie napisu txt na powierzchni screen, zaczynaj¹c od punktu (x, y)
-// charset to bitmapa 128x128 zawieraj¹ca znaki
+// narysowanie napisu txt na powierzchni screen, zaczynajï¿½c od punktu (x, y)
+// charset to bitmapa 128x128 zawierajï¿½ca znaki
 // draw a text txt on surface screen, starting from the point (x, y)
 // charset is a 128x128 bitmap containing character images
 void DrawString(SDL_Surface* screen, int x, int y, const char* text,
@@ -17,7 +17,7 @@ void DrawString(SDL_Surface* screen, int x, int y, const char* text,
 
 
 // narysowanie na ekranie screen powierzchni sprite w punkcie (x, y)
-// (x, y) to punkt œrodka obrazka sprite na ekranie
+// (x, y) to punkt ï¿½rodka obrazka sprite na ekranie
 // draw a surface sprite on a surface screen in point (x, y)
 // (x, y) is the center of sprite on screen
 void DrawSurface(SDL_Surface* screen, SDL_Surface* sprite, int x, int y);
@@ -26,13 +26,13 @@ void DrawSurface(SDL_Surface* screen, SDL_Surface* sprite, int x, int y);
 // draw a single pixel
 void DrawPixel(SDL_Surface* surface, int x, int y, Uint32 color);
 
-// rysowanie linii o d³ugoœci l w pionie (gdy dx = 0, dy = 1) 
-// b¹dŸ poziomie (gdy dx = 1, dy = 0)
+// rysowanie linii o dï¿½ugoï¿½ci l w pionie (gdy dx = 0, dy = 1) 
+// bï¿½dï¿½ poziomie (gdy dx = 1, dy = 0)
 // draw a vertical (when dx = 0, dy = 1) or horizontal (when dx = 1, dy = 0) line
 void DrawLine(SDL_Surface* screen, int x, int y, int l, int dx, int dy, Uint32 color);
 
 
-// rysowanie prostok¹ta o d³ugoœci boków l i k
+// rysowanie prostokï¿½ta o dï¿½ugoï¿½ci bokï¿½w l i k
 // draw a rectangle of size l by k
 void DrawRectangle(SDL_Surface* screen, int x, int y, int l, int k,
 	Uint32 outlineColor, Uint32 fillColor);
@@ -52,7 +52,7 @@ struct SDL_Surfaces
 		** king_kong, ** mario_climbing, ** mario_jumping_right, ** mario_jumping_left, ** level_1_crown,
 		** level_2_treasure, ** level_3_diamond, ** level_1_winning_icon, ** level_2_winning_icon, ** level_3_winning_icon,
 		** coin_icon, ** heart_icon, ** rolling_barell_1, ** quit_icon, ** report_icon, ** golden_cup_icon,
-		** authentication_icon, ** generate_level_icon, ** loading_icon, ** trophy_icon;
+		** authentication_icon, ** generate_level_icon, ** loading_icon, ** trophy_icon, ** king_kong_throwing_barell;
 };
 
 struct SDL_Elements
@@ -77,6 +77,7 @@ struct Colors
 void DrawPlatforms(SDL_Surface*, const BoardElements&, int);
 void DrawLadders(SDL_Surface*, const BoardElements&, int);
 void draw_coins(const BoardElements&, const SDL_Surfaces&);
+void DrawMonkey(const SDL_Surfaces&, const BoardElements&, const TimeVariables&);
 
 // Helper functions
 void calculateTime(double&, int&, int&, double&);

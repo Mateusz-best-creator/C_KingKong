@@ -25,6 +25,7 @@ Welcome to the C++ Crafted Donkey Kong Game – an exciting and nostalgic gaming
 
 ### Interface Instructions:
 
+You can quit the interface immediately by pressing ESC.
 Use the arrow keys to move a rectangle and select one of the following options:
 
 1. **Quit:**
@@ -65,6 +66,7 @@ Use the arrow keys to move a rectangle and select one of the following options:
    - Press n to start completely new game
    - Press s to save current state of the game
    - Press 1, 2 or 3 to automatically switch to another level
+   - Press ESC to quit the game
    - Navigate through the levels, avoiding obstacles, and reach the top to grab the treasure.
 
 3. **Competition:**
