@@ -32,7 +32,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     if (load_game_from_file)
     {
         init_barells(board, barells);
-        load_barells_from_file(barells, flying_barell);
+        load_barells_from_file(barells, flying_barell, times);
     }
     else
     {
@@ -43,11 +43,11 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         flying_barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
         // Initialize the barells, based on board
         init_barells(board, barells);
+        flying_barell.delta = 0;
+        flying_barell.falling_down = false;
     }
 
     int mario_won = 0;
-    flying_barell.delta = 0;
-    flying_barell.falling_down = false;
 
     while (!times.quit)
     {

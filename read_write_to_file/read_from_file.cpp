@@ -1,6 +1,7 @@
 #include "read_write_to_file.h"
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
+#include "../functions_definitions.h"
 
 #include <stdio.h>
 #include <cstdlib>
@@ -131,7 +132,7 @@ void load_board_informations(BoardElements& board, Mario& mario, const char* nam
         board.display_put_trophy = bool(x);
 }
 
-void load_barells_from_file(Barell* barells, FallingBarell& flying_barell)
+void load_barells_from_file(Barell* barells, FallingBarell& flying_barell, TimeVariables& times)
 {
     FILE* file;
     if (fopen_s(&file, "./saved_game_state.txt", "r") != 0) {
@@ -139,7 +140,7 @@ void load_barells_from_file(Barell* barells, FallingBarell& flying_barell)
         exit(0);
     }
 
-    char name[20];
+    char name[40];
     double x, y;
     int index = 0;
     fscanf(file, "%s", name);
@@ -159,6 +160,15 @@ void load_barells_from_file(Barell* barells, FallingBarell& flying_barell)
         {
             flying_barell.x_coordinate = x;
             flying_barell.y_coordinate = y;
+        }
+        else if (strcmp(name, "FlyingBarellDeltaFalling") == 0)
+        {
+            flying_barell.delta = x;
+            flying_barell.falling_down = bool(int(y));
+        }
+        else if (strcmp(name, "WorldTime") == 0)
+        {
+            times.worldTime = x;
         }
     }
 }

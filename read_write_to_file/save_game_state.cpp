@@ -1,10 +1,11 @@
 #include "read_write_to_file.h"
 #include "../Mario/mario.h"
 #include "../LevelsBoards/boards.h"
+#include "../functions_definitions.h"
 
 #include <stdio.h>
 
-void save_game_state(const Mario& mario_info, const BoardElements& board, Barell* barells, FallingBarell& flying_barell)
+void save_game_state(const Mario& mario_info, const BoardElements& board, Barell* barells, FallingBarell& flying_barell, TimeVariables& times)
 {
     FILE* file = fopen("saved_game_state.txt", "w");
 
@@ -54,6 +55,9 @@ void save_game_state(const Mario& mario_info, const BoardElements& board, Barell
 
     // Send flying barell coordinates
     fprintf(file, "FlyingBarellCoor %lf %lf\n", flying_barell.x_coordinate, flying_barell.y_coordinate);
+    fprintf(file, "FlyingBarellDeltaFalling %lf %d\n", flying_barell.delta, flying_barell.falling_down);
+    // World time
+    fprintf(file, "WorldTime %lf 0\n", times.worldTime);
 
     releaseMemory(board);
     delete[] board_coins;

@@ -26,7 +26,7 @@ int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SD
 			if (event.key.keysym.sym == SDLK_ESCAPE) exit(0);
 			else if (event.key.keysym.sym == SDLK_s)
 			{
-				save_game_state(mario_info, board, barells, flying_barell);
+				save_game_state(mario_info, board, barells, flying_barell, times);
 				exit(0);
 			}
 			else if (event.key.keysym.sym == SDLK_1)
