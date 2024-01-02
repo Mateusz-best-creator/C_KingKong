@@ -35,6 +35,7 @@ int start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&
         if (check_if_mario_win(board, mario_info))
         {
             mario_info.all_points += mario_info.points;
+            mario_info.points = 0;
             update_mario_metrics(mario_info, times, board.level);
             save_all_games(mario_info);
             mario_won = 1;
