@@ -5,4 +5,4 @@
 
 void infinite_game(Mario&, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements);
 BoardElements generating_board();
-void start_infinite_game(Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&);
+int start_infinite_game(Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&);

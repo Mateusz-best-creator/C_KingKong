@@ -1,8 +1,9 @@
 #include "infinite_game.h"
+#include "../read_write_to_file/read_write_to_file.h"
 
 #include <string.h>
 
-void start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board)
+int start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board)
 {
     SDL_Event event;
     SDL_Surface* screen = *(surfaces.screen);
@@ -34,10 +35,7 @@ void start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements
         if (check_if_mario_win(board, mario_info))
         {
             update_mario_metrics(mario_info, times, board.level);
-            /*
             save_all_games(mario_info);
-            save_game("./player_metrics.txt", mario_info);
-            */
             mario_won = 1;
             break;
         }
@@ -64,7 +62,6 @@ void start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements
 
         // Draw king_kong surface
         DrawMonkey(surfaces, board, times);
-        //DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
 
         // Moving all barells
         move_barells(barells, board, surfaces);
@@ -72,22 +69,9 @@ void start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements
         // Draw falling barell
         falling_barell(times, flying_barell, surfaces);
         jumped_over_barell(mario_info, board, barells, screen, *(surfaces.charset));
-
-        // Draw final treasures
-        switch (board.level)
-        {
-        case 1:
-            DrawSurface(screen, *(surfaces.level_1_winning_icon), LEVEL_1_WINNING_X1, LEVEL_1_WINNING_Y);
-            break;
-        case 2:
-            DrawSurface(screen, *(surfaces.level_2_winning_icon), LEVEL_2_WINNING_X1, LEVEL_2_WINNING_Y);
-            break;
-        case 3:
-            DrawSurface(screen, *(surfaces.level_3_winning_icon), LEVEL_3_WINNING_X1, LEVEL_3_WINNING_Y);
-            break;
-        default:
-            break;
-        }
+        
+        // Draw treasure
+        DrawSurface(screen, *(surfaces.level_1_winning_icon), board.winning_x1_coordinate, board.winning_y_coordinate);
 
         // Draw message if mario grabbed something
         if (mario_info.just_grabbed_coin)
@@ -105,7 +89,7 @@ void start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements
             times.frames = 0;
             times.fpsTimer -= SECONDS_BETWEEN_REFRESH;
         }
-
+        /*
         int barell_collision_result = -1;
         // Check collisions
         barell_collision_result = collision_with_barell(mario_info, barells, flying_barell, board, surfaces, SDL_elements, times);
@@ -116,29 +100,20 @@ void start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements
         else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
         {
             // Reset the board and set initial mario coordinates
-            board = initialize_board(board.level);
+            //board = initialize_board(board.level);
             init_barells(board, barells);
             mario_info.x_coordinate = board.initial_mario_x;
             mario_info.y_coordinate = board.initial_mario_y;
             continue;
         }
-
+        */
         char text[128];
         drawInfoRectangle(board, mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
 
         // Handle user events (space, upper arrow...)
         times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board, barells, flying_barell, times);
-        if (times.quit == 2)
-        {
-            strcpy(mario_info.name, "Unknown");
-            return;
-        }
-        else if (times.quit == 3 || times.quit == 4 || times.quit == 5)
-        {
-            return;
-        }
         times.frames++;
     }
     delete[] barells;
-    return;
+    return mario_won;
 }
