@@ -159,7 +159,6 @@ void generate_coins(BoardElements& board)
 {
 	// Set amount of coins (from 4 to 8)
 	int coins_sum = std::rand() % 8 + 4;
-	std::cout << "Coins sum: " << coins_sum << std::endl;
 	board.amount_of_coins = coins_sum;
 
 	board.coins_x = new int[coins_sum];
@@ -208,6 +207,6 @@ void generate_treasure(BoardElements& board)
 		board.winning_x1_coordinate = board.platforms_x_coordinate[platform_index] + 30;
 	else if (option == 2)
 		board.winning_x1_coordinate = board.platforms_ending_x_coordinate[platform_index] - 100;
-	board.winning_x2_coordinate = board.winning_x1_coordinate + 30;
+	board.winning_x2_coordinate = board.winning_x1_coordinate + 20;
 	board.winning_y_coordinate = board.platforms_y_coordinate[platform_index];
 }

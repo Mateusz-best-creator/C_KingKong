@@ -11,7 +11,8 @@ void infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_
 {
 	BoardElements board = generating_board();
 
-	start_infinite_game(mario_info, surfaces, SDL_elements, board);
+	while (start_infinite_game(mario_info, surfaces, SDL_elements, board))
+		board = generating_board();
 	
 	SDL_Event event;
 	Colors colors;
