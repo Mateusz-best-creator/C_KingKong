@@ -85,6 +85,7 @@ void right_arrow_event(Mario& mario_info, const BoardElements& board)
 
 void upper_arrow_event(Mario& mario_info, const BoardElements& board)
 {
+	std::cout << mario_info.x_coordinate << " " << mario_info.y_coordinate << " " << board.get_trophy_y << std::endl;
 	reset_mario(mario_info);
 	grab_coin(mario_info, board);
 	if (mario_info.going_through_the_ladder)

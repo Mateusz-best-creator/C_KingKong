@@ -48,7 +48,6 @@ int start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&
         // Draw all coins
         draw_coins(board, surfaces);
 
-
         // Draw all ladders
         DrawLadders(screen, board, colors.brazowy);
 

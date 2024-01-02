@@ -23,6 +23,7 @@ void generate_ladders(BoardElements&, const int, int*);
 void generate_coins(BoardElements&);
 void generate_barells(BoardElements&);
 void generate_treasure(BoardElements&);
+void generate_trophy(BoardElements&);
 bool is_in(int*, int, int);
 
 
@@ -45,14 +46,7 @@ BoardElements generating_board()
 	generate_treasure(board);
 	generate_coins(board);
 	generate_barells(board);
-
-	// Trophy
-	board.get_trophy_x = 300;
-	board.get_trophy_y = 390;
-	board.put_trophy_x = 600;
-	board.put_trophy_y = 390;
-	board.display_get_trophy = true;
-	board.display_put_trophy = false;
+	generate_trophy(board);
 
 	return board;
 }
@@ -213,6 +207,36 @@ void generate_treasure(BoardElements& board)
 		board.winning_x1_coordinate = board.platforms_ending_x_coordinate[platform_index] - 100;
 	board.winning_x2_coordinate = board.winning_x1_coordinate + 20;
 	board.winning_y_coordinate = board.platforms_y_coordinate[platform_index];
+}
+
+void generate_trophy(BoardElements& board)
+{
+	int platform_index = std::rand() % board.platforms_amount + 1;
+	int option = std::rand() % 2 + 1;
+	// Set winning coordinates (static for now)
+	if (option == 1)
+	{
+		board.get_trophy_x = board.platforms_x_coordinate[platform_index] + 30;
+		board.get_trophy_y = board.platforms_y_coordinate[platform_index];
+	}
+	else if (option == 2)
+	{
+		board.get_trophy_x = board.platforms_ending_x_coordinate[platform_index] - 100;
+		board.get_trophy_y = board.platforms_y_coordinate[platform_index];
+	}
+
+	board.get_trophy_y = board.platforms_y_coordinate[platform_index];
+
+	int platform_index2 = std::rand() % board.platforms_amount + 1;
+	if (platform_index2 == platform_index && platform_index > 0)
+		platform_index2--;
+	else if (platform_index2 == platform_index && platform_index == 0)
+		platform_index2++;
+	board.put_trophy_x = board.platforms_x_coordinate[platform_index2] + 30;
+	board.put_trophy_y = board.platforms_y_coordinate[platform_index2] - MARIO_FLOOR_DISTANCE;
+
+	board.display_get_trophy = true;
+	board.display_put_trophy = false;
 }
 
 bool is_in(int* ar, int size, int number)

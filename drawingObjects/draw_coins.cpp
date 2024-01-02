@@ -2,7 +2,7 @@
 #include "../LevelsBoards/boards.h"
 #include "../Mario/mario.h"
 
-int abs_value(int num) 
+int abs_value(int num)
 {
 	return (num < 0) ? -num : num;
 }

@@ -85,3 +85,4 @@ void clearSDL(SDL_Surface*, SDL_Surface*, SDL_Texture*, SDL_Renderer*, SDL_Windo
 bool fullscreen(SDL_Window**, SDL_Renderer**);
 bool load_bmp_images(SDL_Surfaces& surfaces, SDL_Texture* scrtex, SDL_Window* window, SDL_Renderer* renderer);
 void initialize_colors(SDL_Surface*, Colors&);
+int abs_value(int num);

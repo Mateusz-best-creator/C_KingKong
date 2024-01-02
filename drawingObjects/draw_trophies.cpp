@@ -11,7 +11,8 @@ void draw_trophies(Mario& mario_info, BoardElements& board, const SDL_Surfaces& 
 {
 	if (board.display_get_trophy)
 	{
-		if (mario_info.x_coordinate == board.get_trophy_x && mario_info.y_coordinate == board.get_trophy_y)
+		if (abs_value(mario_info.x_coordinate - board.get_trophy_x) <= MARIO_SPEED && 
+			(mario_info.y_coordinate == board.get_trophy_y || mario_info.y_coordinate + MARIO_FLOOR_DISTANCE == board.get_trophy_y))
 		{
 			mario_info.just_grabbed_trophy = true;
 			mario_info.has_trophy = true;
