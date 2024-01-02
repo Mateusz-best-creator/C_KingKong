@@ -37,7 +37,7 @@ void infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_
 		SDL_FillRect((*(surfaces.screen)), NULL, colors.czarny);
 		checking = generate_board_interface(event);
 	}
-	
+	releaseMemory(board);
 }
 
 bool generate_board_interface(SDL_Event & event)

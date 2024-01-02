@@ -211,7 +211,7 @@ void generate_treasure(BoardElements& board)
 
 void generate_trophy(BoardElements& board)
 {
-	int platform_index = std::rand() % board.platforms_amount + 1;
+	int platform_index = std::rand() % board.platforms_amount;
 	int option = std::rand() % 2 + 1;
 	// Set winning coordinates (static for now)
 	if (option == 1)
@@ -227,7 +227,7 @@ void generate_trophy(BoardElements& board)
 
 	board.get_trophy_y = board.platforms_y_coordinate[platform_index];
 
-	int platform_index2 = std::rand() % board.platforms_amount + 1;
+	int platform_index2 = std::rand() % board.platforms_amount;
 	if (platform_index2 == platform_index && platform_index > 0)
 		platform_index2--;
 	else if (platform_index2 == platform_index && platform_index == 0)

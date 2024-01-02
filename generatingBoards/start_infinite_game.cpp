@@ -34,6 +34,7 @@ int start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&
     {
         if (check_if_mario_win(board, mario_info))
         {
+            mario_info.all_points += mario_info.points;
             update_mario_metrics(mario_info, times, board.level);
             save_all_games(mario_info);
             mario_won = 1;
@@ -89,13 +90,13 @@ int start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&
             times.frames = 0;
             times.fpsTimer -= SECONDS_BETWEEN_REFRESH;
         }
-        /*
+        
         int barell_collision_result = -1;
         // Check collisions
         barell_collision_result = collision_with_barell(mario_info, barells, flying_barell, board, surfaces, SDL_elements, times);
         if (barell_collision_result == 0) // lifes == 0
         {
-            return;
+            return 0; // Player lost all his lifes
         }
         else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
         {
@@ -106,7 +107,7 @@ int start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&
             mario_info.y_coordinate = board.initial_mario_y;
             continue;
         }
-        */
+        
         char text[128];
         drawInfoRectangle(board, mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
 
