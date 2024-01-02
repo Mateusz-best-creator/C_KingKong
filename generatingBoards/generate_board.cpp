@@ -16,10 +16,15 @@ int generate_platforms(BoardElements&, int*);
 	Generates initial coordinates for Mario and KingKong.
 */
 void initialize_mario_monkey(BoardElements& board);
+/*
+	Generate ladders x, y coordinates.
+*/
 void generate_ladders(BoardElements&, const int, int*);
 void generate_coins(BoardElements&);
 void generate_barells(BoardElements&);
 void generate_treasure(BoardElements&);
+bool is_in(int*, int, int);
+
 
 BoardElements generating_board()
 {
@@ -83,22 +88,12 @@ int generate_platforms(BoardElements& board, int* platforms_in_each_row)
 	{
 		for (size_t i = 0; i < platforms_in_each_row[row]; i++)
 		{
-			try
-			{
-				if (counter >= platforms_sum)
-					throw counter;
-				board.platforms_x_coordinate[counter] = SCREEN_WIDTH / platforms_in_each_row[row] * i;
-				board.platforms_y_coordinate[counter] = 390 - row * 60;
-				board.platforms_widths[counter] = SCREEN_WIDTH / platforms_in_each_row[row] - 20;
-				board.platforms_ending_x_coordinate[counter] = board.platforms_x_coordinate[counter] + board.platforms_widths[counter];
-				board.platforms_rows[counter] = row + 1;
-				counter++;
-			}
-			catch (const int& er)
-			{
-				std::cout << "Counter is greater than amount of platforms: " << er << std::endl;
-				exit(0);
-			}
+			board.platforms_x_coordinate[counter] = SCREEN_WIDTH / platforms_in_each_row[row] * i;
+			board.platforms_y_coordinate[counter] = 390 - row * 60;
+			board.platforms_widths[counter] = SCREEN_WIDTH / platforms_in_each_row[row] - 20;
+			board.platforms_ending_x_coordinate[counter] = board.platforms_x_coordinate[counter] + board.platforms_widths[counter];
+			board.platforms_rows[counter] = row + 1;
+			counter++;
 		}
 	}
 
@@ -136,7 +131,7 @@ void generate_ladders(BoardElements& board, const int platforms_sum, int* platfo
 
 	for (size_t i = 0; i < ladders_sum; i++)
 	{
-		offset = std::rand() % 15 + 1;
+		offset = std::rand() % 30 + 15;
 		board.ladders_rows[i] = board.platforms_rows[i];
 		ladder_place = std::rand() % 3 + 1;
 		if (ladder_place == 1)
@@ -145,7 +140,7 @@ void generate_ladders(BoardElements& board, const int platforms_sum, int* platfo
 		}
 		else if (ladder_place == 2)
 		{
-			board.ladders_x_coordinates[i] = board.platforms_x_coordinate[i] + (board.platforms_widths[i] / 2);
+			board.ladders_x_coordinates[i] = board.platforms_x_coordinate[i] + (board.platforms_widths[i] / 2) + offset;
 		}
 		else
 		{
@@ -183,7 +178,7 @@ void generate_coins(BoardElements& board)
 void generate_barells(BoardElements& board)
 {
 	// Initialize barells
-	int barells_sum = 1;
+	int barells_sum = 4;
 	board.barells_amount = barells_sum;
 	board.barells_left_border = new int[barells_sum];
 	board.barells_right_border = new int[barells_sum];
@@ -191,11 +186,20 @@ void generate_barells(BoardElements& board)
 	board.barells_rows = new int[barells_sum];
 	board.barells_direction = new int[barells_sum];
 
-	board.barells_left_border[0] = 20;
-	board.barells_right_border[0] = 620;
-	board.barells_y_coordinate[0] = 150;
-	board.barells_rows[0] = 5;
-	board.barells_direction[0] = 1;
+	int barell_platform_indexes[4] = { -1, -1, -1, -1 };
+	int platform_index;
+	for (size_t i = 0; i < barells_sum; i++)
+	{
+		platform_index = std::rand() % board.platforms_amount;
+		while (is_in(barell_platform_indexes, 4, platform_index))
+			platform_index = std::rand() % board.platforms_amount + 1;
+		barell_platform_indexes[i] = platform_index;
+		board.barells_left_border[i] = board.platforms_x_coordinate[platform_index] + 10;
+		board.barells_right_border[i] = board.platforms_ending_x_coordinate[platform_index] - 10;
+		board.barells_y_coordinate[i] = board.platforms_y_coordinate[platform_index];
+		board.barells_rows[i] = board.platforms_rows[platform_index];
+		i % 2 == 0 ? board.barells_direction[i] = 1 : board.barells_direction[i] = 0;
+	}
 }
 
 void generate_treasure(BoardElements& board)
@@ -209,4 +213,14 @@ void generate_treasure(BoardElements& board)
 		board.winning_x1_coordinate = board.platforms_ending_x_coordinate[platform_index] - 100;
 	board.winning_x2_coordinate = board.winning_x1_coordinate + 20;
 	board.winning_y_coordinate = board.platforms_y_coordinate[platform_index];
+}
+
+bool is_in(int* ar, int size, int number)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		if (ar[i] == number)
+			return true;
+	}
+	return false;
 }
