@@ -145,12 +145,12 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
 
         // Handle user events (space, upper arrow...)
         times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board, barells, flying_barell, times);
-        if (times.quit == 2)
+        if (times.quit == NEW_GAME)
         {
             strcpy(mario_info.name, "Unknown");
             return 0;
         }
-        else if (times.quit == 3 || times.quit == 4 || times.quit == 5)
+        else if (times.quit == SWITCH_TO_LEVEL_1 || times.quit == SWITCH_TO_LEVEL_2 || times.quit == SWITCH_TO_LEVEL_3)
         {
             return times.quit;
         }

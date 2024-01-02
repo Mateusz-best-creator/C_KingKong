@@ -35,7 +35,7 @@ void infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_
 	while (checking)
 	{
 		DrawRectangle(*(surfaces.screen), 4, 200, SCREEN_WIDTH - 8, 75, colors.szary, colors.szary);
-		sprintf(text, "This option is not implemented yet");
+		sprintf(text, "Thanks for your time");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 230, text, *(surfaces.charset));
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);
 		//		SDL_RenderClear(renderer);
