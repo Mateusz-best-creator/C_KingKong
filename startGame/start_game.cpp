@@ -8,11 +8,10 @@
 
 #include <string.h>
 #include <cstdlib>
-#include <iostream>
+
 
 int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, bool load_game_from_file)
 {
-    std::cout << "form file: " << load_game_from_file << std::endl;
     SDL_Event event;
     SDL_Surface* screen = *(surfaces.screen);
 
@@ -53,7 +52,6 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     {
         if (check_if_mario_win(board, mario_info))
         {
-            std::cout << "MARIO WINNING, SAVING TO FILE" << std::endl;
             update_mario_metrics(mario_info, times, board.level);
             save_all_games(mario_info);
             save_game("./player_metrics.txt", mario_info);

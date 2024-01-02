@@ -1,0 +1,15 @@
+Player name: Piotrek
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 6800 
+Level 3 best score: 6800
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 
+Level 2 best time: 0.000000
+Level 3 times: 26.197000 
+Level 3 best time: 26.197000
+Piotrek total amount of points: 1800
+================================
