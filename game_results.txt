@@ -133,3 +133,48 @@ Level 3 times: 7.023000 1.863000
 Level 3 best time: 1.863000
 Antek total amount of points: 5700
 ================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 6300 
+Level 2 best score: 6300
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 23.628000 
+Level 2 best time: 23.628000
+Level 3 times: 
+Level 3 best time: 0.000000
+Unknown total amount of points: 1300
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 6300 
+Level 2 best score: 6300
+Level 3 scores: 0 0 2900 
+Level 3 best score: 2900
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 23.628000 
+Level 2 best time: 23.628000
+Level 3 times: 2.028000 1.866000 33.027000 
+Level 3 best time: 1.866000
+Unknown total amount of points: 9200
+================================
+Player name: Marchewka
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 100 0 0 
+Level 2 best score: 100
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 5.879000 2.637000 2.339000 
+Level 2 best time: 2.339000
+Level 3 times: 
+Level 3 best time: 0.000000
+Marchewka total amount of points: 100
+================================

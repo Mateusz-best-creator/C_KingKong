@@ -36,12 +36,12 @@ void load_table_from_file(Mario& mario, BoardElements& board)
         exit(0);
     }
     */
-    
+
     if (fopen_s(&file, "./saved_game_state.txt", "r") != 0) {
         printf("Error opening saved_game_state file.\n");
         exit(0);
     }
-    
+
 
     char name[20];
     char mario_name[20];
@@ -52,9 +52,9 @@ void load_table_from_file(Mario& mario, BoardElements& board)
         mario_name[strlen(mario_name)] = '\0';
         strcpy(mario.name, mario_name);
     }
-    
+
     // Read data from the file using fscanf
-    while (fscanf(file, "%s %d %d", name, &x, &y) == 3) 
+    while (fscanf(file, "%s %d %d", name, &x, &y) == 3)
     {
         // Loading Mario informations from file
         load_mario_informations(board, mario, name, x, y);

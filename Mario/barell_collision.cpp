@@ -34,7 +34,7 @@ int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& fly
 		if ((((mario_info.x_coordinate <= barells[i].x_coordinate + BARELL_WIDTH &&
 			mario_info.x_coordinate >= barells[i].x_coordinate) ||
 			(mario_info.x_coordinate - MARIO_X_OFFSET + MARIO_WIDTH >= barells[i].x_coordinate &&
-				mario_info.x_coordinate - MARIO_X_OFFSET + MARIO_WIDTH <= barells[i].x_coordinate + BARELL_WIDTH)) && 
+				mario_info.x_coordinate - MARIO_X_OFFSET + MARIO_WIDTH <= barells[i].x_coordinate + BARELL_WIDTH)) &&
 			!mario_info.jumping) || touched_flying_barell)
 		{
 			update_mario_after_collision(mario_info, board, times);

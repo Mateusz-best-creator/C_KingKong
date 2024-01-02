@@ -4,6 +4,7 @@
 #include "../Barells/barells.h"
 #include "../read_write_to_file/read_write_to_file.h"
 #include "../Interface/interface.h"
+#include "../generatingBoards/infinite_game.h"
 
 #include <string.h>
 #include <cstdlib>
@@ -11,6 +12,7 @@
 
 int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, bool load_game_from_file)
 {
+    std::cout << "form file: " << load_game_from_file << std::endl;
     SDL_Event event;
     SDL_Surface* screen = *(surfaces.screen);
 
@@ -32,7 +34,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         init_barells(board, barells);
         load_barells_from_file(barells, flying_barell);
     }
-    if (!load_game_from_file)
+    else
     {
         mario_info.x_coordinate = board.initial_mario_x;
         mario_info.y_coordinate = board.initial_mario_y;
@@ -144,7 +146,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         drawInfoRectangle(board, mario_info, surfaces, *(surfaces.charset), screen, SDL_elements.scrtex, SDL_elements.renderer, text, times, colors);
 
         // Handle user events (space, upper arrow...)
-        times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board, barells, flying_barell);
+        times.quit = handleEvents(event, mario_info, surfaces, SDL_elements, board, barells, flying_barell, times);
         if (times.quit == 2)
         {
             strcpy(mario_info.name, "Unknown");

@@ -63,7 +63,7 @@ struct Mario
 };
 
 // Handling user events
-int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&, Barell*, FallingBarell&);
+int handleEvents(SDL_Event&, Mario&, SDL_Surfaces&, SDL_Elements&, BoardElements&, Barell*, FallingBarell&, TimeVariables&);
 void left_arrow_event(Mario& mario_info, const BoardElements& board);
 void right_arrow_event(Mario& mario_info, const BoardElements& board);
 void upper_arrow_event(Mario& mario_info, const BoardElements& board);

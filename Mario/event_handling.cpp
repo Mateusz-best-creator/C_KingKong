@@ -7,7 +7,7 @@
 #include <iostream>
 
 int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, 
-	BoardElements& board, Barell* barells, FallingBarell& flying_barell)
+	BoardElements& board, Barell* barells, FallingBarell& flying_barell, TimeVariables& times)
 {
 	// Variable stores information in which row mario currently is
 	int mario_row = 1;

@@ -7,9 +7,23 @@
 
 bool generate_board_interface(SDL_Event& event);
 
-void infinite_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
+void infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 {
-	//BoardElements board = generating_board();
+	BoardElements board = generating_board();
+	for (size_t i = 0; i < board.platforms_amount; i++)
+	{
+		std::cout << "Platform x: " << board.platforms_x_coordinate[i] << " y: " << board.platforms_y_coordinate[i] << std::endl;
+		std::cout << "Platform end: " << board.platforms_ending_x_coordinate[i] << " width: " << board.platforms_widths[i] << " row: " << board.platforms_rows[i] << std::endl;
+	}
+	std::cout << "Mario: " << board.initial_mario_x << " " << board.initial_mario_y << " " << board.king_kong_x << " " << board.king_kong_y << std::endl;
+	std::cout << "Barell: " << board.barells_y_coordinate[0] << std::endl;
+	for (size_t i = 0; i < board.amount_of_ladders; i++)
+	{
+		std::cout << "Ladder " << board.ladders_x_coordinates[i] << " " << board.ladders_y_coordinates[i] << std::endl;
+		std::cout << "Ladders2: " << board.ladders_rows[i] << " " << board.ladder_width << std::endl;
+	}
+	start_infinite_game(mario_info, surfaces, SDL_elements, board);
+	
 	SDL_Event event;
 	Colors colors;
 	initialize_colors(*(surfaces.screen), colors);
@@ -32,6 +46,7 @@ void infinite_game(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 		SDL_FillRect((*(surfaces.screen)), NULL, colors.czarny);
 		checking = generate_board_interface(event);
 	}
+	
 }
 
 bool generate_board_interface(SDL_Event & event)

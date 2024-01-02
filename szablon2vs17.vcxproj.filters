@@ -36,6 +36,7 @@
     <ClCompile Include="read_write_to_file\save_game_state.cpp" />
     <ClCompile Include="generatingBoards\generate_board.cpp" />
     <ClCompile Include="drawingObjects\draw_monkey.cpp" />
+    <ClCompile Include="generatingBoards\start_infinite_game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions_definitions.h" />

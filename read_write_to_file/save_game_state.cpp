@@ -23,7 +23,7 @@ void save_game_state(const Mario& mario_info, const BoardElements& board, Barell
             board_coins[i] = '1';
     }
     board_coins[board.amount_of_coins] = '\0';
-      
+
     // Write to the file using fprintf
     fprintf(file, "%s\n", mario_info.name);
     fprintf(file, "Level %d 0\n", board.level);
@@ -51,7 +51,7 @@ void save_game_state(const Mario& mario_info, const BoardElements& board, Barell
         fprintf(file, "Barell %lf %lf\n", barells[i].x_coordinate, barells[i].y_coordinate);
         fprintf(file, "BarellDir %d 0\n", barells[i].direction);
     }
-       
+
     // Send flying barell coordinates
     fprintf(file, "FlyingBarellCoor %lf %lf\n", flying_barell.x_coordinate, flying_barell.y_coordinate);
 

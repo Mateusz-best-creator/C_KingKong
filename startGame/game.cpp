@@ -3,6 +3,7 @@
 #include "../Mario/mario.h"
 #include "../read_write_to_file/read_write_to_file.h"
 #include "../playersAccount/players_account.h"
+#include "../generatingBoards/infinite_game.h"
 
 #include <string.h>
 #include <iostream>
@@ -40,6 +41,7 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 		mario_info.y_coordinate = board.initial_mario_y;
 
 		mario_won = start_game(mario_info, surfaces, SDL_elements, board, false);
+		releaseMemory(board);
 		mario_info.has_trophy = false;
 		if (mario_won == SWITCH_TO_LEVEL_1 || mario_won == SWITCH_TO_LEVEL_2 || mario_won == SWITCH_TO_LEVEL_3)
 		{
@@ -61,7 +63,6 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 			y++;
 			if (y > 3)
 				y = 1;
-			releaseMemory(board);
 			board = initialize_board(y);
 			mario_won = start_game(mario_info, surfaces, SDL_elements, board, false);
 		}
@@ -84,7 +85,7 @@ bool game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements,
 		hall_of_fame(surfaces, SDL_elements);
 	else if (x == 1 && y == 2)
 	{
-		infinite_game(surfaces, SDL_elements);
+		infinite_game(mario_info, surfaces, SDL_elements);
 		return true;
 	}
 	return true;
