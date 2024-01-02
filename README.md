@@ -38,7 +38,7 @@ Use the arrow keys to move a rectangle and select one of the following options:
    - Authenticate to personalize your gaming experience.
 
 4. **Generate Level (Feature Not Implemented Yet):**
-   - Every time you play, a new board is created with random obstacles, ensuring an exciting experience every round. 
+   - Go to infinite playing mode. Every time you play, a new board is created with random obstacles, ensuring an exciting experience every round. 
 
 5. **Choose Level 2:**
    - Choose to play level 2 directly.
