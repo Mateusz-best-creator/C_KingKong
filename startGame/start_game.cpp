@@ -80,8 +80,8 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         draw_mario(surfaces, mario_info);
 
         // Draw king_kong surface
-        DrawMonkey(surfaces, board, times);
-        //DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
+        //DrawMonkey(surfaces, board, times);
+        DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
 
         // Moving all barells
         move_barells(barells, board, surfaces);
@@ -126,11 +126,11 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         int barell_collision_result = -1;
         // Check collisions
         barell_collision_result = collision_with_barell(mario_info, barells, flying_barell, board, surfaces, SDL_elements, times);
-        if (barell_collision_result == 0) // lifes == 0
+        if (barell_collision_result == STOP_THE_GAME) // lifes == 0
         {
-            return 0;
+            return STOP_THE_GAME;
         }
-        else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
+        else if (barell_collision_result == CONTINUE_GAME) // 1 means that we reset the game, beacuse player touched a barell
         {
             // Reset the board and set initial mario coordinates
             board = initialize_board(board.level);
@@ -148,7 +148,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         if (times.quit == NEW_GAME)
         {
             strcpy(mario_info.name, "Unknown");
-            return 0;
+            return STOP_THE_GAME;
         }
         else if (times.quit == SWITCH_TO_LEVEL_1 || times.quit == SWITCH_TO_LEVEL_2 || times.quit == SWITCH_TO_LEVEL_3)
         {

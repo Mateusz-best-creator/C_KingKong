@@ -11,8 +11,6 @@ int return_max(const int[], int);
 double return_min(const double[], int);
 void update_mario_after_collision(Mario& mario_info, BoardElements& board, TimeVariables& times);
 
-enum CollisionResults { STOP_THE_GAME = 0, CONTINUE_GAME = 1 };
-
 int collision_with_barell(Mario& mario_info, Barell* barells, FallingBarell& flying_barell,
 	BoardElements& board, SDL_Surfaces& surfaces, SDL_Elements& elements, TimeVariables& times)
 {

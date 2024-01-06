@@ -46,6 +46,8 @@ const int MESSAGE_X_OFFSET = 10;
 const int MESSAGE_Y_OFFSET = 40;
 const int LONG_MESSAGE_X_OFFSET = 60;
 
+const enum CollisionResults { STOP_THE_GAME = 0, CONTINUE_GAME = 1 };
+
 struct SDL_Surfaces
 {
 	SDL_Surface** screen, ** charset, ** mario_running_right, ** mario_running_left,
