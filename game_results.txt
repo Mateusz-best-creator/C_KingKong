@@ -118,3 +118,48 @@ Level 3 times: 2.256000 1.433000 1.520000
 Level 3 best time: 1.433000
 Cos total amount of points: 5100
 ================================
+Player name: Marchewa
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 6400 
+Level 2 best score: 6400
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 28.648000 
+Level 2 best time: 28.648000
+Level 3 times: 
+Level 3 best time: 0.000000
+Marchewa total amount of points: 1400
+================================
+Player name: Marchewa
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 6400 
+Level 2 best score: 6400
+Level 3 scores: 0 600 0 
+Level 3 best score: 600
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 28.648000 
+Level 2 best time: 28.648000
+Level 3 times: 1.770000 5.616000 1.593000 
+Level 3 best time: 1.593000
+Marchewa total amount of points: 7000
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 
+Level 2 best score: 0
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 
+Level 2 best time: 0.000000
+Level 3 times: 
+Level 3 best time: 0.000000
+Unknown total amount of points: 7000
+================================

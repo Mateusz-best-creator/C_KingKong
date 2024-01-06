@@ -9,6 +9,10 @@
 #include <string.h>
 #include <cstdlib>
 
+void draw_messages(const Mario&, SDL_Surfaces&, SDL_Surface*);
+void init_table(Mario& mario_info, BoardElements& board, FallingBarell& flying_barell, Barell* barells);
+void update_time(TimeVariables& times);
+void draw_final_treasures(BoardElements& board, SDL_Surfaces& surfaces, SDL_Surface* screen);
 
 int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, BoardElements& board, bool load_game_from_file)
 {
@@ -34,17 +38,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         load_barells_from_file(barells, flying_barell, times);
     }
     else
-    {
-        mario_info.x_coordinate = board.initial_mario_x;
-        mario_info.y_coordinate = board.initial_mario_y;
-        // Initialize one falling barell
-        flying_barell.x_coordinate = INITIAL_FALLING_BARELL_X;
-        flying_barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
-        // Initialize the barells, based on board
-        init_barells(board, barells);
-        flying_barell.delta = 0;
-        flying_barell.falling_down = false;
-    }
+        init_table(mario_info, board, flying_barell, barells);
 
     int mario_won = 0;
 
@@ -90,47 +84,18 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         falling_barell(times, flying_barell, surfaces);
         jumped_over_barell(mario_info, board, barells, screen, *(surfaces.charset));
 
-        // Draw final treasures
-        switch (board.level)
-        {
-        case 1:
-            DrawSurface(screen, *(surfaces.level_1_winning_icon), LEVEL_1_WINNING_X1, LEVEL_1_WINNING_Y);
-            break;
-        case 2:
-            DrawSurface(screen, *(surfaces.level_2_winning_icon), LEVEL_2_WINNING_X1, LEVEL_2_WINNING_Y);
-            break;
-        case 3:
-            DrawSurface(screen, *(surfaces.level_3_winning_icon), LEVEL_3_WINNING_X1, LEVEL_3_WINNING_Y);
-            break;
-        default:
-            break;
-        }
-
-        // Draw message if mario grabbed something
-        if (mario_info.just_grabbed_coin)
-            grab_coin_message(mario_info, screen, *(surfaces.charset));
-        if (mario_info.just_jumped_over_barell)
-            jump_over_barell_message(mario_info, screen, *(surfaces.charset));
-        if (mario_info.just_grabbed_trophy)
-            grab_trophy_message(mario_info, screen, *(surfaces.charset));
-        if (mario_info.just_putted_trophy)
-            put_trophy_message(mario_info, screen, *(surfaces.charset));
-
-        times.fpsTimer += times.delta;
-        if (times.fpsTimer > SECONDS_BETWEEN_REFRESH) {
-            times.fps = times.frames * REFRESH_RATE;
-            times.frames = 0;
-            times.fpsTimer -= SECONDS_BETWEEN_REFRESH;
-        }
+        draw_final_treasures(board, surfaces, screen);
+        draw_messages(mario_info, surfaces, screen);
+        update_time(times);
 
         int barell_collision_result = -1;
         // Check collisions
         barell_collision_result = collision_with_barell(mario_info, barells, flying_barell, board, surfaces, SDL_elements, times);
-        if (barell_collision_result == 0) // lifes == 0
+        if (barell_collision_result == STOP_THE_GAME) // lifes == 0
         {
-            return 0;
+            return STOP_THE_GAME;
         }
-        else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
+        else if (barell_collision_result == CONTINUE_GAME) // player touched a barell
         {
             // Reset the board and set initial mario coordinates
             board = initialize_board(board.level);
@@ -148,7 +113,7 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         if (times.quit == NEW_GAME)
         {
             strcpy(mario_info.name, "Unknown");
-            return 0;
+            return STOP_THE_GAME;
         }
         else if (times.quit == SWITCH_TO_LEVEL_1 || times.quit == SWITCH_TO_LEVEL_2 || times.quit == SWITCH_TO_LEVEL_3)
         {
@@ -158,4 +123,59 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
     }
     delete[] barells;
     return mario_won;
+}
+
+void draw_messages(const Mario& mario_info, SDL_Surfaces& surfaces, SDL_Surface* screen)
+{
+    // Draw message if mario grabbed something
+    if (mario_info.just_grabbed_coin)
+        grab_coin_message(mario_info, screen, *(surfaces.charset));
+    if (mario_info.just_jumped_over_barell)
+        jump_over_barell_message(mario_info, screen, *(surfaces.charset));
+    if (mario_info.just_grabbed_trophy)
+        grab_trophy_message(mario_info, screen, *(surfaces.charset));
+    if (mario_info.just_putted_trophy)
+        put_trophy_message(mario_info, screen, *(surfaces.charset));
+}
+
+void init_table(Mario& mario_info, BoardElements& board, FallingBarell& flying_barell, Barell* barells)
+{
+    mario_info.x_coordinate = board.initial_mario_x;
+    mario_info.y_coordinate = board.initial_mario_y;
+    // Initialize one falling barell
+    flying_barell.x_coordinate = INITIAL_FALLING_BARELL_X;
+    flying_barell.y_coordinate = INITIAL_FALLING_BARELL_Y;
+    // Initialize the barells, based on board
+    init_barells(board, barells);
+    flying_barell.delta = 0;
+    flying_barell.falling_down = false;
+}
+
+void update_time(TimeVariables& times)
+{
+    times.fpsTimer += times.delta;
+    if (times.fpsTimer > SECONDS_BETWEEN_REFRESH) {
+        times.fps = times.frames * REFRESH_RATE;
+        times.frames = 0;
+        times.fpsTimer -= SECONDS_BETWEEN_REFRESH;
+    }
+}
+
+void draw_final_treasures(BoardElements& board, SDL_Surfaces& surfaces, SDL_Surface* screen)
+{
+    // Draw final treasures
+    switch (board.level)
+    {
+    case 1:
+        DrawSurface(screen, *(surfaces.level_1_winning_icon), LEVEL_1_WINNING_X1, LEVEL_1_WINNING_Y);
+        break;
+    case 2:
+        DrawSurface(screen, *(surfaces.level_2_winning_icon), LEVEL_2_WINNING_X1, LEVEL_2_WINNING_Y);
+        break;
+    case 3:
+        DrawSurface(screen, *(surfaces.level_3_winning_icon), LEVEL_3_WINNING_X1, LEVEL_3_WINNING_Y);
+        break;
+    default:
+        break;
+    }
 }

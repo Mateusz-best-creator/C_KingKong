@@ -95,11 +95,11 @@ int start_infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements&
         int barell_collision_result = -1;
         // Check collisions
         barell_collision_result = collision_with_barell(mario_info, barells, flying_barell, board, surfaces, SDL_elements, times);
-        if (barell_collision_result == 0) // lifes == 0
+        if (barell_collision_result == STOP_THE_GAME) // lifes == 0
         {
-            return 0; // Player lost all his lifes
+            return STOP_THE_GAME; // Player lost all his lifes
         }
-        else if (barell_collision_result == 1) // 1 means that we reset the game, beacuse player touched a barell
+        else if (barell_collision_result == CONTINUE_GAME) // 1 means that we reset the game, beacuse player touched a barell
         {
             // Reset the board and set initial mario coordinates
             //board = initialize_board(board.level);
