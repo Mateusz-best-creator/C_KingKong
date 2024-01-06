@@ -80,8 +80,8 @@ int start_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elem
         draw_mario(surfaces, mario_info);
 
         // Draw king_kong surface
-        DrawMonkey(surfaces, board, times);
-        //DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
+        //DrawMonkey(surfaces, board, times);
+        DrawSurface(screen, *(surfaces.king_kong), board.king_kong_x, board.king_kong_y);
 
         // Moving all barells
         move_barells(barells, board, surfaces);

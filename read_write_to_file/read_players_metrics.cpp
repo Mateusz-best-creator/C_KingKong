@@ -32,7 +32,7 @@ Player* read_players_metrics(int& num_players)
         // Check if we arleady have that player in our database
         for (size_t i = 0; i < num_players; i++)
         {
-            if (std::strcmp(players[i].name, name) == 0)
+            if (strcmp(players[i].name, name) == 0)
             {
                 skip = true;
                 if (players[i].level_1_best_score < level1_points)
@@ -67,12 +67,6 @@ Player* read_players_metrics(int& num_players)
         players[index].total_points = total;
         index++;
         num_players++;
-
-        // Check if the maximum number of players has been reached
-        if (index >= MAX_PLAYERS) {
-            printf("Maximum number of players reached.\n");
-            break;
-        }
     }
     return players;
 }

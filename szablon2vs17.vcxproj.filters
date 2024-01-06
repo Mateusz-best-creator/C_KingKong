@@ -57,6 +57,7 @@
     <Text Include="read_from_file_level_1.txt" />
     <Text Include="read_from_file_level_2.txt" />
     <Text Include="read_from_file_level_3.txt" />
+    <Text Include="player_metrics.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

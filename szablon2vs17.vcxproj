@@ -67,6 +67,7 @@
     <ClInclude Include="read_write_to_file\read_write_to_file.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="player_metrics.txt" />
     <Text Include="read_from_file_level_1.txt" />
     <Text Include="read_from_file_level_2.txt" />
     <Text Include="read_from_file_level_3.txt" />
