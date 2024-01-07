@@ -3,7 +3,7 @@
 #include "../functions_definitions.h"
 #include "infinite_game.h"
 
-#include <iostream>
+#include <string.h>
 
 bool generate_board_interface(SDL_Event& event);
 

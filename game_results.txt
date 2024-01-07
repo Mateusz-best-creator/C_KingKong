@@ -418,3 +418,93 @@ Level 3 times:
 Level 3 best time: 0.000000
 KTOsiek total amount of points: 0
 ================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 5700 
+Level 2 best score: 5700
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 16.674000 
+Level 2 best time: 16.674000
+Level 3 times: 
+Level 3 best time: 0.000000
+Unknown total amount of points: 700
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 5700 
+Level 2 best score: 5700
+Level 3 scores: 5100 
+Level 3 best score: 5100
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 16.674000 
+Level 2 best time: 16.674000
+Level 3 times: 10.702000 
+Level 3 best time: 10.702000
+Unknown total amount of points: 5800
+================================
+Player name: Unknown
+Level 1 scores: 9900 
+Level 1 best score: 9900
+Level 2 scores: 5700 
+Level 2 best score: 5700
+Level 3 scores: 5100 
+Level 3 best score: 5100
+Level 1 times: 33.415000 
+Level 1 best time: 33.415000
+Level 2 times: 16.674000 
+Level 2 best time: 16.674000
+Level 3 times: 10.702000 
+Level 3 best time: 10.702000
+Unknown total amount of points: 15700
+================================
+Player name: Pawel
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 5600 
+Level 2 best score: 5600
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 24.009000 
+Level 2 best time: 24.009000
+Level 3 times: 
+Level 3 best time: 0.000000
+Pawel total amount of points: 600
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 8400 
+Level 2 best score: 8400
+Level 3 scores: 
+Level 3 best score: 0
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 40.634000 
+Level 2 best time: 40.634000
+Level 3 times: 
+Level 3 best time: 0.000000
+Unknown total amount of points: 3400
+================================
+Player name: Unknown
+Level 1 scores: 
+Level 1 best score: 0
+Level 2 scores: 8400 
+Level 2 best score: 8400
+Level 3 scores: 0 600 200 
+Level 3 best score: 600
+Level 1 times: 
+Level 1 best time: 0.000000
+Level 2 times: 40.634000 
+Level 2 best time: 40.634000
+Level 3 times: 2.636000 5.335000 12.133000 
+Level 3 best time: 2.636000
+Unknown total amount of points: 9000
+================================

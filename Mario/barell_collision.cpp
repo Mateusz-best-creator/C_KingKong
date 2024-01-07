@@ -5,7 +5,6 @@
 #include "../Interface/interface.h"
 #include "../read_write_to_file/read_write_to_file.h"
 
-#include <iostream>
 
 int return_max(const int[], int);
 double return_min(const double[], int);

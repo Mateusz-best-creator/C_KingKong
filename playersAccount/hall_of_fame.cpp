@@ -3,7 +3,6 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <iostream>
 
 bool hall_of_fame_interface_events(SDL_Event&);
 int partition(Player arr[], int low, int high);

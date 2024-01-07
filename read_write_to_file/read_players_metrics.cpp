@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <iostream>
 
 const int MAX_PLAYERS = 5;
 
@@ -23,16 +22,14 @@ Player* read_players_metrics(int& num_players)
     int level1_points = 0, level2_points = 0, level3_points = 0, total = 0;
     double level1_time = 0, level2_time = 0, level3_time = 0;
     bool skip = false;
-    std::cout << "READIGNG" << std::endl;
     // Read data from the file using fscanf
     while (fscanf(file, "%s %d %d %d %lf %lf %lf %d\n", name, &level1_points, &level2_points, &level3_points,
         &level1_time, &level2_time, &level3_time, &total) == 8)
     {
-        std::cout << num_players << std::endl;
         // Check if we arleady have that player in our database
         for (size_t i = 0; i < num_players; i++)
         {
-            if (std::strcmp(players[i].name, name) == 0)
+            if (strcmp(players[i].name, name) == 0)
             {
                 skip = true;
                 if (players[i].level_1_best_score < level1_points)
@@ -57,7 +54,7 @@ Player* read_players_metrics(int& num_players)
             continue;
         }
         // Add player to the database
-        std::strcpy(players[index].name, name);
+        strcpy(players[index].name, name);
         players[index].level_1_best_score = level1_points;
         players[index].level_2_best_score = level2_points;
         players[index].level_3_best_score = level3_points;

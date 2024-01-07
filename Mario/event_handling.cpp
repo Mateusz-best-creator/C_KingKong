@@ -4,7 +4,6 @@
 #include "../read_write_to_file/read_write_to_file.h"
 
 #include <cstdlib>
-#include <iostream>
 
 int handleEvents(SDL_Event& event, Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, 
 	BoardElements& board, Barell* barells, FallingBarell& flying_barell, TimeVariables& times)
