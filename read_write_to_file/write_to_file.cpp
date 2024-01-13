@@ -1,5 +1,7 @@
 #include "../Mario/mario.h"
 #include "read_write_to_file.h"
+//#include <fcntl.h>
+//#include <sys/stat.h>
 
 #include <stdio.h>
 #include <string.h>
@@ -7,10 +9,10 @@
 
 void save_game(const char* filename, Mario mario_info) 
 {
-	
-	FILE* file = fopen(filename, "a"); // Open file in append mode
-	if (file == NULL) {
-		perror("Error opening file write_to_file.cpp");
+	FILE* file;
+	if (fopen_s(&file, "./player_metrics.txt", "a") != 0)
+	{
+		printf("Error opening player_metrics file.\n");
 		return;
 	}
 	mario_info.name[strlen(mario_info.name) + 1] = '\0';

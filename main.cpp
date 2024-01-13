@@ -18,6 +18,7 @@ extern "C"
 #endif
 int main(int argc, char** argv)
 {
+
 	// Initialize all SDL elements
 	SDL_Surface* screen = nullptr, * charset = nullptr, * mario_running_right = nullptr, * mario_running_left = nullptr, * king_kong = nullptr,
 		* mario_climbing = nullptr, * mario_jumping_right = nullptr, * mario_jumping_left = nullptr, * level_1_crown = nullptr,
