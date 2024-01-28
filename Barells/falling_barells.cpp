@@ -36,7 +36,7 @@ void falling_barell(TimeVariables& times, FallingBarell& barell, const SDL_Surfa
 
 void draw_falling_barell(FallingBarell& barell, const SDL_Surfaces& surfaces)
 {
-	DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), barell.x_coordinate, barell.y_coordinate);
+	DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), int(barell.x_coordinate), int(barell.y_coordinate));
 }
 
 int random_n(int min, int max) {

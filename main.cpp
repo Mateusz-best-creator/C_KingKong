@@ -74,7 +74,7 @@ int main(int argc, char** argv)
 	mario_info.lifes = 3;
 	mario_info.has_trophy = false;
 
-	strcpy(mario_info.name, "Unknown");
+	strcpy_s(mario_info.name, 21, "Unknown");
 	mario_info.name[7] = '\0';
 
 	int level_switch = -1;

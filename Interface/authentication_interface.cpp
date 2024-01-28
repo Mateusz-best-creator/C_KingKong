@@ -18,9 +18,9 @@ char* authentication_interface(Mario& mario_info, SDL_Surfaces& surfaces, SDL_El
     while (!quit)
     {
         DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 54, colors.szary, colors.szary);
-        sprintf(text, "Please enter you name, maximum length is 25 characters: ");
+        sprintf_s(text, 100, "Please enter you name, maximum length is 25 characters: ");
         DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 10, text, *(surfaces.charset));
-        sprintf(text, "Your name: %s", name);
+        sprintf_s(text, 100, "Your name: %s", name);
         DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 26, text, *(surfaces.charset));
 
         SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);

@@ -229,17 +229,17 @@ void drawInfoRectangle(const BoardElements& board, const Mario& mario_info, SDL_
 		DrawSurface(screen, *(surfaces.heart_icon), SCREEN_WIDTH - 130 + i * 45, 70);
 	}
 	DrawRectangle(screen, 4, 4, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
-	sprintf(text, "Mario points for level %d : %d   Mario lifes: %d", board.level, mario_info.points, mario_info.lifes);
+	sprintf_s(text, 128, "Mario points for level %d : %d   Mario lifes: %d", board.level, mario_info.points, mario_info.lifes);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 10, text, charset);
-	sprintf(text, "Player name: %s   %s all points: %d", mario_info.name, mario_info.name, mario_info.all_points);
+	sprintf_s(text, 128, "Player name: %s   %s all points: %d", mario_info.name, mario_info.name, mario_info.all_points);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 26, text, charset);
 	// tekst informacyjny / info text
 	DrawRectangle(screen, 4, 430, SCREEN_WIDTH - 8, 36, colors.szary, colors.szary);
 	//            "template for the second project, elapsed time = %.1lf s  %.0lf frames / s"
-	sprintf(text, "Czas trwania = %.1lf s  %.0lf klatek / s, Esc - exit, n - new game", times.worldTime, times.fps);
+	sprintf_s(text, 128, "Czas trwania = %.1lf s  %.0lf klatek / s, Esc - exit, n - new game", times.worldTime, times.fps);
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 435, text, charset);
 	//	      "Esc - exit, \030 - faster, \031 - slower"
-	sprintf(text, "s - save game, \x5f - jump, \030 - go up, \031 - go down, \032 - go left, \033 - go right");
+	sprintf_s(text, 128, "s - save game, \x5f - jump, \030 - go up, \031 - go down, \032 - go left, \033 - go right");
 	DrawString(screen, screen->w / 2 - strlen(text) * 8 / 2, 450, text, charset);
 
 	SDL_UpdateTexture(scrtex, NULL, screen->pixels, screen->pitch);

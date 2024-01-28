@@ -31,7 +31,7 @@ void hall_of_fame(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements)
 			DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 230, text, *(surfaces.charset));
 		}
 		{
-			for (size_t i = 0; i < num_players; i++)
+			for (int i = 0; i < num_players; i++)
 			{
 				if (i == 0)
 				{

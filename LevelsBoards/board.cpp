@@ -14,6 +14,7 @@ BoardElements initialize_board(int level)
 		case 3:
 			return initialize_level_3_board();
 		default:
+			return initialize_level_1_board();
 			break;
 	}
 }
@@ -35,14 +36,14 @@ BoardElements initialize_level_1_board()
 	// Initialize coins coordinates
 	int coins_x[LEVEL_1_COINS_AMOUNT] = { 476, 308, 200, 344, 170 };
 	int coins_y[LEVEL_1_COINS_AMOUNT] = { 387, 327, 267, 207, 147 };
-	for (size_t i = 0; i < LEVEL_1_COINS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_1_COINS_AMOUNT; i++)
 	{
 		board.coins_x[i] = coins_x[i];
 		board.coins_y[i] = coins_y[i];
 		board.grabbed_coins[i] = false;
 	}
 	// Initialize platforms width and beginning y coordinates
-	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
 	{
 		board.platforms_y_coordinate[i] = 390 - i * 60;
 		board.platforms_widths[i] = SCREEN_WIDTH;
@@ -51,10 +52,10 @@ BoardElements initialize_level_1_board()
 	}
 
 	// Calculate ending x coordinates for each platform
-	for (size_t i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_1_PLATFORMS_AMOUNT; i++)
 		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
 
-	for (size_t i = 0; i < board.amount_of_ladders; i++)
+	for (int i = 0; i < board.amount_of_ladders; i++)
 	{
 		board.ladders_y_coordinates[i] = 351 - board.platform_height * i;
 		board.ladders_rows[i] = i + 1;
@@ -65,7 +66,7 @@ BoardElements initialize_level_1_board()
 			board.ladders_x_coordinates[i] = 60;
 	}
 	// Initialize barells
-	for (size_t i = 0; i < LEVEL_1_BARELLS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_1_BARELLS_AMOUNT; i++)
 	{
 		board.barells_y_coordinate[i] = 330 - i * 60;
 		board.barells_rows[i] = i + 2;
@@ -97,14 +98,14 @@ BoardElements initialize_level_2_board()
 	board.amount_of_coins = LEVEL_2_COINS_AMOUNT;
 	int coins_x[LEVEL_2_COINS_AMOUNT] = { 254, 476, 464, 446, 140, 200, 26 };
 	int coins_y[LEVEL_2_COINS_AMOUNT] = { 387, 387, 267, 207, 387, 267, 207 };
-	for (size_t i = 0; i < LEVEL_2_COINS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_2_COINS_AMOUNT; i++)
 	{
 		board.coins_x[i] = coins_x[i];
 		board.coins_y[i] = coins_y[i];
 		board.grabbed_coins[i] = false;
 	}
 	
-	for (size_t i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		board.platforms_x_coordinate[i] = 230 * i;
 		board.platforms_y_coordinate[i] = 390;
@@ -115,14 +116,14 @@ BoardElements initialize_level_2_board()
 	board.platforms_y_coordinate[3] = 330;
 	board.platforms_widths[3] = SCREEN_WIDTH;
 	board.platforms_rows[3] = 2;
-	for (size_t i = 4; i < 6; i++)
+	for (int i = 4; i < 6; i++)
 	{
 		i == 4 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 440;
 		i == 4 ? board.platforms_widths[i] = 400 : board.platforms_widths[i] = 200;
 		board.platforms_y_coordinate[i] = 270;
 		board.platforms_rows[i] = 3;
 	}
-	for (size_t i = 6; i < 8; i++)
+	for (int i = 6; i < 8; i++)
 	{
 		i == 6 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 230;
 		i == 6 ? board.platforms_widths[i] = 200 : board.platforms_widths[i] = 410;
@@ -135,11 +136,11 @@ BoardElements initialize_level_2_board()
 	board.platforms_rows[8] = 5;
 
 	// Calculate ending x coordinates for each platform
-	for (size_t i = 0; i < LEVEL_2_PLATFORMS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_2_PLATFORMS_AMOUNT; i++)
 		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
 
 	// Initialize ladders
-	for (size_t i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		board.ladders_y_coordinates[i] = 351;
 		board.ladders_rows[i] = 1;
@@ -147,14 +148,14 @@ BoardElements initialize_level_2_board()
 	board.ladders_x_coordinates[0] = 60;
 	board.ladders_x_coordinates[1] = SCREEN_WIDTH / 2;
 	board.ladders_x_coordinates[2] = 560;
-	for (size_t i = 3; i < 5; i++)
+	for (int i = 3; i < 5; i++)
 	{ 
 		board.ladders_y_coordinates[i] = 291;
 		board.ladders_rows[i] = 2;
 	}
 	board.ladders_x_coordinates[3] = 120;
 	board.ladders_x_coordinates[4] = 530;
-	for (size_t i = 5; i < 8; i++)
+	for (int i = 5; i < 8; i++)
 	{
 		board.ladders_y_coordinates[i] = 231;
 		board.ladders_rows[i] = 3;
@@ -162,7 +163,7 @@ BoardElements initialize_level_2_board()
 	board.ladders_x_coordinates[5] = 60;
 	board.ladders_x_coordinates[6] = SCREEN_WIDTH / 2 - 20;
 	board.ladders_x_coordinates[7] = 560;
-	for (size_t i = 8; i < 10; i++)
+	for (int i = 8; i < 10; i++)
 	{
 		board.ladders_y_coordinates[i] = 171;
 		board.ladders_rows[i] = 4;
@@ -178,7 +179,7 @@ BoardElements initialize_level_2_board()
 	int dirs[] = { 0, 0, 1, 1 };
 	int left_borders[] = { 50, 20, 254, 100 };
 	int right_borders[] = { SCREEN_WIDTH - 50, 374, 620, SCREEN_WIDTH - 100 };
-	for (size_t i = 0; i < LEVEL_2_BARELLS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_2_BARELLS_AMOUNT; i++)
 	{
 		board.barells_direction[i] = dirs[i];
 		board.barells_left_border[i] = left_borders[i];
@@ -204,7 +205,7 @@ BoardElements initialize_level_3_board()
 	board.amount_of_coins = LEVEL_3_COINS_AMOUNT;
 	int coins_x[LEVEL_3_COINS_AMOUNT] = { 116, 188, 20, 20, 446, 530, 446, 494 };
 	int coins_y[LEVEL_3_COINS_AMOUNT] = { 387, 387, 207, 147, 207, 387, 387, 267 };
-	for (size_t i = 0; i < LEVEL_3_COINS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_3_COINS_AMOUNT; i++)
 	{
 		board.coins_x[i] = coins_x[i];
 		board.coins_y[i] = coins_y[i];
@@ -212,14 +213,14 @@ BoardElements initialize_level_3_board()
 	}
 	// Initialize platforms
 	int first_platforms_X_cors[4] = {0, 167, 334, 501};
-	for (size_t i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		board.platforms_x_coordinate[i] = first_platforms_X_cors[i];
 		board.platforms_y_coordinate[i] = 390;
 		board.platforms_widths[i] = 137;
 		board.platforms_rows[i] = 1;
 	}
-	for (size_t i = 4; i < 6; i++)
+	for (int i = 4; i < 6; i++)
 	{
 		i == 4 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 340;
 		board.platforms_y_coordinate[i] = 330;
@@ -230,7 +231,7 @@ BoardElements initialize_level_3_board()
 	board.platforms_y_coordinate[6] = 270;
 	board.platforms_widths[6] = SCREEN_WIDTH;
 	board.platforms_rows[6] = 3;
-	for (size_t i = 7; i < 9; i++)
+	for (int i = 7; i < 9; i++)
 	{
 		i == 7 ? board.platforms_x_coordinate[i] = 0 : board.platforms_x_coordinate[i] = 390;
 		board.platforms_y_coordinate[i] = 210;
@@ -243,23 +244,23 @@ BoardElements initialize_level_3_board()
 	board.platforms_rows[9] = 5;
 
 	// Calculate ending x coordinates for each platform
-	for (size_t i = 0; i < LEVEL_3_PLATFORMS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_3_PLATFORMS_AMOUNT; i++)
 		board.platforms_ending_x_coordinate[i] = board.platforms_x_coordinate[i] + board.platforms_widths[i];
 	// Initialize ladders
 	int first_ladders_X_cors[4] = { 10, 257, 394, 581 };
-	for (size_t i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		board.ladders_x_coordinates[i] = first_ladders_X_cors[i];
 		board.ladders_y_coordinates[i] = 351;
 		board.ladders_rows[i] = 1;
 	}
-	for (size_t i = 4; i < 6; i++)
+	for (int i = 4; i < 6; i++)
 	{
 		i == 4 ? board.ladders_x_coordinates[i] = 100 : board.ladders_x_coordinates[i] = 550;
 		board.ladders_y_coordinates[i] = 291;
 		board.ladders_rows[i] = 2;
 	}
-	for (size_t i = 6; i < 8; i++)
+	for (int i = 6; i < 8; i++)
 	{
 		i == 6 ? board.ladders_x_coordinates[i] = 40 : board.ladders_x_coordinates[i] = 580;
 		board.ladders_y_coordinates[i] = 231;
@@ -274,7 +275,7 @@ BoardElements initialize_level_3_board()
 	int dirs[] = { 1, 1, 0, 1 };
 	int left_borders[] = { 350, 20, 416, 50 };
 	int right_borders[] = { 626, SCREEN_WIDTH - 20, 626, 476 };
-	for (size_t i = 0; i < LEVEL_3_BARELLS_AMOUNT; i++)
+	for (int i = 0; i < LEVEL_3_BARELLS_AMOUNT; i++)
 	{
 		board.barells_direction[i] = dirs[i];
 		board.barells_left_border[i] = left_borders[i];

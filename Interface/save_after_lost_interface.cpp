@@ -19,12 +19,12 @@ bool save_after_lost_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_element
 	while (choosing_option)
 	{
 		DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 54, colors.szary, colors.szary);
-		sprintf(text, "Do you want to save your results to the file\u24B6");
-		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 10, text, *(surfaces.charset));
-		sprintf(text, "Y: Yes");
-		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 26, text, *(surfaces.charset));
-		sprintf(text, "N: No");
-		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 42, text, *(surfaces.charset));
+		sprintf_s(text, 100, "Do you want to save your results to the file\u24B6");
+		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - int(strlen(text)) * 8 / 2, 10, text, *(surfaces.charset));
+		sprintf_s(text, 100, "Y: Yes");
+		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - int(strlen(text)) * 8 / 2, 26, text, *(surfaces.charset));
+		sprintf_s(text, 100, "N: No");
+		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - int(strlen(text)) * 8 / 2, 42, text, *(surfaces.charset));
 
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);
 		//		SDL_RenderClear(renderer);

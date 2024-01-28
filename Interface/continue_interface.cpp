@@ -20,11 +20,11 @@ bool continue_interface(SDL_Surfaces& surfaces, SDL_Elements& SDL_elements, Mari
 	while (choosing_option)
 	{
 		DrawRectangle(*(surfaces.screen), 4, 4, SCREEN_WIDTH - 8, 54, colors.szary, colors.szary);
-		sprintf(text, "Mario points for level %d : %d Mario lifes: %d", board.level, mario_info.points, mario_info.lifes);
+		sprintf_s(text, 100, "Mario points for level %d : %d Mario lifes: %d", board.level, mario_info.points, mario_info.lifes);
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 10, text, *(surfaces.charset));
-		sprintf(text, "C: Continue the game");
+		sprintf_s(text, 100, "C: Continue the game");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 26, text, *(surfaces.charset));
-		sprintf(text, "B: Stop the game");
+		sprintf_s(text, 100, "B: Stop the game");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 42, text, *(surfaces.charset));
 		
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);

@@ -25,9 +25,9 @@ void infinite_game(Mario& mario_info, SDL_Surfaces& surfaces, SDL_Elements& SDL_
 	while (checking)
 	{
 		DrawRectangle(*(surfaces.screen), 4, 200, SCREEN_WIDTH - 8, 75, colors.szary, colors.szary);
-		sprintf(text, "All points: %d", mario_info.all_points);
+		sprintf_s(text, 60, "All points: %d", mario_info.all_points);
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 222, text, *(surfaces.charset));
-		sprintf(text, "Thanks for your time");
+		sprintf_s(text, 60, "Thanks for your time");
 		DrawString(*(surfaces.screen), (*(surfaces.screen))->w / 2 - strlen(text) * 8 / 2, 243, text, *(surfaces.charset));
 		SDL_UpdateTexture(SDL_elements.scrtex, NULL, (*(surfaces.screen))->pixels, (*(surfaces.screen))->pitch);
 		SDL_RenderCopy(SDL_elements.renderer, SDL_elements.scrtex, NULL, NULL);

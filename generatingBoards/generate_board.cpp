@@ -53,14 +53,14 @@ BoardElements generating_board()
 int sum(int ar[], int size)
 {
 	int s = 0;
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 		s += ar[i];
 	return s;
 }
 
 int generate_platforms(BoardElements& board, int* platforms_in_each_row)
 {
-	for (size_t i = 0; i < ROWS; i++)
+	for (int i = 0; i < ROWS; i++)
 	{
 		platforms_in_each_row[i] = std::rand() % 4 + 1;
 	}
@@ -77,9 +77,9 @@ int generate_platforms(BoardElements& board, int* platforms_in_each_row)
 
 	int counter = 0;
 
-	for (size_t row = 0; row < ROWS; row++)
+	for (int row = 0; row < ROWS; row++)
 	{
-		for (size_t i = 0; i < platforms_in_each_row[row]; i++)
+		for (int i = 0; i < platforms_in_each_row[row]; i++)
 		{
 			board.platforms_x_coordinate[counter] = SCREEN_WIDTH / platforms_in_each_row[row] * i;
 			board.platforms_y_coordinate[counter] = 390 - row * 60;
@@ -122,7 +122,7 @@ void generate_ladders(BoardElements& board, const int platforms_sum, int* platfo
 	int ladder_place = 1;
 	int offset = 0;
 
-	for (size_t i = 0; i < ladders_sum; i++)
+	for (int i = 0; i < ladders_sum; i++)
 	{
 		offset = std::rand() % 30 + 15;
 		board.ladders_rows[i] = board.platforms_rows[i];
@@ -155,7 +155,7 @@ void generate_coins(BoardElements& board)
 
 	int option = 1;
 	int offset;
-	for (size_t i = 0; i < board.amount_of_coins; i++)
+	for (int i = 0; i < board.amount_of_coins; i++)
 	{
 		offset = std::rand() % 60 + 1;
 		option = std::rand() % 2 + 1;
@@ -181,7 +181,7 @@ void generate_barells(BoardElements& board)
 
 	int barell_platform_indexes[4] = { -1, -1, -1, -1 };
 	int platform_index;
-	for (size_t i = 0; i < barells_sum; i++)
+	for (int i = 0; i < barells_sum; i++)
 	{
 		platform_index = std::rand() % board.platforms_amount;
 		while (is_in(barell_platform_indexes, 4, platform_index))
@@ -240,7 +240,7 @@ void generate_trophy(BoardElements& board)
 
 bool is_in(int* ar, int size, int number)
 {
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		if (ar[i] == number)
 			return true;

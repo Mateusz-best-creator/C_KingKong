@@ -25,7 +25,7 @@ void initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_ele
 		// Bottom rectangle displaying the name of the player
 		DrawRectangle(screen, DESC_RECTANGLE_INIT_X_Y, 430,
 			DESC_RECTANGLE_WIDTH, 40, colors.szary, colors.szary);
-		sprintf(player_name, "You are currently logged as: %s", name);
+		sprintf_s(player_name, 50, "You are currently logged as: %s", name);
 		DrawString(screen, screen->w / 2 - strlen(player_name) * 8 / 2, 450, player_name, charset);
 
 		// tekst informacyjny
@@ -38,9 +38,9 @@ void initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_ele
 			"Enter - pick an option, \030 - go down, \031 - go up, \032 - go left, \033 - go right"
 		};
 		const int lines_Y[3] = {DESC_LINE_1, DESC_LINE_2, DESC_LINE_3};
-		for (size_t i = 0; i < 3; i++)
+		for (int i = 0; i < 3; i++)
 		{
-			sprintf(desc_text, desc[i]);
+			sprintf_s(desc_text, 100, desc[i]);
 			DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2, lines_Y[i], desc_text, charset);
 		}
 
@@ -71,12 +71,12 @@ void initial_interface(const SDL_Surfaces& surfaces, const SDL_Elements& SDL_ele
 		char* level_desc[3] = { "Level 1", "Level 2", "Level 3" };
 		// Print icons for each level, print levels informations
 		int counter = 0;
-		for (size_t i = 0; i < 3; i++)
+		for (int i = 0; i < 3; i++)
 		{
-			for (size_t j = 0; j < 3; j++)
+			for (int j = 0; j < 3; j++)
 			{
 				// Printing text
-				sprintf(desc_text, options_desc[counter]);
+				sprintf_s(desc_text, 100, options_desc[counter]);
 				if (j == 0)
 					DrawString(screen, screen->w / 2 - strlen(desc_text) * 8 / 2 - 200, INITIAL_STRING_Y + i * Y_OFFSET, desc_text, charset);
 				else

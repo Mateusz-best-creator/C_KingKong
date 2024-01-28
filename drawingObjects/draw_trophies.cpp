@@ -45,13 +45,13 @@ void draw_trophies(Mario& mario_info, BoardElements& board, const SDL_Surfaces& 
 void grab_trophy_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset)
 {
 	char text[30];
-	sprintf(text, "You capture trophy!");
+	sprintf_s(text, 30, "You capture trophy!");
 	DrawString(screen, mario.x_coordinate - LONG_MESSAGE_X_OFFSET, mario.y_coordinate - MESSAGE_Y_OFFSET, text, charset);
 }
 
 void put_trophy_message(const Mario& mario, SDL_Surface* screen, SDL_Surface* charset)
 {
-	char text[20];
-	sprintf(text, "2000");
+	char text[10];
+	sprintf_s(text, 10, "2000");
 	DrawString(screen, mario.x_coordinate - MESSAGE_X_OFFSET, mario.y_coordinate - MESSAGE_Y_OFFSET, text, charset);
 }

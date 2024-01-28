@@ -11,7 +11,7 @@ const int HORIZONTAL_GAP = 10;
 void DrawLadders(SDL_Surface* screen, const BoardElements& board, int ladder_color)
 {
 	// Draw all ladders that are inside our board
-	for (size_t i = 0; i < board.amount_of_ladders; i++)
+	for (int i = 0; i < board.amount_of_ladders; i++)
 	{
 		DrawRectangle(screen, board.ladders_x_coordinates[i], board.ladders_y_coordinates[i],
 			VERTICAL_WIDTH, VERTICAL_HEIGHT, ladder_color, ladder_color);
@@ -19,7 +19,7 @@ void DrawLadders(SDL_Surface* screen, const BoardElements& board, int ladder_col
 			VERTICAL_WIDTH, VERTICAL_HEIGHT, ladder_color, ladder_color);
 
 		// Print four horizontal lines for each ladder
-		for (size_t j = 0; j < 4; j++)
+		for (int j = 0; j < 4; j++)
 			DrawRectangle(screen, board.ladders_x_coordinates[i], board.ladders_y_coordinates[i] + (j + 1) * HORIZONTAL_GAP,
 				HORIZONTAL_WIDTH, HORIZONTAL_HEIGHT, ladder_color, ladder_color);
 	}

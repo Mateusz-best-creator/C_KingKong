@@ -36,7 +36,7 @@ void move_barells(Barell* barells, const BoardElements& board, const SDL_Surface
 
 void draw_barell(Barell& barell, const SDL_Surfaces& surfaces)
 {
-	DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), barell.x_coordinate, barell.y_coordinate);
+	DrawSurface(*(surfaces.screen), *(surfaces.rolling_barell_1), int(barell.x_coordinate), int(barell.y_coordinate));
 }
 
 void move_barell(Barell& barell, int level)
