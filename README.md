@@ -86,9 +86,8 @@ It may happen that mario, barells will be very fast on your computer (beacuse yo
 
 ## Prerequisites
 
-If you are unable to start the project, download SDL2, SDL_image from the following links:
+If you are unable to start the project, download SDL2 from the following link:
 - [SDL2 Releases](https://github.com/libsdl-org/SDL/releases/tag/release-2.28.5)
-- [SDL_image Releases](https://github.com/libsdl-org/SDL_image/releases)
 
 Of course download the latest versions of the liblaries. Ensure you download the versions compatible with your Visual Studio setup. If you are using VS Code, download the VS Code versions of the libraries.
 
@@ -107,13 +106,12 @@ Of course download the latest versions of the liblaries. Ensure you download the
 3. **Configure Linker Input:**
    - In the Linker section, go to Input.
    - Navigate to Additional Dependencies.
-   - Add the following entries: `SDL2.lib;SDL2main.lib;SDL2_image.lib;`.
+   - Add the following entries: `SDL2.lib;SDL2main.lib;`.
 
 4. **Optional Recommendation:**
-   - Place the files from SDL_image into your SDL2 folder to ensure automatic linking.
    - If you get an error that SDL2_some_package.dll cannot be found, try to copy some_package.dll and paste it in the same directory where your main.cpp is.
 
-Now, you should be able to build and run the chess game smoothly.
+Now, you should be able to build and run the DonkeyKong game smoothly.
 
 ## Build and Run in Microsoft Visual Studio
 
