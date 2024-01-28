@@ -8,7 +8,11 @@ void draw_mario(SDL_Surfaces& surfaces, Mario& mario_info)
 		if (mario_info.jumping_pixels > JUMP_HEIGHT || mario_info.going_down)
 		{
 			mario_info.going_down = true;
-			mario_info.jumping_pixels -= JUMP_SPEED;
+			if (mario_info.jumping_pixels > 0)
+				mario_info.jumping_pixels -= JUMP_SPEED;
+			if (mario_info.jumping_pixels < 0)
+				mario_info.jumping_pixels = 0;
+
 		}
 		else
 		{
