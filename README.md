@@ -5,10 +5,13 @@ Welcome to the C++ Crafted Donkey Kong Game – an exciting and nostalgic gaming
 ## Screenshots
 
 **Start Page**
+<img src="screenshots/start_page" height="600" width="900" />
 
 **Level 2**
+<img src="screenshots/level_2" height="600" width="900" />
 
 **Custom Generated Level**
+<img src="screenshots/custom_generated_level" height="600" width="900" />
 
 ## Features:
 
