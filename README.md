@@ -2,6 +2,14 @@
 
 Welcome to the C++ Crafted Donkey Kong Game – an exciting and nostalgic gaming experience! This project brings the classic Donkey Kong arcade game to life, meticulously crafted in C++ to capture the essence of the original while adding modern features.
 
+## Screenshots
+
+**Start Page**
+
+**Level 2**
+
+**Custom Generated Level**
+
 ## Features:
 
 ### 1. Authentic Gameplay:
@@ -93,6 +101,8 @@ Of course download the latest versions of the liblaries. Ensure you download the
 
 ## Configuration Steps
 
+If you are unable to clone this repo, click on a **.sln** file and run this game please follow these steps:
+
 1. **Configure Include Directories:**
    - Go to the properties of your project.
    - In the C/C++ section, click on General.
@@ -119,7 +129,7 @@ To build and run the chess game using Microsoft Visual Studio, follow these simp
 
 1. **Open the Project:**
    - Launch Microsoft Visual Studio.
-   - Open the chess game project in Visual Studio.
+   - Open the chess game project in Visual Studio(click on **.sln** file).
 
 2. **Build and Run:**
    - Press `F5` to build and run the chess game.
